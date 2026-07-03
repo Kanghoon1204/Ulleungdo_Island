@@ -1369,31 +1369,32 @@ SNS 콘텐츠 아이디어 10개를 이유와 함께 제안해줘.</code></div>
     <div class="section-head">
       <span class="step-badge"><span class="n">STEP 5</span> 웹페이지 만들기</span>
       <span class="eyebrow" style="color:var(--muted);"><span class="diff mid">난이도 · 완성</span></span>
-      <h2>AI에게 <span class="hl">index.html 전체 코드</span>를 받습니다</h2>
-      <p class="kicker">최종 배포는 GitHub Pages로 합니다. 오늘은 사이트 빌더에서 조립하지 않고, Gemini나 ChatGPT가 만든 <b>완성 HTML 코드</b>를 GitHub에 올립니다.</p>
+      <h2>AI와 대화해서 <span class="hl">index.html 파일 하나</span>를 만듭니다</h2>
+      <p class="kicker">오늘은 방법을 하나로 정합니다. <b>AI가 질문하고 → 내가 짧게 답하고 → AI가 index.html 파일을 만들어 주는 방식</b>으로 갑니다. 코드가 낯설어도 파일 하나만 만들면 다음 단계에서 바로 배포할 수 있습니다.</p>
     </div>
     <figure class="img-band step-hero">
       <img src="assets/seonginbong-forest.jpg" alt="울릉도 성인봉 원시림" loading="lazy">
       <figcaption><b>웹페이지 만들기.</b> 모은 재료를 한 페이지로 완성합니다.</figcaption>
     </figure>
     <div class="card" style="border-left:6px solid var(--secondary); margin-bottom:24px;">
-      <h3>🧩 잠깐, HTML이 뭔가요?</h3>
-      <p><b>HTML은 웹페이지를 이루는 글</b>입니다. 웹페이지의 각 부분에 <b>“이건 제목”, “이건 사진”, “이건 전화 버튼”</b>처럼 이름표를 붙여 둔 것이라고 보면 됩니다. 브라우저(크롬·사파리)가 그 이름표를 읽어서 우리가 보는 화면으로 그려 줍니다.</p>
-      <p>그리고 <b>index.html</b>은 그 웹페이지의 <b>첫 화면(대문) 파일 이름</b>입니다. 주소로 접속하면 브라우저가 가장 먼저 이 파일을 엽니다.</p>
-      <p>오늘은 이 HTML을 <b>직접 쓰지 않습니다.</b> AI가 대신 써 주고, 우리는 <b>내용을 정하고 → 확인하고 → 올리는</b> 일을 합니다. 뜻을 다 몰라도 만드는 데는 문제없습니다.</p>
+      <h3>잠깐, 오늘 필요한 파일은 딱 하나입니다</h3>
+      <p><b>index.html</b>은 웹페이지의 대문 파일입니다. 브라우저는 이 파일을 읽고 제목, 사진 자리, 문의 버튼, FAQ를 화면으로 보여 줍니다.</p>
+      <p>오늘은 HTML을 외우지 않습니다. 우리는 <b>내용을 정하고, AI가 만든 파일을 확인하고, GitHub에 올리는 일</b>만 합니다.</p>
     </div>
-    <span class="follow">작업장 내용을 바탕으로 GitHub Pages에 올릴 index.html을 만듭니다</span>
-    <div class="steps">
-      <div class="step"><b>1</b><span><a href="#" onclick="openWorkspace();return false;">내 작업장</a>에 제목, 소개문, FAQ, 외국어 안내, 확인 필요 항목이 들어 있는지 확인합니다.</span></div>
-      <div class="step"><b>2</b><span>아래 프롬프트를 Gemini 또는 ChatGPT에 붙여넣어 <b>HTML 전체 코드</b>를 받습니다.</span></div>
-      <div class="step"><b>3</b><span>AI 답변이 설명과 코드를 섞으면 <b>“코드만 다시 출력해줘”</b>라고 요청합니다.</span></div>
-      <div class="step"><b>4</b><span>코드는 나중에 GitHub에서 <b>index.html</b> 파일에 그대로 붙여넣습니다.</span></div>
-    </div>
-    <div class="notice"><strong>중요:</strong> 오늘 배우는 것은 전문 코딩이 아닙니다. <b>좋은 프롬프트로 원하는 HTML을 얻고, 공개 전 확인한 뒤 GitHub Pages로 공유</b>하는 흐름입니다.</div>
 
-    <div class="pb-label"><span class="tag">추천</span> 질문에 답하면 완성 — 대화형으로 만들기</div>
+    <span class="follow">추천 흐름 하나만 따라갑니다</span>
+    <div class="steps">
+      <div class="step"><b>1</b><span><a href="#" onclick="openWorkspace();return false;">내 작업장</a>을 열어 제목, 소개문, FAQ, 외국어 안내가 대충이라도 들어 있는지 확인합니다.</span></div>
+      <div class="step"><b>2</b><span>아래 <b>대화형 제작 프롬프트</b>를 Gemini 또는 ChatGPT에 붙여넣습니다.</span></div>
+      <div class="step"><b>3</b><span>AI가 묻는 질문에 한 문장씩 답합니다. 모르는 내용은 <b>확인 필요</b>라고 답해도 됩니다.</span></div>
+      <div class="step"><b>4</b><span>마지막에 AI가 만든 <b>index.html 파일</b>을 내려받습니다. 파일을 못 주면 코드 전체를 받아 둡니다.</span></div>
+      <div class="step"><b>5</b><span>첫 화면, 문의 버튼, 모바일 화면, 확인 필요 표시를 보고 괜찮으면 <a href="#checklist">완성 점검</a>으로 갑니다.</span></div>
+    </div>
+    <div class="notice"><strong>중요:</strong> 처음 목표는 예쁜 사이트가 아니라 <b>인터넷에 올릴 수 있는 첫 index.html</b>입니다. 먼저 띄우고, 그다음 마음에 들 때까지 고칩니다.</div>
+
+    <div class="pb-label"><span class="tag">추천</span> 질문에 답하면 완성되는 프롬프트</div>
     <div class="card" style="border:2px solid var(--primary);">
-      <p>정보를 미리 정리하지 않아도 됩니다. 아래 프롬프트를 넣으면 <b>AI(ChatGPT)가 먼저 몇 가지를 물어보고</b>, 답하면 그 내용으로 <b>웹페이지를 만들어 파일로 내려받게</b> 해 줍니다.</p>
+      <p>아래 프롬프트 하나만 씁니다. AI가 한 번에 코드를 만들지 않고, 먼저 필요한 정보를 물어보게 해 두었습니다.</p>
       <div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>너는 초보자도 이해하기 쉬운 관광 홍보 웹페이지를 만드는 웹디자이너야.
 바로 코드를 만들지 말고, 먼저 나에게 아래 항목을 한 번에 하나씩 질문해줘.
 내가 답하면 다음 질문을 하고, 모든 답을 받은 뒤에 웹페이지를 만들어줘.
@@ -1405,24 +1406,67 @@ SNS 콘텐츠 아이디어 10개를 이유와 함께 제안해줘.</code></div>
 4. 우리만의 장점 한 가지
 5. 문의 방법 (전화·인스타 등)
 6. 강조하고 싶은 분위기 (예: 가족·감성·활기)
+7. 꼭 넣어야 할 주의사항이나 확인 필요 항목
 
 [답을 다 받은 뒤에 만들 것]
 - GitHub Pages에 올릴 index.html 전체 코드 (HTML·CSS·JS 한 파일)
-- 첫 화면(이름·제목·한 줄 소개·전화/지도 버튼), 소개 카드 3개,
-  방문 안내, 쉬운 영어 3줄, FAQ 5개, 문의 섹션
-- 모바일에서 안 겹치게, 사진은 "내 사진으로 교체" 자리로,
-  가격·시간·배편은 "확인 필요"로 표시
-- 다 만들면 이 코드를 index.html 파일로 저장해서
-  다운로드할 수 있는 링크로 줘. (파일이 안 되면 코드만 보여줘)
+- 첫 화면: 이름, 큰 제목, 한 줄 소개, 전화/지도 버튼
+- 소개 카드 3개: 위치, 대표 메뉴 또는 체험, 추천 대상
+- 방문 안내: 운영시간, 예약, 결제, 주차 또는 준비물
+- 쉬운 영어 안내 3줄
+- FAQ 5개와 짧은 답
+- 마지막 문의 섹션
+
+[코드 조건]
+- index.html 하나에 HTML, CSS, JavaScript를 모두 넣기
+- 외부 라이브러리, 웹폰트, 외부 이미지는 사용하지 않기
+- 모바일에서 글자, 사진, 버튼이 겹치지 않게 만들기
+- 사진은 임시 박스로 두고 "내 사진으로 교체"라고 표시하기
+- 가격, 운영시간, 배편처럼 바뀌는 정보는 "확인 필요"로 표시하기
+- 과장 광고처럼 들리는 표현은 빼기
+- 다 만들면 이 코드를 index.html 파일로 저장해서 다운로드할 수 있는 링크로 줘
+- 파일 링크를 만들 수 없으면, 설명 없이 index.html 전체 코드만 출력하기
 
 지금은 설명하지 말고, 첫 번째 질문부터 시작해줘.</code></div>
-      <div class="tip"><strong>이렇게 진행돼요.</strong> AI가 “가게 이름이 뭔가요?”처럼 하나씩 물어봅니다. 편하게 답하면 마지막에 <b>내려받을 수 있는 index.html 파일</b>을 줍니다. 그 파일을 다음 단계에서 GitHub에 <b>그대로 업로드</b>하면 됩니다.</div>
+      <div class="tip"><strong>답변 예시:</strong> “도동항 근처 해산물 식당이에요”, “운영시간은 확인 필요로 표시해 주세요”, “가족 여행객에게 친절한 느낌이면 좋겠어요”처럼 짧게 답하면 됩니다.</div>
     </div>
 
-    <div class="pb-label"><span class="tag">또는</span> 작업장 정보로 한 번에 만들기</div>
-    <div class="cols-2">
-      <div class="card">
-        <div class="pb-head"><span class="tag-badge primary">1차 제작</span><h3>완성 index.html 요청하기</h3></div>
+    <details class="script" style="margin-top:24px;">
+      <summary>막힐 때만 열기 · 파일을 안 주거나 답변이 이상할 때</summary>
+      <div class="dropbody">
+        <div class="cols-2">
+          <div>
+            <h3>파일 다운로드가 안 보일 때</h3>
+            <div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>파일 다운로드 링크를 만들 수 없으면 괜찮아.
+index.html에 넣을 전체 코드만 설명 없이 출력해줘.
+반드시 &lt;!DOCTYPE html&gt;부터 &lt;/html&gt;까지 모두 포함해줘.</code></div>
+          </div>
+          <div>
+            <h3>코드가 중간에 끊겼을 때</h3>
+            <div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>방금 코드가 중간에 끊겼어.
+처음부터 끝까지 완성된 index.html 전체 코드를 다시 출력해줘.
+설명은 붙이지 말고 코드만 줘.</code></div>
+          </div>
+          <div>
+            <h3>화면이 복잡해 보일 때</h3>
+            <div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>초보자 관광 홍보 페이지답게 더 단순하게 고쳐줘.
+첫 화면, 소개 카드 3개, 방문 안내, FAQ, 문의 섹션만 남기고
+전체 index.html 코드로 다시 줘.</code></div>
+          </div>
+          <div>
+            <h3>휴대폰 화면이 걱정될 때</h3>
+            <div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>휴대폰 화면에서 글자, 사진, 버튼이 겹치지 않게 CSS를 다시 고쳐줘.
+버튼은 세로로 쌓여도 좋고, 전체 너비는 화면 밖으로 넘치지 않게 해줘.
+전체 index.html 코드로 다시 출력해줘.</code></div>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <details class="script">
+      <summary>선택 · 작업장 내용을 한 번에 넣어서 만들고 싶을 때</summary>
+      <div class="dropbody">
+        <p class="tmpl-hint">대화형 질문이 번거롭다면 아래 버튼으로 내 정보를 채운 프롬프트를 복사합니다. 그래도 처음 수업에서는 위의 추천 방법이 더 안전합니다.</p>
         <div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>너는 초보자도 이해하기 쉬운 관광 홍보 웹페이지를 만드는 웹디자이너야.
 아래 정보를 바탕으로 GitHub Pages에 올릴 index.html 전체 코드를 만들어줘.
 
@@ -1446,33 +1490,11 @@ SNS 콘텐츠 아이디어 10개를 이유와 함께 제안해줘.</code></div>
 - 미확인 가격·운영시간·배편은 "확인 필요"로 표시하기
 - 코드만 출력하고 설명은 붙이지 않기</code></div>
         <div class="form-actions"><button class="btn teal small" type="button" onclick="copyFilledPrompt('web')">내 정보 넣어서 복사</button></div>
-        <div class="tip"><strong>작업장에 먼저 저장하세요.</strong> 제목, 소개문, FAQ, 외국어 안내, 확인 필요 항목이 비어 있으면 웹페이지도 얕아집니다. 비어 있는 칸이 있으면 <a href="#" onclick="openWorkspace();return false;">내 작업장</a>으로 돌아가 채운 뒤 복사하세요.</div>
       </div>
-      <div class="card">
-        <div class="pb-head"><span class="tag-badge">수정</span><h3>AI 코드가 마음에 안 들 때</h3></div>
-        <div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>방금 만든 HTML을 초보자 수업용으로 다시 고쳐줘.
+    </details>
 
-조건:
-- 화면 첫 부분에 이름과 문의 버튼이 크게 보이게
-- 휴대폰에서 버튼이 한 줄에 억지로 들어가지 않게
-- 글자 크기는 크게, 문단은 짧게
-- 확인 필요 정보는 눈에 띄게 표시
-- 전체 코드를 index.html 하나로 다시 출력
-- 설명 없이 코드만 출력</code></div>
-        <div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>이 HTML 코드를 공개 전에 점검해줘.
-아래 항목을 표로 확인해줘.
-
-1. 모바일 화면에서 깨질 가능성
-2. 문의 버튼 누락 여부
-3. 지도/전화 링크가 임시값인지
-4. 과장 표현
-5. 가격·운영시간·배편처럼 사실 확인이 필요한 정보
-6. 사진 권리 또는 개인정보 위험</code></div>
-      </div>
-    </div>
-
-    <div class="pb-label"><span class="tag">AI 답변 예시</span> “코드를 받는다”는 건 이런 모습입니다</div>
-    <p style="margin-bottom:12px; color:var(--ink-soft);">낯설어 보여도 괜찮습니다. 직접 코딩하는 게 아니라, AI가 아래처럼 <b>코드를 쭉 만들어 줍니다.</b> 우리는 <b>&lt;!DOCTYPE html&gt;</b>부터 맨 끝 <b>&lt;/html&gt;</b>까지 <b>통째로 복사</b>해서 GitHub에 붙여넣기만 하면 됩니다.</p>
+    <div class="pb-label"><span class="tag">정상 완료</span> AI 답변은 이런 모양이면 됩니다</div>
+    <p style="margin-bottom:12px; color:var(--ink-soft);">파일로 받으면 가장 쉽습니다. 파일이 아니라 코드로 받았다면 아래처럼 <b>&lt;!DOCTYPE html&gt;</b>로 시작해서 <b>&lt;/html&gt;</b>로 끝나야 합니다.</p>
     <div class="prompt-box"><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="ko"&gt;
 &lt;head&gt;
@@ -1488,21 +1510,6 @@ SNS 콘텐츠 아이디어 10개를 이유와 함께 제안해줘.</code></div>
   &lt;!-- 소개 카드 · 방문 안내 · FAQ · 문의 섹션이 이어서 나옵니다 --&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></div>
-    <div class="notice" style="margin-top:14px;"><strong>겁내지 마세요.</strong> 뜻을 다 몰라도 됩니다. 이 코드가 곧 <b>브라우저에서 열리는 웹페이지 한 장</b>이고, 고치고 싶으면 AI에게 <b>“여기를 이렇게 바꿔줘”</b>라고 말로 부탁하면 됩니다.</div>
-
-    <div class="pb-label"><span class="tag">코드 받을 때</span> 답변이 이상하면 이렇게 말합니다</div>
-    <div class="cols-2">
-      <div class="card"><h3>설명이 너무 많을 때</h3><div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>설명은 빼고 index.html에 붙여넣을 코드만 다시 출력해줘.</code></div></div>
-      <div class="card"><h3>코드가 중간에 끊겼을 때</h3><div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>방금 코드가 중간에 끊겼어.
-처음부터 끝까지 완성된 index.html 전체 코드를 다시 출력해줘.</code></div></div>
-      <div class="card"><h3>모바일이 걱정될 때</h3><div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>휴대폰 화면에서 글자, 사진, 버튼이 겹치지 않게 CSS를 다시 고쳐줘.
-버튼은 세로로 쌓여도 좋고, 전체 너비는 화면 밖으로 넘치지 않게 해줘.</code></div></div>
-      <div class="card"><h3>내 정보로 바꾸고 싶을 때</h3><div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>아래 HTML 코드에서 예시 정보를 내 정보로 바꿔줘.
-구조와 디자인은 유지하고, 문구만 자연스럽게 수정해줘.
-
-[내 정보 붙여넣기]
-[HTML 코드 붙여넣기]</code></div></div>
-    </div>
 
     <div class="section-head" style="margin-top:56px; margin-bottom:28px;">
       <h2 style="font-size:clamp(1.8rem,3.4vw,2.6rem);">완성하면 <span class="hl">이런 모습</span>이 됩니다</h2>
@@ -1522,10 +1529,10 @@ SNS 콘텐츠 아이디어 10개를 이유와 함께 제안해줘.</code></div>
     </div>
     <div class="pb-label"><span class="tag">완성 행동</span> HTML 코드가 나온 뒤</div>
     <div class="steps">
-      <div class="step"><b>1</b><span>AI 답변에서 <b>&lt;!DOCTYPE html&gt;</b>부터 마지막 <b>&lt;/html&gt;</b>까지 전체 코드를 복사합니다.</span></div>
-      <div class="step"><b>2</b><span>코드 안의 전화번호, 지도 링크, 사진 자리, 확인 필요 문구를 확인합니다.</span></div>
-      <div class="step"><b>3</b><span>문제가 있으면 AI에게 다시 고쳐 달라고 요청한 뒤 코드를 다시 받습니다.</span></div>
-      <div class="step"><b>4</b><span><a href="#checklist">공개 전 점검</a>으로 이동해 구성·사실·외국어·권리를 확인합니다.</span></div>
+      <div class="step"><b>1</b><span><b>index.html 파일</b>을 내려받았으면 파일 이름이 정확한지 확인합니다.</span></div>
+      <div class="step"><b>2</b><span>파일이 아니라 코드만 받았다면 코드 전체를 복사해 둡니다. STEP 6에서 GitHub에 붙여넣을 수 있습니다.</span></div>
+      <div class="step"><b>3</b><span>전화번호, 지도 링크, 사진 자리, 확인 필요 문구가 보이는지 확인합니다.</span></div>
+      <div class="step"><b>4</b><span><a href="#checklist">공개 전 점검</a>을 한 뒤 GitHub에 올립니다.</span></div>
     </div>
   </div>
 </section>
@@ -1594,7 +1601,7 @@ SNS 콘텐츠 아이디어 10개를 이유와 함께 제안해줘.</code></div>
     <div class="section-head">
       <span class="step-badge"><span class="n">STEP 6</span> 깃허브 배포하기</span>
       <h2>완성한 웹페이지를 <span class="hl">인터넷에 공개된 주소</span>로 만듭니다</h2>
-      <p class="kicker">AI가 만든 <b>index.html</b> 코드를 GitHub 저장소에 올리고 GitHub Pages를 켜면, 누구나 접속할 수 있는 내 웹페이지 주소가 생깁니다.</p>
+      <p class="kicker">GitHub에서는 어려운 개발을 하지 않습니다. <b>저장소를 만들고, index.html을 올리고, Pages를 켜는 것</b>만 합니다. 성공하면 내 페이지 주소가 생깁니다.</p>
     </div>
     <figure class="img-band step-hero">
       <img src="assets/ulleung-jeodong.jpg" alt="울릉도 저동항" loading="lazy">
@@ -1604,50 +1611,57 @@ SNS 콘텐츠 아이디어 10개를 이유와 함께 제안해줘.</code></div>
       <a class="icon-link" href="https://github.com/?locale=ko-kr" target="_blank" rel="noopener"><img src="assets/logos/github.svg" alt="GitHub"> GitHub 열기 <span class="go">(한국어) ↗</span></a>
       <a class="icon-link" href="https://pages.github.com/" target="_blank" rel="noopener"><img src="assets/logos/github.svg" alt="GitHub Pages"> GitHub Pages 안내 <span class="go">↗</span></a>
     </div>
-    <div class="pb-label"><span class="tag">GitHub Pages</span> 처음 하는 사람도 따라 하는 순서</div>
-    <div class="tip"><strong>💡 파일을 내려받았다면 더 쉽습니다.</strong> STEP 5에서 ChatGPT로 <b>index.html 파일</b>을 내려받았다면, 아래 4·5단계(파일 만들어 코드 붙여넣기) 대신 저장소에서 <b>Add file → Upload files</b>를 눌러 그 파일을 <b>드래그해서 올리면</b> 됩니다. 긴 코드를 복사·붙여넣지 않아도 돼요.</div>
+    <div class="card" style="border-left:6px solid var(--secondary); margin-bottom:24px;">
+      <h3>걱정 마세요. 먼저 띄우고, 나중에 고칩니다</h3>
+      <p>처음에는 <b>index.html 하나만</b> 올리면 됩니다. 사진이 없어도 “내 사진으로 교체” 자리로 먼저 공개할 수 있습니다.</p>
+      <p>페이지가 열린 뒤에 사진, 색, 문구를 천천히 고치면 됩니다. 고쳐도 주소는 그대로라 QR을 다시 만들 필요가 없습니다.</p>
+    </div>
+
+    <div class="pb-label"><span class="tag">골든 패스</span> index.html 파일을 그대로 올리기</div>
     <div class="talk">
       <div class="t"><div><h3>GitHub 로그인</h3><p><a href="https://github.com/?locale=ko-kr" target="_blank" rel="noopener">github.com</a>에 접속해 로그인합니다. 계정이 없으면 <b>Sign up</b>으로 계정을 만듭니다.</p></div></div>
-      <div class="t"><div><h3>새 저장소 만들기</h3><p>오른쪽 위 <b>+</b> 버튼 또는 <b>New repository</b>를 누릅니다. 이름은 예: <b>haeullim-ulleung</b>처럼 영어와 숫자로 짧게 씁니다.</p></div></div>
-      <div class="t"><div><h3>Public 선택</h3><p>GitHub Pages로 공개하려면 처음에는 <b>Public</b>을 선택합니다. 개인정보나 내부 자료는 넣지 않습니다.</p></div></div>
-      <div class="t"><div><h3>index.html 만들기</h3><p>저장소 화면에서 <b>Add file → Create new file</b>을 누르고 파일 이름을 반드시 <b>index.html</b>로 적습니다.</p></div></div>
-      <div class="t"><div><h3>AI 코드 붙여넣기</h3><p>STEP 5에서 받은 코드 전체를 붙여넣습니다. <b>&lt;!DOCTYPE html&gt;</b>부터 <b>&lt;/html&gt;</b>까지 빠지지 않아야 합니다.</p></div></div>
-      <div class="t"><div><h3>Commit changes</h3><p>오른쪽 위 또는 아래의 <b>Commit changes</b>를 누릅니다. 이 버튼은 “저장” 버튼이라고 생각하면 됩니다.</p></div></div>
-      <div class="t"><div><h3>Pages 켜기</h3><p><b>Settings → Pages</b>로 이동합니다. <b>Source</b>에서 <b>Deploy from a branch</b>, Branch는 <b>main</b>, Folder는 <b>/root</b>를 선택하고 저장합니다.</p></div></div>
-      <div class="t"><div><h3>URL 열어보기</h3><p>잠시 뒤 <b>Your site is live at ...</b> 주소가 보입니다. 주소는 보통 <b>https://아이디.github.io/저장소이름/</b> 형태입니다.</p></div></div>
-      <div class="t"><div><h3>수정이 필요할 때</h3><p><b>index.html</b> 파일을 열고 연필 아이콘을 눌러 다시 수정한 뒤 <b>Commit changes</b>를 누르면 같은 주소에 반영됩니다.</p></div></div>
+      <div class="t"><div><h3>새 저장소 만들기</h3><p>오른쪽 위 <b>+</b> 또는 <b>New repository</b>를 누릅니다. 저장소 이름은 영어와 숫자로 짧게 씁니다. 예: <b>haeullim-ulleung</b></p></div></div>
+      <div class="t"><div><h3>Public 선택 후 만들기</h3><p>처음에는 <b>Public</b>을 선택합니다. <b>Add a README</b>는 켜지 않아도 됩니다. 마지막으로 <b>Create repository</b>를 누릅니다.</p></div></div>
+      <div class="t"><div><h3>index.html 업로드</h3><p>저장소 첫 화면에서 <b>uploading an existing file</b> 또는 <b>Add file → Upload files</b>를 누르고, STEP 5에서 받은 <b>index.html</b> 파일을 드래그합니다.</p></div></div>
+      <div class="t"><div><h3>Commit changes</h3><p>아래쪽 <b>Commit changes</b>를 누릅니다. GitHub에서 이 버튼은 “저장” 버튼이라고 생각하면 됩니다.</p></div></div>
+      <div class="t"><div><h3>Pages 켜기</h3><p><b>Settings → Pages</b>로 이동합니다. <b>Build and deployment</b>에서 Source는 <b>Deploy from a branch</b>, Branch는 <b>main</b>, Folder는 <b>/root</b>를 고르고 <b>Save</b>를 누릅니다.</p></div></div>
+      <div class="t"><div><h3>주소가 뜰 때까지 기다리기</h3><p>처음 배포는 1~3분 걸릴 수 있습니다. 잠시 뒤 Pages 화면에 <b>Your site is live at ...</b> 주소가 나오면 클릭합니다.</p></div></div>
+      <div class="t"><div><h3>성공 확인</h3><p>주소가 <b>https://아이디.github.io/저장소이름/</b>처럼 열리고 내 제목이 보이면 성공입니다. 주소를 복사해 <a href="#qrcode">STEP 7 QR</a>로 갑니다.</p></div></div>
     </div>
 
-    <div class="pb-label"><span class="tag">진짜 목표</span> 마음에 들 때까지 다듬기</div>
-    <div class="card today">
-      <p><b>배포는 끝이 아니라 시작입니다.</b> 내 페이지를 열어 보고, 고치고 싶은 곳을 <b>Gemini·ChatGPT에게 부탁해</b> 새 코드를 받고, GitHub에 다시 올려 새로고침 — 이 과정을 <b>마음에 들 때까지 반복</b>하면 됩니다. 한 번에 완벽하지 않아도 괜찮아요.</p>
-      <div class="focus-bar">
-        <span>🔁 다듬기 루프</span>
-        <span class="flow"><b>내 페이지 열어 보기</b><span class="a">→</span><b>고칠 점 찾기</b><span class="a">→</span><b>AI에게 부탁</b><span class="a">→</span><b>새 코드·파일 받기</b><span class="a">→</span><b>GitHub에 다시 올리기</b><span class="a">→</span><b>새로고침</b></span>
+    <details class="script" style="margin-top:24px;">
+      <summary>막힐 때만 열기 · GitHub Pages가 안 열릴 때</summary>
+      <div class="dropbody">
+        <ul class="mini-list">
+          <li>파일 이름이 <b>index.html</b>인지 확인합니다. <b>Index.html</b>, <b>index.html.txt</b>는 안 됩니다.</li>
+          <li>저장소가 <b>Public</b>인지 확인합니다.</li>
+          <li><b>Settings → Pages</b>에서 Branch가 <b>main</b>, Folder가 <b>/root</b>인지 확인합니다.</li>
+          <li>업로드 직후라면 1~3분 기다린 뒤 새로고침합니다.</li>
+          <li>주소 끝에는 보통 저장소 이름 뒤 <b>/</b>가 붙습니다. 예: <b>https://아이디.github.io/haeullim-ulleung/</b></li>
+        </ul>
       </div>
-    </div>
+    </details>
 
-    <div class="pb-label"><span class="tag">고치기 프롬프트</span> 이렇게 부탁하면 됩니다</div>
-    <div class="cols-2">
-      <div class="card"><div class="pb-head"><span class="tag-badge">보기 좋게</span><h3>🎨 디자인 고치기</h3></div><div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>방금 만든 웹페이지에서 아래를 고쳐줘. 전체 index.html 코드로 다시 줘.
-- 전화·예약 버튼을 더 크고 눈에 띄게
-- 글자 크기를 조금 키우고 줄 간격은 넉넉하게
-- 전체 색은 [원하는 느낌: 예) 바다처럼 시원하게]로
-- 설명 없이 코드만 출력</code></div></div>
-      <div class="card"><div class="pb-head"><span class="tag-badge teal">내용 바꾸기</span><h3>✍️ 글·구성 고치기</h3></div><div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>방금 웹페이지의 내용을 이렇게 바꿔줘. 전체 index.html 코드로 다시 줘.
-- "[지금 문구]"를 "[바꿀 문구]"로 수정
-- [추가할 섹션: 예) 오시는 길, 손님 후기] 섹션 추가
-- 필요 없는 [섹션]은 삭제
-- 설명 없이 코드만 출력</code></div></div>
-    </div>
+    <details class="script">
+      <summary>선택 · 파일이 없고 코드만 있을 때 GitHub에서 직접 만들기</summary>
+      <div class="dropbody">
+        <div class="talk">
+          <div class="t"><div><h3>Create new file</h3><p>저장소 화면에서 <b>Add file → Create new file</b>을 누릅니다.</p></div></div>
+          <div class="t"><div><h3>파일 이름 입력</h3><p>파일 이름 칸에 반드시 <b>index.html</b>이라고 적습니다.</p></div></div>
+          <div class="t"><div><h3>코드 붙여넣기</h3><p>STEP 5에서 받은 코드를 <b>&lt;!DOCTYPE html&gt;</b>부터 <b>&lt;/html&gt;</b>까지 모두 붙여넣습니다.</p></div></div>
+          <div class="t"><div><h3>Commit changes</h3><p><b>Commit changes</b>를 눌러 저장합니다. 이후 Pages 켜는 순서는 위와 같습니다.</p></div></div>
+        </div>
+      </div>
+    </details>
 
-    <div class="pb-label"><span class="tag">사진 넣기</span> “내 사진으로 교체” 자리에 진짜 사진 채우기</div>
+    <div class="pb-label"><span class="tag">그다음</span> 사진과 문구는 배포 후에 고칩니다</div>
     <div class="card">
-      <p>AI가 만든 페이지에는 <b>“내 사진으로 교체”</b>라고 적힌 빈 사진 자리가 있습니다. 여기에 실제 사진을 넣는 순서입니다.</p>
+      <p>페이지가 먼저 열리면 절반은 성공입니다. 그다음에 “내 사진으로 교체” 자리에 실제 사진을 넣고, 마음에 안 드는 문구를 다시 고칩니다.</p>
       <div class="steps">
         <div class="step"><b>1</b><span>넣을 사진을 준비합니다. 파일 이름은 <b>영어·숫자</b>로 짧게(예: <b>photo1.jpg</b>). 사진이 너무 크면 휴대폰에서 느리니 <b>가로 1600px 이하</b>로 줄이면 좋습니다.</span></div>
         <div class="step"><b>2</b><span>GitHub 저장소에서 <b>Add file → Upload files</b>로 사진을 <b>index.html과 같은 곳</b>에 올립니다.</span></div>
-        <div class="step"><b>3</b><span>아래 프롬프트로 AI에게 그 사진을 넣어 달라고 한 뒤, 새 코드를 받아 다시 올립니다.</span></div>
+        <div class="step"><b>3</b><span>아래 프롬프트로 AI에게 그 사진을 넣어 달라고 합니다.</span></div>
+        <div class="step"><b>4</b><span>새로 받은 <b>index.html</b>을 GitHub에 다시 올리고 <b>Commit changes</b>를 누릅니다.</span></div>
       </div>
       <div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>내 웹페이지의 "내 사진으로 교체" 자리에 아래 사진을 넣어줘.
 - 첫 화면 큰 사진: photo1.jpg
@@ -1655,6 +1669,25 @@ SNS 콘텐츠 아이디어 10개를 이유와 함께 제안해줘.</code></div>
 (사진 파일은 index.html과 같은 폴더에 올려 뒀어)
 전체 index.html 코드로 다시 줘. 설명 없이 코드만 출력.</code></div>
       <div class="tip"><strong>사진이 없다면?</strong> 직접 찍은 사진, 무료 이미지 사이트(예: <a href="https://pixabay.com/ko/" target="_blank" rel="noopener">pixabay</a>), 또는 <a href="#goal">앞에서 AI로 만든 포스터 이미지</a>를 써도 됩니다. 남의 사진·로고나 확실치 않은 이미지는 함부로 쓰지 않습니다(<b>저작권</b>).</div>
+    </div>
+
+    <div class="pb-label"><span class="tag">수정 루프</span> 같은 주소에 계속 덮어쓰기</div>
+    <div class="card today">
+      <p><b>배포는 끝이 아니라 시작입니다.</b> 내 페이지를 열어 보고, 고치고 싶은 곳을 AI에게 부탁해 새 index.html을 받은 뒤, 같은 저장소에 다시 올리면 됩니다.</p>
+      <div class="focus-bar">
+        <span>다듬기 흐름</span>
+        <span class="flow"><b>내 페이지 보기</b><span class="a">→</span><b>고칠 점 찾기</b><span class="a">→</span><b>AI에게 요청</b><span class="a">→</span><b>새 index.html 받기</b><span class="a">→</span><b>GitHub에 다시 업로드</b></span>
+      </div>
+      <div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>방금 만든 웹페이지에서 아래를 고쳐줘.
+전체 index.html 코드로 다시 줘.
+
+[고칠 내용]
+- 전화·예약 버튼을 더 크고 눈에 띄게
+- 글자 크기를 조금 키우고 문단을 짧게
+- "[바꿀 문구]"를 "[새 문구]"로 수정
+- 휴대폰에서 버튼과 사진이 겹치지 않게
+
+설명 없이 코드만 출력해줘.</code></div>
     </div>
 
     <div class="notice"><strong>기억하세요.</strong> 고친 코드를 GitHub의 <b>index.html</b>에 다시 올리면(같은 파일 덮어쓰기) <b>같은 주소</b>에 그대로 반영됩니다. 주소가 바뀌지 않으니 QR도 다시 만들 필요가 없어요.</div>

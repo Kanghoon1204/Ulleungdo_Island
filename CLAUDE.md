@@ -5,12 +5,17 @@
 울릉군 글로벌 생태관광 전문인재 양성 교육용 정적 웹사이트.
 GitHub Pages로 배포되며, 모든 페이지는 단일 HTML 파일(인라인 CSS/JS)로 구성.
 
+- 저장소: `Kanghoon1204/Ulleungdo_Island`
+- 배포 URL: `https://kanghoon1204.github.io/Ulleungdo_Island/`
+- 작업 기준 브랜치: `island-main`
+- 배포 기준 원격 브랜치: `island/main`
+
 ## 파일 구조
 
 ```
 index.html              # 수업 당일 메인 실습 진행판
 class.html              # index.html로 이동하는 보조 입구
-prompt-guide.html       # index.html의 복사 문장 구간으로 이동하는 보조 입구
+prompt-guide.html       # index.html의 프롬프트 템플릿 구간으로 이동하는 보조 입구
 교육계획서_완성본.html    # 교육 계획서 HTML 버전
 example.html            # 예시 페이지
 assets/                 # 울릉도 이미지 자료
@@ -20,10 +25,10 @@ assets/                 # 울릉도 이미지 자료
 
 - **단일 파일 HTML**: 각 페이지는 `<style>`과 `<script>`를 인라인으로 포함 (외부 파일 분리 없음)
 - **CSS 변수**: `:root`에 정의된 디자인 토큰 사용 (`--primary`, `--secondary`, `--accent` 등)
-- **폰트**: `Noto Sans KR` (Google Fonts CDN)
+- **폰트**: `Gothic A1` 중심, 보조 입구 페이지는 `Noto Sans KR` (Google Fonts CDN)
 - **언어**: 한국어 우선, 콘텐츠는 자연스러운 문체
 - **반응형**: 모바일 대응 필수 (`max-width` 미디어 쿼리)
-- **배포**: `main` 브랜치 push → GitHub Pages 자동 배포
+- **배포**: `island/main` 브랜치 push → GitHub Pages 자동 배포
 
 ## 외부 에이전트 (Scout / Gemini)
 
