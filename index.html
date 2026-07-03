@@ -166,6 +166,22 @@ h1,h2,h3{font-family:var(--font-head); line-height:1.26; font-weight:700; letter
 .quizq .qa{display:none; margin-top:14px; padding:14px 18px; background:var(--secondary-soft); border-radius:12px; font-size:1.1rem; line-height:1.6; color:var(--ink-soft);}
 .quizq .qa b{font-family:var(--font-head);}
 .quizq.answered .qa{display:block;}
+/* AI 도우미 위젯 (Cloudflare Worker 연결 시 노출) */
+.aiw-fab{position:fixed; right:20px; bottom:20px; z-index:85; display:none; align-items:center; gap:9px; padding:14px 20px; border:0; border-radius:999px; background:var(--primary); color:#fff; font-family:var(--font-head); font-size:1.05rem; cursor:pointer; box-shadow:0 8px 22px rgba(60,45,40,.22);}
+.aiw-fab:hover{background:var(--primary-press);}
+.aiw-panel{position:fixed; right:20px; bottom:84px; z-index:86; width:min(400px, calc(100% - 40px)); background:#fff; border:1px solid var(--line); border-radius:18px; box-shadow:var(--shadow); padding:20px; display:none;}
+.aiw-panel.open{display:block;}
+.aiw-head{display:flex; align-items:center; justify-content:space-between; margin-bottom:6px;}
+.aiw-head h4{font-family:var(--font-head); font-size:1.2rem;}
+.aiw-close{border:0; background:none; font-size:1.5rem; cursor:pointer; color:var(--muted); line-height:1;}
+.aiw-note{font-size:.92rem; color:var(--muted); margin-bottom:12px; line-height:1.5;}
+.aiw-panel textarea{width:100%; min-height:88px; border:2px solid var(--line); border-radius:12px; padding:12px 14px; font:inherit; font-size:1rem; resize:vertical; color:var(--ink);}
+.aiw-panel textarea:focus{border-color:var(--primary); outline:none;}
+.aiw-send{margin-top:10px; width:100%; min-height:50px; border:0; border-radius:12px; background:var(--primary); color:#fff; font-family:var(--font-head); font-size:1.05rem; cursor:pointer;}
+.aiw-send:disabled{opacity:.6; cursor:default;}
+.aiw-out{margin-top:14px; padding:14px 16px; background:var(--cream); border-radius:12px; font-size:1rem; line-height:1.7; white-space:pre-wrap; max-height:260px; overflow:auto; display:none;}
+.aiw-out.show{display:block;}
+.aiw-out.err{background:#fbe9e6; color:var(--error);}
 
 /* 트렌드/활용 카드 */
 .trend-grid{display:grid; grid-template-columns:1fr; gap:20px;}
@@ -484,6 +500,17 @@ footer .foot-grid{display:flex; justify-content:space-between; flex-wrap:wrap; g
 </head>
 <body>
 <div class="toast" id="toast" role="status" aria-live="polite">복사되었습니다</div>
+
+<!-- AI 도우미 위젯 (Cloudflare Worker 연결 시 활성화) -->
+<button class="aiw-fab" id="aiwFab" type="button" aria-label="AI 도우미 열기">🤖 AI 도우미</button>
+<div class="aiw-panel" id="aiwPanel" role="dialog" aria-label="AI 도우미">
+  <div class="aiw-head"><h4>🤖 AI 도우미</h4><button class="aiw-close" id="aiwClose" type="button" aria-label="닫기">×</button></div>
+  <p class="aiw-note">간단한 홍보 문구·번역·아이디어용이에요. 결과의 사실(가격·시간·연락처)은 꼭 확인하세요.</p>
+  <textarea id="aiwPrompt" placeholder="예: 울릉도 오징어를 홍보하는 인스타 문구 3개 만들어줘"></textarea>
+  <button class="aiw-send" id="aiwSend" type="button">보내기</button>
+  <div class="aiw-out" id="aiwOut"></div>
+  <button class="btn light small" id="aiwCopy" type="button" style="display:none; margin-top:8px;">결과 복사</button>
+</div>
 
 <!-- ===== NAV ===== -->
 <nav class="nav" aria-label="실습 진행 순서">
@@ -2007,6 +2034,29 @@ function updateNav(){
 window.addEventListener('scroll',updateNav,{passive:true});
 window.addEventListener('resize',updateNav,{passive:true});
 loadProfile();loadWorkspace();updateNav();
+// AI 도우미 위젯 · Cloudflare Worker 프록시 연결
+const AI_PROXY_URL = ''; // ← 여기에 Worker 주소를 넣으면 위젯이 켜집니다 (예: https://ulleung-ai.계정.workers.dev)
+(function(){
+  if(!AI_PROXY_URL) return; // 주소가 없으면 위젯을 숨깁니다
+  const fab=document.getElementById('aiwFab'), panel=document.getElementById('aiwPanel');
+  const closeBtn=document.getElementById('aiwClose'), send=document.getElementById('aiwSend');
+  const promptEl=document.getElementById('aiwPrompt'), out=document.getElementById('aiwOut'), copy=document.getElementById('aiwCopy');
+  fab.style.display='inline-flex';
+  fab.addEventListener('click',()=>panel.classList.toggle('open'));
+  closeBtn.addEventListener('click',()=>panel.classList.remove('open'));
+  copy.addEventListener('click',()=>copyText(out.textContent,copy));
+  send.addEventListener('click',async()=>{
+    const prompt=promptEl.value.trim(); if(!prompt) return;
+    send.disabled=true; send.textContent='만드는 중…'; out.className='aiw-out show'; out.textContent='잠시만요…'; copy.style.display='none';
+    try{
+      const res=await fetch(AI_PROXY_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({prompt})});
+      const data=await res.json();
+      if(!res.ok||data.error){ out.className='aiw-out show err'; out.textContent=data.error||'오류가 발생했습니다.'; }
+      else{ out.className='aiw-out show'; out.textContent=data.text; copy.style.display='inline-flex'; }
+    }catch(e){ out.className='aiw-out show err'; out.textContent='연결에 실패했습니다. 잠시 후 다시 시도해 주세요.'; }
+    send.disabled=false; send.textContent='보내기';
+  });
+})();
 </script>
 </body>
 </html>
