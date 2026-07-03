@@ -105,7 +105,7 @@ h1,h2,h3{font-family:var(--font-head); line-height:1.26; font-weight:700; letter
 /* 내 작업장 · 플로팅 버튼 + 다이얼로그 */
 .ws-fab{position:fixed; right:20px; bottom:20px; z-index:85; display:inline-flex; align-items:center; gap:9px; padding:14px 22px; border:0; border-radius:999px; background:var(--primary); color:#fff; font-family:var(--font-head); font-size:1.05rem; cursor:pointer; box-shadow:0 8px 22px rgba(60,45,40,.24);}
 .ws-fab:hover{background:var(--primary-press);}
-.ws-dialog{width:min(680px, calc(100% - 28px)); max-height:88vh; border:0; border-radius:20px; padding:0; background:var(--surface); color:var(--ink); box-shadow:var(--shadow);}
+.ws-dialog{width:min(680px, calc(100% - 28px)); max-height:88vh; overflow-y:auto; border:0; border-radius:20px; padding:0; background:var(--surface); color:var(--ink); box-shadow:var(--shadow);}
 .ws-dialog::backdrop{background:rgba(20,20,19,.45);}
 .ws-dhead{position:sticky; top:0; background:var(--surface); display:flex; align-items:center; justify-content:space-between; gap:12px; padding:22px 26px 14px; border-bottom:1px solid var(--line); border-radius:20px 20px 0 0;}
 .ws-dhead h3{font-family:var(--font-head); font-size:1.5rem;}
@@ -114,6 +114,12 @@ h1,h2,h3{font-family:var(--font-head); line-height:1.26; font-weight:700; letter
 .ws-dbody .form-grid{margin-bottom:18px;}
 .ws-part{font-family:var(--font-head); font-size:1.18rem; color:var(--primary-dark); margin:6px 0 12px; padding-bottom:8px; border-bottom:2px solid var(--line); display:flex; align-items:baseline; gap:10px;}
 .ws-part span{font-family:var(--font-body); font-weight:600; font-size:.9rem; color:var(--muted);}
+/* 외부 사이트 아이콘 링크 */
+.site-links{display:flex; flex-wrap:wrap; gap:12px; margin:2px 0 22px;}
+.icon-link{display:inline-flex; align-items:center; gap:11px; padding:13px 22px; border-radius:14px; background:#fff; border:1px solid var(--line); box-shadow:var(--shadow-sm); font-family:var(--font-head); font-size:1.1rem; color:var(--ink);}
+.icon-link:hover{border-color:var(--primary); color:var(--primary-dark); text-decoration:none; transform:translateY(-2px);}
+.icon-link img{height:24px; width:24px; object-fit:contain;}
+.icon-link .go{color:var(--muted); font-family:var(--font-body); font-size:.92rem;}
 .img-band figcaption b{color:var(--ink); font-family:var(--font-head);}
 .poster-band{max-width:420px;}
 .poster-band img{height:auto;}
@@ -498,6 +504,18 @@ footer .foot-grid{display:flex; justify-content:space-between; flex-wrap:wrap; g
   .step>b{width:50px; height:50px;}
   .closing{padding:48px 24px;}
   .formula .op{transform:rotate(90deg);}
+  /* 새 컴포넌트 모바일 대응 */
+  .ws-fab{right:14px; bottom:14px; padding:12px 18px; font-size:.98rem;}
+  .ws-dhead{padding:18px 20px 12px;} .ws-dhead h3{font-size:1.3rem;}
+  .ws-dbody{padding:16px 18px 22px;}
+  .card{padding:26px 24px;}
+  .cap{padding:26px 24px;}
+  .quizq{padding:22px 22px;} .quizq .ox button{width:56px; height:56px; font-size:1.4rem;}
+  .prompt-box code{font-size:1.06rem;}
+  .img-band.step-hero img{height:clamp(150px,42vw,220px);}
+  .vt-tabs{display:flex; width:100%;} .vt-btn{flex:1; padding:11px 10px; text-align:center;}
+  .section-head{margin-bottom:30px;}
+  .subhead{font-size:1.6rem;}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none !important; scroll-behavior:auto;} .reveal{opacity:1; transform:none;}}
 </style>
@@ -1582,10 +1600,14 @@ SNS 콘텐츠 아이디어 10개를 이유와 함께 제안해줘.</code></div>
       <img src="assets/ulleung-jeodong.jpg" alt="울릉도 저동항" loading="lazy">
       <figcaption><b>깃허브 배포.</b> 완성한 페이지를 세상에 공개합니다.</figcaption>
     </figure>
+    <div class="site-links">
+      <a class="icon-link" href="https://github.com/?locale=ko-kr" target="_blank" rel="noopener"><img src="assets/logos/github.svg" alt="GitHub"> GitHub 열기 <span class="go">(한국어) ↗</span></a>
+      <a class="icon-link" href="https://pages.github.com/" target="_blank" rel="noopener"><img src="assets/logos/github.svg" alt="GitHub Pages"> GitHub Pages 안내 <span class="go">↗</span></a>
+    </div>
     <div class="pb-label"><span class="tag">GitHub Pages</span> 처음 하는 사람도 따라 하는 순서</div>
     <div class="tip"><strong>💡 파일을 내려받았다면 더 쉽습니다.</strong> STEP 5에서 ChatGPT로 <b>index.html 파일</b>을 내려받았다면, 아래 4·5단계(파일 만들어 코드 붙여넣기) 대신 저장소에서 <b>Add file → Upload files</b>를 눌러 그 파일을 <b>드래그해서 올리면</b> 됩니다. 긴 코드를 복사·붙여넣지 않아도 돼요.</div>
     <div class="talk">
-      <div class="t"><div><h3>GitHub 로그인</h3><p><a href="https://github.com/" target="_blank" rel="noopener">github.com</a>에 접속해 로그인합니다. 계정이 없으면 <b>Sign up</b>으로 계정을 만듭니다.</p></div></div>
+      <div class="t"><div><h3>GitHub 로그인</h3><p><a href="https://github.com/?locale=ko-kr" target="_blank" rel="noopener">github.com</a>에 접속해 로그인합니다. 계정이 없으면 <b>Sign up</b>으로 계정을 만듭니다.</p></div></div>
       <div class="t"><div><h3>새 저장소 만들기</h3><p>오른쪽 위 <b>+</b> 버튼 또는 <b>New repository</b>를 누릅니다. 이름은 예: <b>haeullim-ulleung</b>처럼 영어와 숫자로 짧게 씁니다.</p></div></div>
       <div class="t"><div><h3>Public 선택</h3><p>GitHub Pages로 공개하려면 처음에는 <b>Public</b>을 선택합니다. 개인정보나 내부 자료는 넣지 않습니다.</p></div></div>
       <div class="t"><div><h3>index.html 만들기</h3><p>저장소 화면에서 <b>Add file → Create new file</b>을 누르고 파일 이름을 반드시 <b>index.html</b>로 적습니다.</p></div></div>
@@ -1654,6 +1676,9 @@ SNS 콘텐츠 아이디어 10개를 이유와 함께 제안해줘.</code></div>
       <img src="assets/ulleung-dodong.jpg" alt="울릉도 도동항" loading="lazy">
       <figcaption><b>QR 코드.</b> 링크를 어디서나 열리는 QR로 바꿉니다.</figcaption>
     </figure>
+    <div class="site-links">
+      <a class="icon-link" href="https://qr.naver.com/" target="_blank" rel="noopener"><img src="assets/logos/naver.svg" alt="네이버"> 네이버 QR 생성기 열기 <span class="go">↗</span></a>
+    </div>
     <figure class="img-band qr-shot">
       <img src="assets/naver-qr-home.png" alt="네이버 QR 코드 생성기 첫 화면. 상단에 코드 생성 메뉴가 있고 중앙에 큰 코드 생성 버튼이 보입니다." loading="lazy">
       <figcaption><b>네이버 QR 코드 생성기 첫 화면.</b> 이 화면에서 상단의 <b>코드 생성</b> 메뉴 또는 중앙의 큰 <b>코드 생성</b> 버튼을 누르면 QR 만들기를 시작할 수 있습니다.</figcaption>
@@ -1677,15 +1702,15 @@ SNS 콘텐츠 아이디어 10개를 이유와 함께 제안해줘.</code></div>
     </div>
     <div class="subhead">계속 활용할 도구</div>
     <div class="tools">
-      <a class="tool" href="https://gemini.google.com/" target="_blank" rel="noopener"><span class="ti">✨</span><div><strong>Gemini</strong><span>글·번역·리서치</span><span class="role">STEP 1~5</span></div></a>
-      <a class="tool" href="https://chatgpt.com/" target="_blank" rel="noopener"><span class="ti">💬</span><div><strong>ChatGPT</strong><span>문장 다듬기·FAQ·HTML 수정</span><span class="role">STEP 3~5</span></div></a>
-      <a class="tool" href="https://github.com/" target="_blank" rel="noopener"><span class="ti">GH</span><div><strong>GitHub</strong><span>index.html 저장·수정</span><span class="role">STEP 6</span></div></a>
-      <a class="tool" href="https://pages.github.com/" target="_blank" rel="noopener"><span class="ti">URL</span><div><strong>GitHub Pages</strong><span>웹페이지 공개 URL 생성</span><span class="role">STEP 6</span></div></a>
-      <a class="tool" href="https://qr.naver.com/" target="_blank" rel="noopener"><span class="ti">▦</span><div><strong>네이버 QR 코드</strong><span>URL을 QR 이미지로 공유</span><span class="role">공유</span></div></a>
-      <a class="tool" href="https://chatgpt.com/codex" target="_blank" rel="noopener"><span class="ti">⌘</span><div><strong>Codex</strong><span>전체 HTML 사이트 제작</span><span class="role opt">심화 선택</span></div></a>
-      <a class="tool" href="https://notebooklm.google.com/" target="_blank" rel="noopener"><span class="ti">🎧</span><div><strong>NotebookLM</strong><span>음성 소개</span><span class="role opt">맛보기</span></div></a>
-      <a class="tool" href="https://suno.com/" target="_blank" rel="noopener"><span class="ti">🎵</span><div><strong>Suno</strong><span>홍보 노래</span><span class="role opt">맛보기</span></div></a>
-      <a class="tool" href="https://smartplace.naver.com/" target="_blank" rel="noopener"><span class="ti">📍</span><div><strong>네이버 스마트플레이스</strong><span>소개글 등록</span><span class="role opt">현장 적용</span></div></a>
+      <a class="tool" href="https://gemini.google.com/" target="_blank" rel="noopener"><span class="ti"><img src="assets/logos/gemini.svg" alt="" style="height:32px;width:32px;object-fit:contain"></span><div><strong>Gemini</strong><span>글·번역·리서치</span><span class="role">STEP 1~5</span></div></a>
+      <a class="tool" href="https://chatgpt.com/" target="_blank" rel="noopener"><span class="ti"><img src="assets/logos/chatgpt.svg" alt="" style="height:32px;width:32px;object-fit:contain"></span><div><strong>ChatGPT</strong><span>문장 다듬기·FAQ·HTML 수정</span><span class="role">STEP 3~5</span></div></a>
+      <a class="tool" href="https://github.com/?locale=ko-kr" target="_blank" rel="noopener"><span class="ti"><img src="assets/logos/github.svg" alt="" style="height:32px;width:32px;object-fit:contain"></span><div><strong>GitHub</strong><span>index.html 저장·수정</span><span class="role">STEP 6</span></div></a>
+      <a class="tool" href="https://pages.github.com/" target="_blank" rel="noopener"><span class="ti"><img src="assets/logos/github.svg" alt="" style="height:32px;width:32px;object-fit:contain"></span><div><strong>GitHub Pages</strong><span>웹페이지 공개 URL 생성</span><span class="role">STEP 6</span></div></a>
+      <a class="tool" href="https://qr.naver.com/" target="_blank" rel="noopener"><span class="ti"><img src="assets/logos/naver.svg" alt="" style="height:32px;width:32px;object-fit:contain"></span><div><strong>네이버 QR 코드</strong><span>URL을 QR 이미지로 공유</span><span class="role">공유</span></div></a>
+      <a class="tool" href="https://chatgpt.com/codex" target="_blank" rel="noopener"><span class="ti"><img src="assets/logos/openai.svg" alt="" style="height:32px;width:32px;object-fit:contain"></span><div><strong>Codex</strong><span>전체 HTML 사이트 제작</span><span class="role opt">심화 선택</span></div></a>
+      <a class="tool" href="https://notebooklm.google.com/" target="_blank" rel="noopener"><span class="ti"><img src="assets/logos/notebooklm.svg" alt="" style="height:32px;width:32px;object-fit:contain"></span><div><strong>NotebookLM</strong><span>음성 소개</span><span class="role opt">맛보기</span></div></a>
+      <a class="tool" href="https://suno.com/" target="_blank" rel="noopener"><span class="ti"><img src="assets/logos/suno.svg" alt="" style="height:32px;width:32px;object-fit:contain"></span><div><strong>Suno</strong><span>홍보 노래</span><span class="role opt">맛보기</span></div></a>
+      <a class="tool" href="https://smartplace.naver.com/" target="_blank" rel="noopener"><span class="ti"><img src="assets/logos/naver.svg" alt="" style="height:32px;width:32px;object-fit:contain"></span><div><strong>네이버 스마트플레이스</strong><span>소개글 등록</span><span class="role opt">현장 적용</span></div></a>
     </div>
   </div>
 </section>
