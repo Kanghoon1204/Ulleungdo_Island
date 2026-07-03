@@ -102,6 +102,16 @@ h1,h2,h3{font-family:var(--font-head); line-height:1.26; font-weight:700; letter
 .vt-tabs{display:inline-flex; gap:6px; background:var(--cream); border:1px solid var(--line); border-radius:999px; padding:5px; margin-bottom:16px;}
 .vt-btn{border:0; background:none; padding:9px 20px; border-radius:999px; font-family:var(--font-head); font-size:1rem; color:var(--muted); cursor:pointer;}
 .vt-btn.active{background:var(--primary); color:#fff;}
+/* 내 작업장 · 플로팅 버튼 + 다이얼로그 */
+.ws-fab{position:fixed; right:20px; bottom:20px; z-index:85; display:inline-flex; align-items:center; gap:9px; padding:14px 22px; border:0; border-radius:999px; background:var(--primary); color:#fff; font-family:var(--font-head); font-size:1.05rem; cursor:pointer; box-shadow:0 8px 22px rgba(60,45,40,.24);}
+.ws-fab:hover{background:var(--primary-press);}
+.ws-dialog{width:min(680px, calc(100% - 28px)); max-height:88vh; border:0; border-radius:20px; padding:0; background:var(--surface); color:var(--ink); box-shadow:var(--shadow);}
+.ws-dialog::backdrop{background:rgba(20,20,19,.45);}
+.ws-dhead{position:sticky; top:0; background:var(--surface); display:flex; align-items:center; justify-content:space-between; gap:12px; padding:22px 26px 14px; border-bottom:1px solid var(--line); border-radius:20px 20px 0 0;}
+.ws-dhead h3{font-family:var(--font-head); font-size:1.5rem;}
+.ws-dclose{border:0; background:none; font-size:1.8rem; line-height:1; cursor:pointer; color:var(--muted);}
+.ws-dbody{padding:18px 26px 26px;}
+.ws-dbody .form-grid{margin-bottom:18px;}
 .img-band figcaption b{color:var(--ink); font-family:var(--font-head);}
 .poster-band{max-width:420px;}
 .poster-band img{height:auto;}
@@ -492,6 +502,30 @@ footer .foot-grid{display:flex; justify-content:space-between; flex-wrap:wrap; g
 </head>
 <body>
 <div class="toast" id="toast" role="status" aria-live="polite">복사되었습니다</div>
+
+<!-- 내 작업장 · 어디서든 열리는 플로팅 버튼 + 다이얼로그 -->
+<button class="ws-fab" type="button" onclick="openWorkspace()" aria-label="내 작업장 열기">📋 작업장</button>
+<dialog class="ws-dialog" id="wsDialog" aria-label="내 작업장">
+  <div class="ws-dhead"><h3>📋 내 작업장</h3><button class="ws-dclose" type="button" onclick="closeWorkspace()" aria-label="닫기">×</button></div>
+  <div class="ws-dbody">
+    <p style="margin-bottom:16px; color:var(--muted); font-size:1rem; line-height:1.6;">실습에서 나온 답 중 <b>웹페이지에 쓸 문장만</b> 골라 칸에 붙여 두세요. 입력하면 이 브라우저에 자동으로 남습니다.</p>
+    <div class="form-grid">
+      <div class="field"><label for="savedTitle">제목 후보</label><textarea id="savedTitle" placeholder="예: 도동항 3분, 바다를 보며 맛보는 울릉도 한 끼"></textarea></div>
+      <div class="field"><label for="savedIntro">한 줄 소개 / 소개문</label><textarea id="savedIntro" placeholder="예: 따개비밥과 오징어내장탕으로 울릉도 바다의 맛을 전하는 가족 식당입니다."></textarea></div>
+      <div class="field"><label for="savedFaq">FAQ</label><textarea id="savedFaq" placeholder="예: Q. 주차가 되나요? A. 확인 필요. 방문 전 전화 문의를 권장합니다."></textarea></div>
+      <div class="field"><label for="savedGlobal">외국어 안내</label><textarea id="savedGlobal" placeholder="예: Haeullim Restaurant is a family-run seafood restaurant, 3 minutes on foot from Dodong Port."></textarea></div>
+      <div class="field"><label for="savedResearch">관광객 질문 / 리서치 메모</label><textarea id="savedResearch" placeholder="예: 배편 시간, 예약 방법, 결제 가능 여부, 외국어 메뉴판 여부를 많이 궁금해함."></textarea></div>
+      <div class="field"><label for="savedFacts">확인 필요 항목</label><textarea id="savedFacts" placeholder="예: 운영시간, 가격, 전화번호, 지도 링크, 사진 사용 권리, 배편 관련 표현"></textarea></div>
+      <div class="field full"><label for="savedUrl">최종 URL / 공유 링크</label><input id="savedUrl" placeholder="예: https://내아이디.github.io/haeullim-ulleung/"></div>
+    </div>
+    <div class="form-actions">
+      <button class="btn" type="button" onclick="saveWorkspace()">저장</button>
+      <button class="btn teal" type="button" onclick="copyWorkspace()">전체 복사</button>
+      <button class="btn light" type="button" onclick="clearWorkspace()">비우기</button>
+      <button class="btn ghost" type="button" onclick="closeWorkspace()">닫기</button>
+    </div>
+  </div>
+</dialog>
 
 <!-- ===== NAV ===== -->
 <nav class="nav" aria-label="실습 진행 순서">
@@ -985,25 +1019,12 @@ footer .foot-grid{display:flex; justify-content:space-between; flex-wrap:wrap; g
     </figure>
     <div class="cols-2" style="margin-bottom:24px;">
       <div class="card"><div class="ic-lg">1</div><h3>AI에 붙여넣기</h3><p>각 실습의 복사 버튼을 눌러 AI에 붙여넣고 답변을 받습니다. 답이 길면 “핵심만 3줄로 줄여줘”라고 다시 요청합니다.</p></div>
-      <div class="card"><div class="ic-lg" style="background:var(--secondary-soft)">2</div><h3>작업장에 붙여두기</h3><p>AI 답변 중 실제로 쓸 문장만 아래 칸에 붙여 둡니다. 마지막 웹페이지 제작 때 이 작업장 내용을 한꺼번에 사용합니다.</p></div>
+      <div class="card"><div class="ic-lg" style="background:var(--secondary-soft)">2</div><h3>작업장에 모으기</h3><p>AI 답변 중 실제로 쓸 문장만 골라 <b>작업장</b>에 붙여 둡니다. 마지막 웹페이지 제작 때 이 작업장 내용을 한꺼번에 사용합니다.</p></div>
     </div>
-    <div class="form-card">
-      <div class="form-grid">
-        <div class="field"><label for="savedTitle">제목 후보</label><textarea id="savedTitle" placeholder="예: 도동항 3분, 바다를 보며 맛보는 울릉도 한 끼"></textarea></div>
-        <div class="field"><label for="savedIntro">한 줄 소개 / 소개문</label><textarea id="savedIntro" placeholder="예: 따개비밥과 오징어내장탕으로 울릉도 바다의 맛을 전하는 가족 식당입니다."></textarea></div>
-        <div class="field"><label for="savedFaq">FAQ</label><textarea id="savedFaq" placeholder="예: Q. 주차가 되나요? A. 확인 필요. 방문 전 전화 문의를 권장합니다."></textarea></div>
-        <div class="field"><label for="savedGlobal">외국어 안내</label><textarea id="savedGlobal" placeholder="예: Haeullim Restaurant is a family-run seafood restaurant, 3 minutes on foot from Dodong Port."></textarea></div>
-        <div class="field"><label for="savedResearch">관광객 질문 / 리서치 메모</label><textarea id="savedResearch" placeholder="예: 배편 시간, 예약 방법, 결제 가능 여부, 외국어 메뉴판 여부를 많이 궁금해함."></textarea></div>
-        <div class="field"><label for="savedFacts">확인 필요 항목</label><textarea id="savedFacts" placeholder="예: 운영시간, 가격, 전화번호, 지도 링크, 사진 사용 권리, 배편 관련 표현"></textarea></div>
-        <div class="field full"><label for="savedUrl">최종 URL / 공유 링크</label><input id="savedUrl" placeholder="예: https://내아이디.github.io/haeullim-ulleung/"></div>
-      </div>
-      <div class="form-actions">
-        <button class="btn" type="button" onclick="saveWorkspace()">작업장 저장</button>
-        <button class="btn teal" type="button" onclick="copyWorkspace()">작업장 전체 복사</button>
-        <button class="btn light" type="button" onclick="clearWorkspace()">작업장 비우기</button>
-      </div>
+    <div style="text-align:center; margin:6px 0 22px;">
+      <button class="btn" type="button" onclick="openWorkspace()" style="min-width:280px;">📋 내 작업장 열기</button>
     </div>
-    <div class="notice"><strong>작업장 사용법:</strong> 각 STEP의 결과를 여기에 붙여 둔 뒤, STEP 5에서 <b>“아래 작업장 내용을 바탕으로 GitHub Pages에 올릴 index.html을 만들어줘”</b>라고 요청하면 됩니다.</div>
+    <div class="notice"><strong>작업장이란?</strong> 실습에서 고른 좋은 문장을 <b>웹페이지에 쓸 재료로 모아 두는 곳</b>이에요. 화면 <b>어디서든 우측 아래 “📋 작업장” 버튼</b>으로 열 수 있고, 저장한 내용은 이 브라우저에 남습니다. 마지막 STEP 5에서 이 내용으로 웹페이지를 만듭니다.</div>
   </div>
 </section>
 
@@ -1055,7 +1076,7 @@ footer .foot-grid{display:flex; justify-content:space-between; flex-wrap:wrap; g
       <div class="steps">
         <div class="step"><b>1</b><span>제목 후보 중 가장 마음에 드는 것 <b>1개</b>를 고릅니다.</span></div>
         <div class="step"><b>2</b><span>한 줄 소개 중 실제로 쓸 문장 <b>1개</b>를 고릅니다.</span></div>
-        <div class="step"><b>3</b><span><a href="#workspace">내 작업장</a>의 <b>제목 후보</b>, <b>한 줄 소개 / 소개문</b> 칸에 붙여넣습니다.</span></div>
+        <div class="step"><b>3</b><span><a href="#" onclick="openWorkspace();return false;">내 작업장</a>의 <b>제목 후보</b>, <b>한 줄 소개 / 소개문</b> 칸에 붙여넣습니다.</span></div>
         <div class="step"><b>4</b><span>가격·운영시간·배편처럼 확인해야 할 내용은 <b>확인 필요 항목</b>에 적습니다.</span></div>
       </div>
 
@@ -1125,7 +1146,7 @@ footer .foot-grid{display:flex; justify-content:space-between; flex-wrap:wrap; g
       <div class="steps">
         <div class="step"><b>1</b><span>영어 안내 3줄 중 어려운 단어가 있으면 <b>“더 쉬운 영어로”</b> 다시 요청합니다.</span></div>
         <div class="step"><b>2</b><span>음식 설명에 <b>재료, 맛, 알레르기</b>가 들어갔는지 확인합니다.</span></div>
-        <div class="step"><b>3</b><span><a href="#workspace">내 작업장</a>의 <b>외국어 안내</b> 칸에 최종 문장을 붙여넣습니다.</span></div>
+        <div class="step"><b>3</b><span><a href="#" onclick="openWorkspace();return false;">내 작업장</a>의 <b>외국어 안내</b> 칸에 최종 문장을 붙여넣습니다.</span></div>
       </div>
 
       <div class="memo">
@@ -1333,7 +1354,7 @@ SNS 콘텐츠 아이디어 10개를 이유와 함께 제안해줘.</code></div>
     </div>
     <span class="follow">작업장 내용을 바탕으로 GitHub Pages에 올릴 index.html을 만듭니다</span>
     <div class="steps">
-      <div class="step"><b>1</b><span><a href="#workspace">내 작업장</a>에 제목, 소개문, FAQ, 외국어 안내, 확인 필요 항목이 들어 있는지 확인합니다.</span></div>
+      <div class="step"><b>1</b><span><a href="#" onclick="openWorkspace();return false;">내 작업장</a>에 제목, 소개문, FAQ, 외국어 안내, 확인 필요 항목이 들어 있는지 확인합니다.</span></div>
       <div class="step"><b>2</b><span>아래 프롬프트를 Gemini 또는 ChatGPT에 붙여넣어 <b>HTML 전체 코드</b>를 받습니다.</span></div>
       <div class="step"><b>3</b><span>AI 답변이 설명과 코드를 섞으면 <b>“코드만 다시 출력해줘”</b>라고 요청합니다.</span></div>
       <div class="step"><b>4</b><span>코드는 나중에 GitHub에서 <b>index.html</b> 파일에 그대로 붙여넣습니다.</span></div>
@@ -1395,7 +1416,7 @@ SNS 콘텐츠 아이디어 10개를 이유와 함께 제안해줘.</code></div>
 - 미확인 가격·운영시간·배편은 "확인 필요"로 표시하기
 - 코드만 출력하고 설명은 붙이지 않기</code></div>
         <div class="form-actions"><button class="btn teal small" type="button" onclick="copyFilledPrompt('web')">내 정보 넣어서 복사</button></div>
-        <div class="tip"><strong>작업장에 먼저 저장하세요.</strong> 제목, 소개문, FAQ, 외국어 안내, 확인 필요 항목이 비어 있으면 웹페이지도 얕아집니다. 비어 있는 칸이 있으면 <a href="#workspace">내 작업장</a>으로 돌아가 채운 뒤 복사하세요.</div>
+        <div class="tip"><strong>작업장에 먼저 저장하세요.</strong> 제목, 소개문, FAQ, 외국어 안내, 확인 필요 항목이 비어 있으면 웹페이지도 얕아집니다. 비어 있는 칸이 있으면 <a href="#" onclick="openWorkspace();return false;">내 작업장</a>으로 돌아가 채운 뒤 복사하세요.</div>
       </div>
       <div class="card">
         <div class="pb-head"><span class="tag-badge">수정</span><h3>AI 코드가 마음에 안 들 때</h3></div>
@@ -2054,6 +2075,11 @@ function updateNav(){
 window.addEventListener('scroll',updateNav,{passive:true});
 window.addEventListener('resize',updateNav,{passive:true});
 loadProfile();loadWorkspace();updateNav();
+// 내 작업장 다이얼로그
+const wsDialog=document.getElementById('wsDialog');
+function openWorkspace(){ if(!wsDialog) return; loadWorkspace(); if(!wsDialog.open) wsDialog.showModal(); }
+function closeWorkspace(){ if(wsDialog&&wsDialog.open) wsDialog.close(); }
+if(wsDialog){ wsDialog.addEventListener('click',e=>{ if(e.target===wsDialog) closeWorkspace(); }); }
 // 완성 예시 · 미리보기/코드 보기 토글
 (function(){
   const tabs=document.querySelectorAll('.vt-btn'); if(!tabs.length) return;
