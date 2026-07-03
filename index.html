@@ -105,13 +105,19 @@ h1,h2,h3{font-family:var(--font-head); line-height:1.26; font-weight:700; letter
 /* 내 작업장 · 플로팅 버튼 + 다이얼로그 */
 .ws-fab{position:fixed; right:20px; bottom:20px; z-index:85; display:inline-flex; align-items:center; gap:9px; padding:14px 22px; border:0; border-radius:999px; background:var(--primary); color:#fff; font-family:var(--font-head); font-size:1.05rem; cursor:pointer; box-shadow:0 8px 22px rgba(60,45,40,.24);}
 .ws-fab:hover{background:var(--primary-press);}
+.prompt-fab{bottom:84px; background:var(--secondary);}
+.prompt-fab:hover{background:#2f7669;}
 .ws-dialog{width:min(680px, calc(100% - 28px)); max-height:88vh; overflow-y:auto; border:0; border-radius:20px; padding:0; background:var(--surface); color:var(--ink); box-shadow:var(--shadow);}
+.prompt-dialog{width:min(980px, calc(100% - 28px));}
 .ws-dialog::backdrop{background:rgba(20,20,19,.45);}
 .ws-dhead{position:sticky; top:0; background:var(--surface); display:flex; align-items:center; justify-content:space-between; gap:12px; padding:22px 26px 14px; border-bottom:1px solid var(--line); border-radius:20px 20px 0 0;}
 .ws-dhead h3{font-family:var(--font-head); font-size:1.5rem;}
 .ws-dclose{border:0; background:none; font-size:1.8rem; line-height:1; cursor:pointer; color:var(--muted);}
 .ws-dbody{padding:18px 26px 26px;}
 .ws-dbody .form-grid{margin-bottom:18px;}
+.prompt-dialog .section{padding:0; border:0;}
+.prompt-dialog .container{width:100%; margin:0;}
+.prompt-dialog .section-head{margin-bottom:20px;}
 .ws-part{font-family:var(--font-head); font-size:1.18rem; color:var(--primary-dark); margin:6px 0 12px; padding-bottom:8px; border-bottom:2px solid var(--line); display:flex; align-items:baseline; gap:10px;}
 .ws-part span{font-family:var(--font-body); font-weight:600; font-size:.9rem; color:var(--muted);}
 /* 외부 사이트 아이콘 링크 */
@@ -506,6 +512,7 @@ footer .foot-grid{display:flex; justify-content:space-between; flex-wrap:wrap; g
   .formula .op{transform:rotate(90deg);}
   /* 새 컴포넌트 모바일 대응 */
   .ws-fab{right:14px; bottom:14px; padding:12px 18px; font-size:.98rem;}
+  .prompt-fab{bottom:72px;}
   .ws-dhead{padding:18px 20px 12px;} .ws-dhead h3{font-size:1.3rem;}
   .ws-dbody{padding:16px 18px 22px;}
   .card{padding:26px 24px;}
@@ -524,6 +531,7 @@ footer .foot-grid{display:flex; justify-content:space-between; flex-wrap:wrap; g
 <div class="toast" id="toast" role="status" aria-live="polite">복사되었습니다</div>
 
 <!-- 내 작업장 · 어디서든 열리는 플로팅 버튼 + 다이얼로그 -->
+<button class="ws-fab prompt-fab" type="button" onclick="openPromptMenu()" aria-label="프롬프트 템플릿 열기">프롬프트</button>
 <button class="ws-fab" type="button" onclick="openWorkspace()" aria-label="내 작업장 열기">📋 작업장</button>
 <dialog class="ws-dialog" id="wsDialog" aria-label="내 작업장">
   <div class="ws-dhead"><h3>📋 내 작업장</h3><button class="ws-dclose" type="button" onclick="closeWorkspace()" aria-label="닫기">×</button></div>
@@ -569,7 +577,7 @@ footer .foot-grid{display:flex; justify-content:space-between; flex-wrap:wrap; g
       <li><a href="#step7" data-step="5">5 · 웹페이지</a></li>
       <li><a href="#publish" data-step="6">6 · 깃허브 배포</a></li>
       <li><a href="#qrcode" data-step="7">7 · QR코드</a></li>
-      <li><a href="#templates" data-step="8">8 · 부록</a></li>
+      <li><a href="#templates" data-step="8" onclick="openPromptMenu();return false;">8 · 부록</a></li>
     </ul>
     <span class="now" id="stepNow" aria-live="polite">1 / 8</span>
   </div>
@@ -1750,7 +1758,10 @@ index.html에 넣을 전체 코드만 설명 없이 출력해줘.
 </section>
 
 
-<!-- ===== 더 해보기 · 프롬프트 템플릿 모음 ===== -->
+<!-- ===== 더 해보기 · 프롬프트 템플릿 메뉴 ===== -->
+<dialog class="ws-dialog prompt-dialog" id="promptDialog" aria-label="프롬프트 템플릿">
+  <div class="ws-dhead"><h3>꺼내 쓰는 프롬프트 템플릿</h3><button class="ws-dclose" type="button" onclick="closePromptMenu()" aria-label="닫기">×</button></div>
+  <div class="ws-dbody">
 <section class="section" id="templates">
   <span class="sec-no" aria-hidden="true">08</span>
   <div class="container">
@@ -1759,11 +1770,6 @@ index.html에 넣을 전체 코드만 설명 없이 출력해줘.
       <h2>복사해서 <span class="hl">[대괄호]만 바꾸면</span> 됩니다</h2>
       <p class="kicker">막막할 땐 여기서 꺼내 쓰세요. 위 <b>입력칸을 채우고</b> <b>“채워서 복사”</b>를 누르면, 대괄호가 내 정보로 바뀐 완성 프롬프트가 복사됩니다. (비운 칸은 대괄호 그대로 남습니다.)</p>
     </div>
-    <figure class="img-band step-hero">
-      <img src="assets/ulleung-scenic.jpg" alt="울릉도 해안 절벽과 바다" loading="lazy">
-      <figcaption><b>부록.</b> 더 해보고 싶을 때 꺼내 쓰는 자료입니다.</figcaption>
-    </figure>
-
     <div class="tmpl-card" style="border-left:6px solid var(--primary);">
       <div class="tmpl-title">⭐ 만능 템플릿 — 무엇이든 이 틀로</div>
       <div class="tvar-row">
@@ -1862,6 +1868,8 @@ index.html에 넣을 전체 코드만 설명 없이 출력해줘.
     </div>
   </div>
 </section>
+  </div>
+</dialog>
 
 
 <!-- ===== 더 해보기 · 에이전트 AI ===== -->
@@ -2124,7 +2132,7 @@ document.querySelectorAll('.quizq').forEach(q=>{
   }));
 });
 const navLinks=document.querySelectorAll('.nav ul a[href^="#"]');
-const secs=Array.from(document.querySelectorAll('section[id], header[id]'));
+const secs=Array.from(document.querySelectorAll('main > section[id], main > header[id]'));
 // 하위 섹션 → 대표 단계 앵커 매핑 (9단계 그룹)
 const stepOf={cover:'cover',goal:'goal',
   tools:'tools',setup:'tools',step1:'step1',
@@ -2157,6 +2165,14 @@ if(wsDialog){
     const p={}; profileFields.forEach(id=>{const e=document.getElementById(id); if(e)p[id]=e.value;}); localStorage.setItem('ulleungClassProfile',JSON.stringify(p));
     const w={}; workspaceFields.forEach(id=>{const e=document.getElementById(id); if(e)w[id]=e.value;}); localStorage.setItem('ulleungWorkspace',JSON.stringify(w));
   }));
+}
+// 프롬프트 템플릿 다이얼로그
+const promptDialog=document.getElementById('promptDialog');
+function openPromptMenu(){ if(promptDialog&&!promptDialog.open) promptDialog.showModal(); }
+function closePromptMenu(){ if(promptDialog&&promptDialog.open) promptDialog.close(); }
+if(promptDialog){
+  promptDialog.addEventListener('click',e=>{ if(e.target===promptDialog) closePromptMenu(); });
+  if(location.hash==='#templates') setTimeout(openPromptMenu,0);
 }
 // 완성 예시 · 미리보기/코드 보기 토글
 (function(){
