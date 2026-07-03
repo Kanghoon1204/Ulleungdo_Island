@@ -98,6 +98,10 @@ h1,h2,h3{font-family:var(--font-head); line-height:1.26; font-weight:700; letter
 .img-band.step-hero img{height:clamp(190px,24vw,320px);}
 .img-band.step-hero figcaption{font-family:var(--font-head); color:var(--ink-soft);}
 .img-band.step-hero figcaption b{color:var(--primary-dark);}
+/* 미리보기/코드 보기 토글 */
+.vt-tabs{display:inline-flex; gap:6px; background:var(--cream); border:1px solid var(--line); border-radius:999px; padding:5px; margin-bottom:16px;}
+.vt-btn{border:0; background:none; padding:9px 20px; border-radius:999px; font-family:var(--font-head); font-size:1rem; color:var(--muted); cursor:pointer;}
+.vt-btn.active{background:var(--primary); color:#fff;}
 .img-band figcaption b{color:var(--ink); font-family:var(--font-head);}
 .poster-band{max-width:420px;}
 .poster-band img{height:auto;}
@@ -1453,9 +1457,17 @@ SNS 콘텐츠 아이디어 10개를 이유와 함께 제안해줘.</code></div>
       <h2 style="font-size:clamp(1.8rem,3.4vw,2.6rem);">완성하면 <span class="hl">이런 모습</span>이 됩니다</h2>
       <p class="kicker" style="font-size:1.2rem;">아래 예시처럼 첫 화면, 소개, 방문 안내, FAQ, 문의가 한 흐름으로 보이면 충분합니다. GitHub Pages에서도 같은 HTML이 데스크톱과 휴대폰에 맞게 열립니다.</p>
     </div>
-    <div class="mockups">
+    <div class="vt-tabs" role="tablist">
+      <button type="button" class="vt-btn active" data-view="preview">🖥 미리보기</button>
+      <button type="button" class="vt-btn" data-view="code">&lt;/&gt; 코드 보기</button>
+    </div>
+    <div class="mockups" data-view-panel="preview">
       <div class="frame-desktop"><div class="bar" aria-hidden="true"><i></i><i></i><i></i></div><iframe src="example.html" title="완성 웹페이지 예시 (데스크톱)" loading="lazy"></iframe></div>
       <div class="frame-phone"><div class="notch" aria-hidden="true"></div><iframe src="example.html" title="완성 웹페이지 예시 (모바일)" loading="lazy"></iframe></div>
+    </div>
+    <div data-view-panel="code" style="display:none;">
+      <div class="prompt-box" style="max-height:520px;"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code id="exampleCode">‘코드 보기’를 누르면 이 예시 페이지의 실제 HTML이 여기에 나옵니다.</code></div>
+      <p class="tmpl-hint">위 미리보기 화면은 바로 이 HTML로 만들어집니다. AI에게 이런 <b>index.html</b>을 통째로 받게 됩니다.</p>
     </div>
     <div class="pb-label"><span class="tag">완성 행동</span> HTML 코드가 나온 뒤</div>
     <div class="steps">
@@ -1537,7 +1549,6 @@ SNS 콘텐츠 아이디어 10개를 이유와 함께 제안해줘.</code></div>
       <img src="assets/ulleung-jeodong.jpg" alt="울릉도 저동항" loading="lazy">
       <figcaption><b>깃허브 배포.</b> 완성한 페이지를 세상에 공개합니다.</figcaption>
     </figure>
-    <div class="notice"><strong>왜 GitHub인가요?</strong> Google Slides는 발표자료 공유에 가깝고, Google Sites는 자유로운 HTML 전체 배포가 어렵습니다. 오늘처럼 AI가 만든 웹페이지 코드를 그대로 공개하려면 <b>GitHub Pages</b>가 가장 직접적인 방법입니다.</div>
     <div class="pb-label"><span class="tag">GitHub Pages</span> 처음 하는 사람도 따라 하는 순서</div>
     <div class="tip"><strong>💡 파일을 내려받았다면 더 쉽습니다.</strong> STEP 5에서 ChatGPT로 <b>index.html 파일</b>을 내려받았다면, 아래 4·5단계(파일 만들어 코드 붙여넣기) 대신 저장소에서 <b>Add file → Upload files</b>를 눌러 그 파일을 <b>드래그해서 올리면</b> 됩니다. 긴 코드를 복사·붙여넣지 않아도 돼요.</div>
     <div class="talk">
@@ -2043,6 +2054,22 @@ function updateNav(){
 window.addEventListener('scroll',updateNav,{passive:true});
 window.addEventListener('resize',updateNav,{passive:true});
 loadProfile();loadWorkspace();updateNav();
+// 완성 예시 · 미리보기/코드 보기 토글
+(function(){
+  const tabs=document.querySelectorAll('.vt-btn'); if(!tabs.length) return;
+  const codeEl=document.getElementById('exampleCode'); let loaded=false;
+  function loadCode(){
+    if(loaded) return; loaded=true;
+    fetch('example.html').then(r=>r.text()).then(t=>{codeEl.textContent=t;})
+      .catch(()=>{codeEl.textContent='코드를 불러오지 못했습니다. 완성 예시를 새 탭에서 열어 소스 보기로 확인해 주세요.';});
+  }
+  tabs.forEach(b=>b.addEventListener('click',()=>{
+    tabs.forEach(x=>x.classList.remove('active')); b.classList.add('active');
+    const v=b.dataset.view;
+    document.querySelectorAll('[data-view-panel]').forEach(p=>{ p.style.display = (p.dataset.viewPanel===v)?'':'none'; });
+    if(v==='code') loadCode();
+  }));
+})();
 </script>
 </body>
 </html>
