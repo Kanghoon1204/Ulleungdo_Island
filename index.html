@@ -35,7 +35,7 @@
 html{scroll-behavior:smooth; scroll-padding-top:70px; font-size:90%;}
 body{
   font-family:var(--font-body); color:var(--ink);
-  font-size:20.7px; line-height:1.66; font-weight:400;
+  font-size:20.7px; line-height:1.8; font-weight:400; letter-spacing:-0.01em;
   word-break:keep-all; overflow-wrap:break-word; overflow-x:hidden;
   background:var(--bg);
 }
@@ -104,7 +104,9 @@ h1,h2,h3{font-family:var(--font-head); line-height:1.26; font-weight:700; letter
 .card{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:38px; box-shadow:var(--shadow-sm); transition:transform .16s, box-shadow .16s, border-color .16s;}
 .card.lift:hover{transform:translateY(-4px); box-shadow:var(--shadow); border-color:var(--primary);}
 .card h3{font-size:1.82rem; margin-bottom:12px;}
-.card p{color:var(--ink-soft); font-size:1.28rem;}
+.card p{color:var(--ink-soft); font-size:1.28rem; line-height:1.72;}
+.card p + p{margin-top:14px;}
+.card .pb-head + p{margin-top:14px;}
 .card .ic-lg{width:60px; height:60px; border-radius:17px; display:grid; place-items:center; font-size:1.9rem; margin-bottom:16px; background:var(--primary-soft);}
 .mini-list{list-style:none; display:grid; gap:10px; margin-top:14px;}
 .mini-list li{position:relative; padding-left:24px; color:var(--ink-soft); font-size:1.1rem;}
@@ -307,6 +309,9 @@ h1,h2,h3{font-family:var(--font-head); line-height:1.26; font-weight:700; letter
 .script>summary::before{content:"▸ "; color:var(--primary);}
 .script[open]>summary::before{content:"▾ ";}
 .script .sc{padding:0 22px 20px; white-space:pre-wrap; font-size:1.04rem; line-height:1.9; color:var(--ink-soft);}
+.script .dropbody{padding:2px 22px 22px;}
+.script .dropbody .mini-list li{font-size:1.08rem; line-height:1.6; margin-bottom:2px;}
+.script .dropbody .prompt-box{margin-top:14px;}
 .script .sc .spk{color:var(--secondary); font-family:var(--font-head);}
 .script .sc .tagline2{color:var(--primary-dark); font-family:var(--font-head);}
 .shot-grid{display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:14px;}
@@ -561,15 +566,45 @@ footer .foot-grid{display:flex; justify-content:space-between; flex-wrap:wrap; g
       <h2>AI로 <span class="hl">이런 것들</span>을 만들 수 있습니다</h2>
       <p class="kicker">AI는 글뿐 아니라 음성·노래·이미지·웹페이지까지 만듭니다. 아래 네 가지를 먼저 맛보세요. <b>Suno와 포스터는 3분이면 직접</b> 만들어 볼 수 있고, <b>웹페이지는 오늘 끝까지</b> 만듭니다.</p>
     </div>
-    <div class="cap-grid" style="margin-bottom:34px;">
-      <div class="cap free"><h3><span class="ci">🎧</span>NotebookLM <span class="tag-badge">데모</span></h3><p class="tname">자료 → 두 진행자 음성 요약</p><p>소개글·FAQ를 자료로 넣으면 대화형 오디오 가이드가 됩니다. 강사 예시를 들어보세요.</p><div class="audio-card" style="margin-top:12px;"><div class="audio-title">해울림식당 음성 소개 예시</div><audio controls preload="none" src="assets/notebooklm-audio-overview.mp3">브라우저가 오디오 재생을 지원하지 않습니다.</audio></div></div>
-      <div class="cap"><h3><span class="ci">🎵</span>Suno <span class="tag-badge teal">🖐 미니체험</span></h3><p class="tname">분위기·가사 → 홍보 노래</p><div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>울릉도 오징어를 홍보하는 신나는 트로트를 만들어줘.
-후렴에 "울릉도"를 반복하고, 밝고 경쾌하게.</code></div><div class="audio-card" style="margin-top:12px;"><div class="audio-title">예시 · 즐거운 여행, 울릉도로!</div><audio controls preload="none" src="assets/ulleung-song-1.mp3">오디오 재생 미지원</audio></div><a class="btn light small" href="https://suno.com/" target="_blank" rel="noopener" style="margin-top:12px;">🔗 Suno 열어서 직접 만들기</a></div>
-      <div class="cap"><h3><span class="ci">🖼️</span>포스터 이미지 <span class="tag-badge teal">🖐 미니체험</span></h3><p class="tname">설명(전) → 포스터 이미지(후)</p><div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>울릉도 일출과 독도가 보이는 여행 홍보 포스터를 만들어줘.
-따뜻한 노을 색감, 세로형, 위쪽에 "울릉도" 큰 제목과 "신비의 섬, 우리 땅 독도" 문구.</code></div><figure class="img-band poster-band" style="margin-top:14px;"><img src="assets/poster-sunrise-example.jpg" alt="AI로 만든 울릉도 일출·독도 홍보 포스터 예시" loading="lazy"><figcaption><b>AI가 만든 결과 예시.</b> 위 프롬프트로 나온 울릉도 일출·독도 홍보 포스터입니다.</figcaption></figure></div>
-      <div class="cap today"><h3><span class="ci">💻</span>울릉도 홍보 웹페이지 <span class="tag-badge primary">⭐ 오늘 메인</span></h3><p class="tname">오늘 직접 만들어 QR까지</p><p>아래 예시가 <b>오늘 여러분이 완성할 결과물</b>입니다. 재료를 만들고, 코드를 받고, 배포해 QR로 공유합니다.</p><a class="btn small" href="example.html" target="_blank" rel="noopener" style="margin-top:12px;">완성 예시 새 탭에서 보기</a></div>
+    <!-- 예시 1 · NotebookLM (데모) -->
+    <div class="card" style="margin-bottom:24px;">
+      <div class="pb-head"><span class="tag-badge">데모 · 듣기만</span><h3>🎧 NotebookLM · 내 자료를 음성 가이드로</h3></div>
+      <p>소개글·FAQ 같은 자료를 넣으면, 두 진행자가 대화하듯 설명하는 오디오가 만들어집니다. 오늘은 듣고 넘어갑니다.</p>
+      <div class="audio-card" style="margin-top:16px;"><div class="audio-title">해울림식당 음성 소개 예시</div><audio controls preload="none" src="assets/notebooklm-audio-overview.mp3">브라우저가 오디오 재생을 지원하지 않습니다.</audio></div>
+      <details class="script"><summary>자세히 · 언제 쓰면 좋을까요?</summary><div class="dropbody"><ul class="mini-list"><li>관광 안내 자료를 걸어 다니며 듣는 <b>오디오 가이드</b>로 만들 때</li><li>글 읽기가 번거로운 어르신이나 운전 중 손님에게 들려줄 때</li><li>자료를 넣고 <b>“한국어로 대화형 요약을 만들어줘”</b>라고 요청하면 됩니다</li></ul></div></details>
     </div>
-    <div class="subhead">⭐ 오늘의 메인 · 완성 웹페이지 미리보기</div>
+
+    <!-- 예시 2 · Suno (미니체험) -->
+    <div class="card" style="margin-bottom:24px;">
+      <div class="pb-head"><span class="tag-badge teal">🖐 미니체험</span><h3>🎵 Suno · 홍보 노래 만들기</h3></div>
+      <p>분위기와 가사만 정하면 짧은 홍보 노래가 나옵니다. 아래 예시를 듣고, 3분이면 직접 만들어 볼 수 있어요.</p>
+      <div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>울릉도 오징어를 홍보하는 신나는 트로트를 만들어줘.
+후렴에 "울릉도"를 반복하고, 밝고 경쾌하게.</code></div>
+      <div class="audio-card" style="margin-top:14px;"><div class="audio-title">예시 · 즐거운 여행, 울릉도로!</div><audio controls preload="none" src="assets/ulleung-song-1.mp3">오디오 재생 미지원</audio></div>
+      <details class="script"><summary>바로 실습 · 3분 따라 하기</summary><div class="dropbody"><ul class="mini-list"><li><a href="https://suno.com/" target="_blank" rel="noopener">suno.com</a>에 접속해 로그인합니다.</li><li>아래 프롬프트를 복사해 붙여넣고 <b>Create</b>를 누릅니다.</li><li>30초쯤 뒤 완성된 노래를 재생해 봅니다.</li></ul><div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>내 [주제]를 홍보하는 밝고 신나는 노래를 만들어줘.
+후렴에 [울릉도 또는 내 가게 이름]을 넣고, 따라 부르기 쉽게.</code></div></div></details>
+      <a class="btn light small" href="https://suno.com/" target="_blank" rel="noopener" style="margin-top:14px;">🔗 Suno 열어서 직접 만들기</a>
+    </div>
+
+    <!-- 예시 3 · 포스터 이미지 (미니체험) -->
+    <div class="card" style="margin-bottom:24px;">
+      <div class="pb-head"><span class="tag-badge teal">🖐 미니체험</span><h3>🖼️ 포스터 이미지 · 설명이 그림으로</h3></div>
+      <p>원하는 장면을 글로 설명하면 홍보 포스터 이미지가 나옵니다. 설명(전) → 이미지(후)를 비교해 보세요.</p>
+      <div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>울릉도 일출과 독도가 보이는 여행 홍보 포스터를 만들어줘.
+따뜻한 노을 색감, 세로형, 위쪽에 "울릉도" 큰 제목과 "신비의 섬, 우리 땅 독도" 문구.</code></div>
+      <figure class="img-band poster-band" style="margin-top:14px;"><img src="assets/poster-sunrise-example.jpg" alt="AI로 만든 울릉도 일출·독도 홍보 포스터 예시" loading="lazy"><figcaption><b>AI가 만든 결과 예시.</b> 위 프롬프트로 나온 울릉도 일출·독도 홍보 포스터입니다.</figcaption></figure>
+      <details class="script"><summary>바로 실습 · 내 주제로 만들기</summary><div class="dropbody"><ul class="mini-list"><li>Gemini나 ChatGPT의 이미지 만들기에 아래 프롬프트를 넣습니다.</li><li>[대괄호]를 내 주제·풍경으로 바꿉니다.</li><li>마음에 들 때까지 <b>“색을 더 밝게”, “글자 공간 크게”</b>처럼 이어서 고칩니다.</li></ul><div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>내 [주제]를 알리는 세로형 홍보 포스터를 만들어줘.
+[대표 풍경 또는 음식] 느낌, 따뜻한 색감, 위쪽에 "[제목]" 글자가 들어갈 공간.</code></div></div></details>
+    </div>
+
+    <!-- 예시 4 · 웹페이지 (오늘 메인) -->
+    <div class="card today" style="margin-bottom:24px;">
+      <div class="pb-head"><span class="tag-badge primary">⭐ 오늘 메인</span><h3>💻 울릉도 홍보 웹페이지</h3></div>
+      <p>아래 예시가 <b>오늘 여러분이 직접 완성할 결과물</b>입니다. 재료를 만들고, AI에게 코드를 받고, 인터넷에 배포해 QR로 공유합니다.</p>
+      <details class="script"><summary>자세히 · 오늘 어떤 순서로 만드나요?</summary><div class="dropbody"><ul class="mini-list"><li>실습에서 소개 글·다국어·질문 항목 <b>재료</b>를 만듭니다.</li><li>AI에게 <b>index.html 전체 코드</b>를 받습니다.</li><li>GitHub에 올려 <b>인터넷 주소</b>로 배포합니다.</li><li>주소를 <b>QR 코드</b>로 바꿔 포스터·명함에 붙입니다.</li></ul></div></details>
+    </div>
+
+    <div class="subhead">⭐ 완성 웹페이지 미리보기</div>
     <div class="mockups">
       <div class="frame-desktop"><div class="bar" aria-hidden="true"><i></i><i></i><i></i></div>
         <iframe src="example.html" title="완성 웹페이지 예시 (데스크톱)" loading="lazy"></iframe>
@@ -578,7 +613,7 @@ footer .foot-grid{display:flex; justify-content:space-between; flex-wrap:wrap; g
         <iframe src="example.html" title="완성 웹페이지 예시 (모바일)" loading="lazy"></iframe>
       </div>
     </div>
-    <div class="form-actions" style="justify-content:center; margin:22px 0 44px;">
+    <div class="form-actions" style="justify-content:center; margin:24px 0 40px;">
       <a class="btn" href="example.html" target="_blank" rel="noopener">완성 예시 새 탭에서 크게 보기</a>
     </div>
     <div class="notice"><strong>이 예시에서 볼 점</strong> · 휴대폰에서도 글자·버튼이 겹치지 않습니다. 전화·지도 버튼이 위쪽에 크게 있어 관광객이 바로 연락할 수 있고, 가격·운영시간처럼 바뀔 수 있는 정보는 “확인 필요”로 표시돼 있습니다.</div>
@@ -657,11 +692,12 @@ footer .foot-grid{display:flex; justify-content:space-between; flex-wrap:wrap; g
       <p class="kicker">이번 실습의 시작은 간단합니다. 브라우저를 열고, Gemini에 로그인하고, ChatGPT도 열어 둡니다. 그다음 같은 질문을 두 AI에 넣어 보며 차이를 비교합니다.</p>
     </div>
 
-    <div class="quick-check">
-      <div class="qc"><h3>1. 브라우저</h3><p>Chrome, Safari, Edge 중 하나를 엽니다.</p></div>
-      <div class="qc"><h3>2. Gemini</h3><p>구글 계정으로 로그인합니다.</p></div>
-      <div class="qc"><h3>3. ChatGPT</h3><p>가능하면 구글 계정으로 로그인합니다.</p></div>
-      <div class="qc"><h3>4. 휴대폰</h3><p>인증 문자가 오면 확인합니다.</p></div>
+    <div class="pb-label"><span class="tag">준비물 체크</span> 시작 전에 하나씩 확인</div>
+    <div class="checklist">
+      <label><input type="checkbox" data-check="prep-browser"> 브라우저(Chrome·Safari·Edge)를 열었다</label>
+      <label><input type="checkbox" data-check="prep-gemini"> Gemini에 구글 계정으로 로그인했다</label>
+      <label><input type="checkbox" data-check="prep-chatgpt"> ChatGPT에 로그인했다 (가능하면 구글 계정)</label>
+      <label><input type="checkbox" data-check="prep-phone"> 휴대폰으로 인증 문자를 받을 수 있다</label>
     </div>
 
     <div class="notice"><strong>초급자 안전 규칙:</strong> 주민등록번호, 카드번호, 계좌번호, 손님 이름과 연락처, 내부 매출자료는 AI에 넣지 않습니다. 예시는 <b>“손님 A”, “전화번호 확인 필요”</b>처럼 바꿔서 연습합니다. 공용 PC에서는 실습이 끝나면 반드시 로그아웃합니다.</div>
@@ -1307,6 +1343,25 @@ SNS 콘텐츠 아이디어 10개를 이유와 함께 제안해줘.</code></div>
       </div>
     </div>
 
+    <div class="pb-label"><span class="tag">AI 답변 예시</span> “코드를 받는다”는 건 이런 모습입니다</div>
+    <p style="margin-bottom:12px; color:var(--ink-soft);">낯설어 보여도 괜찮습니다. 직접 코딩하는 게 아니라, AI가 아래처럼 <b>코드를 쭉 만들어 줍니다.</b> 우리는 <b>&lt;!DOCTYPE html&gt;</b>부터 맨 끝 <b>&lt;/html&gt;</b>까지 <b>통째로 복사</b>해서 GitHub에 붙여넣기만 하면 됩니다.</p>
+    <div class="prompt-box"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ko"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+  &lt;title&gt;해울림식당 · 울릉도 도동항&lt;/title&gt;
+  &lt;style&gt; /* AI가 색·글자 크기·모바일 정리를 자동으로 넣어 줍니다 */ &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;해울림식당&lt;/h1&gt;
+  &lt;p&gt;도동항 3분, 바다를 보며 즐기는 울릉도 한 끼&lt;/p&gt;
+  &lt;a href="tel:확인 필요"&gt;📞 전화하기&lt;/a&gt;
+  &lt;!-- 소개 카드 · 방문 안내 · FAQ · 문의 섹션이 이어서 나옵니다 --&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></div>
+    <div class="notice" style="margin-top:14px;"><strong>겁내지 마세요.</strong> 뜻을 다 몰라도 됩니다. 이 코드가 곧 <b>브라우저에서 열리는 웹페이지 한 장</b>이고, 고치고 싶으면 AI에게 <b>“여기를 이렇게 바꿔줘”</b>라고 말로 부탁하면 됩니다.</div>
+
     <div class="pb-label"><span class="tag">코드 받을 때</span> 답변이 이상하면 이렇게 말합니다</div>
     <div class="cols-2">
       <div class="card"><h3>설명이 너무 많을 때</h3><div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>설명은 빼고 index.html에 붙여넣을 코드만 다시 출력해줘.</code></div></div>
@@ -1816,7 +1871,7 @@ function copyFilledPrompt(kind){const d=profileData();let t='';
  if(kind==='web'){const w=workspaceData();t=`너는 초보자도 이해하기 쉬운 관광 홍보 웹페이지를 만드는 웹디자이너야.\n아래 정보를 바탕으로 GitHub Pages에 올릴 index.html 전체 코드를 만들어줘.\n\n[기본 정보]\n- 이름: ${d.name}\n- 종류: ${d.type}\n- 위치: ${d.location}\n- 대표 메뉴/서비스: ${d.items}\n- 장점: ${d.strengths}\n- 문의: ${d.contact}\n- 한 줄 소개: ${d.tagline}\n\n[작업장에 저장한 AI 결과]\n- 제목 후보: ${w.title}\n- 소개문: ${w.intro}\n- FAQ: ${w.faq}\n- 외국어 안내: ${w.global}\n- 관광객 질문/리서치: ${w.research}\n- 확인 필요 항목: ${w.facts}\n\n[페이지 구성]\n1. 첫 화면: 이름, 큰 제목, 한 줄 소개, 대표 사진 자리, 전화/지도 버튼\n2. 소개 카드 3개: 위치 / 대표 메뉴 또는 체험 / 추천 대상\n3. 방문 안내: 운영시간, 예약 방법, 결제, 주차 또는 준비물\n4. 외국어 안내: 쉬운 영어 3줄\n5. FAQ: 관광객 질문 5개와 짧은 답변\n6. 마지막 문의 섹션: 전화, 지도, 예약 버튼\n\n[코드 조건]\n- index.html 하나에 HTML, CSS, JavaScript를 모두 넣기\n- 외부 라이브러리, 웹폰트, 외부 이미지는 사용하지 않기\n- 모바일에서도 글자와 버튼이 겹치지 않게 만들기\n- 사진은 임시 박스로 두고 "내 사진으로 교체"라고 표시하기\n- 미확인 가격, 배편, 운영시간은 "확인 필요"로 표시하기\n- 과장 광고처럼 들리는 표현은 빼기\n- 코드만 출력하고 설명은 붙이지 않기`;}
  copyText(t);}
 document.querySelectorAll('.chips').forEach(g=>g.querySelectorAll('.chip').forEach(c=>c.addEventListener('click',()=>{g.querySelectorAll('.chip').forEach(x=>x.classList.remove('on'));c.classList.add('on');})));
-document.querySelectorAll('.checklist input[type="checkbox"]').forEach((box,i)=>{const k=`ulleungCheck${i}`;box.checked=localStorage.getItem(k)==='true';box.addEventListener('change',()=>localStorage.setItem(k,box.checked));});
+document.querySelectorAll('.checklist input[type="checkbox"]').forEach((box,i)=>{const k=box.dataset.check?('ulleungChk_'+box.dataset.check):`ulleungCheck${i}`;box.checked=localStorage.getItem(k)==='true';box.addEventListener('change',()=>localStorage.setItem(k,box.checked));});
 // 실습 결과 메모장 · 자동 저장/복원
 function copyMemo(btn){const t=btn.closest('.memo').querySelector('textarea');if(t)copyText(t.value,btn);}
 document.querySelectorAll('textarea[data-memo]').forEach(t=>{
