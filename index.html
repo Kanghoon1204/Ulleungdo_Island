@@ -561,8 +561,8 @@ footer .foot-grid{display:flex; justify-content:space-between; flex-wrap:wrap; g
       <div class="cap free"><h3><span class="ci">🎧</span>NotebookLM <span class="tag-badge">데모</span></h3><p class="tname">자료 → 두 진행자 음성 요약</p><p>소개글·FAQ를 자료로 넣으면 대화형 오디오 가이드가 됩니다. 강사 예시를 들어보세요.</p><div class="audio-card" style="margin-top:12px;"><div class="audio-title">해울림식당 음성 소개 예시</div><audio controls preload="none" src="assets/notebooklm-audio-overview.mp3">브라우저가 오디오 재생을 지원하지 않습니다.</audio></div></div>
       <div class="cap"><h3><span class="ci">🎵</span>Suno <span class="tag-badge teal">🖐 미니체험</span></h3><p class="tname">분위기·가사 → 홍보 노래</p><div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>울릉도 오징어를 홍보하는 신나는 트로트를 만들어줘.
 후렴에 "울릉도"를 반복하고, 밝고 경쾌하게.</code></div><div class="audio-card" style="margin-top:12px;"><div class="audio-title">예시 · 즐거운 여행, 울릉도로!</div><audio controls preload="none" src="assets/ulleung-song-1.mp3">오디오 재생 미지원</audio></div></div>
-      <div class="cap"><h3><span class="ci">🖼️</span>포스터 이미지 <span class="tag-badge teal">🖐 미니체험</span></h3><p class="tname">설명 → 홍보 포스터 이미지</p><div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>울릉도 일출과 독도가 보이는 여행 홍보 포스터를 만들어줘.
-따뜻한 색감, 세로형, 위쪽에 "울릉도" 큰 제목이 들어갈 공간.</code></div><p style="margin-top:12px; font-size:1.02rem; color:var(--muted);">이미지 생성 AI(Gemini·ChatGPT 등)에 붙여넣고 결과를 저장해 보세요.</p></div>
+      <div class="cap"><h3><span class="ci">🖼️</span>포스터 이미지 <span class="tag-badge teal">🖐 미니체험</span></h3><p class="tname">설명(전) → 포스터 이미지(후)</p><div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>울릉도 봉래폭포를 소개하는 여행 홍보 포스터를 만들어줘.
+울창한 초록 숲과 시원한 폭포, 세로형, 위쪽에 "울릉도 봉래폭포" 큰 제목과 "자연의 숨결, 힐링의 시작" 문구.</code></div><figure class="img-band poster-band" style="margin-top:14px;"><img src="assets/poster-bongnae-example.jpg" alt="AI로 만든 울릉도 봉래폭포 홍보 포스터 예시" loading="lazy"><figcaption><b>AI가 만든 결과 예시.</b> 위 프롬프트로 나온 봉래폭포 홍보 포스터입니다.</figcaption></figure></div>
       <div class="cap today"><h3><span class="ci">💻</span>울릉도 홍보 웹페이지 <span class="tag-badge primary">⭐ 오늘 메인</span></h3><p class="tname">오늘 직접 만들어 QR까지</p><p>아래 예시가 <b>오늘 여러분이 완성할 결과물</b>입니다. 재료를 만들고, 코드를 받고, 배포해 QR로 공유합니다.</p><a class="btn small" href="example.html" target="_blank" rel="noopener" style="margin-top:12px;">완성 예시 새 탭에서 보기</a></div>
     </div>
     <div class="subhead">⭐ 오늘의 메인 · 완성 웹페이지 미리보기</div>
@@ -577,24 +577,7 @@ footer .foot-grid{display:flex; justify-content:space-between; flex-wrap:wrap; g
     <div class="form-actions" style="justify-content:center; margin:22px 0 44px;">
       <a class="btn" href="example.html" target="_blank" rel="noopener">완성 예시 새 탭에서 크게 보기</a>
     </div>
-    <div class="cols-2">
-      <div class="card lift"><div class="ic-lg">🎯</div><h3>주제는 하나만</h3><p>식당·숙소·체험·관광지·특산품 중 <b>하나</b>를 정합니다. 주제가 좁을수록 AI 답변이 구체적이고 쓸 만해집니다.</p></div>
-      <div class="card lift"><div class="ic-lg" style="background:var(--secondary-soft)">🧩</div><h3>재료를 먼저 만듭니다</h3><p>소개문, 외국어 안내, FAQ, 사실 확인 목록을 따로 만든 뒤 웹페이지로 조립합니다. 한 번에 다 시키지 않는 것이 핵심입니다.</p></div>
-      <div class="card lift"><div class="ic-lg" style="background:var(--tertiary-soft)">🔍</div><h3>검증하고 공개합니다</h3><p>AI가 만든 문장은 초안입니다. 가격·운영시간·배편·주소·사진 권리는 사람이 확인해야 공개할 수 있습니다.</p></div>
-    </div>
-    <div class="subhead">🧩 결과물이 만들어지는 순서</div>
-    <div class="mermaid-wrap">
-<pre class="mermaid">
-flowchart LR
-  A["✍️ 홍보 문구"] --> Z
-  B["🌐 다국어 안내"] --> Z
-  C["🔎 리서치 자료"] --> Z
-  D["✅ 사실 확인"] --> Z
-  Z{{"GitHub Pages로 웹페이지 공개"}} --> DONE(["🎉 URL과 QR로 공유"])
-</pre>
-    </div>
-    <p class="mermaid-cap">AI에게 큰 일을 한 번에 맡기기보다, 작은 결과물을 순서대로 만들고 마지막에 GitHub Pages에 올려 공개합니다.</p>
-    <div class="tip"><strong>💡 기억할 점.</strong> AI는 완성품을 “마법처럼” 내놓는 도구가 아니라, 초안을 빠르게 만들고 고치는 작업 파트너입니다. 좋은 결과는 <b>좋은 정보 입력</b>과 <b>사람의 확인</b>에서 나옵니다.</div>
+    <div class="notice"><strong>이 예시에서 볼 점</strong> · 휴대폰에서도 글자·버튼이 겹치지 않습니다. 전화·지도 버튼이 위쪽에 크게 있어 관광객이 바로 연락할 수 있고, 가격·운영시간처럼 바뀔 수 있는 정보는 “확인 필요”로 표시돼 있습니다.</div>
   </div>
 </section>
 
@@ -605,7 +588,7 @@ flowchart LR
   <div class="container">
     <div class="section-head">
       <span class="eyebrow">이번 실습의 중심 도구</span>
-      <h2>오늘은 <span class="hl">Gemini와 ChatGPT</span>로 만들고 GitHub로 공개합니다</h2>
+      <h2>오늘 쓰는 도구는 <span class="hl">Gemini · ChatGPT · GitHub</span>입니다</h2>
       <p class="kicker">AI 도구는 많지만, 처음부터 다 배울 필요는 없습니다. 이번 실습에서는 <b>Gemini로 초안을 만들고</b>, <b>ChatGPT로 비교·수정한 뒤</b>, 완성 HTML을 GitHub Pages로 공개합니다.</p>
     </div>
 
@@ -666,7 +649,7 @@ flowchart LR
   <div class="container">
     <div class="section-head">
       <span class="step-badge"><span class="n">STEP 3</span> 시작 준비</span>
-      <h2>먼저 <span class="hl">Gemini와 ChatGPT</span>만 켭니다</h2>
+      <h2>브라우저에서 <span class="hl">Gemini와 ChatGPT</span>를 준비합니다</h2>
       <p class="kicker">이번 실습의 시작은 간단합니다. 브라우저를 열고, Gemini에 로그인하고, ChatGPT도 열어 둡니다. 그다음 같은 질문을 두 AI에 넣어 보며 차이를 비교합니다.</p>
     </div>
 
@@ -1864,20 +1847,6 @@ function updateNav(){
 window.addEventListener('scroll',updateNav,{passive:true});
 window.addEventListener('resize',updateNav,{passive:true});
 loadProfile();loadWorkspace();updateNav();
-</script>
-<script type="module">
-  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
-  mermaid.initialize({
-    startOnLoad:true, securityLevel:'loose', flowchart:{curve:'basis', htmlLabels:true, useMaxWidth:false},
-    theme:'base',
-    themeVariables:{
-      fontFamily:"'Gothic A1', sans-serif", fontSize:'15px',
-      primaryColor:'#f1e7df', primaryBorderColor:'#cc785c', primaryTextColor:'#141413',
-      lineColor:'#d8b6a6',
-      secondaryColor:'#e7efeb', secondaryBorderColor:'#3f8c7d',
-      tertiaryColor:'#e9f0e8', tertiaryBorderColor:'#4f9a6a'
-    }
-  });
 </script>
 </body>
 </html>
