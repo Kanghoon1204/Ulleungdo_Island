@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI로 관광 홍보 콘텐츠 완성하기 | 울릉군 글로벌 생태관광 전문인재 양성 교육</title>
 <meta name="description" content="AI가 처음인 비전공자를 위한 관광 홍보 실습 자료 — Gemini와 ChatGPT로 콘텐츠와 HTML을 만들고 GitHub Pages와 네이버 QR로 공유하는 자기주도 워크북.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234a154b'/%3E%3Cpath d='M18 42h28v6H18zM20 34l12-22 12 22h-7l-2-5h-7l-2 5h-6zm11-11h2l-1-3-1 3z' fill='white'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23cc785c'/%3E%3Cpath d='M18 42h28v6H18zM20 34l12-22 12 22h-7l-2-5h-7l-2 5h-6zm11-11h2l-1-3-1 3z' fill='white'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&family=Gothic+A1:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -15,48 +15,46 @@
    LocalGuide 디자인 · STEP별 체험형 흐름 · 큰 타이포
    ============================================================ */
 :root{
-  --primary:#4a154b; --primary-dark:#481a54; --primary-soft:#f9f0ff;
-  --primary-press:#611f69; --aubergine-mute:#d9bdde;
-  --secondary:#1264a3; --secondary-soft:#eaf4ff;
-  --tertiary:#007a5a; --tertiary-soft:#e7f5ef;
-  --success:#007a5a; --error:#cc4117;
-  --ink:#1d1d1d; --ink-soft:#4f4f4f; --muted:#696969;
-  --line:#e6e6e6; --bg:#ffffff; --cream:#f4ede4; --lavender:#f9f0ff; --surface:#ffffff;
+  /* 차분한 크림 캔버스 + 코랄 · warm editorial 팔레트 */
+  --primary:#cc785c; --primary-dark:#a9583e; --primary-soft:#f1e7df;
+  --primary-press:#a9583e; --aubergine-mute:#ddd3c6;
+  --secondary:#3f8c7d; --secondary-soft:#e7efeb;
+  --tertiary:#4f9a6a; --tertiary-soft:#e9f0e8;
+  --success:#4f9a6a; --error:#c64545;
+  --ink:#141413; --ink-soft:#3d3d3a; --muted:#6c6a64;
+  --line:#e6dfd8; --bg:#faf9f5; --cream:#f3ede2; --lavender:#f2ece1; --surface:#fffdf9;
+  --surface-dark:#211f1c;
   --radius:16px; --radius-sm:8px;
-  --shadow-sm:0 1px 2px rgba(74,21,75,.04), 0 3px 10px rgba(74,21,75,.045);
-  --shadow:0 2px 8px rgba(74,21,75,.06), 0 18px 42px rgba(74,21,75,.09);
+  --shadow-sm:0 1px 2px rgba(20,20,19,.03);
+  --shadow:0 1px 3px rgba(20,20,19,.05), 0 10px 30px rgba(20,20,19,.05);
   --font-display:'Gothic A1', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   --font-head:'Gothic A1', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   --font-body:'Gothic A1', sans-serif;
 }
 *{box-sizing:border-box; margin:0; padding:0;}
-html{scroll-behavior:smooth; scroll-padding-top:72px;}
+html{scroll-behavior:smooth; scroll-padding-top:70px; font-size:90%;}
 body{
   font-family:var(--font-body); color:var(--ink);
-  font-size:23px; line-height:1.72; font-weight:500;
+  font-size:20.7px; line-height:1.66; font-weight:400;
   word-break:keep-all; overflow-wrap:break-word; overflow-x:hidden;
   background:var(--bg);
-  background-image:
-    radial-gradient(circle at 10% 0%, rgba(249,240,255,.9), transparent 44%),
-    radial-gradient(circle at 90% 2%, rgba(244,237,228,.86), transparent 42%),
-    radial-gradient(circle at 78% 35%, rgba(217,189,222,.35), transparent 38%);
 }
 a{color:var(--secondary); text-decoration:none;}
 a:hover{text-decoration:underline;}
 img{max-width:100%; display:block;}
 :focus-visible{outline:3px solid var(--secondary); outline-offset:2px; border-radius:6px;}
 .container{width:min(1240px, calc(100% - 56px)); margin:0 auto; position:relative; z-index:1;}
-h1,h2,h3{font-family:var(--font-head); line-height:1.24; font-weight:800;}
+h1,h2,h3{font-family:var(--font-head); line-height:1.26; font-weight:700; letter-spacing:-0.02em;}
 .mega{font-family:var(--font-display); line-height:1.08; letter-spacing:0;}
 .eyebrow{font-family:var(--font-head); display:inline-flex; align-items:center; gap:9px; flex-wrap:wrap; font-size:1.18rem; color:var(--primary); margin-bottom:10px;}
 .eyebrow .time{background:var(--secondary-soft); color:var(--secondary); padding:3px 12px; border-radius:999px; font-size:.9rem;}
-.step-badge{display:inline-flex; align-items:center; gap:12px; background:var(--primary); color:#fff; font-family:var(--font-head); font-size:1.18rem; padding:9px 24px 9px 10px; border-radius:999px; box-shadow:0 4px 12px rgba(74,21,75,.18); margin-bottom:14px;}
+.step-badge{display:inline-flex; align-items:center; gap:12px; background:var(--primary); color:#fff; font-family:var(--font-head); font-size:1.18rem; padding:9px 24px 9px 10px; border-radius:999px; box-shadow:0 4px 12px rgba(60,45,40,.18); margin-bottom:14px;}
 .step-badge .n{background:#fff; color:var(--primary); min-width:38px; height:38px; padding:0 10px; border-radius:999px; display:grid; place-items:center; font-family:var(--font-head); font-size:1.02rem;}
 
 /* 버튼 */
-.btn{display:inline-flex; align-items:center; justify-content:center; gap:8px; min-height:64px; padding:16px 34px; border:0; border-radius:999px; font-family:var(--font-head); font-size:1.16rem; font-weight:800; background:var(--primary); color:#fff; cursor:pointer; box-shadow:0 4px 12px rgba(74,21,75,.16); transition:transform .15s, box-shadow .15s, background-color .15s;}
-.btn:hover{text-decoration:none; transform:translateY(-2px); background:var(--primary-press); box-shadow:0 8px 20px rgba(74,21,75,.22);}
-.btn.teal{background:var(--secondary); box-shadow:0 4px 12px rgba(18,100,163,.16);}
+.btn{display:inline-flex; align-items:center; justify-content:center; gap:8px; min-height:64px; padding:16px 34px; border:0; border-radius:999px; font-family:var(--font-head); font-size:1.16rem; font-weight:700; background:var(--primary); color:#fff; cursor:pointer; box-shadow:0 4px 12px rgba(60,45,40,.16); transition:transform .15s, box-shadow .15s, background-color .15s;}
+.btn:hover{text-decoration:none; transform:translateY(-2px); background:var(--primary-press); box-shadow:0 8px 20px rgba(60,45,40,.22);}
+.btn.teal{background:var(--secondary); box-shadow:0 4px 12px rgba(60,45,40,.16);}
 .btn.ghost{background:#fff; color:var(--ink); border:2px solid var(--line); box-shadow:var(--shadow-sm);}
 .btn.ghost:hover{border-color:var(--primary); color:var(--primary);}
 .btn.light{background:var(--primary-soft); color:var(--primary-dark); box-shadow:none;}
@@ -64,8 +62,8 @@ h1,h2,h3{font-family:var(--font-head); line-height:1.24; font-weight:800;}
 
 /* 핀/배지 */
 .pin{display:inline-flex; align-items:center; gap:8px; padding:10px 19px; border-radius:999px; background:#fff; border:1px solid var(--line); box-shadow:var(--shadow-sm); font-family:var(--font-head); font-size:1.15rem;}
-.pin .dot{width:11px; height:11px; border-radius:50%; background:var(--primary); box-shadow:0 0 0 4px rgba(74,21,75,.18);}
-.pin.teal .dot{background:var(--secondary); box-shadow:0 0 0 4px rgba(18,100,163,.18);}
+.pin .dot{width:11px; height:11px; border-radius:50%; background:var(--primary); box-shadow:0 0 0 4px rgba(60,45,40,.18);}
+.pin.teal .dot{background:var(--secondary); box-shadow:0 0 0 4px rgba(60,45,40,.18);}
 .pin.yellow .dot{background:var(--tertiary); box-shadow:0 0 0 4px rgba(0,122,90,.18);}
 .tag-badge{display:inline-flex; align-items:center; gap:6px; padding:6px 15px; border-radius:999px; background:var(--tertiary-soft); color:var(--tertiary); font-family:var(--font-head); font-size:.9rem; white-space:nowrap; word-break:normal; overflow-wrap:normal;}
 .tag-badge.primary{background:var(--primary-soft); color:var(--primary-dark);}
@@ -76,18 +74,18 @@ h1,h2,h3{font-family:var(--font-head); line-height:1.24; font-weight:800;}
 .diff.hard{background:var(--primary-soft); color:var(--primary-dark);}
 
 /* 섹션 */
-.section{position:relative; padding:128px 0; border-top:1px solid var(--line);}
+.section{position:relative; padding:88px 0; border-top:1px solid var(--line);}
 .section:first-of-type{border-top:0;}
-.cover{min-height:calc(100vh - 64px); display:flex; flex-direction:column; justify-content:center;}
+.cover{min-height:calc(100vh - 68px); display:flex; flex-direction:column; justify-content:center;}
 .sec-no{position:absolute; top:28px; right:max(24px,5%); font-family:var(--font-head); font-size:clamp(2.6rem,5.5vw,4.8rem); line-height:1; color:#a2917f; opacity:.15; pointer-events:none; z-index:0;}
-.section-head{max-width:1080px; margin-bottom:54px;}
+.section-head{max-width:1080px; margin-bottom:40px;}
 .section-head.center{margin-left:auto; margin-right:auto; text-align:center;}
 .section h2{font-size:clamp(2.45rem, 4.8vw, 4.35rem); margin:8px 0 20px; letter-spacing:0;}
 .section h2 .hl{color:var(--primary);}
 .section h2 .hl-t{color:var(--secondary);}
 .section .kicker{color:var(--ink-soft); font-size:1.42rem; line-height:1.75;}
 .lead-big{font-size:clamp(1.75rem,3.1vw,2.45rem); font-family:var(--font-head); line-height:1.5; color:var(--ink);}
-.follow{display:inline-flex; align-items:center; gap:9px; padding:12px 24px; border-radius:999px; background:var(--primary); color:#fff; font-family:var(--font-head); font-size:1.2rem; margin-bottom:20px; box-shadow:0 6px 16px rgba(74,21,75,.22);}
+.follow{display:inline-flex; align-items:center; gap:9px; padding:12px 24px; border-radius:999px; background:var(--primary); color:#fff; font-family:var(--font-head); font-size:1.2rem; margin-bottom:20px; box-shadow:0 6px 16px rgba(60,45,40,.22);}
 .follow::before{content:"👉"; font-size:1.15rem;}
 .subhead{font-family:var(--font-head); font-size:2rem; margin:52px 0 10px; display:flex; align-items:center; gap:10px;}
 
@@ -145,6 +143,14 @@ h1,h2,h3{font-family:var(--font-head); line-height:1.24; font-weight:800;}
 .notice strong{color:var(--tertiary); font-family:var(--font-head);}
 .learn{margin-top:16px; padding:15px 20px; background:var(--secondary-soft); border-radius:12px; font-size:1.05rem; color:var(--secondary);}
 .learn b{font-family:var(--font-head);}
+/* 실습 결과 붙여넣기 메모장 */
+.memo{margin-top:20px; border:2px dashed var(--secondary); border-radius:14px; background:var(--secondary-soft); padding:20px 22px;}
+.memo-h{font-family:var(--font-head); font-size:1.12rem; color:var(--secondary); display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:12px;}
+.memo-h span{font-family:var(--font-body); font-weight:600; font-size:.86rem; color:var(--muted); background:#fff; border:1px solid var(--line); border-radius:999px; padding:3px 12px;}
+.memo textarea{width:100%; min-height:118px; border:2px solid var(--line); border-radius:12px; padding:14px 16px; font:inherit; font-size:1.02rem; font-weight:500; background:#fff; color:var(--ink); resize:vertical;}
+.memo textarea:focus{border-color:var(--secondary); outline:none;}
+.memo-actions{display:flex; align-items:center; gap:12px; margin-top:12px;}
+.memo-status{font-family:var(--font-head); font-size:.9rem; color:var(--tertiary);}
 
 /* 트렌드/활용 카드 */
 .trend-grid{display:grid; grid-template-columns:1fr; gap:20px;}
@@ -264,8 +270,8 @@ h1,h2,h3{font-family:var(--font-head); line-height:1.24; font-weight:800;}
 .pb-head{display:flex; align-items:center; gap:12px; margin-bottom:12px; flex-wrap:wrap;}
 .pb-head .tag-badge{flex-shrink:0;}
 .pb-head h3{margin:0; font-size:1.4rem;}
-.prompt-box{position:relative; background:var(--primary-dark); border-radius:16px; margin-top:16px; padding:28px 28px 24px; overflow:auto;}
-.prompt-box code{display:block; white-space:pre-wrap; word-break:break-word; color:#fff7ff; font-family:'Courier New', monospace; font-size:1.24rem; line-height:1.75; padding-right:90px;}
+.prompt-box{position:relative; background:var(--surface-dark); border-radius:12px; margin-top:16px; padding:28px 28px 24px; overflow:auto;}
+.prompt-box code{display:block; white-space:pre-wrap; word-break:break-word; color:#faf9f5; font-family:'Courier New', monospace; font-size:1.24rem; line-height:1.75; padding-right:90px;}
 .copy-btn{position:absolute; top:16px; right:16px; border:1px solid rgba(255,255,255,.25); background:rgba(255,255,255,.12); color:#fff; padding:11px 18px; border-radius:10px; font-family:var(--font-head); font-size:1.08rem; cursor:pointer;}
 .copy-btn:hover{background:var(--primary); border-color:var(--primary);}
 .tmpl-title{font-family:var(--font-head); font-size:1.2rem; margin:22px 0 2px; display:flex; align-items:center; gap:9px;}
@@ -279,7 +285,7 @@ h1,h2,h3{font-family:var(--font-head); line-height:1.24; font-weight:800;}
 .drill{margin-top:24px; padding-top:22px; border-top:2px dashed var(--line);}
 .drill .dh{font-family:var(--font-head); font-size:1.34rem; margin-bottom:6px; display:flex; align-items:center; gap:12px; flex-wrap:wrap;}
 .drill h4{font-family:var(--font-head); font-size:1.14rem; margin:18px 0 0; display:flex; gap:10px; align-items:center; flex-wrap:wrap;}
-.drill h4 .dn{background:var(--primary); color:#fff; min-width:30px; height:30px; padding:0 8px; border-radius:9px; display:grid; place-items:center; font-family:var(--font-body); font-weight:800; font-size:.86rem;}
+.drill h4 .dn{background:var(--primary); color:#fff; min-width:30px; height:30px; padding:0 8px; border-radius:9px; display:grid; place-items:center; font-family:var(--font-body); font-weight:700; font-size:.86rem;}
 
 /* 예시 결과 */
 .pb-label{display:inline-flex; align-items:center; gap:11px; margin:30px 0 6px; font-family:var(--font-head); font-size:1.42rem;}
@@ -373,27 +379,29 @@ h1,h2,h3{font-family:var(--font-head); line-height:1.24; font-weight:800;}
 .map-pin{position:absolute; width:20px; height:20px;}
 .map-pin::after{content:""; position:absolute; inset:0; border-radius:50% 50% 50% 2px; transform:rotate(-45deg); background:var(--primary); box-shadow:0 3px 8px rgba(0,0,0,.3);}
 .map-pin.p1{top:26%; left:38%;} .map-pin.p2{top:40%; left:64%;} .map-pin.p2::after{background:var(--tertiary);}
-.map-pin span{position:absolute; inset:0; border-radius:50%; background:rgba(74,21,75,.24); animation:pulse 3.6s ease-out infinite;}
+.map-pin span{position:absolute; inset:0; border-radius:50%; background:rgba(60,45,40,.24); animation:pulse 3.6s ease-out infinite;}
 @keyframes pulse{0%{transform:scale(.6);opacity:.8}100%{transform:scale(2.6);opacity:0}}
 .reveal{opacity:0; transform:translateY(16px); animation:rise .7s cubic-bezier(.2,.7,.3,1) forwards;}
 @keyframes rise{to{opacity:1; transform:none}}
 .d1{animation-delay:.05s}.d2{animation-delay:.15s}.d3{animation-delay:.25s}.d4{animation-delay:.35s}.d5{animation-delay:.45s}
 
 /* NAV */
-.nav{position:sticky; top:0; z-index:60; background:rgba(255,255,255,.9); backdrop-filter:blur(14px); border-bottom:1px solid var(--line);}
+.nav{position:sticky; top:0; z-index:60; background:rgba(250,249,245,.88); backdrop-filter:blur(14px); border-bottom:1px solid var(--line);}
 .nav-inner{display:flex; align-items:center; gap:16px; height:64px;}
 .brand{display:flex; align-items:center; gap:9px; font-family:var(--font-head); font-size:1.08rem; white-space:nowrap; flex-shrink:0;}
-.brand .mk{width:14px; height:14px; border-radius:50% 50% 50% 2px; transform:rotate(-45deg); background:var(--primary); box-shadow:0 0 0 4px rgba(74,21,75,.18);}
+.brand .mk{width:14px; height:14px; border-radius:50% 50% 50% 2px; transform:rotate(-45deg); background:var(--primary); box-shadow:0 0 0 4px rgba(60,45,40,.18);}
 .nav ul{display:flex; gap:4px; list-style:none; margin-left:auto; overflow-x:auto; scrollbar-width:none; min-width:0; flex:1;}
 .nav ul::-webkit-scrollbar{display:none;}
 .nav a{display:inline-flex; align-items:center; min-height:40px; padding:6px 14px; border-radius:999px; color:var(--ink-soft); font-family:var(--font-head); font-size:.95rem; white-space:nowrap;}
 .nav a:hover{background:var(--primary-soft); color:var(--primary-dark); text-decoration:none;}
 .nav a.active{background:var(--primary); color:#fff;}
 .nav .now{margin-left:8px; flex-shrink:0; background:var(--secondary-soft); color:var(--secondary); padding:6px 14px; border-radius:999px; font-family:var(--font-head); font-size:.88rem; white-space:nowrap;}
+.progress{height:4px; background:var(--line);}
+.progress i{display:block; height:100%; width:0; background:linear-gradient(90deg,var(--primary),var(--secondary)); transition:width .12s linear;}
 
 /* 닫는 슬라이드 */
 .closing{position:relative; color:#fff; border-radius:32px; padding:80px 48px; overflow:hidden; text-align:center;}
-.closing::before{content:""; position:absolute; inset:0; z-index:-1; background:linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 55%, #2b0c2c 100%);}
+.closing::before{content:""; position:absolute; inset:0; z-index:-1; background:linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 58%, #5c2a1c 100%);}
 .closing::after{content:""; position:absolute; inset:0; z-index:-1; opacity:.4; background:repeating-radial-gradient(circle at 85% 20%, rgba(255,255,255,.12) 0 1px, transparent 1px 40px);}
 .closing h2{color:#fff; font-size:clamp(2.2rem,4.8vw,3.6rem);}
 .closing p{color:rgba(255,255,255,.94); font-size:1.3rem; max-width:740px; margin:20px auto 0;}
@@ -464,23 +472,19 @@ footer .foot-grid{display:flex; justify-content:space-between; flex-wrap:wrap; g
   <div class="container nav-inner">
     <a class="brand" href="#cover"><span class="mk" aria-hidden="true"></span><span class="full">울릉 생태관광 AI 실습</span></a>
     <ul>
-      <li><a href="#goal">결과 예시</a></li>
-      <li><a href="#taste">AI 맛보기</a></li>
-      <li><a href="#whatai">AI 이해</a></li>
-      <li><a href="#tools">도구</a></li>
-      <li><a href="#setup">시작 준비</a></li>
-      <li><a href="#roadmap">작업 흐름</a></li>
-      <li><a href="#step1">첫 실습</a></li>
-      <li><a href="#workspace">작업장</a></li>
-      <li><a href="#step5">질문 조사</a></li>
-      <li><a href="#step2">소개문</a></li>
-      <li><a href="#step3">다국어</a></li>
-      <li><a href="#step7">웹페이지</a></li>
-      <li><a href="#checklist">점검</a></li>
-      <li><a href="#publish">공유</a></li>
-      <li><a href="#can">확장</a></li>
+      <li><a href="#whatai" data-step="1">1 · AI 이해</a></li>
+      <li><a href="#goal" data-step="2">2 · 예시</a></li>
+      <li><a href="#tools" data-step="3">3 · 시작 준비</a></li>
+      <li><a href="#step1" data-step="4">4 · 프롬프트</a></li>
+      <li><a href="#workspace" data-step="5">5 · 실습</a></li>
+      <li><a href="#step7" data-step="6">6 · 웹페이지</a></li>
+      <li><a href="#publish" data-step="7">7 · 깃허브 배포</a></li>
+      <li><a href="#qrcode" data-step="8">8 · QR코드</a></li>
+      <li><a href="#templates" data-step="9">9 · 부록</a></li>
     </ul>
+    <span class="now" id="stepNow" aria-live="polite">1 / 9</span>
   </div>
+  <div class="progress" aria-hidden="true"><i id="progFill"></i></div>
 </nav>
 
 <main><!-- ===== 00 표지 ===== -->
@@ -515,15 +519,53 @@ footer .foot-grid{display:flex; justify-content:space-between; flex-wrap:wrap; g
 </header>
 
 
-<!-- ===== 01 결과 예시 ===== -->
-<section class="section" id="goal">
+<!-- ===== 03 STEP 1 · AI 기본 ===== -->
+<section class="section" id="whatai" style="background:var(--cream);">
   <span class="sec-no" aria-hidden="true">01</span>
   <div class="container">
     <div class="section-head">
-      <span class="eyebrow">결과 예시</span>
-      <h2>AI로 만들 수 있는 <span class="hl">홍보 웹페이지</span>를 먼저 봅니다</h2>
-      <p class="kicker">아래 예시는 AI로 만든 울릉도 관광 소개 페이지입니다. 중요한 것은 디자인 자체가 아니라, <b>내 정보 → AI 초안 → 검증 → 웹페이지</b>로 이어지는 제작 방식입니다. 휴대폰에서도 읽기 쉬운지 함께 확인해 보세요.</p>
+      <span class="step-badge"><span class="n">STEP 1</span> AI 이해</span>
+      <h2>AI는 <span class="hl">초안 도우미</span>입니다</h2>
+      <p class="kicker">처음에는 원리를 길게 외우지 않아도 됩니다. 오늘은 딱 세 가지만 기억합니다. <b>AI는 초안 도우미다.</b> <b>틀릴 수 있다.</b> <b>개인정보는 넣지 않는다.</b></p>
     </div>
+    <div class="cols-2">
+      <div class="card"><div class="ic-lg">1</div><h3>초안 도우미</h3><p>제목 후보, 소개문, FAQ, 영어 안내, 웹페이지 HTML처럼 <b>처음 결과물</b>을 빠르게 만들어 줍니다.</p></div>
+      <div class="card"><div class="ic-lg" style="background:var(--secondary-soft)">2</div><h3>틀릴 수 있음</h3><p>가격, 운영시간, 배편, 주소, 전화번호는 틀릴 수 있습니다. 공개 전에는 사람이 직접 확인합니다.</p></div>
+      <div class="card"><div class="ic-lg" style="background:var(--tertiary-soft)">3</div><h3>개인정보 금지</h3><p>주민등록번호, 카드번호, 손님 연락처, 내부 매출, 개인 대화처럼 민감한 정보는 넣지 않습니다.</p></div>
+    </div>
+    <div class="pb-label"><span class="tag">오늘의 사용 공식</span> AI에게 이렇게 부탁합니다</div>
+    <div class="formula">
+      <div class="fx">역할<small>관광 홍보 전문가</small></div>
+      <div class="op">+</div>
+      <div class="fx">내 정보<small>이름·위치·장점</small></div>
+      <div class="op">+</div>
+      <div class="fx">결과 형식<small>표·3줄·FAQ</small></div>
+      <div class="op">=</div>
+      <div class="fx eq">쓸 만한 초안<small>작업장에 저장</small></div>
+    </div>
+    <div class="notice"><strong>오늘의 목표:</strong> AI를 완벽히 이해하는 것이 아니라, <b>내 관광 홍보 페이지를 다시 고칠 수 있는 상태</b>로 완성하는 것입니다.</div>
+    <div class="step-next"><a href="#goal">AI로 만든 예시 보기 →</a></div>
+  </div>
+</section>
+
+<!-- ===== 01 결과 예시 ===== -->
+<section class="section" id="goal">
+  <span class="sec-no" aria-hidden="true">02</span>
+  <div class="container">
+    <div class="section-head">
+      <span class="step-badge"><span class="n">STEP 2</span> 예시</span>
+      <h2>AI로 <span class="hl">이런 것들</span>을 만들 수 있습니다</h2>
+      <p class="kicker">AI는 글뿐 아니라 음성·노래·이미지·웹페이지까지 만듭니다. 아래 네 가지를 먼저 맛보세요. <b>Suno와 포스터는 3분 만에 직접</b> 눌러보고, <b>웹페이지는 오늘 끝까지 직접</b> 만듭니다.</p>
+    </div>
+    <div class="cap-grid" style="margin-bottom:34px;">
+      <div class="cap free"><h3><span class="ci">🎧</span>NotebookLM <span class="tag-badge">데모</span></h3><p class="tname">자료 → 두 진행자 음성 요약</p><p>소개글·FAQ를 자료로 넣으면 대화형 오디오 가이드가 됩니다. 강사 예시를 들어보세요.</p><div class="audio-card" style="margin-top:12px;"><div class="audio-title">해울림식당 음성 소개 예시</div><audio controls preload="none" src="assets/notebooklm-audio-overview.mp3">브라우저가 오디오 재생을 지원하지 않습니다.</audio></div></div>
+      <div class="cap"><h3><span class="ci">🎵</span>Suno <span class="tag-badge teal">🖐 미니체험</span></h3><p class="tname">분위기·가사 → 홍보 노래</p><div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>울릉도 오징어를 홍보하는 신나는 트로트를 만들어줘.
+후렴에 "울릉도"를 반복하고, 밝고 경쾌하게.</code></div><div class="audio-card" style="margin-top:12px;"><div class="audio-title">예시 · 즐거운 여행, 울릉도로!</div><audio controls preload="none" src="assets/ulleung-song-1.mp3">오디오 재생 미지원</audio></div></div>
+      <div class="cap"><h3><span class="ci">🖼️</span>포스터 이미지 <span class="tag-badge teal">🖐 미니체험</span></h3><p class="tname">설명 → 홍보 포스터 이미지</p><div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>울릉도 일출과 독도가 보이는 여행 홍보 포스터를 만들어줘.
+따뜻한 색감, 세로형, 위쪽에 "울릉도" 큰 제목이 들어갈 공간.</code></div><p style="margin-top:12px; font-size:1.02rem; color:var(--muted);">이미지 생성 AI(Gemini·ChatGPT 등)에 붙여넣고 결과를 저장해 보세요.</p></div>
+      <div class="cap today"><h3><span class="ci">💻</span>울릉도 홍보 웹페이지 <span class="tag-badge primary">⭐ 오늘 메인</span></h3><p class="tname">오늘 직접 만들어 QR까지</p><p>아래 예시가 <b>오늘 여러분이 완성할 결과물</b>입니다. 재료를 만들고, 코드를 받고, 배포해 QR로 공유합니다.</p><a class="btn small" href="example.html" target="_blank" rel="noopener" style="margin-top:12px;">완성 예시 새 탭에서 보기</a></div>
+    </div>
+    <div class="subhead">⭐ 오늘의 메인 · 완성 웹페이지 미리보기</div>
     <div class="mockups">
       <div class="frame-desktop"><div class="bar" aria-hidden="true"><i></i><i></i><i></i></div>
         <iframe src="example.html" title="완성 웹페이지 예시 (데스크톱)" loading="lazy"></iframe>
@@ -557,78 +599,9 @@ flowchart LR
 </section>
 
 
-<!-- ===== 02 AI 결과물 맛보기 ===== -->
-<section class="section" id="taste" style="background:var(--cream);">
-  <span class="sec-no" aria-hidden="true">02</span>
-  <div class="container">
-    <div class="section-head">
-      <span class="eyebrow">먼저 보는 AI 결과물</span>
-      <h2>AI로 <span class="hl">음성 소개와 홍보 노래</span>도 만들 수 있습니다</h2>
-      <p class="kicker">오늘 직접 실습할 핵심은 홍보 웹페이지 제작이지만, AI가 콘텐츠를 얼마나 다양하게 바꿀 수 있는지 먼저 맛봅니다. 아래 예시는 듣기만 하고 넘어가도 됩니다.</p>
-    </div>
-    <div class="cols-2">
-      <div class="card">
-        <div class="pb-head"><span class="tag-badge">음성 · NotebookLM</span><h3>내 자료가 팟캐스트 소개로</h3></div>
-        <p>소개글과 FAQ를 자료로 넣으면, 두 진행자가 대화하듯 설명하는 오디오가 만들어집니다. 아래는 해울림식당 소개 예시입니다.</p>
-        <div class="audio-card" style="margin-top:14px;">
-          <div class="audio-title">해울림식당 음성 소개 예시</div>
-          <div class="audio-note">두 진행자가 위치·대표 메뉴·이용 팁을 대화로 소개합니다.</div>
-          <audio controls preload="none" src="assets/notebooklm-audio-overview.mp3">브라우저가 오디오 재생을 지원하지 않습니다.</audio>
-        </div>
-        <figure class="img-band" style="margin-top:14px;">
-          <img src="assets/notebooklm-home.png" alt="NotebookLM 시작 화면" loading="lazy">
-          <figcaption><b>NotebookLM 예시 화면.</b> 관광 소개 자료가 음성 콘텐츠로 바뀔 수 있다는 점만 확인합니다.</figcaption>
-        </figure>
-      </div>
-      <div class="card">
-        <div class="pb-head"><span class="tag-badge">음악 · Suno</span><h3>울릉도 홍보 노래</h3></div>
-        <p>AI로 스타일과 가사를 정리하면 짧은 홍보 노래도 만들 수 있습니다. 수업에서는 결과 예시만 들어보고, 메인 실습은 웹페이지 완성에 집중합니다.</p>
-        <div class="result-audio" style="margin-top:14px;">
-          <div class="audio-card"><div class="audio-title">즐거운 여행, 울릉도로 떠나요!</div><div class="audio-note">청량한 K-pop / 모던 포크 록 예시</div><audio controls preload="none" src="assets/ulleung-song-1.mp3">오디오 재생 미지원</audio></div>
-        </div>
-        <div class="shot-grid" style="margin-top:18px;">
-          <figure class="shot"><img src="assets/suno-flow-1-gemini-style.png" alt="Gemini가 Suno용 스타일 키워드를 설계한 화면" loading="lazy"><figcaption><b>Style</b>음악 분위기 키워드</figcaption></figure>
-          <figure class="shot"><img src="assets/suno-flow-4-suno-input.png" alt="Suno 입력창 화면" loading="lazy"><figcaption><b>Suno</b>스타일과 가사 입력</figcaption></figure>
-        </div>
-      </div>
-    </div>
-    <div class="notice"><strong>오늘의 본 실습:</strong> 음성과 노래는 “AI 활용 가능성”을 보여주는 예시입니다. 실제로 완주할 결과물은 <b>내 관광 홍보 웹페이지 + GitHub Pages 공개 URL + QR 코드</b>입니다.</div>
-  </div>
-</section>
-
-
-<!-- ===== 03 STEP 1 · AI 기본 ===== -->
-<section class="section" id="whatai" style="background:var(--cream);">
-  <span class="sec-no" aria-hidden="true">03</span>
-  <div class="container">
-    <div class="section-head">
-      <span class="step-badge"><span class="n">STEP 1</span> AI 기본과 안전 규칙</span>
-      <h2>AI는 <span class="hl">초안 도우미</span>입니다</h2>
-      <p class="kicker">처음에는 원리를 길게 외우지 않아도 됩니다. 오늘은 딱 세 가지만 기억합니다. <b>AI는 초안 도우미다.</b> <b>틀릴 수 있다.</b> <b>개인정보는 넣지 않는다.</b></p>
-    </div>
-    <div class="cols-2">
-      <div class="card"><div class="ic-lg">1</div><h3>초안 도우미</h3><p>제목 후보, 소개문, FAQ, 영어 안내, 웹페이지 HTML처럼 <b>처음 결과물</b>을 빠르게 만들어 줍니다.</p></div>
-      <div class="card"><div class="ic-lg" style="background:var(--secondary-soft)">2</div><h3>틀릴 수 있음</h3><p>가격, 운영시간, 배편, 주소, 전화번호는 틀릴 수 있습니다. 공개 전에는 사람이 직접 확인합니다.</p></div>
-      <div class="card"><div class="ic-lg" style="background:var(--tertiary-soft)">3</div><h3>개인정보 금지</h3><p>주민등록번호, 카드번호, 손님 연락처, 내부 매출, 개인 대화처럼 민감한 정보는 넣지 않습니다.</p></div>
-    </div>
-    <div class="pb-label"><span class="tag">오늘의 사용 공식</span> AI에게 이렇게 부탁합니다</div>
-    <div class="formula">
-      <div class="fx">역할<small>관광 홍보 전문가</small></div>
-      <div class="op">+</div>
-      <div class="fx">내 정보<small>이름·위치·장점</small></div>
-      <div class="op">+</div>
-      <div class="fx">결과 형식<small>표·3줄·FAQ</small></div>
-      <div class="op">=</div>
-      <div class="fx eq">쓸 만한 초안<small>작업장에 저장</small></div>
-    </div>
-    <div class="notice"><strong>오늘의 목표:</strong> AI를 완벽히 이해하는 것이 아니라, <b>내 관광 홍보 페이지를 다시 고칠 수 있는 상태</b>로 완성하는 것입니다.</div>
-    <div class="step-next"><a href="#tools">실습 도구 확인하기 →</a></div>
-  </div>
-</section>
-
 <!-- ===== 04 실전 무료 AI 도구 소개 ===== -->
 <section class="section" id="tools" style="background:var(--cream);">
-  <span class="sec-no" aria-hidden="true">04</span>
+  <span class="sec-no" aria-hidden="true">03</span>
   <div class="container">
     <div class="section-head">
       <span class="eyebrow">이번 실습의 중심 도구</span>
@@ -689,10 +662,10 @@ flowchart LR
 
 <!-- ===== 05 초급 환경설정 ===== -->
 <section class="section" id="setup">
-  <span class="sec-no" aria-hidden="true">05</span>
+  <span class="sec-no" aria-hidden="true"></span>
   <div class="container">
     <div class="section-head">
-      <span class="step-badge"><span class="n">STEP 2</span> 시작 준비</span>
+      <span class="step-badge"><span class="n">STEP 3</span> 시작 준비</span>
       <h2>먼저 <span class="hl">Gemini와 ChatGPT</span>만 켭니다</h2>
       <p class="kicker">이번 실습의 시작은 간단합니다. 브라우저를 열고, Gemini에 로그인하고, ChatGPT도 열어 둡니다. 그다음 같은 질문을 두 AI에 넣어 보며 차이를 비교합니다.</p>
     </div>
@@ -784,56 +757,16 @@ flowchart LR
       <label><input type="checkbox" data-check="setup-3"> 두 답변 중 더 쉬운 문장 1개를 골랐다</label>
       <label><input type="checkbox" data-check="setup-4"> 개인정보와 확인 필요 정보를 AI에 그대로 넣지 않기로 했다</label>
     </div>
-    <div class="step-next"><a href="#roadmap">전체 작업 흐름 보기 →</a></div>
+    <div class="step-next"><a href="#workspace">실습 시작하기 →</a></div>
   </div>
 </section>
-
-<!-- ===== 05 완주 흐름 ===== -->
-<section class="section" id="roadmap">
-  <span class="sec-no" aria-hidden="true">06</span>
-  <div class="container">
-    <div class="section-head">
-      <span class="eyebrow">완주 흐름 · 길을 잃지 않는 순서</span>
-      <h2>이 순서대로 하면 <span class="hl">홍보 페이지와 QR</span>까지 갑니다</h2>
-      <p class="kicker">중간에 여러 도구가 나와도 메인 길은 하나입니다. Gemini와 ChatGPT로 필요한 문장과 HTML을 만들고, GitHub Pages로 공개합니다.</p>
-    </div>
-    <div class="mermaid-wrap">
-<pre class="mermaid">
-flowchart LR
-  A(["1 AI 이해"]) --> B(["2 계정 준비"])
-  B --> C(["3 첫 질문"])
-  C --> D(["4 작업장"])
-  D --> E(["5 질문 조사"])
-  E --> F(["6 소개문"])
-  F --> G(["7 다국어"])
-      G --> H(["8 HTML 만들기"])
-      H --> I(["9 점검"])
-      I --> J(["10 QR 공유"])
-</pre>
-    </div>
-    <div class="roadmap">
-      <a class="rm" href="#whatai"><div class="rmn">1<b>이해</b></div><div><h3>AI를 짧게 이해하기</h3><p>AI는 초안 도우미입니다. 틀릴 수 있고, 개인정보는 넣지 않습니다.</p></div></a>
-      <a class="rm" href="#setup"><div class="rmn">2<b>준비</b></div><div><h3>Gemini와 ChatGPT 켜기</h3><p>로그인하고 입력창을 찾은 뒤, 같은 질문을 넣어볼 준비를 합니다.</p></div></a>
-      <a class="rm" href="#step1"><div class="rmn">3<b>질문</b></div><div><h3>첫 질문 보내기</h3><p>Gemini와 ChatGPT 답변을 비교하고 마음에 드는 문장을 고릅니다.</p></div></a>
-      <a class="rm" href="#workspace"><div class="rmn">4<b>저장</b></div><div><h3>작업장 채우기</h3><p>내 주제, 위치, 장점, 문의, AI 결과를 한곳에 모읍니다.</p></div></a>
-      <a class="rm" href="#step5"><div class="rmn">5<b>질문</b></div><div><h3>관광객 질문 조사하기</h3><p>FAQ와 확인 필요 항목을 먼저 만들어 페이지의 뼈대를 세웁니다.</p></div></a>
-      <a class="rm" href="#step2"><div class="rmn">6<b>문구</b></div><div><h3>소개문과 제목 만들기</h3><p>큰 제목, 한 줄 소개, SNS 문구를 만들고 작업장에 저장합니다.</p></div></a>
-      <a class="rm" href="#step3"><div class="rmn">7<b>언어</b></div><div><h3>외국어 안내 만들기</h3><p>영어 안내, 음식 설명, 알레르기·예약 문구를 만듭니다.</p></div></a>
-      <a class="rm" href="#step7"><div class="rmn">8<b>제작</b></div><div><h3>AI로 index.html 만들기</h3><p>작업장 재료를 바탕으로 GitHub Pages에 올릴 완성 HTML 코드를 받습니다.</p></div></a>
-      <a class="rm" href="#checklist"><div class="rmn">9<b>점검</b></div><div><h3>공개 전 확인하기</h3><p>구성, 사실, 외국어, 사진 권리, 모바일 화면을 확인합니다.</p></div></a>
-      <a class="rm" href="#publish"><div class="rmn">10<b>공유</b></div><div><h3>GitHub Pages URL과 QR 만들기</h3><p>GitHub Pages URL을 휴대폰에서 열어보고 네이버 QR로 바꿉니다.</p></div></a>
-    </div>
-    <div class="notice"><strong>실습 원칙:</strong> 최소 완주는 위 10단계만 따라가면 됩니다. NotebookLM과 Suno는 초반 맛보기 예시이고, 에이전트와 Codex는 뒤쪽에서 “이런 것도 가능하다”는 선택 예시로만 봅니다.</div>
-  </div>
-</section>
-
 
 <!-- ===== 06 STEP 3 · 첫 AI 실습 ===== -->
 <section class="section" id="step1" style="background:var(--cream);">
-  <span class="sec-no" aria-hidden="true">07</span>
+  <span class="sec-no" aria-hidden="true">04</span>
   <div class="container">
     <div class="section-head">
-      <span class="step-badge"><span class="n">STEP 3</span> Gemini와 ChatGPT 첫 실습</span>
+      <span class="step-badge"><span class="n">STEP 4</span> 프롬프트 엔지니어링</span>
       <span class="eyebrow" style="color:var(--muted);"><span class="diff easy">난이도 · 아주 쉬움</span></span>
       <h2>같은 질문도 <span class="hl">AI마다 답이 다르게</span> 나옵니다</h2>
       <p class="kicker">먼저 Gemini로 초안을 만들고, 같은 요청을 ChatGPT에도 넣어 봅니다. 어느 쪽이 더 쉽고 쓸 만한지 고른 뒤, “더 짧게”, “더 친절하게”, “표로”처럼 이어서 고치는 연습을 합니다.</p>
@@ -1012,10 +945,10 @@ flowchart LR
 
 <!-- ===== 07 STEP 4 · 내 작업장 ===== -->
 <section class="section" id="workspace">
-  <span class="sec-no" aria-hidden="true">08</span>
+  <span class="sec-no" aria-hidden="true">05</span>
   <div class="container">
     <div class="section-head">
-      <span class="step-badge"><span class="n">STEP 4</span> 내 작업장</span>
+      <span class="step-badge"><span class="n">STEP 5</span> 실습 · 내 작업장</span>
       <h2>AI 답변에서 <span class="hl">쓸 문장만 골라</span> 여기에 모읍니다</h2>
       <p class="kicker">AI 답변 전체를 다 쓸 필요는 없습니다. 마음에 드는 제목, 소개문, FAQ, 외국어 안내, 확인할 사실만 골라 붙여 두세요. 새로고침해도 이 브라우저에 저장됩니다.</p>
     </div>
@@ -1039,17 +972,160 @@ flowchart LR
         <button class="btn light" type="button" onclick="clearWorkspace()">작업장 비우기</button>
       </div>
     </div>
-    <div class="notice"><strong>작업장 사용법:</strong> 각 STEP의 결과를 여기에 붙여 둔 뒤, STEP 8에서 <b>“아래 작업장 내용을 바탕으로 GitHub Pages에 올릴 index.html을 만들어줘”</b>라고 요청하면 됩니다.</div>
+    <div class="notice"><strong>작업장 사용법:</strong> 각 STEP의 결과를 여기에 붙여 둔 뒤, STEP 6에서 <b>“아래 작업장 내용을 바탕으로 GitHub Pages에 올릴 index.html을 만들어줘”</b>라고 요청하면 됩니다.</div>
+  </div>
+</section>
+
+
+<!-- ===== 09 STEP 6 · 관광 홍보 문구 ===== -->
+<section class="section" id="step2" style="background:var(--cream);">
+  <span class="sec-no" aria-hidden="true"></span>
+  <div class="container">
+    <div class="section-head">
+      <span class="step-badge"><span class="n">STEP 5</span> 실습 · 소개 글 만들기</span>
+      <span class="eyebrow" style="color:var(--muted);"><span class="diff easy">난이도 · 쉬움</span></span>
+      <h2>웹페이지에 들어갈 <span class="hl">글 재료</span>를 만듭니다</h2>
+      <p class="kicker">여기서 나온 제목·한 줄 소개·SNS 글은 STEP 6에서 웹페이지에 그대로 씁니다.</p>
+    </div>
+    <figure class="img-band">
+      <img src="assets/ulleung-dodong.jpg" alt="울릉도 도동항 주변 마을과 바다 풍경" loading="lazy">
+      <figcaption><b>내 동네를 이렇게 소개합니다.</b> 우리 가게가 있는 도동항 같은 실제 장소를, AI와 함께 매력적인 한 줄로 바꿔봅니다.</figcaption>
+    </figure>
+    <span class="follow">먼저 Gemini에 붙여넣고, 마음에 드는 문장은 ChatGPT로 한 번 더 다듬어 보세요</span>
+    <div class="card">
+      <div class="pb-head"><span class="tag-badge primary">홍보 문구</span><h3>소개글·SNS·사이트 본문 만들기</h3></div>
+      <div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>너는 울릉도 관광 홍보 전문가야.
+아래 정보로 내 주제의 홍보자료를 만들어줘.
+
+[내 정보]
+- 이름: [가게/숙소/프로그램 이름]
+- 종류: [식당/숙소/체험/관광지/특산품]
+- 위치: [위치]
+- 대표 메뉴/서비스: [대표 메뉴·객실·체험]
+- 장점: [강조하고 싶은 특징]
+- 문의: [전화번호 또는 문의 방법]
+
+[만들어줄 것]
+1. 큰 제목 5개
+2. 한 줄 소개 5개
+3. 인스타그램 글 1개 (해시태그 10개 포함)
+4. 웹페이지 소개 섹션에 넣을 짧은 본문 1개
+
+조건: 중학생도 이해하게 쉽게 / 과장 없이 /
+가격·시간·배편은 "확인 필요"로 표시</code></div>
+      <div class="form-actions"><button class="btn teal small" type="button" onclick="copyFilledPrompt('intro')">내 정보 넣어서 복사</button></div>
+      <div class="pb-label"><span class="tag">예시 결과</span> 가상의 “해울림식당”</div>
+      <div class="example">
+        <div class="ex-row"><span class="ex-key">한 줄 소개</span><span class="ex-val">도동항 3분 거리, 바다를 바라보며 즐기는 자연산 울릉도 밥상</span></div>
+        <div class="ex-row"><span class="ex-key">인스타그램 글</span><span class="ex-val">울릉도 도동항 바로 앞, 가족이 직접 운영하는 해울림식당입니다. 자연산 재료로 준비한 따개비밥과 오징어내장탕을 바다 전망과 함께 즐겨보세요. 방문 전 운영시간과 예약 가능 여부를 확인해 주세요.<br>#울릉도맛집 #도동항 #따개비밥 #오징어내장탕 #울릉도여행</span></div>
+      </div>
+      <div class="learn"><b>이 STEP에서 배운 것</b> · 역할 부여 / 대상 지정 / 개수·형식 지정 / 대화로 다듬기</div>
+      <div class="pb-label"><span class="tag">결과 저장</span> AI 답변을 받은 뒤 할 일</div>
+      <div class="steps">
+        <div class="step"><b>1</b><span>제목 후보 중 가장 마음에 드는 것 <b>1개</b>를 고릅니다.</span></div>
+        <div class="step"><b>2</b><span>한 줄 소개 중 실제로 쓸 문장 <b>1개</b>를 고릅니다.</span></div>
+        <div class="step"><b>3</b><span><a href="#workspace">내 작업장</a>의 <b>제목 후보</b>, <b>한 줄 소개 / 소개문</b> 칸에 붙여넣습니다.</span></div>
+        <div class="step"><b>4</b><span>가격·운영시간·배편처럼 확인해야 할 내용은 <b>확인 필요 항목</b>에 적습니다.</span></div>
+      </div>
+
+      <div class="memo">
+        <div class="memo-h">📋 결과 붙여넣기 <span>이 브라우저에 자동 저장돼요</span></div>
+        <textarea data-memo="s2-intro" placeholder="AI가 만든 제목·한 줄 소개·SNS 글 중에서 웹페이지에 쓸 문장을 여기에 붙여넣으세요"></textarea>
+        <div class="memo-actions"><button class="btn light small" type="button" onclick="copyMemo(this)">복사</button><span class="memo-status"></span></div>
+      </div>
+
+      <div class="drill">
+        <div class="dh">✍️ 실습 더 해보기 <span class="diff easy">골라서 3개 이상</span></div>
+        <h4><span class="dn">2-2</span>블로그 글 제목 뽑기</h4>
+        <div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>울릉도 [내 주제]로 관광객이 검색할 만한
+블로그 글 제목 10개를 만들어줘.
+검색에 잘 걸릴 키워드를 넣고, 클릭하고 싶게 작성해줘.</code></div>
+        <h4><span class="dn">2-3</span>릴스·쇼츠 15초 대본</h4>
+        <div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>[내 주제]를 소개하는 15초 릴스 대본을 만들어줘.
+장면별로 나누고, 화면 자막과 배경 설명을 함께 적어줘.</code></div>
+        <h4><span class="dn">2-4</span>계절별 홍보 문구</h4>
+        <div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>[내 주제]의 봄·여름·가을·겨울 계절별 홍보 문구를
+각 2개씩 만들어줘. 짧고 감성적으로, 과장 없이.</code></div>
+      </div>
+    </div>
+    <div class="pb-label"><span class="tag">보너스</span> 사진 + AI 문구 = 홍보 포스터</div>
+    <figure class="img-band poster-band">
+      <img src="assets/ulleung-bongnae.jpg" alt="울릉도 봉래폭포" loading="lazy">
+      <figcaption><b>울릉도 봉래폭포.</b> 이런 실제 사진에 AI로 만든 한 줄 문구를 얹으면, 그대로 훌륭한 홍보 포스터가 됩니다.</figcaption>
+    </figure>
+  </div>
+</section>
+
+
+<!-- ===== 10 STEP 7 · 글로벌 콘텐츠 ===== -->
+<section class="section" id="step3">
+  <span class="sec-no" aria-hidden="true"></span>
+  <div class="container">
+    <div class="section-head">
+      <span class="step-badge"><span class="n">STEP 5</span> 실습 · 다국어 안내</span>
+      <span class="eyebrow" style="color:var(--muted);"><span class="diff mid">난이도 · 중간</span></span>
+      <h2>외국인도 이해하는 <span class="hl-t">다국어 안내</span> 만들기</h2>
+      <p class="kicker">울릉도는 외국인 관광객도 늘고 있습니다. 영어·일본어 안내와, 문화가 달라도 헷갈리지 않는 쉬운 표현을 만들어 둡니다.</p>
+    </div>
+    <figure class="img-band">
+      <img src="assets/ulleungdo-squid.jpg" alt="울릉도 오징어 — 대표 특산물이자 관광 먹거리" loading="lazy">
+      <figcaption><b>예: 울릉도 오징어.</b> “오징어내장탕”을 그대로 번역하면 외국인은 이해하기 어렵습니다. AI에게 <b>재료·맛·특징을 함께 설명</b>해 달라고 하면 자연스러운 안내가 됩니다.</figcaption>
+    </figure>
+    <div class="card">
+      <div class="pb-head"><span class="tag-badge teal">다국어 안내</span><h3>영어·일본어 안내문 + 음식 설명</h3></div>
+      <div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>우리 가게를 처음 방문하는 외국인 관광객을 위한
+영어와 일본어 안내문을 만들어줘.
+
+[내 정보]
+- 이름 / 종류 / 위치 / 대표 메뉴 / 문의
+
+[만들어줄 것]
+1. 영어 안내 3줄 (짧고 쉬운 문장)
+2. 일본어 안내 3줄
+3. 대표 메뉴를 외국인이 이해하게 재료·맛과 함께 설명
+4. 외국인이 자주 묻는 질문 3개와 답 (영어)
+
+조건: 쉬운 표현 / 예약·결제·알레르기 분명하게 / 정중하게</code></div>
+      <div class="form-actions"><button class="btn teal small" type="button" onclick="copyFilledPrompt('global')">내 정보 넣어서 복사</button></div>
+      <div class="pb-label"><span class="tag">예시 결과</span> 영어 안내</div>
+      <div class="example"><div class="ex-row"><span class="ex-val muted">Family-run seafood restaurant, 3 min walk from Dodong Port.<br>Signature dishes: barnacle rice &amp; squid soup with fresh local catch.<br>Ocean-view seats available — reservation recommended (card payment OK).</span></div></div>
+      <div class="tip"><strong>🌱 생태관광 안내도 함께.</strong> “자연 보호(정해진 길로만), 안전(미끄럼·낙석), 계절별 주의(겨울 결항 가능)”를 3~5줄로 정리해 달라고 이어서 부탁하세요.</div>
+      <div class="pb-label"><span class="tag">결과 저장</span> 외국어 안내를 받은 뒤 할 일</div>
+      <div class="steps">
+        <div class="step"><b>1</b><span>영어 안내 3줄 중 어려운 단어가 있으면 <b>“더 쉬운 영어로”</b> 다시 요청합니다.</span></div>
+        <div class="step"><b>2</b><span>음식 설명에 <b>재료, 맛, 알레르기</b>가 들어갔는지 확인합니다.</span></div>
+        <div class="step"><b>3</b><span><a href="#workspace">내 작업장</a>의 <b>외국어 안내</b> 칸에 최종 문장을 붙여넣습니다.</span></div>
+      </div>
+
+      <div class="memo">
+        <div class="memo-h">📋 결과 붙여넣기 <span>이 브라우저에 자동 저장돼요</span></div>
+        <textarea data-memo="s3-global" placeholder="AI가 만든 영어·일본어 안내문과 음식 설명을 여기에 붙여넣으세요"></textarea>
+        <div class="memo-actions"><button class="btn light small" type="button" onclick="copyMemo(this)">복사</button><span class="memo-status"></span></div>
+      </div>
+
+      <div class="drill">
+        <div class="dh">🌐 실습 더 해보기 <span class="diff mid">골라서 3개 이상</span></div>
+        <h4><span class="dn">3-2</span>외국인 FAQ (영어)</h4>
+        <div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>외국인 관광객이 자주 묻는 질문 5개와 답을 영어로 만들어줘.
+배편·결제·예약·주차·와이파이를 포함하고, 쉬운 문장으로.</code></div>
+        <h4><span class="dn">3-3</span>다국어 메뉴판</h4>
+        <div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>내 메뉴 [메뉴 목록]을 한국어·영어·일본어 메뉴판으로 만들어줘.
+각 메뉴에 한 줄 설명과 알레르기 안내를 넣어줘.</code></div>
+        <h4><span class="dn">3-4</span>생태관광 주의 안내 (한·영)</h4>
+        <div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>생태관광 방문객을 위한 자연 보호·안전·계절 주의 안내를
+한국어와 영어로 각 4줄씩 만들어줘. 정중하고 쉬운 표현으로.</code></div>
+      </div>
+    </div>
   </div>
 </section>
 
 
 <!-- ===== 08 STEP 5 · 관광객 질문 조사 ===== -->
 <section class="section" id="step5">
-  <span class="sec-no" aria-hidden="true">09</span>
+  <span class="sec-no" aria-hidden="true"></span>
   <div class="container">
     <div class="section-head">
-      <span class="step-badge"><span class="n">STEP 5</span> 관광객 질문 조사</span>
+      <span class="step-badge"><span class="n">STEP 5</span> 실습 · 방문자 질문 조사</span>
       <span class="eyebrow" style="color:var(--muted);"><span class="diff mid">난이도 · 중간</span></span>
       <h2>웹페이지에 넣을 <span class="hl-t">질문과 확인 항목</span>을 먼저 만듭니다</h2>
       <p class="kicker">홍보 페이지는 예쁜 문장보다 <b>관광객이 궁금해하는 것에 답하는 구조</b>가 중요합니다. FAQ, 검색 키워드, 사실 확인 목록을 먼저 만들어 페이지의 뼈대를 세웁니다.</p>
@@ -1115,6 +1191,12 @@ flowchart LR
         <div class="step"><b>3</b><span>AI가 “확인 필요”라고 표시한 항목은 <b>확인 필요 항목</b> 칸에 옮깁니다.</span></div>
       </div>
 
+      <div class="memo">
+        <div class="memo-h">📋 결과 붙여넣기 <span>이 브라우저에 자동 저장돼요</span></div>
+        <textarea data-memo="s5-research" placeholder="AI가 정리한 FAQ·검색 키워드·확인 필요 항목을 여기에 붙여넣으세요"></textarea>
+        <div class="memo-actions"><button class="btn light small" type="button" onclick="copyMemo(this)">복사</button><span class="memo-status"></span></div>
+      </div>
+
       <div class="drill">
         <div class="dh">🔎 리서치 실습 더 해보기 <span class="diff mid">골라서 3개 이상</span></div>
         <h4><span class="dn">5-2</span>경쟁 지역 벤치마킹</h4>
@@ -1132,143 +1214,48 @@ SNS 콘텐츠 아이디어 10개를 이유와 함께 제안해줘.</code></div>
 </section>
 
 
-<!-- ===== 09 STEP 6 · 관광 홍보 문구 ===== -->
-<section class="section" id="step2" style="background:var(--cream);">
-  <span class="sec-no" aria-hidden="true">10</span>
+<!-- ===== 더 알아보기 · AI 활용 사례 ===== -->
+<section class="section" id="can">
+  <span class="sec-no" aria-hidden="true"></span>
   <div class="container">
     <div class="section-head">
-      <span class="step-badge"><span class="n">STEP 6</span> 관광 홍보 문구 만들기</span>
-      <span class="eyebrow" style="color:var(--muted);"><span class="diff easy">난이도 · 쉬움</span></span>
-      <h2>웹페이지에 들어갈 <span class="hl">글 재료</span>를 만듭니다</h2>
-      <p class="kicker">여기서 나온 제목·한 줄 소개·SNS 글은 STEP 8에서 웹페이지에 그대로 씁니다.</p>
+      <span class="step-badge"><span class="n">STEP 5</span> 실습 · 다양한 실습 (골라서)</span>
+      <h2>내 업무에 맞는 걸 <span class="hl">골라서</span> AI로 만들어봅니다</h2>
+      <p class="kicker">앞의 실습(소개 글·다국어·질문 조사)이 웹페이지 재료였다면, 여기서는 같은 방법을 <b>현장 업무</b>로 넓힙니다. 전부 할 필요는 없어요. 아래에서 <b>내 일에 맞는 것 1~2개</b>를 골라 바로 만들어보세요.</p>
     </div>
-    <figure class="img-band">
-      <img src="assets/ulleung-dodong.jpg" alt="울릉도 도동항 주변 마을과 바다 풍경" loading="lazy">
-      <figcaption><b>내 동네를 이렇게 소개합니다.</b> 우리 가게가 있는 도동항 같은 실제 장소를, AI와 함께 매력적인 한 줄로 바꿔봅니다.</figcaption>
+    <div class="cap-grid">
+      <div class="cap"><h3><span class="ci">📱</span>SNS 홍보 글</h3><p class="tname">인스타·블로그·페이스북 게시글</p><div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>내 [주제]를 홍보하는 인스타그램 게시글 1개를 써줘.
+방문하고 싶게 감성적으로 쓰고, 마지막에 어울리는 해시태그 10개를 붙여줘. 과장은 빼고.</code></div></div>
+      <div class="cap"><h3><span class="ci">🗺️</span>관광 코스·상품 소개</h3><p class="tname">추천 코스 글 + 한 줄 카피</p><div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>울릉도 [주제]를 즐기는 반나절·1박2일 추천 코스를
+이동 동선·소요시간과 함께 정리하고, 홍보용 한 줄 카피 3개도 만들어줘.</code></div></div>
+      <div class="cap"><h3><span class="ci">🌐</span>다국어 안내</h3><p class="tname">영어·일본어 안내 문구</p><div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>우리 [주제]를 처음 방문하는 외국인을 위한
+영어와 일본어 안내문을 각 3줄로 쉽게 써줘. 예약·결제·주의사항은 분명하게.</code></div></div>
+      <div class="cap"><h3><span class="ci">🎙️</span>투어 멘트</h3><p class="tname">맞이 인사 + 코스 설명 스크립트</p><div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>외국인 단체 관광객을 맞이하는 인사말과,
+[주제] 코스를 소개하는 2분 분량 가이드 멘트를 쉬운 한국어로 써줘. 안전·자연보호 안내도 넣어줘.</code></div></div>
+      <div class="cap"><h3><span class="ci">💬</span>문의·민원 답변</h3><p class="tname">정중한 답변 초안</p><div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>관광객이 "[문의·민원 내용]"이라고 물어봤어.
+정중하고 신뢰가 가는 답변을 공식·친근 두 가지 톤으로 써줘.</code></div></div>
+      <div class="cap"><h3><span class="ci">📣</span>보도자료·홍보 이메일</h3><p class="tname">행사 알림, 제휴처 발송</p><div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>울릉도 [행사·축제 이름]을 알리는 짧은 보도자료 초안과,
+여행사·언론에 보낼 홍보 이메일을 각각 써줘. 일정·장소·연락처는 [빈칸]으로 둬.</code></div></div>
+    </div>
+    <div class="memo">
+      <div class="memo-h">📋 결과 붙여넣기 <span>이 브라우저에 자동 저장돼요</span></div>
+      <textarea data-memo="field" placeholder="위에서 고른 실습의 AI 결과를 여기에 붙여넣으세요"></textarea>
+      <div class="memo-actions"><button class="btn light small" type="button" onclick="copyMemo(this)">복사</button><span class="memo-status"></span></div>
+    </div>
+    <figure class="img-band" style="margin-top:24px;">
+      <img src="assets/ulleung-scenic.jpg" alt="울릉도 해안 절벽과 에메랄드빛 동해 바다" loading="lazy">
+      <figcaption><b>이 모든 매력을 콘텐츠로.</b> 울릉도의 풍경·음식·체험을 글·이미지·웹페이지로 바꾸는 것이 AI 활용의 실전입니다.</figcaption>
     </figure>
-    <span class="follow">먼저 Gemini에 붙여넣고, 마음에 드는 문장은 ChatGPT로 한 번 더 다듬어 보세요</span>
-    <div class="card">
-      <div class="pb-head"><span class="tag-badge primary">홍보 문구</span><h3>소개글·SNS·사이트 본문 만들기</h3></div>
-      <div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>너는 울릉도 관광 홍보 전문가야.
-아래 정보로 내 주제의 홍보자료를 만들어줘.
-
-[내 정보]
-- 이름: [가게/숙소/프로그램 이름]
-- 종류: [식당/숙소/체험/관광지/특산품]
-- 위치: [위치]
-- 대표 메뉴/서비스: [대표 메뉴·객실·체험]
-- 장점: [강조하고 싶은 특징]
-- 문의: [전화번호 또는 문의 방법]
-
-[만들어줄 것]
-1. 큰 제목 5개
-2. 한 줄 소개 5개
-3. 인스타그램 글 1개 (해시태그 10개 포함)
-4. 웹페이지 소개 섹션에 넣을 짧은 본문 1개
-
-조건: 중학생도 이해하게 쉽게 / 과장 없이 /
-가격·시간·배편은 "확인 필요"로 표시</code></div>
-      <div class="form-actions"><button class="btn teal small" type="button" onclick="copyFilledPrompt('intro')">내 정보 넣어서 복사</button></div>
-      <div class="pb-label"><span class="tag">예시 결과</span> 가상의 “해울림식당”</div>
-      <div class="example">
-        <div class="ex-row"><span class="ex-key">한 줄 소개</span><span class="ex-val">도동항 3분 거리, 바다를 바라보며 즐기는 자연산 울릉도 밥상</span></div>
-        <div class="ex-row"><span class="ex-key">인스타그램 글</span><span class="ex-val">울릉도 도동항 바로 앞, 가족이 직접 운영하는 해울림식당입니다. 자연산 재료로 준비한 따개비밥과 오징어내장탕을 바다 전망과 함께 즐겨보세요. 방문 전 운영시간과 예약 가능 여부를 확인해 주세요.<br>#울릉도맛집 #도동항 #따개비밥 #오징어내장탕 #울릉도여행</span></div>
-      </div>
-      <div class="learn"><b>이 STEP에서 배운 것</b> · 역할 부여 / 대상 지정 / 개수·형식 지정 / 대화로 다듬기</div>
-      <div class="pb-label"><span class="tag">결과 저장</span> AI 답변을 받은 뒤 할 일</div>
-      <div class="steps">
-        <div class="step"><b>1</b><span>제목 후보 중 가장 마음에 드는 것 <b>1개</b>를 고릅니다.</span></div>
-        <div class="step"><b>2</b><span>한 줄 소개 중 실제로 쓸 문장 <b>1개</b>를 고릅니다.</span></div>
-        <div class="step"><b>3</b><span><a href="#workspace">내 작업장</a>의 <b>제목 후보</b>, <b>한 줄 소개 / 소개문</b> 칸에 붙여넣습니다.</span></div>
-        <div class="step"><b>4</b><span>가격·운영시간·배편처럼 확인해야 할 내용은 <b>확인 필요 항목</b>에 적습니다.</span></div>
-      </div>
-
-      <div class="drill">
-        <div class="dh">✍️ 실습 더 해보기 <span class="diff easy">골라서 3개 이상</span></div>
-        <h4><span class="dn">2-2</span>블로그 글 제목 뽑기</h4>
-        <div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>울릉도 [내 주제]로 관광객이 검색할 만한
-블로그 글 제목 10개를 만들어줘.
-검색에 잘 걸릴 키워드를 넣고, 클릭하고 싶게 작성해줘.</code></div>
-        <h4><span class="dn">2-3</span>릴스·쇼츠 15초 대본</h4>
-        <div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>[내 주제]를 소개하는 15초 릴스 대본을 만들어줘.
-장면별로 나누고, 화면 자막과 배경 설명을 함께 적어줘.</code></div>
-        <h4><span class="dn">2-4</span>계절별 홍보 문구</h4>
-        <div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>[내 주제]의 봄·여름·가을·겨울 계절별 홍보 문구를
-각 2개씩 만들어줘. 짧고 감성적으로, 과장 없이.</code></div>
-      </div>
-    </div>
-    <div class="pb-label"><span class="tag">보너스</span> 사진 + AI 문구 = 홍보 포스터</div>
-    <figure class="img-band poster-band">
-      <img src="assets/ulleung-bongnae.jpg" alt="울릉도 봉래폭포" loading="lazy">
-      <figcaption><b>울릉도 봉래폭포.</b> 이런 실제 사진에 AI로 만든 한 줄 문구를 얹으면, 그대로 훌륭한 홍보 포스터가 됩니다.</figcaption>
-    </figure>
-  </div>
-</section>
-
-
-<!-- ===== 10 STEP 7 · 글로벌 콘텐츠 ===== -->
-<section class="section" id="step3">
-  <span class="sec-no" aria-hidden="true">11</span>
-  <div class="container">
-    <div class="section-head">
-      <span class="step-badge"><span class="n">STEP 7</span> 글로벌 콘텐츠 만들기</span>
-      <span class="eyebrow" style="color:var(--muted);"><span class="diff mid">난이도 · 중간</span></span>
-      <h2>외국인도 이해하는 <span class="hl-t">다국어 안내</span> 만들기</h2>
-      <p class="kicker">울릉도는 외국인 관광객도 늘고 있습니다. 영어·일본어 안내와, 문화가 달라도 헷갈리지 않는 쉬운 표현을 만들어 둡니다.</p>
-    </div>
-    <figure class="img-band">
-      <img src="assets/ulleungdo-squid.jpg" alt="울릉도 오징어 — 대표 특산물이자 관광 먹거리" loading="lazy">
-      <figcaption><b>예: 울릉도 오징어.</b> “오징어내장탕”을 그대로 번역하면 외국인은 이해하기 어렵습니다. AI에게 <b>재료·맛·특징을 함께 설명</b>해 달라고 하면 자연스러운 안내가 됩니다.</figcaption>
-    </figure>
-    <div class="card">
-      <div class="pb-head"><span class="tag-badge teal">다국어 안내</span><h3>영어·일본어 안내문 + 음식 설명</h3></div>
-      <div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>우리 가게를 처음 방문하는 외국인 관광객을 위한
-영어와 일본어 안내문을 만들어줘.
-
-[내 정보]
-- 이름 / 종류 / 위치 / 대표 메뉴 / 문의
-
-[만들어줄 것]
-1. 영어 안내 3줄 (짧고 쉬운 문장)
-2. 일본어 안내 3줄
-3. 대표 메뉴를 외국인이 이해하게 재료·맛과 함께 설명
-4. 외국인이 자주 묻는 질문 3개와 답 (영어)
-
-조건: 쉬운 표현 / 예약·결제·알레르기 분명하게 / 정중하게</code></div>
-      <div class="form-actions"><button class="btn teal small" type="button" onclick="copyFilledPrompt('global')">내 정보 넣어서 복사</button></div>
-      <div class="pb-label"><span class="tag">예시 결과</span> 영어 안내</div>
-      <div class="example"><div class="ex-row"><span class="ex-val muted">Family-run seafood restaurant, 3 min walk from Dodong Port.<br>Signature dishes: barnacle rice &amp; squid soup with fresh local catch.<br>Ocean-view seats available — reservation recommended (card payment OK).</span></div></div>
-      <div class="tip"><strong>🌱 생태관광 안내도 함께.</strong> “자연 보호(정해진 길로만), 안전(미끄럼·낙석), 계절별 주의(겨울 결항 가능)”를 3~5줄로 정리해 달라고 이어서 부탁하세요.</div>
-      <div class="pb-label"><span class="tag">결과 저장</span> 외국어 안내를 받은 뒤 할 일</div>
-      <div class="steps">
-        <div class="step"><b>1</b><span>영어 안내 3줄 중 어려운 단어가 있으면 <b>“더 쉬운 영어로”</b> 다시 요청합니다.</span></div>
-        <div class="step"><b>2</b><span>음식 설명에 <b>재료, 맛, 알레르기</b>가 들어갔는지 확인합니다.</span></div>
-        <div class="step"><b>3</b><span><a href="#workspace">내 작업장</a>의 <b>외국어 안내</b> 칸에 최종 문장을 붙여넣습니다.</span></div>
-      </div>
-
-      <div class="drill">
-        <div class="dh">🌐 실습 더 해보기 <span class="diff mid">골라서 3개 이상</span></div>
-        <h4><span class="dn">3-2</span>외국인 FAQ (영어)</h4>
-        <div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>외국인 관광객이 자주 묻는 질문 5개와 답을 영어로 만들어줘.
-배편·결제·예약·주차·와이파이를 포함하고, 쉬운 문장으로.</code></div>
-        <h4><span class="dn">3-3</span>다국어 메뉴판</h4>
-        <div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>내 메뉴 [메뉴 목록]을 한국어·영어·일본어 메뉴판으로 만들어줘.
-각 메뉴에 한 줄 설명과 알레르기 안내를 넣어줘.</code></div>
-        <h4><span class="dn">3-4</span>생태관광 주의 안내 (한·영)</h4>
-        <div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>생태관광 방문객을 위한 자연 보호·안전·계절 주의 안내를
-한국어와 영어로 각 4줄씩 만들어줘. 정중하고 쉬운 표현으로.</code></div>
-      </div>
-    </div>
   </div>
 </section>
 
 
 <!-- ===== 12 STEP 8 · 웹페이지 제작 ===== -->
 <section class="section" id="step7">
-  <span class="sec-no" aria-hidden="true">12</span>
+  <span class="sec-no" aria-hidden="true">06</span>
   <div class="container">
     <div class="section-head">
-      <span class="step-badge"><span class="n">STEP 8</span> 웹페이지 HTML 만들기</span>
+      <span class="step-badge"><span class="n">STEP 6</span> 웹페이지 만들기</span>
       <span class="eyebrow" style="color:var(--muted);"><span class="diff mid">난이도 · 완성</span></span>
       <h2>AI에게 <span class="hl">index.html 전체 코드</span>를 받습니다</h2>
       <p class="kicker">최종 배포는 GitHub Pages로 합니다. 오늘은 사이트 빌더에서 조립하지 않고, Gemini나 ChatGPT가 만든 <b>완성 HTML 코드</b>를 GitHub에 올립니다.</p>
@@ -1368,10 +1355,10 @@ SNS 콘텐츠 아이디어 10개를 이유와 함께 제안해줘.</code></div>
 
 <!-- ===== 12 STEP 9 · 완성 체크리스트 ===== -->
 <section class="section" id="checklist" style="background:var(--cream);">
-  <span class="sec-no" aria-hidden="true">13</span>
+  <span class="sec-no" aria-hidden="true"></span>
   <div class="container">
     <div class="section-head">
-      <span class="step-badge"><span class="n">STEP 9</span> 공개 전 점검</span>
+      <span class="step-badge"><span class="n">STEP 6</span> 완성 점검</span>
       <h2>이 항목이 다 있으면 <span class="hl">완성</span>입니다</h2>
       <p class="kicker">하나씩 눌러 확인하세요. 체크 상태는 이 브라우저에 저장됩니다.</p>
     </div>
@@ -1424,12 +1411,12 @@ SNS 콘텐츠 아이디어 10개를 이유와 함께 제안해줘.</code></div>
 
 <!-- ===== 14 STEP 10 · 공유와 다음 적용 ===== -->
 <section class="section" id="publish">
-  <span class="sec-no" aria-hidden="true">14</span>
+  <span class="sec-no" aria-hidden="true">07</span>
   <div class="container">
     <div class="section-head">
-      <span class="step-badge"><span class="n">STEP 10</span> GitHub Pages와 QR 만들기</span>
-      <h2>완성한 웹페이지를 <span class="hl">휴대폰에서 열리는 링크</span>로 만듭니다</h2>
-      <p class="kicker">AI가 만든 <b>index.html</b> 코드를 GitHub 저장소에 올리고, GitHub Pages를 켜면 내 웹페이지 주소가 생깁니다. 그 주소를 휴대폰에서 열어 확인하고, 네이버 QR 코드로 바꿉니다.</p>
+      <span class="step-badge"><span class="n">STEP 7</span> 깃허브 배포하기</span>
+      <h2>완성한 웹페이지를 <span class="hl">인터넷에 공개된 주소</span>로 만듭니다</h2>
+      <p class="kicker">AI가 만든 <b>index.html</b> 코드를 GitHub 저장소에 올리고 GitHub Pages를 켜면, 누구나 접속할 수 있는 내 웹페이지 주소가 생깁니다.</p>
     </div>
     <div class="notice"><strong>왜 GitHub인가요?</strong> Google Slides는 발표자료 공유에 가깝고, Google Sites는 자유로운 HTML 전체 배포가 어렵습니다. 오늘처럼 AI가 만든 웹페이지 코드를 그대로 공개하려면 <b>GitHub Pages</b>가 가장 직접적인 방법입니다.</div>
     <div class="pb-label"><span class="tag">GitHub Pages</span> 처음 하는 사람도 따라 하는 순서</div>
@@ -1438,11 +1425,24 @@ SNS 콘텐츠 아이디어 10개를 이유와 함께 제안해줘.</code></div>
       <div class="t"><div><h3>새 저장소 만들기</h3><p>오른쪽 위 <b>+</b> 버튼 또는 <b>New repository</b>를 누릅니다. 이름은 예: <b>haeullim-ulleung</b>처럼 영어와 숫자로 짧게 씁니다.</p></div></div>
       <div class="t"><div><h3>Public 선택</h3><p>GitHub Pages로 공개하려면 처음에는 <b>Public</b>을 선택합니다. 개인정보나 내부 자료는 넣지 않습니다.</p></div></div>
       <div class="t"><div><h3>index.html 만들기</h3><p>저장소 화면에서 <b>Add file → Create new file</b>을 누르고 파일 이름을 반드시 <b>index.html</b>로 적습니다.</p></div></div>
-      <div class="t"><div><h3>AI 코드 붙여넣기</h3><p>STEP 8에서 받은 코드 전체를 붙여넣습니다. <b>&lt;!DOCTYPE html&gt;</b>부터 <b>&lt;/html&gt;</b>까지 빠지지 않아야 합니다.</p></div></div>
+      <div class="t"><div><h3>AI 코드 붙여넣기</h3><p>STEP 6에서 받은 코드 전체를 붙여넣습니다. <b>&lt;!DOCTYPE html&gt;</b>부터 <b>&lt;/html&gt;</b>까지 빠지지 않아야 합니다.</p></div></div>
       <div class="t"><div><h3>Commit changes</h3><p>오른쪽 위 또는 아래의 <b>Commit changes</b>를 누릅니다. 이 버튼은 “저장” 버튼이라고 생각하면 됩니다.</p></div></div>
       <div class="t"><div><h3>Pages 켜기</h3><p><b>Settings → Pages</b>로 이동합니다. <b>Source</b>에서 <b>Deploy from a branch</b>, Branch는 <b>main</b>, Folder는 <b>/root</b>를 선택하고 저장합니다.</p></div></div>
       <div class="t"><div><h3>URL 열어보기</h3><p>잠시 뒤 <b>Your site is live at ...</b> 주소가 보입니다. 주소는 보통 <b>https://아이디.github.io/저장소이름/</b> 형태입니다.</p></div></div>
       <div class="t"><div><h3>수정이 필요할 때</h3><p><b>index.html</b> 파일을 열고 연필 아이콘을 눌러 다시 수정한 뒤 <b>Commit changes</b>를 누르면 같은 주소에 반영됩니다.</p></div></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== 08 QR코드 변환 ===== -->
+<section class="section" id="qrcode" style="background:var(--cream);">
+  <span class="sec-no" aria-hidden="true">08</span>
+  <div class="container">
+    <div class="section-head">
+      <span class="step-badge"><span class="n">STEP 8</span> QR코드 변환하기</span>
+      <h2>공개된 웹페이지 주소를 <span class="hl">QR 코드</span>로 바꿉니다</h2>
+      <p class="kicker">배포한 GitHub Pages 주소를 네이버 QR 코드로 만들면, 포스터·메뉴판·명함·안내문에 붙여 누구나 휴대폰으로 바로 열 수 있습니다.</p>
     </div>
     <figure class="img-band qr-shot">
       <img src="assets/naver-qr-home.png" alt="네이버 QR 코드 생성기 첫 화면. 상단에 코드 생성 메뉴가 있고 중앙에 큰 코드 생성 버튼이 보입니다." loading="lazy">
@@ -1467,10 +1467,10 @@ SNS 콘텐츠 아이디어 10개를 이유와 함께 제안해줘.</code></div>
     </div>
     <div class="subhead">계속 활용할 도구</div>
     <div class="tools">
-      <a class="tool" href="https://gemini.google.com/" target="_blank" rel="noopener"><span class="ti">✨</span><div><strong>Gemini</strong><span>글·번역·리서치</span><span class="role">STEP 2~8</span></div></a>
-      <a class="tool" href="https://chatgpt.com/" target="_blank" rel="noopener"><span class="ti">💬</span><div><strong>ChatGPT</strong><span>문장 다듬기·FAQ·HTML 수정</span><span class="role">STEP 3~8</span></div></a>
-      <a class="tool" href="https://github.com/" target="_blank" rel="noopener"><span class="ti">GH</span><div><strong>GitHub</strong><span>index.html 저장·수정</span><span class="role">STEP 10</span></div></a>
-      <a class="tool" href="https://pages.github.com/" target="_blank" rel="noopener"><span class="ti">URL</span><div><strong>GitHub Pages</strong><span>웹페이지 공개 URL 생성</span><span class="role">STEP 10</span></div></a>
+      <a class="tool" href="https://gemini.google.com/" target="_blank" rel="noopener"><span class="ti">✨</span><div><strong>Gemini</strong><span>글·번역·리서치</span><span class="role">STEP 2~6</span></div></a>
+      <a class="tool" href="https://chatgpt.com/" target="_blank" rel="noopener"><span class="ti">💬</span><div><strong>ChatGPT</strong><span>문장 다듬기·FAQ·HTML 수정</span><span class="role">STEP 4~6</span></div></a>
+      <a class="tool" href="https://github.com/" target="_blank" rel="noopener"><span class="ti">GH</span><div><strong>GitHub</strong><span>index.html 저장·수정</span><span class="role">STEP 7</span></div></a>
+      <a class="tool" href="https://pages.github.com/" target="_blank" rel="noopener"><span class="ti">URL</span><div><strong>GitHub Pages</strong><span>웹페이지 공개 URL 생성</span><span class="role">STEP 7</span></div></a>
       <a class="tool" href="https://qr.naver.com/" target="_blank" rel="noopener"><span class="ti">▦</span><div><strong>네이버 QR 코드</strong><span>URL을 QR 이미지로 공유</span><span class="role">공유</span></div></a>
       <a class="tool" href="https://chatgpt.com/codex" target="_blank" rel="noopener"><span class="ti">⌘</span><div><strong>Codex</strong><span>전체 HTML 사이트 제작</span><span class="role opt">심화 선택</span></div></a>
       <a class="tool" href="https://notebooklm.google.com/" target="_blank" rel="noopener"><span class="ti">🎧</span><div><strong>NotebookLM</strong><span>음성 소개</span><span class="role opt">맛보기</span></div></a>
@@ -1481,38 +1481,9 @@ SNS 콘텐츠 아이디어 10개를 이유와 함께 제안해줘.</code></div>
 </section>
 
 
-<!-- ===== 더 알아보기 · AI 활용 사례 ===== -->
-<section class="section" id="can">
-  <span class="sec-no" aria-hidden="true">A2</span>
-  <div class="container">
-    <div class="section-head">
-      <span class="eyebrow">활용 사례 · 무엇을 맡길 수 있나</span>
-      <h2>관광 현장에서 AI는 <span class="hl">이런 작은 일</span>부터 도와줍니다</h2>
-      <p class="kicker">AI 활용은 거창한 자동화가 아니라, 반복되는 작은 업무를 빠르게 초안으로 만드는 것에서 시작합니다. 아래 예시는 식당·숙소·체험·관광지·특산품 홍보에 바로 적용할 수 있습니다.</p>
-    </div>
-    <div class="cap-grid">
-      <div class="cap"><h3><span class="ci">🖋️</span>관광 홍보 문구</h3><ul><li>한 줄 소개·계절별·대상별 카피</li><li>성인봉·행남해안산책로·봉래폭포 소개</li><li>포스터·현수막·카드뉴스 문안</li></ul><div class="ex"><b>예</b> “울릉도 처음 오는 관광객용 한 줄 소개 10개를 감성적으로 짧게.”</div></div>
-      <div class="cap"><h3><span class="ci">📱</span>SNS 홍보 콘텐츠</h3><ul><li>인스타 글·블로그 후기·릴스 대본</li><li>해시태그 묶음·카카오톡 홍보</li><li>축제·이벤트·체험 모집글</li></ul><div class="ex"><b>예</b> “오징어내장탕 인스타 글과 해시태그 10개.”</div></div>
-      <div class="cap today"><h3><span class="ci">🌐</span>다국어 안내문</h3><ul><li>영어·일본어·중국어 안내문</li><li>음식을 외국인이 이해하게 풀어 설명</li><li>외국인 FAQ·지도 영문 소개</li></ul><div class="ex"><b>예</b> “따개비밥을 외국인이 이해하게 재료·맛과 함께 설명.”</div></div>
-      <div class="cap"><h3><span class="ci">🍽️</span>메뉴판·숙소·체험 안내</h3><ul><li>한·영·일 메뉴판, 알레르기 안내</li><li>숙소 소개·객실·예약 안내문</li><li>체험 소요시간·준비물·난이도 정리</li></ul><div class="ex"><b>예</b> “성인봉 트레킹 소개문을 준비물·예약 안내와 함께.”</div></div>
-      <div class="cap"><h3><span class="ci">🗺️</span>코스 추천 · FAQ · 응대</h3><ul><li>당일·1박2일·2박3일·가족·우천 코스</li><li>배편·날씨·예약·결제 FAQ</li><li>예약·취소·후기 요청 응대 메시지</li></ul><div class="ex"><b>예</b> “가족 여행객용 2박3일 코스를 이동 동선·식사와 함께.”</div></div>
-      <div class="cap today"><h3><span class="ci">💻</span>홍보 웹페이지</h3><ul><li>관광지·식당·숙소·체험 소개 페이지</li><li>예약 문의 폼·다국어·오시는 길</li><li>말로 설명 → 브라우저에서 열리는 페이지</li></ul><div class="ex"><b>예</b> “체험 예약 페이지를 모바일에서도 보기 좋게.”</div></div>
-    </div>
-    <figure class="img-band">
-      <img src="assets/ulleung-scenic.jpg" alt="울릉도 해안 절벽과 에메랄드빛 동해 바다" loading="lazy">
-      <figcaption><b>이 모든 매력을 콘텐츠로.</b> 울릉도의 풍경·음식·체험을 글·이미지·웹페이지로 바꾸는 것이 AI 활용의 실전입니다.</figcaption>
-    </figure>
-    <div class="focus-bar">
-      <span>🎯 추천 순서</span>
-      <span class="flow"><b>로그인 준비</b><span class="a">→</span><b>Gemini 첫 질문</b><span class="a">→</span><b>ChatGPT 비교</b><span class="a">→</span><b>내 정보 정리</b><span class="a">→</span><b>웹페이지</b></span>
-    </div>
-  </div>
-</section>
-
-
 <!-- ===== 더 해보기 · 프롬프트 템플릿 모음 ===== -->
 <section class="section" id="templates">
-  <span class="sec-no" aria-hidden="true">A3</span>
+  <span class="sec-no" aria-hidden="true">09</span>
   <div class="container">
     <div class="section-head">
       <span class="eyebrow">꺼내 쓰는 · 프롬프트 템플릿</span>
@@ -1622,7 +1593,7 @@ SNS 콘텐츠 아이디어 10개를 이유와 함께 제안해줘.</code></div>
 
 <!-- ===== 더 해보기 · 에이전트 AI ===== -->
 <section class="section" id="step6" style="background:var(--cream);">
-  <span class="sec-no" aria-hidden="true">A4</span>
+  <span class="sec-no" aria-hidden="true"></span>
   <div class="container">
     <div class="section-head">
       <span class="step-badge"><span class="n">선택</span> 에이전트 AI 맛보기</span>
@@ -1656,7 +1627,7 @@ SNS 콘텐츠 아이디어 10개를 이유와 함께 제안해줘.</code></div>
 
 <!-- ===== 더 알아보기 · 2026 AI 동향 ===== -->
 <section class="section" id="deepai" style="background:var(--cream);">
-  <span class="sec-no" aria-hidden="true">A5</span>
+  <span class="sec-no" aria-hidden="true"></span>
   <div class="container">
     <div class="section-head">
       <span class="eyebrow">더 알아보기 · 2026 AI 동향</span>
@@ -1859,10 +1830,39 @@ function copyFilledPrompt(kind){const d=profileData();let t='';
  copyText(t);}
 document.querySelectorAll('.chips').forEach(g=>g.querySelectorAll('.chip').forEach(c=>c.addEventListener('click',()=>{g.querySelectorAll('.chip').forEach(x=>x.classList.remove('on'));c.classList.add('on');})));
 document.querySelectorAll('.checklist input[type="checkbox"]').forEach((box,i)=>{const k=`ulleungCheck${i}`;box.checked=localStorage.getItem(k)==='true';box.addEventListener('change',()=>localStorage.setItem(k,box.checked));});
-const navLinks=document.querySelectorAll('.nav a[href^="#"]');
+// 실습 결과 메모장 · 자동 저장/복원
+function copyMemo(btn){const t=btn.closest('.memo').querySelector('textarea');if(t)copyText(t.value,btn);}
+document.querySelectorAll('textarea[data-memo]').forEach(t=>{
+  const k='ulleungMemo_'+t.dataset.memo;
+  const saved=localStorage.getItem(k); if(saved)t.value=saved;
+  t.addEventListener('input',()=>{
+    localStorage.setItem(k,t.value);
+    const s=t.closest('.memo').querySelector('.memo-status');
+    if(s){s.textContent='저장됨 ✓'; clearTimeout(t._to); t._to=setTimeout(()=>s.textContent='',1200);}
+  });
+});
+const navLinks=document.querySelectorAll('.nav ul a[href^="#"]');
 const secs=Array.from(document.querySelectorAll('section[id], header[id]'));
-function updateNav(){const y=window.scrollY+90;let cur='';secs.forEach(s=>{if(s.offsetTop<=y)cur=s.id;});navLinks.forEach(l=>l.classList.toggle('active',l.getAttribute('href')===`#${cur}`));}
+// 하위 섹션 → 대표 단계 앵커 매핑 (9단계 그룹)
+const stepOf={cover:'cover',whatai:'whatai',goal:'goal',taste:'goal',
+  tools:'tools',setup:'tools',step1:'step1',
+  workspace:'workspace',step2:'workspace',step3:'workspace',step5:'workspace',can:'workspace',
+  step7:'step7',checklist:'step7',publish:'publish',qrcode:'qrcode',
+  templates:'templates',step6:'templates',deepai:'templates',end:'templates'};
+const progFill=document.getElementById('progFill');
+const stepNow=document.getElementById('stepNow');
+function updateNav(){
+  const y=window.scrollY+90;let cur='';
+  secs.forEach(s=>{if(s.offsetTop<=y)cur=s.id;});
+  const lead=stepOf[cur]||cur;
+  let step='';
+  navLinks.forEach(l=>{const on=l.getAttribute('href')===`#${lead}`;l.classList.toggle('active',on);if(on)step=l.dataset.step;});
+  if(stepNow&&step)stepNow.textContent=`${step} / 9`;
+  const h=document.documentElement.scrollHeight-window.innerHeight;
+  if(progFill)progFill.style.width=(h>0?Math.min(100,window.scrollY/h*100):0)+'%';
+}
 window.addEventListener('scroll',updateNav,{passive:true});
+window.addEventListener('resize',updateNav,{passive:true});
 loadProfile();loadWorkspace();updateNav();
 </script>
 <script type="module">
@@ -1872,10 +1872,10 @@ loadProfile();loadWorkspace();updateNav();
     theme:'base',
     themeVariables:{
       fontFamily:"'Gothic A1', sans-serif", fontSize:'15px',
-      primaryColor:'#f9f0ff', primaryBorderColor:'#4a154b', primaryTextColor:'#1d1d1d',
-      lineColor:'#d9bdde',
-      secondaryColor:'#eaf4ff', secondaryBorderColor:'#1264a3',
-      tertiaryColor:'#e7f5ef', tertiaryBorderColor:'#007a5a'
+      primaryColor:'#f1e7df', primaryBorderColor:'#cc785c', primaryTextColor:'#141413',
+      lineColor:'#d8b6a6',
+      secondaryColor:'#e7efeb', secondaryBorderColor:'#3f8c7d',
+      tertiaryColor:'#e9f0e8', tertiaryBorderColor:'#4f9a6a'
     }
   });
 </script>
