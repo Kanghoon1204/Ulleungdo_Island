@@ -381,9 +381,9 @@ h1,h2,h3{font-family:var(--font-head); line-height:1.24; font-weight:800;}
 /* NAV */
 .nav{position:sticky; top:0; z-index:60; background:rgba(255,255,255,.9); backdrop-filter:blur(14px); border-bottom:1px solid var(--line);}
 .nav-inner{display:flex; align-items:center; gap:16px; height:64px;}
-.brand{display:flex; align-items:center; gap:9px; font-family:var(--font-head); font-size:1.08rem; white-space:nowrap;}
+.brand{display:flex; align-items:center; gap:9px; font-family:var(--font-head); font-size:1.08rem; white-space:nowrap; flex-shrink:0;}
 .brand .mk{width:14px; height:14px; border-radius:50% 50% 50% 2px; transform:rotate(-45deg); background:var(--primary); box-shadow:0 0 0 4px rgba(74,21,75,.18);}
-.nav ul{display:flex; gap:4px; list-style:none; margin-left:auto; overflow-x:auto; scrollbar-width:none;}
+.nav ul{display:flex; gap:4px; list-style:none; margin-left:auto; overflow-x:auto; scrollbar-width:none; min-width:0; flex:1;}
 .nav ul::-webkit-scrollbar{display:none;}
 .nav a{display:inline-flex; align-items:center; min-height:40px; padding:6px 14px; border-radius:999px; color:var(--ink-soft); font-family:var(--font-head); font-size:.95rem; white-space:nowrap;}
 .nav a:hover{background:var(--primary-soft); color:var(--primary-dark); text-decoration:none;}
@@ -424,6 +424,12 @@ footer .foot-grid{display:flex; justify-content:space-between; flex-wrap:wrap; g
 @media (max-width:620px){
   body{font-size:19px;}
   .container{width:min(100% - 32px,1160px);}
+  .nav .container{width:calc(100% - 20px);}
+  .nav-inner{height:60px; gap:10px;}
+  .brand{gap:0;}
+  .brand .mk{width:16px; height:16px;}
+  .nav ul{margin-left:0; padding:0 2px 0 0;}
+  .nav a{font-size:.94rem; min-height:38px; padding:6px 12px;}
   .mockups{gap:18px;}
   .frame-phone{order:-1; border-width:9px; border-radius:30px;}
   .frame-phone .notch{height:22px;}
@@ -458,26 +464,24 @@ footer .foot-grid{display:flex; justify-content:space-between; flex-wrap:wrap; g
     <ul>
       <li><a href="#goal">결과 예시</a></li>
       <li><a href="#whatai">AI 이해</a></li>
-      <li><a href="#can">활용 사례</a></li>
       <li><a href="#tools">도구</a></li>
       <li><a href="#setup">시작 준비</a></li>
       <li><a href="#roadmap">작업 흐름</a></li>
       <li><a href="#step1">첫 실습</a></li>
       <li><a href="#workspace">작업장</a></li>
-      <li><a href="#templates">템플릿</a></li>
+      <li><a href="#step5">질문 조사</a></li>
       <li><a href="#step2">소개문</a></li>
       <li><a href="#step3">다국어</a></li>
-      <li><a href="#step5">리서치</a></li>
-      <li><a href="#step6">연결 실습</a></li>
       <li><a href="#step7">웹페이지</a></li>
       <li><a href="#checklist">점검</a></li>
       <li><a href="#publish">공유</a></li>
+      <li><a href="#taste">맛보기</a></li>
+      <li><a href="#can">확장</a></li>
     </ul>
   </div>
 </nav>
 
-<main>
-<!-- ===== 00 표지 ===== -->
+<main><!-- ===== 00 표지 ===== -->
 <header class="section cover" id="cover">
   <span class="sec-no" aria-hidden="true">00</span>
   <div class="container hero-grid">
@@ -507,6 +511,7 @@ footer .foot-grid{display:flex; justify-content:space-between; flex-wrap:wrap; g
     </div>
   </div>
 </header>
+
 
 <!-- ===== 01 결과 예시 ===== -->
 <section class="section" id="goal">
@@ -549,174 +554,39 @@ flowchart LR
   </div>
 </section>
 
-<!-- ===== 02 AI란 무엇인가 ===== -->
+
+<!-- ===== 02 STEP 1 · AI 기본 ===== -->
 <section class="section" id="whatai" style="background:var(--cream);">
   <span class="sec-no" aria-hidden="true">02</span>
   <div class="container">
     <div class="section-head">
-      <span class="eyebrow">기본 이해 · AI란?</span>
-      <h2>AI는 <span class="hl">대신 생각해 주는 사람</span>이 아니라, 초안을 만드는 도구입니다</h2>
-      <p class="kicker">원리를 깊게 몰라도 쓸 수는 있습니다. 하지만 “무엇을 잘하고, 어디서 틀릴 수 있는지”를 알아야 실무에 안전하게 쓸 수 있습니다.</p>
+      <span class="step-badge"><span class="n">STEP 1</span> AI 기본과 안전 규칙</span>
+      <h2>AI는 <span class="hl">초안 도우미</span>입니다</h2>
+      <p class="kicker">처음에는 원리를 길게 외우지 않아도 됩니다. 오늘은 딱 세 가지만 기억합니다. <b>AI는 초안 도우미다.</b> <b>틀릴 수 있다.</b> <b>개인정보는 넣지 않는다.</b></p>
     </div>
-    <div class="card" style="border-left:6px solid var(--primary);">
-      <p class="lead-big">AI는 <span style="color:var(--primary)">아주 많은 글과 정보를 미리 학습</span>해 두었다가, 우리가 부탁하면 <span style="color:var(--secondary)">글·번역·이미지·요약을 만들어 주는 프로그램</span>입니다.</p>
+    <div class="cols-2">
+      <div class="card"><div class="ic-lg">1</div><h3>초안 도우미</h3><p>제목 후보, 소개문, FAQ, 영어 안내, Google Sites에 붙일 원고처럼 <b>처음 문장</b>을 빠르게 만들어 줍니다.</p></div>
+      <div class="card"><div class="ic-lg" style="background:var(--secondary-soft)">2</div><h3>틀릴 수 있음</h3><p>가격, 운영시간, 배편, 주소, 전화번호는 틀릴 수 있습니다. 공개 전에는 사람이 직접 확인합니다.</p></div>
+      <div class="card"><div class="ic-lg" style="background:var(--tertiary-soft)">3</div><h3>개인정보 금지</h3><p>주민등록번호, 카드번호, 손님 연락처, 내부 매출, 개인 대화처럼 민감한 정보는 넣지 않습니다.</p></div>
     </div>
-    <div class="cols-2" style="margin-top:24px;">
-      <div class="card"><div class="ic-lg">📚</div><h3>쉽게 비유하면</h3><p><b>책을 아주 많이 읽은 신입 직원</b>과 같습니다. 빠르게 초안을 만들지만, 현장 사정·가격·운영시간·배편처럼 바뀌는 정보는 모를 수 있습니다.</p></div>
-      <div class="card"><div class="ic-lg" style="background:var(--secondary-soft)">✨</div><h3>생성형 AI란</h3><p>글·이미지·번역·음성·웹페이지처럼 <b>새 결과물을 만들어 주는 AI</b>입니다. 이 자료에서는 홍보 문구, 외국어 안내, FAQ, 웹페이지 초안을 만드는 데 씁니다.</p></div>
+    <div class="pb-label"><span class="tag">오늘의 사용 공식</span> AI에게 이렇게 부탁합니다</div>
+    <div class="formula">
+      <div class="fx">역할<small>관광 홍보 전문가</small></div>
+      <div class="op">+</div>
+      <div class="fx">내 정보<small>이름·위치·장점</small></div>
+      <div class="op">+</div>
+      <div class="fx">결과 형식<small>표·3줄·FAQ</small></div>
+      <div class="op">=</div>
+      <div class="fx eq">쓸 만한 초안<small>작업장에 저장</small></div>
     </div>
-
-    <div class="subhead">🧠 AI가 답을 만드는 방식</div>
-    <div class="principle">
-      <div class="p"><div><h3>1. 내가 쓴 말을 읽습니다</h3><div class="eg">“울릉도 식당 소개글”이라고 쓰면 주제는 알지만, 대상·길이·톤은 모릅니다. 그래서 답이 평범해집니다.</div></div></div>
-      <div class="p"><div><h3>2. 배운 패턴을 바탕으로 초안을 만듭니다</h3><div class="eg">AI는 많은 글의 패턴을 배워서 그럴듯한 문장을 만듭니다. 그래서 <b>그럴듯하지만 틀린 말</b>도 만들 수 있습니다.</div></div></div>
-      <div class="p"><div><h3>3. 내가 준 정보가 많을수록 구체적입니다</h3><div class="eg">이름, 위치, 대표 메뉴, 장점, 문의 방법을 넣으면 “아무 식당 소개”가 아니라 <b>내 가게 소개</b>가 됩니다.</div></div></div>
-      <div class="p warn"><div><h3>4. 마지막 확인은 사람이 합니다</h3><div class="eg">운영시간, 가격, 전화번호, 주소, 사진 사용 권리, 배편은 반드시 직접 확인해야 합니다.</div></div></div>
-    </div>
-
-    <div class="pb-label"><span class="tag">실무 기준</span> AI가 잘하는 일과 조심할 일</div>
-    <div class="tool-table-wrap">
-      <table class="tool-table">
-        <thead><tr><th>구분</th><th>AI가 잘하는 일</th><th>사람이 확인할 일</th></tr></thead>
-        <tbody>
-          <tr><td>글쓰기</td><td>소개문, SNS 글, 제목 후보, FAQ 초안</td><td>과장 표현, 실제와 다른 표현, 지역 정서</td></tr>
-          <tr><td>번역</td><td>영어·일본어·중국어 초안, 쉬운 표현 변환</td><td>음식 설명, 알레르기, 예약·결제 표현</td></tr>
-          <tr><td>조사</td><td>관광객 질문 예상, 키워드, 비교표</td><td>최신 가격, 배편, 운영시간, 공식 공지</td></tr>
-          <tr><td>디자인</td><td>페이지 구조, 버튼 문구, 색상 제안</td><td>모바일 화면, 사진 품질, 문의 버튼 작동</td></tr>
-          <tr><td>코딩</td><td>HTML 초안, CSS 수정, 반응형 개선</td><td>브라우저에서 실제로 열리는지, 링크가 맞는지</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="subhead">🚀 2026년 기준, AI 최신 동향 8가지</div>
-    <p class="kicker" style="margin-bottom:20px;">AI는 더 이상 “챗봇에 한 번 물어보는 도구”에 머물지 않습니다. 2026년에는 글·이미지·음성·영상·코딩·검색·업무 자동화가 한 화면에서 연결되고 있습니다. 아래 흐름을 이해하면, 관광 홍보 콘텐츠 제작도 훨씬 선명해집니다.</p>
-    <div class="trend-grid">
-      <div class="card lift">
-        <div class="trend-num">01</div>
-        <figure class="trend-fig"><img src="assets/ai-trend-01-adoption.svg" alt="생성형 AI가 전문가용 도구에서 일상 업무 도구로 확산되는 모습을 보여주는 참고 이미지" loading="lazy"><figcaption><b>레퍼런스</b> AI가 전문가만 쓰는 도구에서 가게·팀·고객이 함께 쓰는 도구로 확산되는 흐름</figcaption></figure>
-        <h3>생성형 AI가 빠르게 대중화됨</h3>
-        <p>Stanford HAI 2026 AI Index는 생성형 AI가 대중 시장에 나온 뒤 3년 만에 약 <b>53% 수준의 인구 단위 채택</b>에 도달했다고 정리합니다. 이제 AI는 일부 전문가만 쓰는 도구가 아니라, 손님·경쟁 업체·플랫폼 모두가 쓰는 일상 도구가 되고 있습니다.</p>
-        <div class="trend-q">관광 홍보 연결: 우리도 AI로 소개문, FAQ, 다국어 안내를 직접 만들 수 있어야 합니다.</div>
-      </div>
-      <div class="card lift">
-        <div class="trend-num">02</div>
-        <figure class="trend-fig"><img src="assets/ai-trend-02-multimodal.svg" alt="텍스트, 사진, 음성, 영상, 지도가 하나의 AI 작업 공간으로 들어가는 멀티모달 AI 참고 이미지" loading="lazy"><figcaption><b>레퍼런스</b> 텍스트뿐 아니라 사진·음성·영상·지도까지 콘텐츠 재료가 되는 멀티모달 흐름</figcaption></figure>
-        <h3>텍스트만이 아니라 사진·음성·영상까지 다룸</h3>
-        <p>최신 AI는 글만 읽는 것이 아니라 사진, 메뉴판 이미지, 지도, 음성, 영상까지 함께 이해하고 만들 수 있습니다. 이것을 <b>멀티모달 AI</b>라고 부릅니다.</p>
-        <div class="trend-q">관광 홍보 연결: 음식 사진을 보고 설명문 만들기, 메뉴판 사진을 영어 안내로 바꾸기, 체험 영상을 쇼츠 대본으로 바꾸기가 가능해집니다.</div>
-      </div>
-      <div class="card lift">
-        <div class="trend-num">03</div>
-        <figure class="trend-fig"><img src="assets/ai-trend-03-answer-search.svg" alt="관광객이 질문형으로 검색하고 AI가 경로, FAQ, 확인 항목을 정리해 주는 참고 이미지" loading="lazy"><figcaption><b>레퍼런스</b> 링크 목록을 찾는 검색에서 질문에 대한 정리 답변을 받는 검색으로 변화</figcaption></figure>
-        <h3>검색이 “링크 목록”에서 “답변형 검색”으로 바뀜</h3>
-        <p>관광객은 이제 “울릉도 맛집”만 검색하지 않습니다. “부모님과 가기 좋은 울릉도 2박3일 코스”, “비 오는 날 갈 만한 곳”처럼 질문형으로 묻고, AI가 바로 정리한 답을 기대합니다.</p>
-        <div class="trend-q">관광 홍보 연결: 예쁜 문구보다 <b>관광객 질문에 답하는 콘텐츠</b>가 중요합니다. FAQ와 방문 안내가 검색 대응 콘텐츠가 됩니다.</div>
-      </div>
-      <div class="card lift">
-        <div class="trend-num">04</div>
-        <figure class="trend-fig"><img src="assets/ai-trend-04-agents.svg" alt="조사, 구조화, 작성, 번역, 게시가 순서대로 이어지는 에이전트 AI 참고 이미지" loading="lazy"><figcaption><b>레퍼런스</b> 조사에서 게시까지 여러 작업을 하나의 흐름으로 이어가는 에이전트 방식</figcaption></figure>
-        <h3>에이전트 AI: 여러 단계를 이어서 처리</h3>
-        <p>McKinsey의 2025 State of AI는 AI 사용이 넓어지고, 특히 <b>agentic AI</b>가 확산되고 있지만 많은 조직은 아직 실험에서 실제 업무 적용으로 넘어가는 중이라고 설명합니다. 에이전트 AI는 조사, 정리, 작성, 수정 같은 여러 단계를 이어서 처리합니다.</p>
-        <div class="trend-q">관광 홍보 연결: “관광객 질문 조사 → FAQ 작성 → 영어 안내 → 웹페이지 구조 제안”을 한 흐름으로 시킬 수 있습니다.</div>
-      </div>
-      <div class="card lift">
-        <div class="trend-num">05</div>
-        <figure class="trend-fig"><img src="assets/ai-trend-05-coding.svg" alt="웹페이지 요청문이 HTML 페이지 미리보기로 바뀌는 AI 코딩 참고 이미지" loading="lazy"><figcaption><b>레퍼런스</b> 원하는 화면을 말로 설명하면 HTML·CSS 초안으로 바뀌는 AI 코딩 흐름</figcaption></figure>
-        <h3>코딩을 몰라도 웹페이지와 도구를 만들 수 있음</h3>
-        <p>AI 코딩 도구는 HTML, CSS, JavaScript 같은 코드를 사람이 직접 쓰지 않아도 만들어 줍니다. 중요한 능력은 코딩 문법보다 <b>원하는 결과를 정확히 설명하고, 결과를 확인하고, 다시 고치는 힘</b>입니다.</p>
-        <div class="trend-q">관광 홍보 연결: Gemini나 ChatGPT에 “첫 화면, 소개 카드, FAQ, 문의 버튼, 모바일 대응”을 요청해 Google Sites에 붙일 원고와 간단한 HTML 카드를 만들 수 있습니다.</div>
-      </div>
-      <div class="card lift">
-        <div class="trend-num">06</div>
-        <figure class="trend-fig"><img src="assets/ai-trend-06-personalization.svg" alt="하나의 관광 정보가 가족, 외국인, 등산객, 우천 방문객용 문구로 나뉘는 개인화 참고 이미지" loading="lazy"><figcaption><b>레퍼런스</b> 하나의 관광 정보를 가족·외국인·등산객·우천 방문객용 문구로 바꾸는 개인화</figcaption></figure>
-        <h3>개인화 콘텐츠가 쉬워짐</h3>
-        <p>같은 장소라도 가족 여행객, 외국인, 등산객, 당일치기 여행객, 어르신 동반 여행객에게 필요한 정보가 다릅니다. AI는 같은 정보를 대상별 문장으로 바꾸는 데 강합니다.</p>
-        <div class="trend-q">관광 홍보 연결: “가족용”, “외국인용”, “비 오는 날용”, “배 시간 전 짧은 식사용”처럼 고객별 안내문을 만들 수 있습니다.</div>
-      </div>
-      <div class="card lift">
-        <div class="trend-num">07</div>
-        <figure class="trend-fig"><img src="assets/ai-trend-07-embedded.svg" alt="플레이스 페이지, 블로그 편집기, 고객 응대 화면 안에 AI 도우미가 들어가는 참고 이미지" loading="lazy"><figcaption><b>레퍼런스</b> 별도 AI 앱을 여는 방식에서 일하던 화면 안의 AI 도움말로 이동하는 흐름</figcaption></figure>
-        <h3>업무 도구 안에 AI가 기본으로 들어감</h3>
-        <p>문서 작성, 검색, 디자인, 예약 응대, 고객 관리, 코딩 도구 안에 AI 기능이 들어가고 있습니다. 따로 AI 앱을 열지 않아도 일하던 화면에서 바로 도움을 받는 방향입니다.</p>
-        <div class="trend-q">관광 홍보 연결: 네이버 플레이스 소개글, 블로그 글, 메뉴 설명, 지도 링크 안내, 고객 답변 문구를 AI와 함께 다듬는 일이 자연스러워집니다.</div>
-      </div>
-      <div class="card lift">
-        <div class="trend-num">08</div>
-        <figure class="trend-fig"><img src="assets/ai-trend-08-responsible.svg" alt="공개 전 사실, 사진 권리, 개인정보, 모바일 화면을 점검하는 책임 있는 AI 사용 참고 이미지" loading="lazy"><figcaption><b>레퍼런스</b> 공개 전 사실·사진 권리·개인정보·모바일 화면을 확인하는 책임 있는 사용</figcaption></figure>
-        <h3>책임 있는 사용이 더 중요해짐</h3>
-        <p>AI가 빠르게 퍼질수록 틀린 정보, 저작권, 개인정보, 과장 광고, 편향 표현도 함께 문제가 됩니다. Stanford HAI도 AI 능력은 빠르게 발전하지만 이를 측정하고 관리하는 체계는 따라가기 어렵다고 지적합니다.</p>
-        <div class="trend-q">관광 홍보 연결: 가격, 운영시간, 배편, 주소, 전화번호, 사진 권리는 반드시 사람이 확인해야 합니다.</div>
-      </div>
-    </div>
-
-    <div class="pb-label"><span class="tag">2026 실습 연결표</span> AI 동향을 관광 홍보로 바꾸면</div>
-    <div class="tool-table-wrap">
-      <table class="tool-table">
-        <thead><tr><th>AI 동향</th><th>관광 홍보에서 생기는 변화</th><th>이 자료에서 해볼 실습</th></tr></thead>
-        <tbody>
-          <tr><td>생성형 AI 대중화</td><td>작은 가게도 직접 홍보 콘텐츠를 만들 수 있음</td><td>소개문, SNS 글, 제목 후보 만들기</td></tr>
-          <tr><td>멀티모달 AI</td><td>사진·메뉴판·지도·음성을 콘텐츠 재료로 활용</td><td>사진 설명, 음식 설명, 음성 소개 예시 보기</td></tr>
-          <tr><td>답변형 검색</td><td>관광객 질문에 답하는 페이지가 중요해짐</td><td>FAQ, 방문 전 질문, 리서치 표 만들기</td></tr>
-          <tr><td>에이전트 AI</td><td>조사→정리→작성→번역→제작 흐름을 이어서 처리</td><td>STEP 6에서 여러 작업을 순서대로 시키기</td></tr>
-          <tr><td>AI 코딩</td><td>비전공자도 간단한 웹 요소를 만들 수 있음</td><td>Google Sites 코드 삽입용 홍보 카드 만들기</td></tr>
-          <tr><td>개인화</td><td>고객 유형별 안내문을 쉽게 만들 수 있음</td><td>가족/외국인/등산객용 문구 변형하기</td></tr>
-          <tr><td>AI 거버넌스</td><td>공개 전 사실·권리·개인정보 확인이 필수</td><td>구성/사실/외국어/권리 점검표 작성</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="notice"><strong>2026년 관점의 핵심:</strong> AI는 “한 번 물어보는 검색창”이 아니라 <b>콘텐츠 제작 파트너</b>입니다. 하지만 공개용 홍보물에서는 AI가 만든 문장을 그대로 쓰지 말고, <b>지역 정보와 사실 확인을 거쳐 내 말로 다듬는 과정</b>이 반드시 필요합니다.</div>
-
-    <div class="pb-label"><span class="tag">참고 자료</span> 더 깊게 보고 싶을 때</div>
-    <div class="tools">
-      <a class="tool" href="https://hai.stanford.edu/ai-index/2026-ai-index-report" target="_blank" rel="noopener"><span class="ti">📊</span><div><strong>Stanford HAI · 2026 AI Index</strong><span>AI 채택, 능력, 경제, 책임 있는 AI 동향</span><span class="role opt">최신 동향</span></div></a>
-      <a class="tool" href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai" target="_blank" rel="noopener"><span class="ti">🏢</span><div><strong>McKinsey · State of AI 2025</strong><span>기업의 AI 활용, 에이전트 AI, 업무 적용 흐름</span><span class="role opt">업무 활용</span></div></a>
-    </div>
-
-    <div class="subhead">📌 관광 홍보에서 AI는 이렇게 쓰입니다</div>
-    <p class="kicker" style="margin-bottom:20px;">아래 사례는 실제 업무 흐름에 바로 붙일 수 있는 사용 방식입니다. 중요한 것은 “AI에게 한 번 물어보기”가 아니라, <b>작은 일을 순서대로 맡기는 것</b>입니다.</p>
-    <div class="trend-grid">
-      <div class="card lift"><div class="trend-num">01</div><h3>손님 질문을 미리 예상</h3><p>“주차되나요?”, “배편 시간에 맞춰 식사할 수 있나요?”, “외국인도 주문하기 쉬운가요?” 같은 질문을 AI에게 뽑게 한 뒤 FAQ로 정리합니다.</p></div>
-      <div class="card lift"><div class="trend-num">02</div><h3>내 말을 홍보 문구로 바꾸기</h3><p>“도동항에서 가깝고 가족이 운영해요” 같은 평범한 설명을 <b>제목, 한 줄 소개, SNS 문장</b>으로 바꿉니다.</p></div>
-      <div class="card lift"><div class="trend-num">03</div><h3>외국인이 이해하는 설명 만들기</h3><p>“따개비밥”, “오징어내장탕”처럼 번역만으로 부족한 말은 <b>재료·맛·먹는 방법·알레르기</b>까지 풀어 설명합니다.</p></div>
-      <div class="card lift"><div class="trend-num">04</div><h3>긴 자료를 요약하고 다시 쓰기</h3><p>관광 안내문, 체험 설명, 안전 수칙을 넣고 <b>초보자용, 외국인용, 어린이 동반 가족용</b>으로 다시 쓰게 할 수 있습니다.</p></div>
-      <div class="card lift"><div class="trend-num">05</div><h3>웹페이지 구조 잡기</h3><p>첫 화면, 소개 카드, 방문 안내, FAQ, 문의 버튼처럼 <b>방문자가 읽는 순서</b>로 페이지 구성을 제안받습니다.</p></div>
-    </div>
-    <div class="notice"><strong>딱 하나만 기억하세요:</strong> AI는 <b>초안을 빠르게 만드는 똑똑한 조수</b>입니다. 가격·배편·운영시간 같은 정보의 <b>마지막 확인과 책임은 사람</b>에게 있습니다.</div>
+    <div class="notice"><strong>오늘의 목표:</strong> AI를 완벽히 이해하는 것이 아니라, <b>내 관광 홍보 페이지를 다시 고칠 수 있는 상태</b>로 완성하는 것입니다.</div>
+    <div class="step-next"><a href="#tools">실습 도구 확인하기 →</a></div>
   </div>
 </section>
 
-<!-- ===== 03 AI로 무엇을 할 수 있나 ===== -->
-<section class="section" id="can">
-  <span class="sec-no" aria-hidden="true">03</span>
-  <div class="container">
-    <div class="section-head">
-      <span class="eyebrow">활용 사례 · 무엇을 맡길 수 있나</span>
-      <h2>관광 현장에서 AI는 <span class="hl">이런 작은 일</span>부터 도와줍니다</h2>
-      <p class="kicker">AI 활용은 거창한 자동화가 아니라, 반복되는 작은 업무를 빠르게 초안으로 만드는 것에서 시작합니다. 아래 예시는 식당·숙소·체험·관광지·특산품 홍보에 바로 적용할 수 있습니다.</p>
-    </div>
-    <div class="cap-grid">
-      <div class="cap"><h3><span class="ci">🖋️</span>관광 홍보 문구</h3><ul><li>한 줄 소개·계절별·대상별 카피</li><li>성인봉·행남해안산책로·봉래폭포 소개</li><li>포스터·현수막·카드뉴스 문안</li></ul><div class="ex"><b>예</b> “울릉도 처음 오는 관광객용 한 줄 소개 10개를 감성적으로 짧게.”</div></div>
-      <div class="cap"><h3><span class="ci">📱</span>SNS 홍보 콘텐츠</h3><ul><li>인스타 글·블로그 후기·릴스 대본</li><li>해시태그 묶음·카카오톡 홍보</li><li>축제·이벤트·체험 모집글</li></ul><div class="ex"><b>예</b> “오징어내장탕 인스타 글과 해시태그 10개.”</div></div>
-      <div class="cap today"><h3><span class="ci">🌐</span>다국어 안내문</h3><ul><li>영어·일본어·중국어 안내문</li><li>음식을 외국인이 이해하게 풀어 설명</li><li>외국인 FAQ·지도 영문 소개</li></ul><div class="ex"><b>예</b> “따개비밥을 외국인이 이해하게 재료·맛과 함께 설명.”</div></div>
-      <div class="cap"><h3><span class="ci">🍽️</span>메뉴판·숙소·체험 안내</h3><ul><li>한·영·일 메뉴판, 알레르기 안내</li><li>숙소 소개·객실·예약 안내문</li><li>체험 소요시간·준비물·난이도 정리</li></ul><div class="ex"><b>예</b> “성인봉 트레킹 소개문을 준비물·예약 안내와 함께.”</div></div>
-      <div class="cap"><h3><span class="ci">🗺️</span>코스 추천 · FAQ · 응대</h3><ul><li>당일·1박2일·2박3일·가족·우천 코스</li><li>배편·날씨·예약·결제 FAQ</li><li>예약·취소·후기 요청 응대 메시지</li></ul><div class="ex"><b>예</b> “가족 여행객용 2박3일 코스를 이동 동선·식사와 함께.”</div></div>
-      <div class="cap today"><h3><span class="ci">💻</span>홍보 웹페이지</h3><ul><li>관광지·식당·숙소·체험 소개 페이지</li><li>예약 문의 폼·다국어·오시는 길</li><li>말로 설명 → 브라우저에서 열리는 페이지</li></ul><div class="ex"><b>예</b> “체험 예약 페이지를 모바일에서도 보기 좋게.”</div></div>
-    </div>
-    <figure class="img-band">
-      <img src="assets/ulleung-scenic.jpg" alt="울릉도 해안 절벽과 에메랄드빛 동해 바다" loading="lazy">
-      <figcaption><b>이 모든 매력을 콘텐츠로.</b> 울릉도의 풍경·음식·체험을 글·이미지·웹페이지로 바꾸는 것이 AI 활용의 실전입니다.</figcaption>
-    </figure>
-    <div class="focus-bar">
-      <span>🎯 추천 순서</span>
-      <span class="flow"><b>로그인 준비</b><span class="a">→</span><b>Gemini 첫 질문</b><span class="a">→</span><b>ChatGPT 비교</b><span class="a">→</span><b>내 정보 정리</b><span class="a">→</span><b>웹페이지</b></span>
-    </div>
-  </div>
-</section>
-
-<!-- ===== 04 실전 무료 AI 도구 소개 ===== -->
+<!-- ===== 03 실전 무료 AI 도구 소개 ===== -->
 <section class="section" id="tools" style="background:var(--cream);">
-  <span class="sec-no" aria-hidden="true">04</span>
+  <span class="sec-no" aria-hidden="true">03</span>
   <div class="container">
     <div class="section-head">
       <span class="eyebrow">이번 실습의 중심 도구</span>
@@ -726,11 +596,12 @@ flowchart LR
 
     <div class="tool-focus">
       <h3>실습 방식은 딱 하나입니다</h3>
-      <p>같은 질문을 두 AI에 넣어 보고, 더 쉬운 답을 고른 뒤, 내 정보에 맞게 다시 고칩니다.</p>
+      <p>같은 질문을 두 AI에 넣어 보고, 더 쉬운 답을 고른 뒤, 내 정보에 맞게 고쳐 Google Sites에 붙입니다.</p>
       <div class="pill-row">
         <span>1. Gemini에 먼저 질문</span>
         <span>2. ChatGPT에 같은 질문</span>
         <span>3. 좋은 문장만 저장</span>
+        <span>4. Google Sites에 붙이기</span>
       </div>
     </div>
 
@@ -763,20 +634,22 @@ flowchart LR
         <tbody>
           <tr><td class="rec">1</td><td>Gemini</td><td>처음 답변을 받는다</td><td>소개문, 제목 후보, 질문 목록</td></tr>
           <tr><td class="rec">2</td><td>ChatGPT</td><td>더 쉽게 다듬는다</td><td>최종 문장, FAQ, 고객 응대문</td></tr>
-          <tr><td class="rec">3</td><td>내 작업장</td><td>좋은 문장만 붙여둔다</td><td>나중에 웹페이지에 넣을 재료</td></tr>
+          <tr><td class="rec">3</td><td>내 작업장</td><td>좋은 문장만 붙여둔다</td><td>웹페이지에 넣을 재료</td></tr>
+          <tr><td class="rec">4</td><td>Google Sites</td><td>재료를 섹션별로 붙인다</td><td>공유 가능한 홍보 웹페이지</td></tr>
         </tbody>
       </table>
     </div>
-    <div class="support-note"><strong>나머지 도구는 오늘의 중심이 아닙니다.</strong> Codex는 “코드를 더 자유롭게 만들고 싶을 때 쓰는 심화 선택지”로만 소개합니다. 처음 실습은 Gemini와 ChatGPT, 그리고 Google Sites만 따라오면 됩니다.</div>
+    <div class="support-note"><strong>나머지 도구는 오늘의 중심이 아닙니다.</strong> NotebookLM과 Suno는 예시로만 보고, Codex는 “코드를 더 자유롭게 만들고 싶을 때 쓰는 심화 선택지”로만 소개합니다. 처음 실습은 Gemini, ChatGPT, Google Sites만 따라오면 됩니다.</div>
   </div>
 </section>
 
+
 <!-- ===== 05 초급 환경설정 ===== -->
 <section class="section" id="setup">
-  <span class="sec-no" aria-hidden="true">05</span>
+  <span class="sec-no" aria-hidden="true">04</span>
   <div class="container">
     <div class="section-head">
-      <span class="eyebrow">시작 준비 · 계정과 브라우저</span>
+      <span class="step-badge"><span class="n">STEP 2</span> 시작 준비</span>
       <h2>먼저 <span class="hl">Gemini와 ChatGPT</span>만 켭니다</h2>
       <p class="kicker">이번 실습의 시작은 간단합니다. 브라우저를 열고, Gemini에 로그인하고, ChatGPT도 열어 둡니다. 그다음 같은 질문을 두 AI에 넣어 보며 차이를 비교합니다.</p>
     </div>
@@ -872,47 +745,52 @@ flowchart LR
   </div>
 </section>
 
-<!-- ===== 06 AI 작업 흐름 ===== -->
+<!-- ===== 05 완주 흐름 ===== -->
 <section class="section" id="roadmap">
-  <span class="sec-no" aria-hidden="true">06</span>
+  <span class="sec-no" aria-hidden="true">05</span>
   <div class="container">
     <div class="section-head">
-      <span class="eyebrow">작업 흐름 · AI를 순서대로 쓰는 법</span>
-      <h2>처음에는 <span class="hl">도구를 하나씩 켜고</span>, 그다음 콘텐츠를 만듭니다</h2>
-      <p class="kicker">초급자에게는 “좋은 프롬프트”보다 먼저 필요한 것이 있습니다. 계정으로 들어가고, 입력창을 찾고, 첫 질문을 보내고, 마음에 드는 문장을 저장하는 경험입니다. 그 다음에 홍보 문구와 웹페이지 제작으로 넘어갑니다.</p>
+      <span class="eyebrow">완주 흐름 · 길을 잃지 않는 순서</span>
+      <h2>이 순서대로 하면 <span class="hl">홍보 페이지와 QR</span>까지 갑니다</h2>
+      <p class="kicker">중간에 여러 도구가 나와도 메인 길은 하나입니다. Gemini와 ChatGPT로 필요한 문장을 만들고, 작업장에 저장한 뒤, Google Sites에 붙여 넣어 공개합니다.</p>
     </div>
     <div class="mermaid-wrap">
 <pre class="mermaid">
 flowchart LR
-  A(["1. 계정·브라우저 준비"]) --> B(["2. Gemini 첫 질문"])
-  B --> C(["3. ChatGPT 같은 질문"])
-  C --> D(["4. 내 정보 정리"])
-  D --> E(["5. 소개문 만들기"])
-  E --> F(["6. 다국어 안내"])
-  F --> G(["7. 리서치·사실 확인"])
-  G --> H(["8. 웹페이지 제작"])
+  A(["1 AI 이해"]) --> B(["2 계정 준비"])
+  B --> C(["3 첫 질문"])
+  C --> D(["4 작업장"])
+  D --> E(["5 질문 조사"])
+  E --> F(["6 소개문"])
+  F --> G(["7 다국어"])
+  G --> H(["8 웹페이지"])
+  H --> I(["9 점검"])
+  I --> J(["10 QR 공유"])
 </pre>
     </div>
     <div class="roadmap">
-      <a class="rm" href="#setup"><div class="rmn">1<b>준비</b></div><div><h3>계정과 브라우저 확인</h3><p>구글 계정, ChatGPT 로그인 방식, 휴대폰 인증, 개인정보 안전 규칙을 먼저 확인합니다.</p></div></a>
-      <a class="rm" href="#setup"><div class="rmn">2<b>Gemini</b></div><div><h3>Gemini에 첫 질문 보내기</h3><p>구글 계정으로 로그인하고, 쉬운 질문을 보낸 뒤 “더 짧게”로 답을 다듬어 봅니다.</p></div></a>
-      <a class="rm" href="#setup"><div class="rmn">3<b>GPT</b></div><div><h3>ChatGPT에 같은 질문 보내기</h3><p>두 AI의 답변을 비교하며 더 쉬운 문장, 더 쓸 만한 문장을 고릅니다.</p></div></a>
-      <a class="rm" href="#step1"><div class="rmn">4<b>요청</b></div><div><h3>좋은 요청문 만들기</h3><p>역할·대상·조건을 넣어 AI가 바로 쓸 수 있는 답을 하게 만듭니다.</p></div></a>
-      <a class="rm" href="#workspace"><div class="rmn">5<b>저장</b></div><div><h3>내 작업장에 정보 모으기</h3><p>이름, 위치, 장점, AI가 만든 문장, 확인할 항목을 한곳에 모읍니다.</p></div></a>
-      <a class="rm" href="#step2"><div class="rmn">6<b>문구</b></div><div><h3>소개문과 제목 만들기</h3><p>한 줄 소개, SNS 글, 페이지 제목 후보를 만듭니다.</p></div></a>
+      <a class="rm" href="#whatai"><div class="rmn">1<b>이해</b></div><div><h3>AI를 짧게 이해하기</h3><p>AI는 초안 도우미입니다. 틀릴 수 있고, 개인정보는 넣지 않습니다.</p></div></a>
+      <a class="rm" href="#setup"><div class="rmn">2<b>준비</b></div><div><h3>Gemini와 ChatGPT 켜기</h3><p>로그인하고 입력창을 찾은 뒤, 같은 질문을 넣어볼 준비를 합니다.</p></div></a>
+      <a class="rm" href="#step1"><div class="rmn">3<b>질문</b></div><div><h3>첫 질문 보내기</h3><p>Gemini와 ChatGPT 답변을 비교하고 마음에 드는 문장을 고릅니다.</p></div></a>
+      <a class="rm" href="#workspace"><div class="rmn">4<b>저장</b></div><div><h3>작업장 채우기</h3><p>내 주제, 위치, 장점, 문의, AI 결과를 한곳에 모읍니다.</p></div></a>
+      <a class="rm" href="#step5"><div class="rmn">5<b>질문</b></div><div><h3>관광객 질문 조사하기</h3><p>FAQ와 확인 필요 항목을 먼저 만들어 페이지의 뼈대를 세웁니다.</p></div></a>
+      <a class="rm" href="#step2"><div class="rmn">6<b>문구</b></div><div><h3>소개문과 제목 만들기</h3><p>큰 제목, 한 줄 소개, SNS 문구를 만들고 작업장에 저장합니다.</p></div></a>
       <a class="rm" href="#step3"><div class="rmn">7<b>언어</b></div><div><h3>외국어 안내 만들기</h3><p>영어 안내, 음식 설명, 알레르기·예약 문구를 만듭니다.</p></div></a>
-      <a class="rm" href="#step7"><div class="rmn">8<b>제작</b></div><div><h3>Google Sites로 조립하기</h3><p>작업장에 모아 둔 재료를 Google Sites에 붙여 넣고, 필요하면 AI 코드 카드도 삽입합니다.</p></div></a>
+      <a class="rm" href="#step7"><div class="rmn">8<b>제작</b></div><div><h3>Google Sites로 조립하기</h3><p>작업장 재료를 섹션별로 붙여 넣고, 예시 HTML 카드도 넣어봅니다.</p></div></a>
+      <a class="rm" href="#checklist"><div class="rmn">9<b>점검</b></div><div><h3>공개 전 확인하기</h3><p>구성, 사실, 외국어, 사진 권리, 모바일 화면을 확인합니다.</p></div></a>
+      <a class="rm" href="#publish"><div class="rmn">10<b>공유</b></div><div><h3>URL과 QR 만들기</h3><p>Google Sites URL을 휴대폰에서 열어보고 네이버 QR로 바꿉니다.</p></div></a>
     </div>
-    <div class="notice"><strong>실습 원칙:</strong> 처음부터 완성하려고 하지 않습니다. <b>AI 하나 켜기 → 질문 하나 보내기 → 답변 하나 고르기 → 작업장에 저장하기</b>를 반복하면 초급자도 끝까지 따라갈 수 있습니다.</div>
+    <div class="notice"><strong>실습 원칙:</strong> 최소 완주는 위 10단계만 따라가면 됩니다. NotebookLM, Suno, 에이전트, Codex는 뒤쪽에서 “이런 것도 가능하다”는 예시로만 봅니다.</div>
   </div>
 </section>
 
-<!-- ===== 07 STEP 1 · 첫 AI 실습 ===== -->
+
+<!-- ===== 06 STEP 3 · 첫 AI 실습 ===== -->
 <section class="section" id="step1" style="background:var(--cream);">
-  <span class="sec-no" aria-hidden="true">07</span>
+  <span class="sec-no" aria-hidden="true">06</span>
   <div class="container">
     <div class="section-head">
-      <span class="step-badge"><span class="n">STEP 1</span> Gemini와 ChatGPT 첫 실습</span>
+      <span class="step-badge"><span class="n">STEP 3</span> Gemini와 ChatGPT 첫 실습</span>
       <span class="eyebrow" style="color:var(--muted);"><span class="diff easy">난이도 · 아주 쉬움</span></span>
       <h2>같은 질문도 <span class="hl">AI마다 답이 다르게</span> 나옵니다</h2>
       <p class="kicker">먼저 Gemini로 초안을 만들고, 같은 요청을 ChatGPT에도 넣어 봅니다. 어느 쪽이 더 쉽고 쓸 만한지 고른 뒤, “더 짧게”, “더 친절하게”, “표로”처럼 이어서 고치는 연습을 합니다.</p>
@@ -1028,7 +906,7 @@ flowchart LR
       <div class="tip"><strong>💡 한 번에 끝내지 않아도 됩니다.</strong> 결과를 보고 <b>“더 짧게”</b>, <b>“울릉도 느낌 더”</b>, <b>“첫 번째만 다시”</b>처럼 이어서 부탁하면 점점 좋아집니다. 이것이 ‘대화로 다듬기’입니다.</div>
     </div>
 
-    <div class="subhead">📝 이제 내 정보를 적어둡니다</div>
+    <div class="subhead">📝 다음 실습에 쓸 기본 정보를 적어둡니다</div>
     <p class="kicker" style="margin-bottom:14px;">여기 적어두면, 다음 STEP의 “내 정보 넣어서 복사” 버튼이 프롬프트를 자동으로 완성해 줍니다. 모르는 칸은 비워도 됩니다.</p>
     <div class="form-card">
       <div class="form-grid">
@@ -1049,12 +927,13 @@ flowchart LR
   </div>
 </section>
 
-<!-- ===== 07 내 작업장 ===== -->
+
+<!-- ===== 07 STEP 4 · 내 작업장 ===== -->
 <section class="section" id="workspace">
-  <span class="sec-no" aria-hidden="true">08</span>
+  <span class="sec-no" aria-hidden="true">07</span>
   <div class="container">
     <div class="section-head">
-      <span class="eyebrow">내 작업장 · 결과 붙여두기</span>
+      <span class="step-badge"><span class="n">STEP 4</span> 내 작업장</span>
       <h2>AI 답변에서 <span class="hl">쓸 문장만 골라</span> 여기에 모읍니다</h2>
       <p class="kicker">AI 답변 전체를 다 쓸 필요는 없습니다. 마음에 드는 제목, 소개문, FAQ, 외국어 안내, 확인할 사실만 골라 붙여 두세요. 새로고침해도 이 브라우저에 저장됩니다.</p>
     </div>
@@ -1078,13 +957,540 @@ flowchart LR
         <button class="btn light" type="button" onclick="clearWorkspace()">작업장 비우기</button>
       </div>
     </div>
-    <div class="notice"><strong>작업장 사용법:</strong> 각 STEP의 결과를 여기에 붙여 둔 뒤, 웹페이지 제작 단계에서 <b>“아래 작업장 내용을 바탕으로 웹페이지를 만들어줘”</b>라고 요청하면 됩니다.</div>
+    <div class="notice"><strong>작업장 사용법:</strong> 각 STEP의 결과를 여기에 붙여 둔 뒤, STEP 8에서 <b>“아래 작업장 내용을 바탕으로 Google Sites 원고를 만들어줘”</b>라고 요청하면 됩니다.</div>
   </div>
 </section>
 
-<!-- ===== 08 프롬프트 템플릿 모음 ===== -->
-<section class="section" id="templates">
+
+<!-- ===== 08 STEP 5 · 관광객 질문 조사 ===== -->
+<section class="section" id="step5">
+  <span class="sec-no" aria-hidden="true">08</span>
+  <div class="container">
+    <div class="section-head">
+      <span class="step-badge"><span class="n">STEP 5</span> 관광객 질문 조사</span>
+      <span class="eyebrow" style="color:var(--muted);"><span class="diff mid">난이도 · 중간</span></span>
+      <h2>웹페이지에 넣을 <span class="hl-t">질문과 확인 항목</span>을 먼저 만듭니다</h2>
+      <p class="kicker">홍보 페이지는 예쁜 문장보다 <b>관광객이 궁금해하는 것에 답하는 구조</b>가 중요합니다. FAQ, 검색 키워드, 사실 확인 목록을 먼저 만들어 페이지의 뼈대를 세웁니다.</p>
+    </div>
+    <figure class="img-band">
+      <img src="assets/seonginbong-forest.jpg" alt="울릉도 성인봉의 원시림 — 생태관광 자원" loading="lazy">
+      <figcaption><b>예: 성인봉 원시림.</b> 내가 만들 웹페이지 주제 하나를 정하고, 그 주제로 리서치를 시작합니다.</figcaption>
+    </figure>
+    <div class="pb-label"><span class="tag">고르기</span> 내가 만들 주제</div>
+    <div class="chips" role="group" aria-label="주제 선택">
+      <button class="chip on" type="button">🐟 식당</button>
+      <button class="chip" type="button">🏡 숙소</button>
+      <button class="chip" type="button">🥾 체험</button>
+      <button class="chip" type="button">🗺️ 관광지</button>
+      <button class="chip" type="button">🧺 특산품</button>
+    </div>
+
+    <div class="subhead">🔎 AI 리서치에서 200% 뽑아내는 5가지 요령</div>
+    <div class="principle">
+      <div class="p"><div><h3>후속 질문으로 파고들기</h3><div class="eg">첫 답에서 멈추지 말고 <b>“그중 3번을 더 자세히”</b>, <b>“예시를 3개 더”</b>라고 이어서 캐물으세요.</div></div></div>
+      <div class="p"><div><h3>표로 정리해 달라고 하기</h3><div class="eg"><b>“표로 정리해줘”</b> 한마디면 비교·선택이 훨씬 쉬워집니다.</div></div></div>
+      <div class="p"><div><h3>국내 / 외국인 나눠서 요청</h3><div class="eg">키워드·관점을 <b>대상별로 나눠</b> 달라고 하면 훨씬 실용적입니다.</div></div></div>
+      <div class="p"><div><h3>다른 지역과 비교시키기</h3><div class="eg"><b>“제주·강릉은 어떻게 홍보하는지 비교하고 울릉도가 배울 점”</b>을 물어보세요.</div></div></div>
+      <div class="p warn"><div><h3>‘확인 필요’를 꼭 표시시키기</h3><div class="eg">AI는 틀릴 수 있습니다. <b>“확실하지 않은 정보는 ‘확인 필요’로 표시해줘”</b>를 항상 넣으세요.</div></div></div>
+    </div>
+
+    <div class="card" style="margin-top:24px;">
+      <div class="pb-head"><span class="tag-badge teal">리서치 프롬프트</span><h3>관광객 관점 + 사실 확인 목록</h3></div>
+      <div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>울릉도 [내 주제] 홍보 웹페이지를 만들려고 해.
+아래를 표로 정리해줘.
+
+1. 관광객이 방문 전에 가장 궁금해하는 것 7가지
+2. 사람들이 많이 쓰는 검색 키워드 10개 (국내/외국인 나눠서)
+3. 다른 인기 관광지 소개 페이지에서 배울 점 3가지
+4. 내가 반드시 사실 확인해야 할 항목
+   (가격·운영시간·배편·전화·주소 등)
+
+확실하지 않은 정보는 "확인 필요"로 표시하고,
+과장 없이 사실 위주로 정리해줘.</code></div>
+      <div class="notice"><strong>🌿 생태관광이라 더 챙길 것:</strong> 자연 보호(정해진 길로만), 안전(미끄럼·낙석), 계절별 주의(겨울 결항 가능), 지역 주민 배려 — 이 네 가지를 안내에 꼭 넣어달라고 하세요.</div>
+
+      <div class="pb-label"><span class="tag">예시 결과</span> AI가 표로 정리해 준 리서치 (발췌)</div>
+      <div class="tool-table-wrap">
+        <table class="tool-table">
+          <thead><tr><th>항목</th><th>AI가 정리한 내용</th><th>비고</th></tr></thead>
+          <tbody>
+            <tr><td>궁금해하는 것</td><td>배편 시간·결항 여부, 주차, 아이 동반, 예약 방법, 영어 안내 여부</td><td>—</td></tr>
+            <tr><td>검색 키워드 (국내)</td><td>울릉도 맛집 · 도동항 회 · 성인봉 등산 · 울릉도 2박3일</td><td>—</td></tr>
+            <tr><td>검색 키워드 (외국인)</td><td>Ulleungdo food · Ulleungdo ferry · things to do in Ulleungdo</td><td>—</td></tr>
+            <tr><td>다른 지역에서 배울 점</td><td>제주: 코스별 카드 / 강릉: 사진 중심 / 거제: 예약 버튼 상단 고정</td><td>—</td></tr>
+            <tr><td>사실 확인 항목</td><td>가격 · 운영시간 · 배편 시각 · 전화번호 · 주소</td><td class="rec">확인 필요</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <figure class="img-band" style="margin-top:16px;">
+        <img src="assets/ulleung-jeodong.jpg" alt="울릉도 저동항 어항 풍경" loading="lazy">
+        <figcaption><b>내 주제의 ‘현장’을 떠올리며.</b> 저동항 오징어잡이처럼, 내 주제만의 생생한 장면을 리서치에 함께 담아보세요.</figcaption>
+      </figure>
+      <div class="pb-label"><span class="tag">결과 저장</span> 리서치 뒤 할 일</div>
+      <div class="steps">
+        <div class="step"><b>1</b><span>관광객 질문 중 웹페이지 FAQ에 넣을 질문 <b>5개</b>를 고릅니다.</span></div>
+        <div class="step"><b>2</b><span>검색 키워드와 벤치마킹 메모는 <b>관광객 질문 / 리서치 메모</b> 칸에 붙입니다.</span></div>
+        <div class="step"><b>3</b><span>AI가 “확인 필요”라고 표시한 항목은 <b>확인 필요 항목</b> 칸에 옮깁니다.</span></div>
+      </div>
+
+      <div class="drill">
+        <div class="dh">🔎 리서치 실습 더 해보기 <span class="diff mid">골라서 3개 이상</span></div>
+        <h4><span class="dn">5-2</span>경쟁 지역 벤치마킹</h4>
+        <div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>제주·강릉·거제의 [내 주제] 홍보 방식을 비교하고,
+울릉도가 배울 점 5가지를 표로 정리해줘.</code></div>
+        <h4><span class="dn">5-3</span>관광객 질문 모으기</h4>
+        <div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>[내 주제] 방문객이 방문 전에 가장 많이 묻는 질문 15개를
+카테고리(교통·예약·비용·준비물·날씨)별로 묶어줘.</code></div>
+        <h4><span class="dn">5-4</span>콘텐츠 아이디어 뽑기</h4>
+        <div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>위 조사 결과를 바탕으로, 이번 시즌에 올리면 좋을
+SNS 콘텐츠 아이디어 10개를 이유와 함께 제안해줘.</code></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== 09 STEP 6 · 관광 홍보 문구 ===== -->
+<section class="section" id="step2" style="background:var(--cream);">
   <span class="sec-no" aria-hidden="true">09</span>
+  <div class="container">
+    <div class="section-head">
+      <span class="step-badge"><span class="n">STEP 6</span> 관광 홍보 문구 만들기</span>
+      <span class="eyebrow" style="color:var(--muted);"><span class="diff easy">난이도 · 쉬움</span></span>
+      <h2>웹페이지에 들어갈 <span class="hl">글 재료</span>를 만듭니다</h2>
+      <p class="kicker">여기서 나온 제목·한 줄 소개·SNS 글은 STEP 8에서 웹페이지에 그대로 씁니다.</p>
+    </div>
+    <figure class="img-band">
+      <img src="assets/ulleung-dodong.jpg" alt="울릉도 도동항 주변 마을과 바다 풍경" loading="lazy">
+      <figcaption><b>내 동네를 이렇게 소개합니다.</b> 우리 가게가 있는 도동항 같은 실제 장소를, AI와 함께 매력적인 한 줄로 바꿔봅니다.</figcaption>
+    </figure>
+    <span class="follow">먼저 Gemini에 붙여넣고, 마음에 드는 문장은 ChatGPT로 한 번 더 다듬어 보세요</span>
+    <div class="card">
+      <div class="pb-head"><span class="tag-badge primary">홍보 문구</span><h3>소개글·SNS·사이트 본문 만들기</h3></div>
+      <div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>너는 울릉도 관광 홍보 전문가야.
+아래 정보로 내 주제의 홍보자료를 만들어줘.
+
+[내 정보]
+- 이름: [가게/숙소/프로그램 이름]
+- 종류: [식당/숙소/체험/관광지/특산품]
+- 위치: [위치]
+- 대표 메뉴/서비스: [대표 메뉴·객실·체험]
+- 장점: [강조하고 싶은 특징]
+- 문의: [전화번호 또는 문의 방법]
+
+[만들어줄 것]
+1. 큰 제목 5개
+2. 한 줄 소개 5개
+3. 인스타그램 글 1개 (해시태그 10개 포함)
+4. Google Sites 소개 섹션에 넣을 짧은 본문 1개
+
+조건: 중학생도 이해하게 쉽게 / 과장 없이 /
+가격·시간·배편은 "확인 필요"로 표시</code></div>
+      <div class="form-actions"><button class="btn teal small" type="button" onclick="copyFilledPrompt('intro')">내 정보 넣어서 복사</button></div>
+      <div class="pb-label"><span class="tag">예시 결과</span> 가상의 “해울림식당”</div>
+      <div class="example">
+        <div class="ex-row"><span class="ex-key">한 줄 소개</span><span class="ex-val">도동항 3분 거리, 바다를 바라보며 즐기는 자연산 울릉도 밥상</span></div>
+        <div class="ex-row"><span class="ex-key">인스타그램 글</span><span class="ex-val">울릉도 도동항 바로 앞, 가족이 직접 운영하는 해울림식당입니다. 자연산 재료로 준비한 따개비밥과 오징어내장탕을 바다 전망과 함께 즐겨보세요. 방문 전 운영시간과 예약 가능 여부를 확인해 주세요.<br>#울릉도맛집 #도동항 #따개비밥 #오징어내장탕 #울릉도여행</span></div>
+      </div>
+      <div class="learn"><b>이 STEP에서 배운 것</b> · 역할 부여 / 대상 지정 / 개수·형식 지정 / 대화로 다듬기</div>
+      <div class="pb-label"><span class="tag">결과 저장</span> AI 답변을 받은 뒤 할 일</div>
+      <div class="steps">
+        <div class="step"><b>1</b><span>제목 후보 중 가장 마음에 드는 것 <b>1개</b>를 고릅니다.</span></div>
+        <div class="step"><b>2</b><span>한 줄 소개 중 실제로 쓸 문장 <b>1개</b>를 고릅니다.</span></div>
+        <div class="step"><b>3</b><span><a href="#workspace">내 작업장</a>의 <b>제목 후보</b>, <b>한 줄 소개 / 소개문</b> 칸에 붙여넣습니다.</span></div>
+        <div class="step"><b>4</b><span>가격·운영시간·배편처럼 확인해야 할 내용은 <b>확인 필요 항목</b>에 적습니다.</span></div>
+      </div>
+
+      <div class="drill">
+        <div class="dh">✍️ 실습 더 해보기 <span class="diff easy">골라서 3개 이상</span></div>
+        <h4><span class="dn">2-2</span>블로그 글 제목 뽑기</h4>
+        <div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>울릉도 [내 주제]로 관광객이 검색할 만한
+블로그 글 제목 10개를 만들어줘.
+검색에 잘 걸릴 키워드를 넣고, 클릭하고 싶게 작성해줘.</code></div>
+        <h4><span class="dn">2-3</span>릴스·쇼츠 15초 대본</h4>
+        <div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>[내 주제]를 소개하는 15초 릴스 대본을 만들어줘.
+장면별로 나누고, 화면 자막과 배경 설명을 함께 적어줘.</code></div>
+        <h4><span class="dn">2-4</span>계절별 홍보 문구</h4>
+        <div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>[내 주제]의 봄·여름·가을·겨울 계절별 홍보 문구를
+각 2개씩 만들어줘. 짧고 감성적으로, 과장 없이.</code></div>
+      </div>
+    </div>
+    <div class="pb-label"><span class="tag">보너스</span> 사진 + AI 문구 = 홍보 포스터</div>
+    <figure class="img-band poster-band">
+      <img src="assets/ulleung-bongnae.jpg" alt="울릉도 봉래폭포" loading="lazy">
+      <figcaption><b>울릉도 봉래폭포.</b> 이런 실제 사진에 AI로 만든 한 줄 문구를 얹으면, 그대로 훌륭한 홍보 포스터가 됩니다.</figcaption>
+    </figure>
+  </div>
+</section>
+
+
+<!-- ===== 10 STEP 7 · 글로벌 콘텐츠 ===== -->
+<section class="section" id="step3">
+  <span class="sec-no" aria-hidden="true">10</span>
+  <div class="container">
+    <div class="section-head">
+      <span class="step-badge"><span class="n">STEP 7</span> 글로벌 콘텐츠 만들기</span>
+      <span class="eyebrow" style="color:var(--muted);"><span class="diff mid">난이도 · 중간</span></span>
+      <h2>외국인도 이해하는 <span class="hl-t">다국어 안내</span> 만들기</h2>
+      <p class="kicker">울릉도는 외국인 관광객도 늘고 있습니다. 영어·일본어 안내와, 문화가 달라도 헷갈리지 않는 쉬운 표현을 만들어 둡니다.</p>
+    </div>
+    <figure class="img-band">
+      <img src="assets/ulleungdo-squid.jpg" alt="울릉도 오징어 — 대표 특산물이자 관광 먹거리" loading="lazy">
+      <figcaption><b>예: 울릉도 오징어.</b> “오징어내장탕”을 그대로 번역하면 외국인은 이해하기 어렵습니다. AI에게 <b>재료·맛·특징을 함께 설명</b>해 달라고 하면 자연스러운 안내가 됩니다.</figcaption>
+    </figure>
+    <div class="card">
+      <div class="pb-head"><span class="tag-badge teal">다국어 안내</span><h3>영어·일본어 안내문 + 음식 설명</h3></div>
+      <div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>우리 가게를 처음 방문하는 외국인 관광객을 위한
+영어와 일본어 안내문을 만들어줘.
+
+[내 정보]
+- 이름 / 종류 / 위치 / 대표 메뉴 / 문의
+
+[만들어줄 것]
+1. 영어 안내 3줄 (짧고 쉬운 문장)
+2. 일본어 안내 3줄
+3. 대표 메뉴를 외국인이 이해하게 재료·맛과 함께 설명
+4. 외국인이 자주 묻는 질문 3개와 답 (영어)
+
+조건: 쉬운 표현 / 예약·결제·알레르기 분명하게 / 정중하게</code></div>
+      <div class="form-actions"><button class="btn teal small" type="button" onclick="copyFilledPrompt('global')">내 정보 넣어서 복사</button></div>
+      <div class="pb-label"><span class="tag">예시 결과</span> 영어 안내</div>
+      <div class="example"><div class="ex-row"><span class="ex-val muted">Family-run seafood restaurant, 3 min walk from Dodong Port.<br>Signature dishes: barnacle rice &amp; squid soup with fresh local catch.<br>Ocean-view seats available — reservation recommended (card payment OK).</span></div></div>
+      <div class="tip"><strong>🌱 생태관광 안내도 함께.</strong> “자연 보호(정해진 길로만), 안전(미끄럼·낙석), 계절별 주의(겨울 결항 가능)”를 3~5줄로 정리해 달라고 이어서 부탁하세요.</div>
+      <div class="pb-label"><span class="tag">결과 저장</span> 외국어 안내를 받은 뒤 할 일</div>
+      <div class="steps">
+        <div class="step"><b>1</b><span>영어 안내 3줄 중 어려운 단어가 있으면 <b>“더 쉬운 영어로”</b> 다시 요청합니다.</span></div>
+        <div class="step"><b>2</b><span>음식 설명에 <b>재료, 맛, 알레르기</b>가 들어갔는지 확인합니다.</span></div>
+        <div class="step"><b>3</b><span><a href="#workspace">내 작업장</a>의 <b>외국어 안내</b> 칸에 최종 문장을 붙여넣습니다.</span></div>
+      </div>
+
+      <div class="drill">
+        <div class="dh">🌐 실습 더 해보기 <span class="diff mid">골라서 3개 이상</span></div>
+        <h4><span class="dn">3-2</span>외국인 FAQ (영어)</h4>
+        <div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>외국인 관광객이 자주 묻는 질문 5개와 답을 영어로 만들어줘.
+배편·결제·예약·주차·와이파이를 포함하고, 쉬운 문장으로.</code></div>
+        <h4><span class="dn">3-3</span>다국어 메뉴판</h4>
+        <div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>내 메뉴 [메뉴 목록]을 한국어·영어·일본어 메뉴판으로 만들어줘.
+각 메뉴에 한 줄 설명과 알레르기 안내를 넣어줘.</code></div>
+        <h4><span class="dn">3-4</span>생태관광 주의 안내 (한·영)</h4>
+        <div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>생태관광 방문객을 위한 자연 보호·안전·계절 주의 안내를
+한국어와 영어로 각 4줄씩 만들어줘. 정중하고 쉬운 표현으로.</code></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== 11 STEP 8 · 웹페이지 제작 ===== -->
+<section class="section" id="step7">
+  <span class="sec-no" aria-hidden="true">11</span>
+  <div class="container">
+    <div class="section-head">
+      <span class="step-badge"><span class="n">STEP 8</span> 웹페이지 제작</span>
+      <span class="eyebrow" style="color:var(--muted);"><span class="diff mid">난이도 · 완성</span></span>
+      <h2>이제 <span class="hl">Google Sites</span>로 웹페이지를 완성합니다</h2>
+      <p class="kicker">오늘의 기본 완주 경로는 코딩이 아니라 <b>Google Sites</b>입니다. AI가 만든 원고를 섹션별로 붙여 넣고, 사진·버튼·지도·FAQ를 배치한 뒤, 바로 공유 가능한 URL을 만듭니다.</p>
+    </div>
+    <span class="follow">작업장 내용을 바탕으로 Google Sites에 붙일 원고를 만듭니다</span>
+    <div class="steps">
+      <div class="step"><b>1</b><span><a href="https://sites.google.com/" target="_blank" rel="noopener">sites.google.com</a>을 열고 구글 계정으로 로그인합니다.</span></div>
+      <div class="step"><b>2</b><span><b>빈 사이트</b> 또는 마음에 드는 템플릿을 선택합니다. 처음이면 빈 사이트가 가장 쉽습니다.</span></div>
+      <div class="step"><b>3</b><span>아래 프롬프트로 <b>Google Sites에 붙여 넣을 원고</b>를 만든 뒤, 섹션별로 복사해 붙입니다.</span></div>
+      <div class="step"><b>4</b><span><b>미리보기</b>에서 데스크톱과 휴대폰 화면을 확인하고, 글자·버튼·사진이 겹치지 않게 고칩니다.</span></div>
+      <div class="step"><b>5</b><span><b>게시</b>를 눌러 URL을 만들고, 다음 단계에서 네이버 QR 코드로 바꿉니다.</span></div>
+    </div>
+    <div class="notice"><strong>Google Sites에서 코드도 일부 사용할 수 있습니다.</strong> <b>삽입 → 임베드 → 코드 삽입</b>에 HTML, CSS, JavaScript를 붙여 넣을 수 있습니다. 다만 오늘의 기본 목표는 사이트 전체 코딩이 아니라, 누구나 완주할 수 있는 <b>노코드 웹페이지 완성</b>입니다.</div>
+    <div class="cols-2">
+      <div class="card">
+        <div class="pb-head"><span class="tag-badge primary">1차 제작</span><h3>Google Sites 원고 만들기</h3></div>
+        <div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>울릉도 [내 주제] 홍보 웹페이지를 만들어줘.
+- Google Sites에 그대로 붙여 넣을 수 있게
+- 섹션별 제목과 본문을 나누어
+- 짧고 쉬운 문장으로
+
+[기본 정보] 이름/종류/위치/대표 메뉴·서비스/장점/문의/한 줄 소개
+
+[만들어줄 것]
+1. 첫 화면 큰 제목 3개
+2. 한 줄 소개 3개
+3. 소개 섹션 본문 1개
+4. 카드 3개: 위치 / 대표 메뉴·체험 / 추천 대상
+5. 방문 안내: 운영시간, 예약, 결제, 주차 또는 준비물
+6. 영어 안내 3줄
+7. FAQ 5개
+8. 마지막 문의 문구와 버튼 문구
+
+[주의]
+- 미확인 가격·배편·운영시간은 "확인 필요"로 표시
+- Google Sites에 붙일 수 있게 코드 말고 원고로 작성
+- 너무 긴 문단은 3문장 이내로 나누기</code></div>
+        <div class="form-actions"><button class="btn teal small" type="button" onclick="copyFilledPrompt('web')">내 정보 넣어서 복사</button></div>
+        <div class="tip"><strong>작업장에 먼저 저장하세요.</strong> 제목, 소개문, FAQ, 외국어 안내, 확인 필요 항목이 비어 있으면 웹페이지도 얕아집니다. 비어 있는 칸이 있으면 <a href="#workspace">내 작업장</a>으로 돌아가 채운 뒤 복사하세요.</div>
+      </div>
+      <div class="card">
+        <div class="pb-head"><span class="tag-badge">수정</span><h3>Google Sites용으로 더 줄이기</h3></div>
+        <div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>방금 만든 웹페이지에서
+Google Sites에 붙여 넣기 쉽게 다시 정리해줘.
+
+조건:
+- 각 섹션 제목은 12자 이내
+- 본문은 한 섹션당 3문장 이내
+- 버튼 문구는 8자 이내
+- FAQ 답변은 2문장 이내
+- 확인이 필요한 정보는 "확인 필요"로 남겨줘.</code></div>
+        <p style="margin-top:14px; color:var(--ink-soft);">Google Sites는 섹션마다 글을 붙여 넣는 방식이라, 길고 복잡한 문장보다 <b>짧은 제목 + 짧은 본문</b>이 훨씬 잘 보입니다.</p>
+      </div>
+    </div>
+    <div class="pb-label"><span class="tag">붙여넣기 순서</span> Google Sites 화면에서 그대로 따라 하기</div>
+    <div class="talk">
+      <div class="t"><div><h3>사이트 이름 입력</h3><p>왼쪽 위 사이트 이름에는 <b>내 가게·숙소·체험 이름</b>을 적습니다. 예: 해울림식당.</p></div></div>
+      <div class="t"><div><h3>첫 화면 만들기</h3><p>상단 큰 제목에는 AI가 만든 제목 1개를 넣고, 바로 아래에 한 줄 소개를 붙입니다. 대표 사진은 직접 찍은 사진을 사용합니다.</p></div></div>
+      <div class="t"><div><h3>소개 카드 3개 배치</h3><p><b>위치</b>, <b>대표 메뉴/체험</b>, <b>추천 대상</b>을 3개의 작은 묶음으로 나누어 넣습니다.</p></div></div>
+      <div class="t"><div><h3>방문 안내 추가</h3><p>운영시간, 예약 방법, 결제, 주차, 준비물을 적습니다. 모르는 항목은 지우지 말고 <b>확인 필요</b>로 남깁니다.</p></div></div>
+      <div class="t"><div><h3>FAQ 넣기</h3><p>관광객 질문 5개를 넣습니다. 답변은 짧게 쓰고, 배편·날씨처럼 바뀌는 정보는 공식 공지를 확인하라고 안내합니다.</p></div></div>
+      <div class="t"><div><h3>문의 버튼 만들기</h3><p><b>삽입 → 버튼</b>에서 전화, 예약, 지도 버튼을 만듭니다. 버튼 문구는 <b>전화 문의</b>, <b>지도 보기</b>, <b>예약 문의</b>처럼 짧게 씁니다.</p></div></div>
+      <div class="t"><div><h3>지도 넣기</h3><p><b>삽입 → 지도</b>에서 장소를 검색하거나 지도 링크를 붙입니다. 주소가 정확한지 휴대폰에서도 다시 확인합니다.</p></div></div>
+      <div class="t"><div><h3>미리보기 확인</h3><p>오른쪽 위 <b>미리보기</b>를 눌러 컴퓨터와 휴대폰 화면을 확인합니다. 사진이 너무 크거나 글이 길면 섹션을 나눕니다.</p></div></div>
+    </div>
+
+    <div class="pb-label"><span class="tag">선택 실습</span> GPT/Gemini가 만든 코드를 붙여넣을 수도 있습니다</div>
+    <div class="cols-2">
+      <div class="card">
+        <h3>가능한 방식</h3>
+        <p>Google Sites에서 <b>삽입 → 임베드 → 코드 삽입</b>을 선택하면, AI가 만든 HTML/CSS/JavaScript 조각을 넣을 수 있습니다. 전체 사이트를 통째로 올리는 용도보다는 <b>홍보 카드, FAQ 박스, 강조 안내</b>처럼 작은 영역에 쓰는 것이 안정적입니다.</p>
+        <div class="notice"><strong>처음에는 작게 시작하세요.</strong> 코드가 길수록 붙여넣기 실수와 화면 깨짐이 늘어납니다. 오늘은 “홍보 카드 1개” 정도만 연습해도 충분합니다.</div>
+      </div>
+      <div class="card">
+        <div class="pb-head"><span class="tag-badge primary">예시 HTML</span><h3>Google Sites에 붙여 넣는 홍보 카드</h3></div>
+        <p>아래 코드는 Google Sites의 <b>삽입 → 임베드 → 코드 삽입</b>에 그대로 붙여 넣어볼 수 있는 작은 예시입니다. 이름, 위치, 메뉴, 버튼 링크만 내 정보로 바꾸면 됩니다.</p>
+        <div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>&lt;style&gt;
+.promo-card {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 28px;
+  border-radius: 18px;
+  background: #f9f0ff;
+  border: 2px solid #d9bdde;
+  font-family: Arial, sans-serif;
+  color: #1d1d1d;
+}
+.promo-card h2 {
+  margin: 0 0 12px;
+  font-size: 30px;
+  line-height: 1.25;
+  color: #4a154b;
+}
+.promo-card p {
+  margin: 8px 0;
+  font-size: 18px;
+  line-height: 1.7;
+}
+.promo-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+.promo-actions a {
+  display: inline-block;
+  padding: 12px 18px;
+  border-radius: 999px;
+  background: #4a154b;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+@media (max-width: 520px) {
+  .promo-card { padding: 22px; }
+  .promo-card h2 { font-size: 24px; }
+  .promo-card p { font-size: 16px; }
+  .promo-actions a { width: 100%; text-align: center; }
+}
+&lt;/style&gt;
+
+&lt;div class="promo-card"&gt;
+  &lt;h2&gt;도동항 3분, 바다를 보며 맛보는 울릉도 한 끼&lt;/h2&gt;
+  &lt;p&gt;해울림식당은 따개비밥과 오징어내장탕으로 울릉도 바다의 맛을 전하는 가족 식당입니다.&lt;/p&gt;
+  &lt;p&gt;&lt;strong&gt;위치:&lt;/strong&gt; 도동항 도보 3분&lt;/p&gt;
+  &lt;p&gt;&lt;strong&gt;방문 전 확인:&lt;/strong&gt; 운영시간, 가격, 배편 시간은 방문 전 확인해 주세요.&lt;/p&gt;
+  &lt;div class="promo-actions"&gt;
+    &lt;a href="#" target="_blank"&gt;전화 문의&lt;/a&gt;
+    &lt;a href="#" target="_blank"&gt;지도 보기&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></div>
+        <div class="tip"><strong>수정 방법:</strong> 코드가 어렵게 느껴지면 전체 코드를 ChatGPT에 붙이고 <b>“식당 이름을 바다뷰민박으로 바꾸고 숙소 소개 카드로 고쳐줘”</b>처럼 요청하면 됩니다.</div>
+      </div>
+      <div class="card">
+        <div class="pb-head"><span class="tag-badge teal">코드 삽입</span><h3>홍보 카드 코드 요청</h3></div>
+        <div class="prompt-box"><button class="copy-btn" type="button" onclick="copyFilledPrompt('embed')">내 정보 넣어서 복사</button><code>Google Sites 코드 삽입에 붙여 넣을 짧은 홍보 카드 HTML을 만들어줘.</code></div>
+        <div class="tip"><strong>붙여넣는 위치:</strong> Google Sites에서 <b>삽입 → 임베드 → 코드 삽입</b>을 누른 뒤 AI가 만든 코드를 붙입니다. 미리보기에서 높이가 잘리면 임베드 박스의 크기를 늘립니다.</div>
+      </div>
+    </div>
+
+    <div class="pb-label"><span class="tag">AI에게 고치라고 말하기</span> 화면이 마음에 안 들 때</div>
+    <div class="cols-2">
+      <div class="card"><h3>글이 너무 길 때</h3><div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>Google Sites에 붙여 넣기 좋게
+섹션별 본문을 3문장 이내로 줄여줘.
+중요한 정보는 남기고 설명만 짧게 해줘.</code></div></div>
+      <div class="card"><h3>코드 카드가 깨질 때</h3><div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>Google Sites 임베드 코드에서 모바일 화면이 깨지지 않게 고쳐줘.
+- 외부 라이브러리 사용하지 않기
+- CSS는 style 태그 안에 넣기
+- 글자와 버튼이 겹치지 않게
+- 너비는 100% 안에서만 사용하기</code></div></div>
+    </div>
+
+    <div class="section-head" style="margin-top:56px; margin-bottom:28px;">
+      <h2 style="font-size:clamp(1.8rem,3.4vw,2.6rem);">완성하면 <span class="hl">이런 모습</span>이 됩니다</h2>
+      <p class="kicker" style="font-size:1.2rem;">아래 예시처럼 첫 화면, 소개, 방문 안내, FAQ, 문의가 한 흐름으로 보이면 충분합니다. Google Sites에서도 같은 순서로 구성하면 됩니다.</p>
+    </div>
+    <div class="mockups">
+      <div class="frame-desktop"><div class="bar" aria-hidden="true"><i></i><i></i><i></i></div><iframe src="example.html" title="완성 웹페이지 예시 (데스크톱)" loading="lazy"></iframe></div>
+      <div class="frame-phone"><div class="notch" aria-hidden="true"></div><iframe src="example.html" title="완성 웹페이지 예시 (모바일)" loading="lazy"></iframe></div>
+    </div>
+    <div class="pb-label"><span class="tag">완성 행동</span> 웹페이지 초안이 나온 뒤</div>
+    <div class="steps">
+      <div class="step"><b>1</b><span>Google Sites 미리보기에서 첫 화면과 문의 버튼을 확인합니다.</span></div>
+      <div class="step"><b>2</b><span>휴대폰 미리보기에서 글자·사진·버튼이 겹치지 않는지 확인합니다.</span></div>
+      <div class="step"><b>3</b><span>문제가 있으면 AI에게 “Google Sites에 붙이기 쉽게 더 짧게”라고 요청하고 다시 붙입니다.</span></div>
+      <div class="step"><b>4</b><span><a href="#checklist">공개 전 점검</a>으로 이동해 구성·사실·외국어·권리를 확인합니다.</span></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== 12 STEP 9 · 완성 체크리스트 ===== -->
+<section class="section" id="checklist" style="background:var(--cream);">
+  <span class="sec-no" aria-hidden="true">12</span>
+  <div class="container">
+    <div class="section-head">
+      <span class="step-badge"><span class="n">STEP 9</span> 공개 전 점검</span>
+      <h2>이 항목이 다 있으면 <span class="hl">완성</span>입니다</h2>
+      <p class="kicker">하나씩 눌러 확인하세요. 체크 상태는 이 브라우저에 저장됩니다.</p>
+    </div>
+    <div class="cols-2">
+      <div class="card">
+        <h3>구성 점검</h3>
+        <div class="checklist">
+          <label><input type="checkbox"><span><b>첫 화면</b> — 이름, 큰 제목, 한 줄 소개, 대표 사진이 보인다</span></label>
+          <label><input type="checkbox"><span><b>문의 버튼</b> — 전화·예약·지도 버튼이 첫 화면과 마지막에 있다</span></label>
+          <label><input type="checkbox"><span><b>모바일 화면</b> — 휴대폰에서 글자·버튼·사진이 겹치지 않는다</span></label>
+        </div>
+      </div>
+      <div class="card">
+        <h3>사실 점검</h3>
+        <div class="checklist">
+          <label><input type="checkbox"><span><b>운영 정보</b> — 가격, 운영시간, 예약 방법을 직접 확인했다</span></label>
+          <label><input type="checkbox"><span><b>위치 정보</b> — 주소, 지도 링크, 전화번호가 맞다</span></label>
+          <label><input type="checkbox"><span><b>교통 정보</b> — 배편·날씨처럼 바뀌는 정보는 “확인 필요”로 표시했다</span></label>
+        </div>
+      </div>
+      <div class="card">
+        <h3>외국어 점검</h3>
+        <div class="checklist">
+          <label><input type="checkbox"><span><b>쉬운 표현</b> — 영어 안내가 짧고 이해하기 쉽다</span></label>
+          <label><input type="checkbox"><span><b>음식 설명</b> — 재료·맛·알레르기 정보를 포함했다</span></label>
+          <label><input type="checkbox"><span><b>예약·결제</b> — 외국인이 문의하기 쉬운 표현이 있다</span></label>
+        </div>
+      </div>
+      <div class="card">
+        <h3>권리 점검</h3>
+        <div class="checklist">
+          <label><input type="checkbox"><span><b>사진 권리</b> — 직접 찍은 사진이거나 사용할 수 있는 사진이다</span></label>
+          <label><input type="checkbox"><span><b>사람 얼굴</b> — 얼굴이 보이면 공개해도 되는지 확인했다</span></label>
+          <label><input type="checkbox"><span><b>연락처 공개</b> — 전화번호·예약 링크 공개가 괜찮다</span></label>
+        </div>
+      </div>
+    </div>
+    <div class="pb-label"><span class="tag">3단계 기준</span> 내 페이지 상태 판단하기</div>
+    <div class="cols-2">
+      <div class="card"><h3>바로 공개 가능</h3><p>사실 확인이 끝났고, 모바일 화면이 정상이며, 문의/지도 버튼이 작동합니다.</p></div>
+      <div class="card"><h3>조금 보완</h3><p>문구나 사진은 좋지만 운영시간, 가격, 지도, 외국어 표현 중 일부 확인이 남았습니다.</p></div>
+      <div class="card"><h3>아직 연습</h3><p>정보가 부족하거나 문의 버튼, 지도, 모바일 확인이 빠져 있습니다. 작업장으로 돌아가 빈칸을 채우세요.</p></div>
+    </div>
+    <div class="notice"><strong>최종 기준:</strong> 완벽한 디자인보다 중요한 것은 <b>내가 다시 고칠 수 있는 홍보 페이지</b>를 하나 완성하는 것입니다. AI 초안은 빠르지만, 공개 전 확인과 책임은 사람에게 있습니다.</div>
+  </div>
+</section>
+
+
+<!-- ===== 13 STEP 10 · 공유와 다음 적용 ===== -->
+<section class="section" id="publish">
+  <span class="sec-no" aria-hidden="true">13</span>
+  <div class="container">
+    <div class="section-head">
+      <span class="step-badge"><span class="n">STEP 10</span> URL과 QR 만들기</span>
+      <h2>완성한 웹페이지를 <span class="hl">휴대폰에서 열리는 링크</span>로 만듭니다</h2>
+      <p class="kicker">Google Sites에서 <b>게시</b>를 누르면 내 웹페이지 주소가 생깁니다. 그 주소를 휴대폰에서 열어 확인하고, 네이버 QR 코드로 바꾸면 포스터·메뉴판·안내문에 붙일 수 있습니다.</p>
+    </div>
+    <figure class="img-band qr-shot">
+      <img src="assets/naver-qr-home.png" alt="네이버 QR 코드 생성기 첫 화면. 상단에 코드 생성 메뉴가 있고 중앙에 큰 코드 생성 버튼이 보입니다." loading="lazy">
+      <figcaption><b>네이버 QR 코드 생성기 첫 화면.</b> 이 화면에서 상단의 <b>코드 생성</b> 메뉴 또는 중앙의 큰 <b>코드 생성</b> 버튼을 누르면 QR 만들기를 시작할 수 있습니다.</figcaption>
+    </figure>
+    <div class="talk">
+      <div class="t"><div><h3>Google Sites에서 게시 누르기</h3><p>오른쪽 위 <b>게시</b> 버튼을 누릅니다. 아직 공개하기 전 마지막 확인 단계입니다.</p></div></div>
+      <div class="t"><div><h3>웹 주소 정하기</h3><p>사이트 주소는 짧고 알아보기 쉽게 적습니다. 예: <b>haeullim-ulleung</b>. 이미 사용 중이면 숫자나 지역명을 붙입니다.</p></div></div>
+      <div class="t"><div><h3>공개 범위 확인</h3><p>수업용으로 공유할 페이지라면 링크를 아는 사람이 볼 수 있게 설정합니다. 개인정보나 내부 자료가 들어갔다면 공개하지 않습니다.</p></div></div>
+      <div class="t"><div><h3>게시 후 URL 복사</h3><p>게시가 끝나면 나온 사이트 주소를 복사합니다. 주소는 보통 <b>https://sites.google.com/...</b> 형태입니다.</p></div></div>
+      <div class="t"><div><h3>휴대폰에서 열어보기</h3><p>복사한 URL을 카카오톡 나에게 보내기, 문자, 메모장 등에 붙여 휴대폰에서 엽니다. 휴대폰에서 열리면 1차 성공입니다.</p></div></div>
+      <div class="t"><div><h3>네이버 QR 코드 생성기 열기</h3><p>PC에서 <a href="https://qr.naver.com/" target="_blank" rel="noopener">qr.naver.com</a>에 접속하고 네이버 계정으로 로그인합니다. 상단 또는 첫 화면의 <b>코드 생성</b>을 누릅니다.</p></div></div>
+      <div class="t"><div><h3>디자인 고르기</h3><p>기본형 또는 스킨형 중 하나를 고릅니다. 처음이면 기본형을 추천합니다. 제목은 예: <b>해울림식당 홍보 페이지</b>처럼 나중에 알아보기 쉽게 적습니다.</p></div></div>
+      <div class="t"><div><h3>URL 링크 유형 선택</h3><p>페이지 유형에서 <b>URL 링크</b>를 선택하고, Google Sites에서 만든 내 웹페이지 주소를 붙여넣습니다.</p></div></div>
+      <div class="t"><div><h3>저장하고 다운로드</h3><p>저장 버튼을 눌러 QR을 만든 뒤 이미지 파일로 저장합니다. 포스터, 메뉴판, 명함, 안내문에 넣을 수 있습니다.</p></div></div>
+      <div class="t"><div><h3>휴대폰으로 스캔 테스트</h3><p>카메라 앱으로 QR을 찍어 내 홍보 웹페이지가 바로 열리는지 확인합니다. 안 열리면 URL이 <b>https://</b>로 시작하는지, Google Sites가 게시 상태인지 확인합니다.</p></div></div>
+    </div>
+    <div class="notice"><strong>네이버 QR 사용 팁:</strong> QR은 만들었다고 끝이 아닙니다. 반드시 휴대폰 카메라로 직접 찍어 보고, 내 Google Sites 페이지가 바로 열리는지 확인하세요. 나중에 웹페이지 내용을 고쳐도 같은 주소라면 QR은 그대로 사용할 수 있습니다.</div>
+    <div class="form-card" style="margin-top:28px;">
+      <div class="field full"><label for="publishUrlInput">내 URL을 여기에 붙여넣으세요</label><input id="publishUrlInput" placeholder="예: https://sites.google.com/view/haeullim-ulleung"></div>
+      <div class="form-actions">
+        <button class="btn teal" type="button" onclick="document.getElementById('savedUrl').value=document.getElementById('publishUrlInput').value;saveWorkspace();">작업장 최종 URL에 저장</button>
+      </div>
+    </div>
+    <div class="subhead">계속 활용할 도구</div>
+    <div class="tools">
+      <a class="tool" href="https://gemini.google.com/" target="_blank" rel="noopener"><span class="ti">✨</span><div><strong>Gemini</strong><span>글·번역·리서치</span><span class="role">STEP 2~8</span></div></a>
+      <a class="tool" href="https://chatgpt.com/" target="_blank" rel="noopener"><span class="ti">💬</span><div><strong>ChatGPT</strong><span>문장 다듬기·FAQ·코드 카드</span><span class="role">STEP 3~8</span></div></a>
+      <a class="tool" href="https://sites.google.com/" target="_blank" rel="noopener"><span class="ti">🌐</span><div><strong>Google Sites</strong><span>노코드 웹페이지 제작·게시</span><span class="role">STEP 8~10</span></div></a>
+      <a class="tool" href="https://qr.naver.com/" target="_blank" rel="noopener"><span class="ti">▦</span><div><strong>네이버 QR 코드</strong><span>URL을 QR 이미지로 공유</span><span class="role">공유</span></div></a>
+      <a class="tool" href="https://chatgpt.com/codex" target="_blank" rel="noopener"><span class="ti">⌘</span><div><strong>Codex</strong><span>전체 HTML 사이트 제작</span><span class="role opt">심화 선택</span></div></a>
+      <a class="tool" href="https://notebooklm.google.com/" target="_blank" rel="noopener"><span class="ti">🎧</span><div><strong>NotebookLM</strong><span>음성 소개</span><span class="role opt">맛보기</span></div></a>
+      <a class="tool" href="https://suno.com/" target="_blank" rel="noopener"><span class="ti">🎵</span><div><strong>Suno</strong><span>홍보 노래</span><span class="role opt">맛보기</span></div></a>
+      <a class="tool" href="https://smartplace.naver.com/" target="_blank" rel="noopener"><span class="ti">📍</span><div><strong>네이버 스마트플레이스</strong><span>소개글 등록</span><span class="role opt">현장 적용</span></div></a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== 더 알아보기 · AI 활용 사례 ===== -->
+<section class="section" id="can">
+  <span class="sec-no" aria-hidden="true">A2</span>
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">활용 사례 · 무엇을 맡길 수 있나</span>
+      <h2>관광 현장에서 AI는 <span class="hl">이런 작은 일</span>부터 도와줍니다</h2>
+      <p class="kicker">AI 활용은 거창한 자동화가 아니라, 반복되는 작은 업무를 빠르게 초안으로 만드는 것에서 시작합니다. 아래 예시는 식당·숙소·체험·관광지·특산품 홍보에 바로 적용할 수 있습니다.</p>
+    </div>
+    <div class="cap-grid">
+      <div class="cap"><h3><span class="ci">🖋️</span>관광 홍보 문구</h3><ul><li>한 줄 소개·계절별·대상별 카피</li><li>성인봉·행남해안산책로·봉래폭포 소개</li><li>포스터·현수막·카드뉴스 문안</li></ul><div class="ex"><b>예</b> “울릉도 처음 오는 관광객용 한 줄 소개 10개를 감성적으로 짧게.”</div></div>
+      <div class="cap"><h3><span class="ci">📱</span>SNS 홍보 콘텐츠</h3><ul><li>인스타 글·블로그 후기·릴스 대본</li><li>해시태그 묶음·카카오톡 홍보</li><li>축제·이벤트·체험 모집글</li></ul><div class="ex"><b>예</b> “오징어내장탕 인스타 글과 해시태그 10개.”</div></div>
+      <div class="cap today"><h3><span class="ci">🌐</span>다국어 안내문</h3><ul><li>영어·일본어·중국어 안내문</li><li>음식을 외국인이 이해하게 풀어 설명</li><li>외국인 FAQ·지도 영문 소개</li></ul><div class="ex"><b>예</b> “따개비밥을 외국인이 이해하게 재료·맛과 함께 설명.”</div></div>
+      <div class="cap"><h3><span class="ci">🍽️</span>메뉴판·숙소·체험 안내</h3><ul><li>한·영·일 메뉴판, 알레르기 안내</li><li>숙소 소개·객실·예약 안내문</li><li>체험 소요시간·준비물·난이도 정리</li></ul><div class="ex"><b>예</b> “성인봉 트레킹 소개문을 준비물·예약 안내와 함께.”</div></div>
+      <div class="cap"><h3><span class="ci">🗺️</span>코스 추천 · FAQ · 응대</h3><ul><li>당일·1박2일·2박3일·가족·우천 코스</li><li>배편·날씨·예약·결제 FAQ</li><li>예약·취소·후기 요청 응대 메시지</li></ul><div class="ex"><b>예</b> “가족 여행객용 2박3일 코스를 이동 동선·식사와 함께.”</div></div>
+      <div class="cap today"><h3><span class="ci">💻</span>홍보 웹페이지</h3><ul><li>관광지·식당·숙소·체험 소개 페이지</li><li>예약 문의 폼·다국어·오시는 길</li><li>말로 설명 → 브라우저에서 열리는 페이지</li></ul><div class="ex"><b>예</b> “체험 예약 페이지를 모바일에서도 보기 좋게.”</div></div>
+    </div>
+    <figure class="img-band">
+      <img src="assets/ulleung-scenic.jpg" alt="울릉도 해안 절벽과 에메랄드빛 동해 바다" loading="lazy">
+      <figcaption><b>이 모든 매력을 콘텐츠로.</b> 울릉도의 풍경·음식·체험을 글·이미지·웹페이지로 바꾸는 것이 AI 활용의 실전입니다.</figcaption>
+    </figure>
+    <div class="focus-bar">
+      <span>🎯 추천 순서</span>
+      <span class="flow"><b>로그인 준비</b><span class="a">→</span><b>Gemini 첫 질문</b><span class="a">→</span><b>ChatGPT 비교</b><span class="a">→</span><b>내 정보 정리</b><span class="a">→</span><b>웹페이지</b></span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== 더 해보기 · 프롬프트 템플릿 모음 ===== -->
+<section class="section" id="templates">
+  <span class="sec-no" aria-hidden="true">A3</span>
   <div class="container">
     <div class="section-head">
       <span class="eyebrow">꺼내 쓰는 · 프롬프트 템플릿</span>
@@ -1191,152 +1597,20 @@ flowchart LR
   </div>
 </section>
 
-<!-- ===== 09 STEP 2 · 관광 홍보 문구 ===== -->
-<section class="section" id="step2" style="background:var(--cream);">
-  <span class="sec-no" aria-hidden="true">10</span>
+
+<!-- ===== 더 해보기 · AI 결과물 맛보기 ===== -->
+<section class="section" id="taste" style="background:var(--cream);">
+  <span class="sec-no" aria-hidden="true">A4</span>
   <div class="container">
     <div class="section-head">
-      <span class="step-badge"><span class="n">STEP 2</span> 관광 홍보 문구 만들기</span>
-      <span class="eyebrow" style="color:var(--muted);"><span class="diff easy">난이도 · 쉬움</span></span>
-      <h2>웹페이지에 들어갈 <span class="hl">글 재료</span>를 만듭니다</h2>
-      <p class="kicker">여기서 나온 제목·한 줄 소개·SNS 글은 STEP 7에서 웹페이지에 그대로 씁니다.</p>
-    </div>
-    <figure class="img-band">
-      <img src="assets/ulleung-dodong.jpg" alt="울릉도 도동항 주변 마을과 바다 풍경" loading="lazy">
-      <figcaption><b>내 동네를 이렇게 소개합니다.</b> 우리 가게가 있는 도동항 같은 실제 장소를, AI와 함께 매력적인 한 줄로 바꿔봅니다.</figcaption>
-    </figure>
-    <span class="follow">먼저 Gemini에 붙여넣고, 마음에 드는 문장은 ChatGPT로 한 번 더 다듬어 보세요</span>
-    <div class="card">
-      <div class="pb-head"><span class="tag-badge primary">홍보 문구</span><h3>소개글·SNS·FAQ 한 번에</h3></div>
-      <div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>너는 울릉도 관광 홍보 전문가야.
-아래 정보로 우리 가게 홍보자료를 만들어줘.
-
-[내 정보]
-- 이름: [가게/숙소/프로그램 이름]
-- 종류: [식당/숙소/체험/관광지/특산품]
-- 위치: [위치]
-- 대표 메뉴/서비스: [대표 메뉴·객실·체험]
-- 장점: [강조하고 싶은 특징]
-- 문의: [전화번호 또는 문의 방법]
-
-[만들어줄 것]
-1. 큰 제목 5개
-2. 한 줄 소개 5개
-3. 인스타그램 글 1개 (해시태그 10개 포함)
-4. 자주 묻는 질문 5개와 답변
-
-조건: 중학생도 이해하게 쉽게 / 과장 없이 /
-가격·시간·배편은 "확인 필요"로 표시</code></div>
-      <div class="form-actions"><button class="btn teal small" type="button" onclick="copyFilledPrompt('intro')">내 정보 넣어서 복사</button></div>
-      <div class="pb-label"><span class="tag">예시 결과</span> 가상의 “해울림식당”</div>
-      <div class="example">
-        <div class="ex-row"><span class="ex-key">한 줄 소개</span><span class="ex-val">도동항 3분 거리, 바다를 바라보며 즐기는 자연산 울릉도 밥상</span></div>
-        <div class="ex-row"><span class="ex-key">인스타그램 글</span><span class="ex-val">울릉도 도동항 바로 앞, 가족이 직접 운영하는 해울림식당입니다. 자연산 재료로 준비한 따개비밥과 오징어내장탕을 바다 전망과 함께 즐겨보세요. 방문 전 운영시간과 예약 가능 여부를 확인해 주세요.<br>#울릉도맛집 #도동항 #따개비밥 #오징어내장탕 #울릉도여행</span></div>
-      </div>
-      <div class="learn"><b>이 STEP에서 배운 것</b> · 역할 부여 / 대상 지정 / 개수·형식 지정 / 대화로 다듬기</div>
-      <div class="pb-label"><span class="tag">결과 저장</span> AI 답변을 받은 뒤 할 일</div>
-      <div class="steps">
-        <div class="step"><b>1</b><span>제목 후보 중 가장 마음에 드는 것 <b>1개</b>를 고릅니다.</span></div>
-        <div class="step"><b>2</b><span>한 줄 소개 중 실제로 쓸 문장 <b>1개</b>를 고릅니다.</span></div>
-        <div class="step"><b>3</b><span><a href="#workspace">내 작업장</a>의 <b>제목 후보</b>, <b>한 줄 소개 / 소개문</b> 칸에 붙여넣습니다.</span></div>
-        <div class="step"><b>4</b><span>가격·운영시간·배편처럼 확인해야 할 내용은 <b>확인 필요 항목</b>에 적습니다.</span></div>
-      </div>
-
-      <div class="drill">
-        <div class="dh">✍️ 실습 더 해보기 <span class="diff easy">골라서 3개 이상</span></div>
-        <h4><span class="dn">2-2</span>블로그 글 제목 뽑기</h4>
-        <div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>울릉도 [내 주제]로 관광객이 검색할 만한
-블로그 글 제목 10개를 만들어줘.
-검색에 잘 걸릴 키워드를 넣고, 클릭하고 싶게 작성해줘.</code></div>
-        <h4><span class="dn">2-3</span>릴스·쇼츠 15초 대본</h4>
-        <div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>[내 주제]를 소개하는 15초 릴스 대본을 만들어줘.
-장면별로 나누고, 화면 자막과 배경 설명을 함께 적어줘.</code></div>
-        <h4><span class="dn">2-4</span>계절별 홍보 문구</h4>
-        <div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>[내 주제]의 봄·여름·가을·겨울 계절별 홍보 문구를
-각 2개씩 만들어줘. 짧고 감성적으로, 과장 없이.</code></div>
-      </div>
-    </div>
-    <div class="pb-label"><span class="tag">보너스</span> 사진 + AI 문구 = 홍보 포스터</div>
-    <figure class="img-band poster-band">
-      <img src="assets/ulleung-bongnae.jpg" alt="울릉도 봉래폭포" loading="lazy">
-      <figcaption><b>울릉도 봉래폭포.</b> 이런 실제 사진에 AI로 만든 한 줄 문구를 얹으면, 그대로 훌륭한 홍보 포스터가 됩니다.</figcaption>
-    </figure>
-  </div>
-</section>
-
-<!-- ===== 10 STEP 3 · 글로벌 콘텐츠 ===== -->
-<section class="section" id="step3">
-  <span class="sec-no" aria-hidden="true">11</span>
-  <div class="container">
-    <div class="section-head">
-      <span class="step-badge"><span class="n">STEP 3</span> 글로벌 콘텐츠 만들기</span>
-      <span class="eyebrow" style="color:var(--muted);"><span class="diff mid">난이도 · 중간</span></span>
-      <h2>외국인도 이해하는 <span class="hl-t">다국어 안내</span> 만들기</h2>
-      <p class="kicker">울릉도는 외국인 관광객도 늘고 있습니다. 영어·일본어 안내와, 문화가 달라도 헷갈리지 않는 쉬운 표현을 만들어 둡니다.</p>
-    </div>
-    <figure class="img-band">
-      <img src="assets/ulleungdo-squid.jpg" alt="울릉도 오징어 — 대표 특산물이자 관광 먹거리" loading="lazy">
-      <figcaption><b>예: 울릉도 오징어.</b> “오징어내장탕”을 그대로 번역하면 외국인은 이해하기 어렵습니다. AI에게 <b>재료·맛·특징을 함께 설명</b>해 달라고 하면 자연스러운 안내가 됩니다.</figcaption>
-    </figure>
-    <div class="card">
-      <div class="pb-head"><span class="tag-badge teal">다국어 안내</span><h3>영어·일본어 안내문 + 음식 설명</h3></div>
-      <div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>우리 가게를 처음 방문하는 외국인 관광객을 위한
-영어와 일본어 안내문을 만들어줘.
-
-[내 정보]
-- 이름 / 종류 / 위치 / 대표 메뉴 / 문의
-
-[만들어줄 것]
-1. 영어 안내 3줄 (짧고 쉬운 문장)
-2. 일본어 안내 3줄
-3. 대표 메뉴를 외국인이 이해하게 재료·맛과 함께 설명
-4. 외국인이 자주 묻는 질문 3개와 답 (영어)
-
-조건: 쉬운 표현 / 예약·결제·알레르기 분명하게 / 정중하게</code></div>
-      <div class="form-actions"><button class="btn teal small" type="button" onclick="copyFilledPrompt('global')">내 정보 넣어서 복사</button></div>
-      <div class="pb-label"><span class="tag">예시 결과</span> 영어 안내</div>
-      <div class="example"><div class="ex-row"><span class="ex-val muted">Family-run seafood restaurant, 3 min walk from Dodong Port.<br>Signature dishes: barnacle rice &amp; squid soup with fresh local catch.<br>Ocean-view seats available — reservation recommended (card payment OK).</span></div></div>
-      <div class="tip"><strong>🌱 생태관광 안내도 함께.</strong> “자연 보호(정해진 길로만), 안전(미끄럼·낙석), 계절별 주의(겨울 결항 가능)”를 3~5줄로 정리해 달라고 이어서 부탁하세요.</div>
-      <div class="pb-label"><span class="tag">결과 저장</span> 외국어 안내를 받은 뒤 할 일</div>
-      <div class="steps">
-        <div class="step"><b>1</b><span>영어 안내 3줄 중 어려운 단어가 있으면 <b>“더 쉬운 영어로”</b> 다시 요청합니다.</span></div>
-        <div class="step"><b>2</b><span>음식 설명에 <b>재료, 맛, 알레르기</b>가 들어갔는지 확인합니다.</span></div>
-        <div class="step"><b>3</b><span><a href="#workspace">내 작업장</a>의 <b>외국어 안내</b> 칸에 최종 문장을 붙여넣습니다.</span></div>
-      </div>
-
-      <div class="drill">
-        <div class="dh">🌐 실습 더 해보기 <span class="diff mid">골라서 3개 이상</span></div>
-        <h4><span class="dn">3-2</span>외국인 FAQ (영어)</h4>
-        <div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>외국인 관광객이 자주 묻는 질문 5개와 답을 영어로 만들어줘.
-배편·결제·예약·주차·와이파이를 포함하고, 쉬운 문장으로.</code></div>
-        <h4><span class="dn">3-3</span>다국어 메뉴판</h4>
-        <div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>내 메뉴 [메뉴 목록]을 한국어·영어·일본어 메뉴판으로 만들어줘.
-각 메뉴에 한 줄 설명과 알레르기 안내를 넣어줘.</code></div>
-        <h4><span class="dn">3-4</span>생태관광 주의 안내 (한·영)</h4>
-        <div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>생태관광 방문객을 위한 자연 보호·안전·계절 주의 안내를
-한국어와 영어로 각 4줄씩 만들어줘. 정중하고 쉬운 표현으로.</code></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== 11 STEP 4 · 소리로 알리기 ===== -->
-<section class="section" id="step4" style="background:var(--cream);">
-  <span class="sec-no" aria-hidden="true">12</span>
-  <div class="container">
-    <div class="section-head">
-      <span class="step-badge"><span class="n">STEP 4</span> 소리로 알리기</span>
-      <span class="eyebrow" style="color:var(--muted);"><span class="diff easy">난이도 · 쉬움</span></span>
-      <h2>글을 넘어 <span class="hl">음성·음악</span>으로도 알립니다</h2>
-      <p class="kicker">자료를 넣으면 대화형 음성 소개가 되고, 짧은 홍보 노래도 만들 수 있습니다. 아래는 실제로 만든 예시입니다 — 직접 재생해 보세요.</p>
+      <span class="eyebrow">더 해보기 · AI 결과물 맛보기</span>
+      <h2>AI로 <span class="hl">음성 소개와 홍보 노래</span>도 만들 수 있습니다</h2>
+      <p class="kicker">이 부분은 필수 실습이 아닙니다. “AI로 이런 결과도 쉽게 만들 수 있구나”를 보여주는 예시입니다. 시간이 부족하면 듣기만 하고 넘어가도 됩니다.</p>
     </div>
     <div class="cols-2">
       <div class="card">
         <div class="pb-head"><span class="tag-badge">음성 · NotebookLM</span><h3>내 자료가 팟캐스트 소개로</h3></div>
-        <div class="steps" style="margin-top:12px;">
-          <div class="step"><b>1</b><span><a href="https://notebooklm.google.com/" target="_blank" rel="noopener">NotebookLM</a>에 STEP 2의 소개글·FAQ를 소스로 붙여넣기</span></div>
-          <div class="step"><b>2</b><span>Studio에서 <b>Audio Overview</b> 생성 후 재생</span></div>
-        </div>
+        <p>소개글과 FAQ를 자료로 넣으면, 두 진행자가 대화하듯 설명하는 오디오가 만들어집니다. 아래는 해울림식당 소개 예시입니다.</p>
         <div class="audio-card" style="margin-top:14px;">
           <div class="audio-title">🎧 해울림식당 음성 소개 예시</div>
           <div class="audio-note">두 진행자가 위치·대표 메뉴·이용 팁을 대화로 (약 30초)</div>
@@ -1355,12 +1629,12 @@ flowchart LR
         </details>
         <figure class="img-band" style="margin-top:14px;">
           <img src="assets/notebooklm-home.png" alt="NotebookLM 시작 화면" loading="lazy">
-          <figcaption><b>NotebookLM 화면.</b> 새 노트를 만들고 소개글을 소스로 넣으면, 위 예시 같은 음성 소개가 만들어집니다.</figcaption>
+          <figcaption><b>NotebookLM 예시 화면.</b> 오늘은 직접 실습하지 않고, 관광 소개 자료가 음성 콘텐츠로 바뀔 수 있다는 점만 확인합니다.</figcaption>
         </figure>
       </div>
       <div class="card">
         <div class="pb-head"><span class="tag-badge">음악 · Suno</span><h3>울릉도 홍보 노래</h3></div>
-        <p>Gemini로 스타일·가사를 받아 Suno에 붙여넣으면 짧은 홍보 노래가 만들어집니다.</p>
+        <p>AI로 스타일과 가사를 정리하면 짧은 홍보 노래도 만들 수 있습니다. 수업에서는 결과 예시만 들어보고, 메인 실습은 웹페이지 완성에 집중합니다.</p>
         <div class="result-audio" style="margin-top:14px;">
           <div class="audio-card"><div class="audio-title">🎵 즐거운 여행, 울릉도로 떠나요!</div><div class="audio-note">청량한 K-pop / 모던 포크 록 (예시)</div><audio controls preload="none" src="assets/ulleung-song-1.mp3">오디오 재생 미지원</audio></div>
         </div>
@@ -1396,109 +1670,23 @@ flowchart LR
         </details>
       </div>
     </div>
-    <div class="pb-label"><span class="tag">실습 화면</span> Suno 사용 흐름</div>
+    <div class="pb-label"><span class="tag">예시 화면</span> Suno로 만들 때 보이는 흐름</div>
     <div class="shot-grid">
-      <figure class="shot"><img src="assets/suno-flow-1-gemini-style.png" alt="Gemini가 Suno용 스타일 키워드를 설계한 화면" loading="lazy"><figcaption><b>1. Gemini · Style</b>음악 스타일 키워드 설계</figcaption></figure>
-      <figure class="shot"><img src="assets/suno-flow-2-gemini-lyrics.png" alt="Gemini가 구조화한 가사를 만든 화면" loading="lazy"><figcaption><b>2. Gemini · Lyrics</b>[Verse]·[Chorus] 구조 가사</figcaption></figure>
-      <figure class="shot"><img src="assets/suno-flow-3-suno-home.png" alt="Suno 홈 화면" loading="lazy"><figcaption><b>3. Suno 접속</b>Custom 모드로 이동</figcaption></figure>
-      <figure class="shot"><img src="assets/suno-flow-4-suno-input.png" alt="Suno 입력창 화면" loading="lazy"><figcaption><b>4. Suno 입력</b>Style·Lyrics 붙여넣기</figcaption></figure>
+      <figure class="shot"><img src="assets/suno-flow-1-gemini-style.png" alt="Gemini가 Suno용 스타일 키워드를 설계한 화면" loading="lazy"><figcaption><b>1. Style 예시</b>음악 분위기 키워드</figcaption></figure>
+      <figure class="shot"><img src="assets/suno-flow-2-gemini-lyrics.png" alt="Gemini가 구조화한 가사를 만든 화면" loading="lazy"><figcaption><b>2. Lyrics 예시</b>[Verse]·[Chorus] 구조 가사</figcaption></figure>
+      <figure class="shot"><img src="assets/suno-flow-3-suno-home.png" alt="Suno 홈 화면" loading="lazy"><figcaption><b>3. Suno 화면</b>음악 생성 도구 예시</figcaption></figure>
+      <figure class="shot"><img src="assets/suno-flow-4-suno-input.png" alt="Suno 입력창 화면" loading="lazy"><figcaption><b>4. 입력 예시</b>스타일과 가사를 넣는 화면</figcaption></figure>
     </div>
   </div>
 </section>
 
-<!-- ===== 12 STEP 5 · AI 리서치 200% ===== -->
-<section class="section" id="step5">
-  <span class="sec-no" aria-hidden="true">13</span>
-  <div class="container">
-    <div class="section-head">
-      <span class="step-badge"><span class="n">STEP 5</span> AI 리서치 200% 활용</span>
-      <span class="eyebrow" style="color:var(--muted);"><span class="diff mid">난이도 · 중간</span></span>
-      <h2>AI로 <span class="hl-t">조사</span>하고 내 주제를 <span class="hl">단단하게</span></h2>
-      <p class="kicker">글만 만드는 게 아닙니다. AI에게 <b>조사</b>를 시키면 관광객이 궁금해할 것, 검색 키워드, 다른 지역 사례, 그리고 <b>내가 확인해야 할 사실</b> 목록까지 뽑아 줍니다.</p>
-    </div>
-    <figure class="img-band">
-      <img src="assets/seonginbong-forest.jpg" alt="울릉도 성인봉의 원시림 — 생태관광 자원" loading="lazy">
-      <figcaption><b>예: 성인봉 원시림.</b> 내가 만들 웹페이지 주제 하나를 정하고, 그 주제로 리서치를 시작합니다.</figcaption>
-    </figure>
-    <div class="pb-label"><span class="tag">고르기</span> 내가 만들 주제</div>
-    <div class="chips" role="group" aria-label="주제 선택">
-      <button class="chip on" type="button">🐟 식당</button>
-      <button class="chip" type="button">🏡 숙소</button>
-      <button class="chip" type="button">🥾 체험</button>
-      <button class="chip" type="button">🗺️ 관광지</button>
-      <button class="chip" type="button">🧺 특산품</button>
-    </div>
 
-    <div class="subhead">🔎 AI 리서치에서 200% 뽑아내는 5가지 요령</div>
-    <div class="principle">
-      <div class="p"><div><h3>후속 질문으로 파고들기</h3><div class="eg">첫 답에서 멈추지 말고 <b>“그중 3번을 더 자세히”</b>, <b>“예시를 3개 더”</b>라고 이어서 캐물으세요.</div></div></div>
-      <div class="p"><div><h3>표로 정리해 달라고 하기</h3><div class="eg"><b>“표로 정리해줘”</b> 한마디면 비교·선택이 훨씬 쉬워집니다.</div></div></div>
-      <div class="p"><div><h3>국내 / 외국인 나눠서 요청</h3><div class="eg">키워드·관점을 <b>대상별로 나눠</b> 달라고 하면 훨씬 실용적입니다.</div></div></div>
-      <div class="p"><div><h3>다른 지역과 비교시키기</h3><div class="eg"><b>“제주·강릉은 어떻게 홍보하는지 비교하고 울릉도가 배울 점”</b>을 물어보세요.</div></div></div>
-      <div class="p warn"><div><h3>‘확인 필요’를 꼭 표시시키기</h3><div class="eg">AI는 틀릴 수 있습니다. <b>“확실하지 않은 정보는 ‘확인 필요’로 표시해줘”</b>를 항상 넣으세요.</div></div></div>
-    </div>
-
-    <div class="card" style="margin-top:24px;">
-      <div class="pb-head"><span class="tag-badge teal">리서치 프롬프트</span><h3>관광객 관점 + 사실 확인 목록</h3></div>
-      <div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>울릉도 [내 주제] 홍보 웹페이지를 만들려고 해.
-아래를 표로 정리해줘.
-
-1. 관광객이 방문 전에 가장 궁금해하는 것 7가지
-2. 사람들이 많이 쓰는 검색 키워드 10개 (국내/외국인 나눠서)
-3. 다른 인기 관광지 소개 페이지에서 배울 점 3가지
-4. 내가 반드시 사실 확인해야 할 항목
-   (가격·운영시간·배편·전화·주소 등)
-
-확실하지 않은 정보는 "확인 필요"로 표시하고,
-과장 없이 사실 위주로 정리해줘.</code></div>
-      <div class="notice"><strong>🌿 생태관광이라 더 챙길 것:</strong> 자연 보호(정해진 길로만), 안전(미끄럼·낙석), 계절별 주의(겨울 결항 가능), 지역 주민 배려 — 이 네 가지를 안내에 꼭 넣어달라고 하세요.</div>
-
-      <div class="pb-label"><span class="tag">예시 결과</span> AI가 표로 정리해 준 리서치 (발췌)</div>
-      <div class="tool-table-wrap">
-        <table class="tool-table">
-          <thead><tr><th>항목</th><th>AI가 정리한 내용</th><th>비고</th></tr></thead>
-          <tbody>
-            <tr><td>궁금해하는 것</td><td>배편 시간·결항 여부, 주차, 아이 동반, 예약 방법, 영어 안내 여부</td><td>—</td></tr>
-            <tr><td>검색 키워드 (국내)</td><td>울릉도 맛집 · 도동항 회 · 성인봉 등산 · 울릉도 2박3일</td><td>—</td></tr>
-            <tr><td>검색 키워드 (외국인)</td><td>Ulleungdo food · Ulleungdo ferry · things to do in Ulleungdo</td><td>—</td></tr>
-            <tr><td>다른 지역에서 배울 점</td><td>제주: 코스별 카드 / 강릉: 사진 중심 / 거제: 예약 버튼 상단 고정</td><td>—</td></tr>
-            <tr><td>사실 확인 항목</td><td>가격 · 운영시간 · 배편 시각 · 전화번호 · 주소</td><td class="rec">확인 필요</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <figure class="img-band" style="margin-top:16px;">
-        <img src="assets/ulleung-jeodong.jpg" alt="울릉도 저동항 어항 풍경" loading="lazy">
-        <figcaption><b>내 주제의 ‘현장’을 떠올리며.</b> 저동항 오징어잡이처럼, 내 주제만의 생생한 장면을 리서치에 함께 담아보세요.</figcaption>
-      </figure>
-      <div class="pb-label"><span class="tag">결과 저장</span> 리서치 뒤 할 일</div>
-      <div class="steps">
-        <div class="step"><b>1</b><span>관광객 질문 중 웹페이지 FAQ에 넣을 질문 <b>5개</b>를 고릅니다.</span></div>
-        <div class="step"><b>2</b><span>검색 키워드와 벤치마킹 메모는 <b>관광객 질문 / 리서치 메모</b> 칸에 붙입니다.</span></div>
-        <div class="step"><b>3</b><span>AI가 “확인 필요”라고 표시한 항목은 <b>확인 필요 항목</b> 칸에 옮깁니다.</span></div>
-      </div>
-
-      <div class="drill">
-        <div class="dh">🔎 리서치 실습 더 해보기 <span class="diff mid">골라서 3개 이상</span></div>
-        <h4><span class="dn">5-2</span>경쟁 지역 벤치마킹</h4>
-        <div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>제주·강릉·거제의 [내 주제] 홍보 방식을 비교하고,
-울릉도가 배울 점 5가지를 표로 정리해줘.</code></div>
-        <h4><span class="dn">5-3</span>관광객 질문 모으기</h4>
-        <div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>[내 주제] 방문객이 방문 전에 가장 많이 묻는 질문 15개를
-카테고리(교통·예약·비용·준비물·날씨)별로 묶어줘.</code></div>
-        <h4><span class="dn">5-4</span>콘텐츠 아이디어 뽑기</h4>
-        <div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>위 조사 결과를 바탕으로, 이번 시즌에 올리면 좋을
-SNS 콘텐츠 아이디어 10개를 이유와 함께 제안해줘.</code></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== 13 STEP 6 · 에이전트 AI ===== -->
+<!-- ===== 더 해보기 · 에이전트 AI ===== -->
 <section class="section" id="step6" style="background:var(--cream);">
-  <span class="sec-no" aria-hidden="true">14</span>
+  <span class="sec-no" aria-hidden="true">A5</span>
   <div class="container">
     <div class="section-head">
-      <span class="step-badge"><span class="n">STEP 6</span> 에이전트 AI 맛보기</span>
+      <span class="step-badge"><span class="n">선택</span> 에이전트 AI 맛보기</span>
       <span class="eyebrow" style="color:var(--muted);"><span class="diff hard">난이도 · 응용</span></span>
       <h2>여러 작업을 <span class="hl">순서대로 이어서</span> 시키기</h2>
       <p class="kicker">지금까지는 하나씩 물었습니다. 이번엔 <b>큰 목표를 주고 할 일을 번호로 나눠</b> 한 번에 이어서 시켜봅니다.</p>
@@ -1526,220 +1714,144 @@ SNS 콘텐츠 아이디어 10개를 이유와 함께 제안해줘.</code></div>
   </div>
 </section>
 
-<!-- ===== 14 STEP 7 · 웹페이지 제작 ===== -->
-<section class="section" id="step7">
-  <span class="sec-no" aria-hidden="true">15</span>
+
+<!-- ===== 더 알아보기 · 2026 AI 동향 ===== -->
+<section class="section" id="deepai" style="background:var(--cream);">
+  <span class="sec-no" aria-hidden="true">A6</span>
   <div class="container">
     <div class="section-head">
-      <span class="step-badge"><span class="n">STEP 7</span> 웹페이지 제작</span>
-      <span class="eyebrow" style="color:var(--muted);"><span class="diff mid">난이도 · 완성</span></span>
-      <h2>이제 <span class="hl">Google Sites</span>로 웹페이지를 완성합니다</h2>
-      <p class="kicker">오늘의 기본 완주 경로는 코딩이 아니라 <b>Google Sites</b>입니다. AI가 만든 원고를 섹션별로 붙여 넣고, 사진·버튼·지도·FAQ를 배치한 뒤, 바로 공유 가능한 URL을 만듭니다.</p>
+      <span class="eyebrow">더 알아보기 · 2026 AI 동향</span>
+      <h2>AI 흐름을 <span class="hl">조금 더 깊게</span> 이해합니다</h2>
+      <p class="kicker">메인 실습을 끝낸 뒤 읽는 심화 자료입니다. 2026년 AI 활용 흐름과 관광 홍보 연결점을 한 번에 정리합니다.</p>
     </div>
-    <span class="follow">작업장 내용을 바탕으로 Google Sites에 붙일 원고를 만듭니다</span>
-    <div class="steps">
-      <div class="step"><b>1</b><span><a href="https://sites.google.com/" target="_blank" rel="noopener">sites.google.com</a>을 열고 구글 계정으로 로그인합니다.</span></div>
-      <div class="step"><b>2</b><span><b>빈 사이트</b> 또는 마음에 드는 템플릿을 선택합니다. 처음이면 빈 사이트가 가장 쉽습니다.</span></div>
-      <div class="step"><b>3</b><span>아래 프롬프트로 <b>Google Sites에 붙여 넣을 원고</b>를 만든 뒤, 섹션별로 복사해 붙입니다.</span></div>
-      <div class="step"><b>4</b><span><b>미리보기</b>에서 데스크톱과 휴대폰 화면을 확인하고, 글자·버튼·사진이 겹치지 않게 고칩니다.</span></div>
-      <div class="step"><b>5</b><span><b>게시</b>를 눌러 URL을 만들고, 다음 단계에서 네이버 QR 코드로 바꿉니다.</span></div>
+    <div class="card" style="border-left:6px solid var(--primary);">
+      <p class="lead-big">AI는 <span style="color:var(--primary)">아주 많은 글과 정보를 미리 학습</span>해 두었다가, 우리가 부탁하면 <span style="color:var(--secondary)">글·번역·이미지·요약을 만들어 주는 프로그램</span>입니다.</p>
     </div>
-    <div class="notice"><strong>Google Sites에서 코드도 일부 사용할 수 있습니다.</strong> <b>삽입 → 임베드 → 코드 삽입</b>에 HTML, CSS, JavaScript를 붙여 넣을 수 있습니다. 다만 오늘의 기본 목표는 사이트 전체 코딩이 아니라, 누구나 완주할 수 있는 <b>노코드 웹페이지 완성</b>입니다.</div>
-    <div class="cols-2">
-      <div class="card">
-        <div class="pb-head"><span class="tag-badge primary">1차 제작</span><h3>Google Sites 원고 만들기</h3></div>
-        <div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>울릉도 [내 주제] 홍보 웹페이지를 만들어줘.
-- Google Sites에 그대로 붙여 넣을 수 있게
-- 섹션별 제목과 본문을 나누어
-- 짧고 쉬운 문장으로
-
-[기본 정보] 이름/종류/위치/대표 메뉴·서비스/장점/문의/한 줄 소개
-
-[만들어줄 것]
-1. 첫 화면 큰 제목 3개
-2. 한 줄 소개 3개
-3. 소개 섹션 본문 1개
-4. 카드 3개: 위치 / 대표 메뉴·체험 / 추천 대상
-5. 방문 안내: 운영시간, 예약, 결제, 주차 또는 준비물
-6. 영어 안내 3줄
-7. FAQ 5개
-8. 마지막 문의 문구와 버튼 문구
-
-[주의]
-- 미확인 가격·배편·운영시간은 "확인 필요"로 표시
-- Google Sites에 붙일 수 있게 코드 말고 원고로 작성
-- 너무 긴 문단은 3문장 이내로 나누기</code></div>
-        <div class="form-actions"><button class="btn teal small" type="button" onclick="copyFilledPrompt('web')">내 정보 넣어서 복사</button></div>
-        <div class="tip"><strong>작업장에 먼저 저장하세요.</strong> 제목, 소개문, FAQ, 외국어 안내, 확인 필요 항목이 비어 있으면 웹페이지도 얕아집니다. 비어 있는 칸이 있으면 <a href="#workspace">내 작업장</a>으로 돌아가 채운 뒤 복사하세요.</div>
-      </div>
-      <div class="card">
-        <div class="pb-head"><span class="tag-badge">수정</span><h3>Google Sites용으로 더 줄이기</h3></div>
-        <div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>방금 만든 웹페이지에서
-Google Sites에 붙여 넣기 쉽게 다시 정리해줘.
-
-조건:
-- 각 섹션 제목은 12자 이내
-- 본문은 한 섹션당 3문장 이내
-- 버튼 문구는 8자 이내
-- FAQ 답변은 2문장 이내
-- 확인이 필요한 정보는 "확인 필요"로 남겨줘.</code></div>
-        <p style="margin-top:14px; color:var(--ink-soft);">Google Sites는 섹션마다 글을 붙여 넣는 방식이라, 길고 복잡한 문장보다 <b>짧은 제목 + 짧은 본문</b>이 훨씬 잘 보입니다.</p>
-      </div>
-    </div>
-    <div class="pb-label"><span class="tag">붙여넣기 순서</span> Google Sites 화면에서 그대로 따라 하기</div>
-    <div class="talk">
-      <div class="t"><div><h3>사이트 이름 입력</h3><p>왼쪽 위 사이트 이름에는 <b>내 가게·숙소·체험 이름</b>을 적습니다. 예: 해울림식당.</p></div></div>
-      <div class="t"><div><h3>첫 화면 만들기</h3><p>상단 큰 제목에는 AI가 만든 제목 1개를 넣고, 바로 아래에 한 줄 소개를 붙입니다. 대표 사진은 직접 찍은 사진을 사용합니다.</p></div></div>
-      <div class="t"><div><h3>소개 카드 3개 배치</h3><p><b>위치</b>, <b>대표 메뉴/체험</b>, <b>추천 대상</b>을 3개의 작은 묶음으로 나누어 넣습니다.</p></div></div>
-      <div class="t"><div><h3>방문 안내 추가</h3><p>운영시간, 예약 방법, 결제, 주차, 준비물을 적습니다. 모르는 항목은 지우지 말고 <b>확인 필요</b>로 남깁니다.</p></div></div>
-      <div class="t"><div><h3>FAQ 넣기</h3><p>관광객 질문 5개를 넣습니다. 답변은 짧게 쓰고, 배편·날씨처럼 바뀌는 정보는 공식 공지를 확인하라고 안내합니다.</p></div></div>
-      <div class="t"><div><h3>문의 버튼 만들기</h3><p><b>삽입 → 버튼</b>에서 전화, 예약, 지도 버튼을 만듭니다. 버튼 문구는 <b>전화 문의</b>, <b>지도 보기</b>, <b>예약 문의</b>처럼 짧게 씁니다.</p></div></div>
-      <div class="t"><div><h3>지도 넣기</h3><p><b>삽입 → 지도</b>에서 장소를 검색하거나 지도 링크를 붙입니다. 주소가 정확한지 휴대폰에서도 다시 확인합니다.</p></div></div>
-      <div class="t"><div><h3>미리보기 확인</h3><p>오른쪽 위 <b>미리보기</b>를 눌러 컴퓨터와 휴대폰 화면을 확인합니다. 사진이 너무 크거나 글이 길면 섹션을 나눕니다.</p></div></div>
+    <div class="cols-2" style="margin-top:24px;">
+      <div class="card"><div class="ic-lg">📚</div><h3>쉽게 비유하면</h3><p><b>책을 아주 많이 읽은 신입 직원</b>과 같습니다. 빠르게 초안을 만들지만, 현장 사정·가격·운영시간·배편처럼 바뀌는 정보는 모를 수 있습니다.</p></div>
+      <div class="card"><div class="ic-lg" style="background:var(--secondary-soft)">✨</div><h3>생성형 AI란</h3><p>글·이미지·번역·음성·웹페이지처럼 <b>새 결과물을 만들어 주는 AI</b>입니다. 이 자료에서는 홍보 문구, 외국어 안내, FAQ, 웹페이지 초안을 만드는 데 씁니다.</p></div>
     </div>
 
-    <div class="pb-label"><span class="tag">선택 실습</span> GPT/Gemini가 만든 코드를 붙여넣을 수도 있습니다</div>
-    <div class="cols-2">
-      <div class="card">
-        <h3>가능한 방식</h3>
-        <p>Google Sites에서 <b>삽입 → 임베드 → 코드 삽입</b>을 선택하면, AI가 만든 HTML/CSS/JavaScript 조각을 넣을 수 있습니다. 전체 사이트를 통째로 올리는 용도보다는 <b>홍보 카드, FAQ 박스, 강조 안내</b>처럼 작은 영역에 쓰는 것이 안정적입니다.</p>
-        <div class="notice"><strong>처음에는 작게 시작하세요.</strong> 코드가 길수록 붙여넣기 실수와 화면 깨짐이 늘어납니다. 오늘은 “홍보 카드 1개” 정도만 연습해도 충분합니다.</div>
+    <div class="subhead">🧠 AI가 답을 만드는 방식</div>
+    <div class="principle">
+      <div class="p"><div><h3>1. 내가 쓴 말을 읽습니다</h3><div class="eg">“울릉도 식당 소개글”이라고 쓰면 주제는 알지만, 대상·길이·톤은 모릅니다. 그래서 답이 평범해집니다.</div></div></div>
+      <div class="p"><div><h3>2. 배운 패턴을 바탕으로 초안을 만듭니다</h3><div class="eg">AI는 많은 글의 패턴을 배워서 그럴듯한 문장을 만듭니다. 그래서 <b>그럴듯하지만 틀린 말</b>도 만들 수 있습니다.</div></div></div>
+      <div class="p"><div><h3>3. 내가 준 정보가 많을수록 구체적입니다</h3><div class="eg">이름, 위치, 대표 메뉴, 장점, 문의 방법을 넣으면 “아무 식당 소개”가 아니라 <b>내 가게 소개</b>가 됩니다.</div></div></div>
+      <div class="p warn"><div><h3>4. 마지막 확인은 사람이 합니다</h3><div class="eg">운영시간, 가격, 전화번호, 주소, 사진 사용 권리, 배편은 반드시 직접 확인해야 합니다.</div></div></div>
+    </div>
+
+    <div class="pb-label"><span class="tag">실무 기준</span> AI가 잘하는 일과 조심할 일</div>
+    <div class="tool-table-wrap">
+      <table class="tool-table">
+        <thead><tr><th>구분</th><th>AI가 잘하는 일</th><th>사람이 확인할 일</th></tr></thead>
+        <tbody>
+          <tr><td>글쓰기</td><td>소개문, SNS 글, 제목 후보, FAQ 초안</td><td>과장 표현, 실제와 다른 표현, 지역 정서</td></tr>
+          <tr><td>번역</td><td>영어·일본어·중국어 초안, 쉬운 표현 변환</td><td>음식 설명, 알레르기, 예약·결제 표현</td></tr>
+          <tr><td>조사</td><td>관광객 질문 예상, 키워드, 비교표</td><td>최신 가격, 배편, 운영시간, 공식 공지</td></tr>
+          <tr><td>디자인</td><td>페이지 구조, 버튼 문구, 색상 제안</td><td>모바일 화면, 사진 품질, 문의 버튼 작동</td></tr>
+          <tr><td>코딩</td><td>HTML 초안, CSS 수정, 반응형 개선</td><td>브라우저에서 실제로 열리는지, 링크가 맞는지</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="subhead">🚀 2026년 기준, AI 최신 동향 8가지</div>
+    <p class="kicker" style="margin-bottom:20px;">AI는 더 이상 “챗봇에 한 번 물어보는 도구”에 머물지 않습니다. 2026년에는 글·이미지·음성·영상·코딩·검색·업무 자동화가 한 화면에서 연결되고 있습니다. 아래 흐름을 이해하면, 관광 홍보 콘텐츠 제작도 훨씬 선명해집니다.</p>
+    <div class="trend-grid">
+      <div class="card lift">
+        <div class="trend-num">01</div>
+        <figure class="trend-fig"><img src="assets/ai-trend-01-adoption.svg" alt="생성형 AI가 전문가용 도구에서 일상 업무 도구로 확산되는 모습을 보여주는 참고 이미지" loading="lazy"><figcaption><b>레퍼런스</b> AI가 전문가만 쓰는 도구에서 가게·팀·고객이 함께 쓰는 도구로 확산되는 흐름</figcaption></figure>
+        <h3>생성형 AI가 빠르게 대중화됨</h3>
+        <p>Stanford HAI 2026 AI Index는 생성형 AI가 대중 시장에 나온 뒤 3년 만에 약 <b>53% 수준의 인구 단위 채택</b>에 도달했다고 정리합니다. 이제 AI는 일부 전문가만 쓰는 도구가 아니라, 손님·경쟁 업체·플랫폼 모두가 쓰는 일상 도구가 되고 있습니다.</p>
+        <div class="trend-q">관광 홍보 연결: 우리도 AI로 소개문, FAQ, 다국어 안내를 직접 만들 수 있어야 합니다.</div>
       </div>
-      <div class="card">
-        <div class="pb-head"><span class="tag-badge teal">코드 삽입</span><h3>홍보 카드 코드 요청</h3></div>
-        <div class="prompt-box"><button class="copy-btn" type="button" onclick="copyFilledPrompt('embed')">내 정보 넣어서 복사</button><code>Google Sites 코드 삽입에 붙여 넣을 짧은 홍보 카드 HTML을 만들어줘.</code></div>
-        <div class="tip"><strong>붙여넣는 위치:</strong> Google Sites에서 <b>삽입 → 임베드 → 코드 삽입</b>을 누른 뒤 AI가 만든 코드를 붙입니다. 미리보기에서 높이가 잘리면 임베드 박스의 크기를 늘립니다.</div>
+      <div class="card lift">
+        <div class="trend-num">02</div>
+        <figure class="trend-fig"><img src="assets/ai-trend-02-multimodal.svg" alt="텍스트, 사진, 음성, 영상, 지도가 하나의 AI 작업 공간으로 들어가는 멀티모달 AI 참고 이미지" loading="lazy"><figcaption><b>레퍼런스</b> 텍스트뿐 아니라 사진·음성·영상·지도까지 콘텐츠 재료가 되는 멀티모달 흐름</figcaption></figure>
+        <h3>텍스트만이 아니라 사진·음성·영상까지 다룸</h3>
+        <p>최신 AI는 글만 읽는 것이 아니라 사진, 메뉴판 이미지, 지도, 음성, 영상까지 함께 이해하고 만들 수 있습니다. 이것을 <b>멀티모달 AI</b>라고 부릅니다.</p>
+        <div class="trend-q">관광 홍보 연결: 음식 사진을 보고 설명문 만들기, 메뉴판 사진을 영어 안내로 바꾸기, 체험 영상을 쇼츠 대본으로 바꾸기가 가능해집니다.</div>
+      </div>
+      <div class="card lift">
+        <div class="trend-num">03</div>
+        <figure class="trend-fig"><img src="assets/ai-trend-03-answer-search.svg" alt="관광객이 질문형으로 검색하고 AI가 경로, FAQ, 확인 항목을 정리해 주는 참고 이미지" loading="lazy"><figcaption><b>레퍼런스</b> 링크 목록을 찾는 검색에서 질문에 대한 정리 답변을 받는 검색으로 변화</figcaption></figure>
+        <h3>검색이 “링크 목록”에서 “답변형 검색”으로 바뀜</h3>
+        <p>관광객은 이제 “울릉도 맛집”만 검색하지 않습니다. “부모님과 가기 좋은 울릉도 2박3일 코스”, “비 오는 날 갈 만한 곳”처럼 질문형으로 묻고, AI가 바로 정리한 답을 기대합니다.</p>
+        <div class="trend-q">관광 홍보 연결: 예쁜 문구보다 <b>관광객 질문에 답하는 콘텐츠</b>가 중요합니다. FAQ와 방문 안내가 검색 대응 콘텐츠가 됩니다.</div>
+      </div>
+      <div class="card lift">
+        <div class="trend-num">04</div>
+        <figure class="trend-fig"><img src="assets/ai-trend-04-agents.svg" alt="조사, 구조화, 작성, 번역, 게시가 순서대로 이어지는 에이전트 AI 참고 이미지" loading="lazy"><figcaption><b>레퍼런스</b> 조사에서 게시까지 여러 작업을 하나의 흐름으로 이어가는 에이전트 방식</figcaption></figure>
+        <h3>에이전트 AI: 여러 단계를 이어서 처리</h3>
+        <p>McKinsey의 2025 State of AI는 AI 사용이 넓어지고, 특히 <b>agentic AI</b>가 확산되고 있지만 많은 조직은 아직 실험에서 실제 업무 적용으로 넘어가는 중이라고 설명합니다. 에이전트 AI는 조사, 정리, 작성, 수정 같은 여러 단계를 이어서 처리합니다.</p>
+        <div class="trend-q">관광 홍보 연결: “관광객 질문 조사 → FAQ 작성 → 영어 안내 → 웹페이지 구조 제안”을 한 흐름으로 시킬 수 있습니다.</div>
+      </div>
+      <div class="card lift">
+        <div class="trend-num">05</div>
+        <figure class="trend-fig"><img src="assets/ai-trend-05-coding.svg" alt="웹페이지 요청문이 HTML 페이지 미리보기로 바뀌는 AI 코딩 참고 이미지" loading="lazy"><figcaption><b>레퍼런스</b> 원하는 화면을 말로 설명하면 HTML·CSS 초안으로 바뀌는 AI 코딩 흐름</figcaption></figure>
+        <h3>코딩을 몰라도 웹페이지와 도구를 만들 수 있음</h3>
+        <p>AI 코딩 도구는 HTML, CSS, JavaScript 같은 코드를 사람이 직접 쓰지 않아도 만들어 줍니다. 중요한 능력은 코딩 문법보다 <b>원하는 결과를 정확히 설명하고, 결과를 확인하고, 다시 고치는 힘</b>입니다.</p>
+        <div class="trend-q">관광 홍보 연결: Gemini나 ChatGPT에 “첫 화면, 소개 카드, FAQ, 문의 버튼, 모바일 대응”을 요청해 Google Sites에 붙일 원고와 간단한 HTML 카드를 만들 수 있습니다.</div>
+      </div>
+      <div class="card lift">
+        <div class="trend-num">06</div>
+        <figure class="trend-fig"><img src="assets/ai-trend-06-personalization.svg" alt="하나의 관광 정보가 가족, 외국인, 등산객, 우천 방문객용 문구로 나뉘는 개인화 참고 이미지" loading="lazy"><figcaption><b>레퍼런스</b> 하나의 관광 정보를 가족·외국인·등산객·우천 방문객용 문구로 바꾸는 개인화</figcaption></figure>
+        <h3>개인화 콘텐츠가 쉬워짐</h3>
+        <p>같은 장소라도 가족 여행객, 외국인, 등산객, 당일치기 여행객, 어르신 동반 여행객에게 필요한 정보가 다릅니다. AI는 같은 정보를 대상별 문장으로 바꾸는 데 강합니다.</p>
+        <div class="trend-q">관광 홍보 연결: “가족용”, “외국인용”, “비 오는 날용”, “배 시간 전 짧은 식사용”처럼 고객별 안내문을 만들 수 있습니다.</div>
+      </div>
+      <div class="card lift">
+        <div class="trend-num">07</div>
+        <figure class="trend-fig"><img src="assets/ai-trend-07-embedded.svg" alt="플레이스 페이지, 블로그 편집기, 고객 응대 화면 안에 AI 도우미가 들어가는 참고 이미지" loading="lazy"><figcaption><b>레퍼런스</b> 별도 AI 앱을 여는 방식에서 일하던 화면 안의 AI 도움말로 이동하는 흐름</figcaption></figure>
+        <h3>업무 도구 안에 AI가 기본으로 들어감</h3>
+        <p>문서 작성, 검색, 디자인, 예약 응대, 고객 관리, 코딩 도구 안에 AI 기능이 들어가고 있습니다. 따로 AI 앱을 열지 않아도 일하던 화면에서 바로 도움을 받는 방향입니다.</p>
+        <div class="trend-q">관광 홍보 연결: 네이버 플레이스 소개글, 블로그 글, 메뉴 설명, 지도 링크 안내, 고객 답변 문구를 AI와 함께 다듬는 일이 자연스러워집니다.</div>
+      </div>
+      <div class="card lift">
+        <div class="trend-num">08</div>
+        <figure class="trend-fig"><img src="assets/ai-trend-08-responsible.svg" alt="공개 전 사실, 사진 권리, 개인정보, 모바일 화면을 점검하는 책임 있는 AI 사용 참고 이미지" loading="lazy"><figcaption><b>레퍼런스</b> 공개 전 사실·사진 권리·개인정보·모바일 화면을 확인하는 책임 있는 사용</figcaption></figure>
+        <h3>책임 있는 사용이 더 중요해짐</h3>
+        <p>AI가 빠르게 퍼질수록 틀린 정보, 저작권, 개인정보, 과장 광고, 편향 표현도 함께 문제가 됩니다. Stanford HAI도 AI 능력은 빠르게 발전하지만 이를 측정하고 관리하는 체계는 따라가기 어렵다고 지적합니다.</p>
+        <div class="trend-q">관광 홍보 연결: 가격, 운영시간, 배편, 주소, 전화번호, 사진 권리는 반드시 사람이 확인해야 합니다.</div>
       </div>
     </div>
 
-    <div class="pb-label"><span class="tag">AI에게 고치라고 말하기</span> 화면이 마음에 안 들 때</div>
-    <div class="cols-2">
-      <div class="card"><h3>글이 너무 길 때</h3><div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>Google Sites에 붙여 넣기 좋게
-섹션별 본문을 3문장 이내로 줄여줘.
-중요한 정보는 남기고 설명만 짧게 해줘.</code></div></div>
-      <div class="card"><h3>코드 카드가 깨질 때</h3><div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>Google Sites 임베드 코드에서 모바일 화면이 깨지지 않게 고쳐줘.
-- 외부 라이브러리 사용하지 않기
-- CSS는 style 태그 안에 넣기
-- 글자와 버튼이 겹치지 않게
-- 너비는 100% 안에서만 사용하기</code></div></div>
+    <div class="pb-label"><span class="tag">2026 실습 연결표</span> AI 동향을 관광 홍보로 바꾸면</div>
+    <div class="tool-table-wrap">
+      <table class="tool-table">
+        <thead><tr><th>AI 동향</th><th>관광 홍보에서 생기는 변화</th><th>이 자료에서 해볼 실습</th></tr></thead>
+        <tbody>
+          <tr><td>생성형 AI 대중화</td><td>작은 가게도 직접 홍보 콘텐츠를 만들 수 있음</td><td>소개문, SNS 글, 제목 후보 만들기</td></tr>
+          <tr><td>멀티모달 AI</td><td>사진·메뉴판·지도·음성을 콘텐츠 재료로 활용</td><td>사진 설명, 음식 설명, 음성 소개 예시 보기</td></tr>
+          <tr><td>답변형 검색</td><td>관광객 질문에 답하는 페이지가 중요해짐</td><td>FAQ, 방문 전 질문, 리서치 표 만들기</td></tr>
+          <tr><td>에이전트 AI</td><td>조사→정리→작성→번역→제작 흐름을 이어서 처리</td><td>선택 실습에서 여러 작업을 순서대로 시키기</td></tr>
+          <tr><td>AI 코딩</td><td>비전공자도 간단한 웹 요소를 만들 수 있음</td><td>Google Sites 코드 삽입용 홍보 카드 만들기</td></tr>
+          <tr><td>개인화</td><td>고객 유형별 안내문을 쉽게 만들 수 있음</td><td>가족/외국인/등산객용 문구 변형하기</td></tr>
+          <tr><td>AI 거버넌스</td><td>공개 전 사실·권리·개인정보 확인이 필수</td><td>구성/사실/외국어/권리 점검표 작성</td></tr>
+        </tbody>
+      </table>
     </div>
 
-    <div class="section-head" style="margin-top:56px; margin-bottom:28px;">
-      <h2 style="font-size:clamp(1.8rem,3.4vw,2.6rem);">완성하면 <span class="hl">이런 모습</span>이 됩니다</h2>
-      <p class="kicker" style="font-size:1.2rem;">아래 예시처럼 첫 화면, 소개, 방문 안내, FAQ, 문의가 한 흐름으로 보이면 충분합니다. Google Sites에서도 같은 순서로 구성하면 됩니다.</p>
-    </div>
-    <div class="mockups">
-      <div class="frame-desktop"><div class="bar" aria-hidden="true"><i></i><i></i><i></i></div><iframe src="example.html" title="완성 웹페이지 예시 (데스크톱)" loading="lazy"></iframe></div>
-      <div class="frame-phone"><div class="notch" aria-hidden="true"></div><iframe src="example.html" title="완성 웹페이지 예시 (모바일)" loading="lazy"></iframe></div>
-    </div>
-    <div class="pb-label"><span class="tag">완성 행동</span> 웹페이지 초안이 나온 뒤</div>
-    <div class="steps">
-      <div class="step"><b>1</b><span>Google Sites 미리보기에서 첫 화면과 문의 버튼을 확인합니다.</span></div>
-      <div class="step"><b>2</b><span>휴대폰 미리보기에서 글자·사진·버튼이 겹치지 않는지 확인합니다.</span></div>
-      <div class="step"><b>3</b><span>문제가 있으면 AI에게 “Google Sites에 붙이기 쉽게 더 짧게”라고 요청하고 다시 붙입니다.</span></div>
-      <div class="step"><b>4</b><span><a href="#checklist">공개 전 점검</a>으로 이동해 구성·사실·외국어·권리를 확인합니다.</span></div>
-    </div>
-  </div>
-</section>
+    <div class="notice"><strong>2026년 관점의 핵심:</strong> AI는 “한 번 물어보는 검색창”이 아니라 <b>콘텐츠 제작 파트너</b>입니다. 하지만 공개용 홍보물에서는 AI가 만든 문장을 그대로 쓰지 말고, <b>지역 정보와 사실 확인을 거쳐 내 말로 다듬는 과정</b>이 반드시 필요합니다.</div>
 
-<!-- ===== 15 완성 체크리스트 ===== -->
-<section class="section" id="checklist" style="background:var(--cream);">
-  <span class="sec-no" aria-hidden="true">16</span>
-  <div class="container">
-    <div class="section-head">
-      <span class="eyebrow">마무리 · 점검</span>
-      <h2>이 항목이 다 있으면 <span class="hl">완성</span>입니다</h2>
-      <p class="kicker">하나씩 눌러 확인하세요. 체크 상태는 이 브라우저에 저장됩니다.</p>
-    </div>
-    <div class="cols-2">
-      <div class="card">
-        <h3>구성 점검</h3>
-        <div class="checklist">
-          <label><input type="checkbox"><span><b>첫 화면</b> — 이름, 큰 제목, 한 줄 소개, 대표 사진이 보인다</span></label>
-          <label><input type="checkbox"><span><b>문의 버튼</b> — 전화·예약·지도 버튼이 첫 화면과 마지막에 있다</span></label>
-          <label><input type="checkbox"><span><b>모바일 화면</b> — 휴대폰에서 글자·버튼·사진이 겹치지 않는다</span></label>
-        </div>
-      </div>
-      <div class="card">
-        <h3>사실 점검</h3>
-        <div class="checklist">
-          <label><input type="checkbox"><span><b>운영 정보</b> — 가격, 운영시간, 예약 방법을 직접 확인했다</span></label>
-          <label><input type="checkbox"><span><b>위치 정보</b> — 주소, 지도 링크, 전화번호가 맞다</span></label>
-          <label><input type="checkbox"><span><b>교통 정보</b> — 배편·날씨처럼 바뀌는 정보는 “확인 필요”로 표시했다</span></label>
-        </div>
-      </div>
-      <div class="card">
-        <h3>외국어 점검</h3>
-        <div class="checklist">
-          <label><input type="checkbox"><span><b>쉬운 표현</b> — 영어 안내가 짧고 이해하기 쉽다</span></label>
-          <label><input type="checkbox"><span><b>음식 설명</b> — 재료·맛·알레르기 정보를 포함했다</span></label>
-          <label><input type="checkbox"><span><b>예약·결제</b> — 외국인이 문의하기 쉬운 표현이 있다</span></label>
-        </div>
-      </div>
-      <div class="card">
-        <h3>권리 점검</h3>
-        <div class="checklist">
-          <label><input type="checkbox"><span><b>사진 권리</b> — 직접 찍은 사진이거나 사용할 수 있는 사진이다</span></label>
-          <label><input type="checkbox"><span><b>사람 얼굴</b> — 얼굴이 보이면 공개해도 되는지 확인했다</span></label>
-          <label><input type="checkbox"><span><b>연락처 공개</b> — 전화번호·예약 링크 공개가 괜찮다</span></label>
-        </div>
-      </div>
-    </div>
-    <div class="pb-label"><span class="tag">3단계 기준</span> 내 페이지 상태 판단하기</div>
-    <div class="cols-2">
-      <div class="card"><h3>바로 공개 가능</h3><p>사실 확인이 끝났고, 모바일 화면이 정상이며, 문의/지도 버튼이 작동합니다.</p></div>
-      <div class="card"><h3>조금 보완</h3><p>문구나 사진은 좋지만 운영시간, 가격, 지도, 외국어 표현 중 일부 확인이 남았습니다.</p></div>
-      <div class="card"><h3>아직 연습</h3><p>정보가 부족하거나 문의 버튼, 지도, 모바일 확인이 빠져 있습니다. 작업장으로 돌아가 빈칸을 채우세요.</p></div>
-    </div>
-    <div class="notice"><strong>최종 기준:</strong> 완벽한 디자인보다 중요한 것은 <b>내가 다시 고칠 수 있는 홍보 페이지</b>를 하나 완성하는 것입니다. AI 초안은 빠르지만, 공개 전 확인과 책임은 사람에게 있습니다.</div>
-  </div>
-</section>
-
-<!-- ===== 16 공유와 다음 적용 ===== -->
-<section class="section" id="publish">
-  <span class="sec-no" aria-hidden="true">17</span>
-  <div class="container">
-    <div class="section-head">
-      <span class="eyebrow">공유 · URL과 QR 만들기</span>
-      <h2>완성한 웹페이지를 <span class="hl">휴대폰에서 열리는 링크</span>로 만듭니다</h2>
-      <p class="kicker">Google Sites에서 <b>게시</b>를 누르면 내 웹페이지 주소가 생깁니다. 그 주소를 휴대폰에서 열어 확인하고, 네이버 QR 코드로 바꾸면 포스터·메뉴판·안내문에 붙일 수 있습니다.</p>
-    </div>
-    <figure class="img-band qr-shot">
-      <img src="assets/naver-qr-home.png" alt="네이버 QR 코드 생성기 첫 화면. 상단에 코드 생성 메뉴가 있고 중앙에 큰 코드 생성 버튼이 보입니다." loading="lazy">
-      <figcaption><b>네이버 QR 코드 생성기 첫 화면.</b> 이 화면에서 상단의 <b>코드 생성</b> 메뉴 또는 중앙의 큰 <b>코드 생성</b> 버튼을 누르면 QR 만들기를 시작할 수 있습니다.</figcaption>
-    </figure>
-    <div class="talk">
-      <div class="t"><div><h3>Google Sites에서 게시 누르기</h3><p>오른쪽 위 <b>게시</b> 버튼을 누릅니다. 아직 공개하기 전 마지막 확인 단계입니다.</p></div></div>
-      <div class="t"><div><h3>웹 주소 정하기</h3><p>사이트 주소는 짧고 알아보기 쉽게 적습니다. 예: <b>haeullim-ulleung</b>. 이미 사용 중이면 숫자나 지역명을 붙입니다.</p></div></div>
-      <div class="t"><div><h3>공개 범위 확인</h3><p>수업용으로 공유할 페이지라면 링크를 아는 사람이 볼 수 있게 설정합니다. 개인정보나 내부 자료가 들어갔다면 공개하지 않습니다.</p></div></div>
-      <div class="t"><div><h3>게시 후 URL 복사</h3><p>게시가 끝나면 나온 사이트 주소를 복사합니다. 주소는 보통 <b>https://sites.google.com/...</b> 형태입니다.</p></div></div>
-      <div class="t"><div><h3>휴대폰에서 열어보기</h3><p>복사한 URL을 카카오톡 나에게 보내기, 문자, 메모장 등에 붙여 휴대폰에서 엽니다. 휴대폰에서 열리면 1차 성공입니다.</p></div></div>
-      <div class="t"><div><h3>네이버 QR 코드 생성기 열기</h3><p>PC에서 <a href="https://qr.naver.com/" target="_blank" rel="noopener">qr.naver.com</a>에 접속하고 네이버 계정으로 로그인합니다. 상단 또는 첫 화면의 <b>코드 생성</b>을 누릅니다.</p></div></div>
-      <div class="t"><div><h3>디자인 고르기</h3><p>기본형 또는 스킨형 중 하나를 고릅니다. 처음이면 기본형을 추천합니다. 제목은 예: <b>해울림식당 홍보 페이지</b>처럼 나중에 알아보기 쉽게 적습니다.</p></div></div>
-      <div class="t"><div><h3>URL 링크 유형 선택</h3><p>페이지 유형에서 <b>URL 링크</b>를 선택하고, Google Sites에서 만든 내 웹페이지 주소를 붙여넣습니다.</p></div></div>
-      <div class="t"><div><h3>저장하고 다운로드</h3><p>저장 버튼을 눌러 QR을 만든 뒤 이미지 파일로 저장합니다. 포스터, 메뉴판, 명함, 안내문에 넣을 수 있습니다.</p></div></div>
-      <div class="t"><div><h3>휴대폰으로 스캔 테스트</h3><p>카메라 앱으로 QR을 찍어 내 홍보 웹페이지가 바로 열리는지 확인합니다. 안 열리면 URL이 <b>https://</b>로 시작하는지, Google Sites가 게시 상태인지 확인합니다.</p></div></div>
-    </div>
-    <div class="notice"><strong>네이버 QR 사용 팁:</strong> QR은 만들었다고 끝이 아닙니다. 반드시 휴대폰 카메라로 직접 찍어 보고, 내 Google Sites 페이지가 바로 열리는지 확인하세요. 나중에 웹페이지 내용을 고쳐도 같은 주소라면 QR은 그대로 사용할 수 있습니다.</div>
-    <div class="form-card" style="margin-top:28px;">
-      <div class="field full"><label for="publishUrlInput">내 URL을 여기에 붙여넣으세요</label><input id="publishUrlInput" placeholder="예: https://sites.google.com/view/haeullim-ulleung"></div>
-      <div class="form-actions">
-        <button class="btn teal" type="button" onclick="document.getElementById('savedUrl').value=document.getElementById('publishUrlInput').value;saveWorkspace();">작업장 최종 URL에 저장</button>
-      </div>
-    </div>
-    <div class="subhead">계속 활용할 도구</div>
+    <div class="pb-label"><span class="tag">참고 자료</span> 더 깊게 보고 싶을 때</div>
     <div class="tools">
-      <a class="tool" href="https://gemini.google.com/" target="_blank" rel="noopener"><span class="ti">✨</span><div><strong>Gemini</strong><span>글·번역·리서치</span><span class="role">STEP 1~6</span></div></a>
-      <a class="tool" href="https://chatgpt.com/" target="_blank" rel="noopener"><span class="ti">💬</span><div><strong>ChatGPT</strong><span>문장 다듬기·FAQ·코드 카드</span><span class="role">STEP 1~7</span></div></a>
-      <a class="tool" href="https://sites.google.com/" target="_blank" rel="noopener"><span class="ti">🌐</span><div><strong>Google Sites</strong><span>노코드 웹페이지 제작·게시</span><span class="role">STEP 7</span></div></a>
-      <a class="tool" href="https://qr.naver.com/" target="_blank" rel="noopener"><span class="ti">▦</span><div><strong>네이버 QR 코드</strong><span>URL을 QR 이미지로 공유</span><span class="role">공유</span></div></a>
-      <a class="tool" href="https://chatgpt.com/codex" target="_blank" rel="noopener"><span class="ti">⌘</span><div><strong>Codex</strong><span>전체 HTML 사이트 제작</span><span class="role opt">심화 선택</span></div></a>
-      <a class="tool" href="https://notebooklm.google.com/" target="_blank" rel="noopener"><span class="ti">🎧</span><div><strong>NotebookLM</strong><span>음성 소개</span><span class="role opt">STEP 4</span></div></a>
-      <a class="tool" href="https://suno.com/" target="_blank" rel="noopener"><span class="ti">🎵</span><div><strong>Suno</strong><span>홍보 노래</span><span class="role opt">STEP 4</span></div></a>
-      <a class="tool" href="https://smartplace.naver.com/" target="_blank" rel="noopener"><span class="ti">📍</span><div><strong>네이버 스마트플레이스</strong><span>소개글 등록</span><span class="role opt">현장 적용</span></div></a>
+      <a class="tool" href="https://hai.stanford.edu/ai-index/2026-ai-index-report" target="_blank" rel="noopener"><span class="ti">📊</span><div><strong>Stanford HAI · 2026 AI Index</strong><span>AI 채택, 능력, 경제, 책임 있는 AI 동향</span><span class="role opt">최신 동향</span></div></a>
+      <a class="tool" href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai" target="_blank" rel="noopener"><span class="ti">🏢</span><div><strong>McKinsey · State of AI 2025</strong><span>기업의 AI 활용, 에이전트 AI, 업무 적용 흐름</span><span class="role opt">업무 활용</span></div></a>
     </div>
+
+    <div class="subhead">📌 관광 홍보에서 AI는 이렇게 쓰입니다</div>
+    <p class="kicker" style="margin-bottom:20px;">아래 사례는 실제 업무 흐름에 바로 붙일 수 있는 사용 방식입니다. 중요한 것은 “AI에게 한 번 물어보기”가 아니라, <b>작은 일을 순서대로 맡기는 것</b>입니다.</p>
+    <div class="trend-grid">
+      <div class="card lift"><div class="trend-num">01</div><h3>손님 질문을 미리 예상</h3><p>“주차되나요?”, “배편 시간에 맞춰 식사할 수 있나요?”, “외국인도 주문하기 쉬운가요?” 같은 질문을 AI에게 뽑게 한 뒤 FAQ로 정리합니다.</p></div>
+      <div class="card lift"><div class="trend-num">02</div><h3>내 말을 홍보 문구로 바꾸기</h3><p>“도동항에서 가깝고 가족이 운영해요” 같은 평범한 설명을 <b>제목, 한 줄 소개, SNS 문장</b>으로 바꿉니다.</p></div>
+      <div class="card lift"><div class="trend-num">03</div><h3>외국인이 이해하는 설명 만들기</h3><p>“따개비밥”, “오징어내장탕”처럼 번역만으로 부족한 말은 <b>재료·맛·먹는 방법·알레르기</b>까지 풀어 설명합니다.</p></div>
+      <div class="card lift"><div class="trend-num">04</div><h3>긴 자료를 요약하고 다시 쓰기</h3><p>관광 안내문, 체험 설명, 안전 수칙을 넣고 <b>초보자용, 외국인용, 어린이 동반 가족용</b>으로 다시 쓰게 할 수 있습니다.</p></div>
+      <div class="card lift"><div class="trend-num">05</div><h3>웹페이지 구조 잡기</h3><p>첫 화면, 소개 카드, 방문 안내, FAQ, 문의 버튼처럼 <b>방문자가 읽는 순서</b>로 페이지 구성을 제안받습니다.</p></div>
+    </div>
+    <div class="notice"><strong>딱 하나만 기억하세요:</strong> AI는 <b>초안을 빠르게 만드는 똑똑한 조수</b>입니다. 가격·배편·운영시간 같은 정보의 <b>마지막 확인과 책임은 사람</b>에게 있습니다.</div>
   </div>
 </section>
+
 
 <!-- ===== 닫는 슬라이드 ===== -->
 <section class="section" id="end">
@@ -1802,7 +1914,7 @@ function loadWorkspace(){try{const d=JSON.parse(localStorage.getItem('ulleungWor
 function clearWorkspace(){workspaceFields.forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});localStorage.removeItem('ulleungWorkspace');showToast('작업장을 비웠습니다');}
 function copyWorkspace(){const d=profileData();const w=workspaceData();copyText(`[내 기본 정보]\n- 이름: ${d.name}\n- 종류: ${d.type}\n- 위치: ${d.location}\n- 대표 메뉴/서비스: ${d.items}\n- 장점: ${d.strengths}\n- 문의: ${d.contact}\n- 한 줄 소개: ${d.tagline}\n\n[AI 결과 모음]\n- 제목 후보: ${w.title}\n- 소개문: ${w.intro}\n- FAQ: ${w.faq}\n- 외국어 안내: ${w.global}\n- 관광객 질문/리서치: ${w.research}\n- 확인 필요 항목: ${w.facts}\n- 최종 URL: ${w.url}`);}
 function copyFilledPrompt(kind){const d=profileData();let t='';
- if(kind==='intro'){t=`너는 울릉도 관광 홍보 전문가야.\n아래 정보로 우리 가게 홍보자료를 만들어줘.\n\n[내 정보]\n- 이름: ${d.name}\n- 종류: ${d.type}\n- 위치: ${d.location}\n- 대표 메뉴/서비스: ${d.items}\n- 장점: ${d.strengths}\n- 문의: ${d.contact}\n\n[만들어줄 것]\n1. 큰 제목 5개\n2. 한 줄 소개 5개\n3. 인스타그램 글 1개 (해시태그 10개 포함)\n4. 자주 묻는 질문 5개와 답변\n\n조건: 중학생도 이해하게 쉽게 / 과장 없이 / 가격·시간·배편은 "확인 필요"로 표시`;}
+ if(kind==='intro'){t=`너는 울릉도 관광 홍보 전문가야.\n아래 정보로 내 주제의 홍보자료를 만들어줘.\n\n[내 정보]\n- 이름: ${d.name}\n- 종류: ${d.type}\n- 위치: ${d.location}\n- 대표 메뉴/서비스: ${d.items}\n- 장점: ${d.strengths}\n- 문의: ${d.contact}\n\n[만들어줄 것]\n1. 큰 제목 5개\n2. 한 줄 소개 5개\n3. 인스타그램 글 1개 (해시태그 10개 포함)\n4. Google Sites 소개 섹션에 넣을 짧은 본문 1개\n\n조건: 중학생도 이해하게 쉽게 / 과장 없이 / 가격·시간·배편은 "확인 필요"로 표시`;}
  if(kind==='global'){t=`우리 가게를 처음 방문하는 외국인 관광객을 위한\n영어와 일본어 안내문을 만들어줘.\n\n[내 정보]\n- 이름: ${d.name}\n- 종류: ${d.type}\n- 위치: ${d.location}\n- 대표 메뉴/서비스: ${d.items}\n- 문의: ${d.contact}\n\n[만들어줄 것]\n1. 영어 안내 3줄 (짧고 쉬운 문장)\n2. 일본어 안내 3줄\n3. 대표 메뉴를 외국인이 이해하게 재료·맛과 함께 설명\n4. 외국인이 자주 묻는 질문 3개와 답 (영어)\n\n조건: 쉬운 표현 / 예약·결제·알레르기 분명하게 / 정중하게`;}
  if(kind==='web'){const w=workspaceData();t=`울릉도 ${d.type} 홍보 웹페이지를 Google Sites로 만들려고 해.\n아래 정보를 바탕으로 Google Sites에 그대로 붙여 넣을 수 있는 원고를 만들어줘.\n코드는 만들지 말고, 섹션 제목과 본문을 나누어 작성해줘.\n\n[기본 정보]\n- 이름: ${d.name}\n- 종류: ${d.type}\n- 위치: ${d.location}\n- 대표 메뉴/서비스: ${d.items}\n- 장점: ${d.strengths}\n- 문의: ${d.contact}\n- 한 줄 소개: ${d.tagline}\n\n[작업장에 저장한 AI 결과]\n- 제목 후보: ${w.title}\n- 소개문: ${w.intro}\n- FAQ: ${w.faq}\n- 외국어 안내: ${w.global}\n- 관광객 질문/리서치: ${w.research}\n- 확인 필요 항목: ${w.facts}\n\n[Google Sites 페이지 구성]\n1. 첫 화면: 큰 제목 3개 후보, 한 줄 소개 3개 후보, 버튼 문구 3개\n2. 소개 섹션: 3문장 이내 본문\n3. 카드 3개: 위치 / 대표 메뉴 또는 체험 / 추천 대상\n4. 방문 안내: 운영시간, 예약 방법, 결제, 주차 또는 준비물\n5. 외국어 안내: 쉬운 영어 3줄\n6. FAQ: 관광객 질문 5개와 짧은 답변\n7. 마지막 문의 섹션: 전화, 지도, 예약 버튼 문구\n\n[작성 조건]\n- 각 섹션 제목은 12자 이내\n- 본문은 한 섹션당 3문장 이내\n- 버튼 문구는 8자 이내\n- 미확인 가격, 배편, 운영시간은 "확인 필요"로 표시\n- 과장 광고처럼 들리는 표현은 빼기\n- Google Sites에 복사해서 붙이기 쉽게 정리`;}
  if(kind==='embed'){const w=workspaceData();t=`Google Sites의 "삽입 → 임베드 → 코드 삽입"에 붙여 넣을 수 있는 짧은 홍보 카드 HTML을 만들어줘.\n\n[내 정보]\n- 이름: ${d.name}\n- 종류: ${d.type}\n- 위치: ${d.location}\n- 대표 메뉴/서비스: ${d.items}\n- 장점: ${d.strengths}\n- 문의: ${d.contact}\n- 한 줄 소개: ${d.tagline}\n\n[사용할 문장]\n- 제목 후보: ${w.title}\n- 소개문: ${w.intro}\n- 영어 안내: ${w.global}\n\n[코드 조건]\n- 전체 html, head, body 태그는 쓰지 말고 div와 style 태그 중심으로 작성\n- 외부 라이브러리, 외부 이미지, 웹폰트는 사용하지 않기\n- CSS는 style 태그 안에 모두 넣기\n- 너비는 100% 안에서 반응형으로 보이게 하기\n- 휴대폰에서도 글자와 버튼이 겹치지 않게 하기\n- 버튼은 "전화 문의", "지도 보기" 2개를 넣고 링크는 임시로 # 처리\n- 코드만 출력하고 설명은 붙이지 않기`;}
