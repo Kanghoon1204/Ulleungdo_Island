@@ -94,6 +94,10 @@ h1,h2,h3{font-family:var(--font-head); line-height:1.26; font-weight:700; letter
 .img-band img{width:100%; height:clamp(240px,32vw,420px); object-fit:cover; display:block;}
 .img-band.qr-shot img{height:auto; max-height:620px; object-fit:contain; background:#fff;}
 .img-band figcaption{padding:16px 22px; color:var(--muted); font-size:1.05rem; background:#fff;}
+.img-band.step-hero{margin:0 0 30px;}
+.img-band.step-hero img{height:clamp(190px,24vw,320px);}
+.img-band.step-hero figcaption{font-family:var(--font-head); color:var(--ink-soft);}
+.img-band.step-hero figcaption b{color:var(--primary-dark);}
 .img-band figcaption b{color:var(--ink); font-family:var(--font-head);}
 .poster-band{max-width:420px;}
 .poster-band img{height:auto;}
@@ -545,6 +549,10 @@ footer .foot-grid{display:flex; justify-content:space-between; flex-wrap:wrap; g
       <h2>AI로 <span class="hl">이런 것들</span>을 만들 수 있습니다</h2>
       <p class="kicker">AI는 글뿐 아니라 음성·노래·이미지·웹페이지까지 만듭니다. 아래 네 가지를 먼저 맛보세요. <b>Suno와 포스터는 3분이면 직접</b> 만들어 볼 수 있고, <b>웹페이지는 오늘 끝까지</b> 만듭니다.</p>
     </div>
+    <figure class="img-band step-hero">
+      <img src="assets/ulleung-nari.jpg" alt="울릉도 나리분지의 들판" loading="lazy">
+      <figcaption><b>AI로 만들 수 있는 것들.</b> 먼저 눈으로 확인하고 시작합니다.</figcaption>
+    </figure>
     <!-- 예시 1 · NotebookLM (데모) -->
     <div class="card" style="margin-bottom:24px;">
       <div class="pb-head"><span class="tag-badge">데모</span><h3>🎧 NotebookLM · 내 자료를 음성 가이드로</h3></div>
@@ -610,6 +618,10 @@ footer .foot-grid{display:flex; justify-content:space-between; flex-wrap:wrap; g
       <h2>오늘 쓰는 도구는 <span class="hl">Gemini · ChatGPT · GitHub</span>입니다</h2>
       <p class="kicker">AI 도구는 많지만, 처음부터 다 배울 필요는 없습니다. 이번 실습에서는 <b>Gemini로 초안을 만들고</b>, <b>ChatGPT로 비교·수정한 뒤</b>, 완성 HTML을 GitHub Pages로 공개합니다.</p>
     </div>
+    <figure class="img-band step-hero">
+      <img src="assets/ulleung-taeha.jpg" alt="울릉도 태하 해안 전망" loading="lazy">
+      <figcaption><b>시작 준비.</b> 실습에 쓸 도구부터 켭니다.</figcaption>
+    </figure>
 
     <div class="tool-focus">
       <h3>실습 방식은 딱 하나입니다</h3>
@@ -774,6 +786,10 @@ footer .foot-grid{display:flex; justify-content:space-between; flex-wrap:wrap; g
       <h2>같은 질문도 <span class="hl">AI마다 답이 다르게</span> 나옵니다</h2>
       <p class="kicker">먼저 Gemini로 초안을 만들고, 같은 요청을 ChatGPT에도 넣어 봅니다. 어느 쪽이 더 쉽고 쓸 만한지 고른 뒤, “더 짧게”, “더 친절하게”, “표로”처럼 이어서 고치는 연습을 합니다.</p>
     </div>
+    <figure class="img-band step-hero">
+      <img src="assets/ulleung-bongnae.jpg" alt="울릉도 봉래폭포" loading="lazy">
+      <figcaption><b>프롬프트.</b> 좋은 질문이 좋은 답을 만듭니다.</figcaption>
+    </figure>
     <span class="follow">환경설정이 끝났다면, 이제 두 AI에 같은 일을 시켜봅니다</span>
     <div class="steps">
       <div class="step"><b>1</b><span><a href="#setup">시작 준비</a>에서 Gemini와 ChatGPT 접속을 마쳤는지 확인합니다.</span></div>
@@ -959,6 +975,10 @@ footer .foot-grid{display:flex; justify-content:space-between; flex-wrap:wrap; g
       <h2>AI 답변에서 <span class="hl">쓸 문장만 골라</span> 여기에 모읍니다</h2>
       <p class="kicker">AI 답변 전체를 다 쓸 필요는 없습니다. 마음에 드는 제목, 소개문, FAQ, 외국어 안내, 확인할 사실만 골라 붙여 두세요. 새로고침해도 이 브라우저에 저장됩니다.</p>
     </div>
+    <figure class="img-band step-hero">
+      <img src="assets/ulleungdo-coastal-path.jpg" alt="울릉도 해안 산책로" loading="lazy">
+      <figcaption><b>실습.</b> 이제 직접 재료를 만들어 봅니다.</figcaption>
+    </figure>
     <div class="cols-2" style="margin-bottom:24px;">
       <div class="card"><div class="ic-lg">1</div><h3>AI에 붙여넣기</h3><p>각 실습의 복사 버튼을 눌러 AI에 붙여넣고 답변을 받습니다. 답이 길면 “핵심만 3줄로 줄여줘”라고 다시 요청합니다.</p></div>
       <div class="card"><div class="ic-lg" style="background:var(--secondary-soft)">2</div><h3>작업장에 붙여두기</h3><p>AI 답변 중 실제로 쓸 문장만 아래 칸에 붙여 둡니다. 마지막 웹페이지 제작 때 이 작업장 내용을 한꺼번에 사용합니다.</p></div>
@@ -1297,6 +1317,10 @@ SNS 콘텐츠 아이디어 10개를 이유와 함께 제안해줘.</code></div>
       <h2>AI에게 <span class="hl">index.html 전체 코드</span>를 받습니다</h2>
       <p class="kicker">최종 배포는 GitHub Pages로 합니다. 오늘은 사이트 빌더에서 조립하지 않고, Gemini나 ChatGPT가 만든 <b>완성 HTML 코드</b>를 GitHub에 올립니다.</p>
     </div>
+    <figure class="img-band step-hero">
+      <img src="assets/seonginbong-forest.jpg" alt="울릉도 성인봉 원시림" loading="lazy">
+      <figcaption><b>웹페이지 만들기.</b> 모은 재료를 한 페이지로 완성합니다.</figcaption>
+    </figure>
     <div class="card" style="border-left:6px solid var(--secondary); margin-bottom:24px;">
       <h3>🧩 잠깐, HTML이 뭔가요?</h3>
       <p><b>HTML은 웹페이지를 이루는 글</b>입니다. 웹페이지의 각 부분에 <b>“이건 제목”, “이건 사진”, “이건 전화 버튼”</b>처럼 이름표를 붙여 둔 것이라고 보면 됩니다. 브라우저(크롬·사파리)가 그 이름표를 읽어서 우리가 보는 화면으로 그려 줍니다.</p>
@@ -1509,6 +1533,10 @@ SNS 콘텐츠 아이디어 10개를 이유와 함께 제안해줘.</code></div>
       <h2>완성한 웹페이지를 <span class="hl">인터넷에 공개된 주소</span>로 만듭니다</h2>
       <p class="kicker">AI가 만든 <b>index.html</b> 코드를 GitHub 저장소에 올리고 GitHub Pages를 켜면, 누구나 접속할 수 있는 내 웹페이지 주소가 생깁니다.</p>
     </div>
+    <figure class="img-band step-hero">
+      <img src="assets/ulleung-jeodong.jpg" alt="울릉도 저동항" loading="lazy">
+      <figcaption><b>깃허브 배포.</b> 완성한 페이지를 세상에 공개합니다.</figcaption>
+    </figure>
     <div class="notice"><strong>왜 GitHub인가요?</strong> Google Slides는 발표자료 공유에 가깝고, Google Sites는 자유로운 HTML 전체 배포가 어렵습니다. 오늘처럼 AI가 만든 웹페이지 코드를 그대로 공개하려면 <b>GitHub Pages</b>가 가장 직접적인 방법입니다.</div>
     <div class="pb-label"><span class="tag">GitHub Pages</span> 처음 하는 사람도 따라 하는 순서</div>
     <div class="tip"><strong>💡 파일을 내려받았다면 더 쉽습니다.</strong> STEP 5에서 ChatGPT로 <b>index.html 파일</b>을 내려받았다면, 아래 4·5단계(파일 만들어 코드 붙여넣기) 대신 저장소에서 <b>Add file → Upload files</b>를 눌러 그 파일을 <b>드래그해서 올리면</b> 됩니다. 긴 코드를 복사·붙여넣지 않아도 돼요.</div>
@@ -1578,6 +1606,10 @@ SNS 콘텐츠 아이디어 10개를 이유와 함께 제안해줘.</code></div>
       <h2>공개된 웹페이지 주소를 <span class="hl">QR 코드</span>로 바꿉니다</h2>
       <p class="kicker">배포한 GitHub Pages 주소를 네이버 QR 코드로 만들면, 포스터·메뉴판·명함·안내문에 붙여 누구나 휴대폰으로 바로 열 수 있습니다.</p>
     </div>
+    <figure class="img-band step-hero">
+      <img src="assets/ulleung-dodong.jpg" alt="울릉도 도동항" loading="lazy">
+      <figcaption><b>QR 코드.</b> 링크를 어디서나 열리는 QR로 바꿉니다.</figcaption>
+    </figure>
     <figure class="img-band qr-shot">
       <img src="assets/naver-qr-home.png" alt="네이버 QR 코드 생성기 첫 화면. 상단에 코드 생성 메뉴가 있고 중앙에 큰 코드 생성 버튼이 보입니다." loading="lazy">
       <figcaption><b>네이버 QR 코드 생성기 첫 화면.</b> 이 화면에서 상단의 <b>코드 생성</b> 메뉴 또는 중앙의 큰 <b>코드 생성</b> 버튼을 누르면 QR 만들기를 시작할 수 있습니다.</figcaption>
@@ -1624,6 +1656,10 @@ SNS 콘텐츠 아이디어 10개를 이유와 함께 제안해줘.</code></div>
       <h2>복사해서 <span class="hl">[대괄호]만 바꾸면</span> 됩니다</h2>
       <p class="kicker">막막할 땐 여기서 꺼내 쓰세요. 위 <b>입력칸을 채우고</b> <b>“채워서 복사”</b>를 누르면, 대괄호가 내 정보로 바뀐 완성 프롬프트가 복사됩니다. (비운 칸은 대괄호 그대로 남습니다.)</p>
     </div>
+    <figure class="img-band step-hero">
+      <img src="assets/ulleung-scenic.jpg" alt="울릉도 해안 절벽과 바다" loading="lazy">
+      <figcaption><b>부록.</b> 더 해보고 싶을 때 꺼내 쓰는 자료입니다.</figcaption>
+    </figure>
 
     <div class="tmpl-card" style="border-left:6px solid var(--primary);">
       <div class="tmpl-title">⭐ 만능 템플릿 — 무엇이든 이 틀로</div>
