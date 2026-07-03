@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
+  <title id="title">AI embedded in work tools reference visual</title>
+  <desc id="desc">AI assistant panels inside everyday work tools.</desc>
+  <rect width="960" height="540" fill="#f4fbfa"/>
+  <rect x="72" y="56" width="816" height="428" rx="30" fill="#fff" stroke="#bfe6e1" stroke-width="3"/>
+  <text x="106" y="116" font-family="Arial, sans-serif" font-size="30" font-weight="700" fill="#171412">AI appears inside everyday tools</text>
+  <g transform="translate(116 174)" font-family="Arial, sans-serif">
+    <rect x="0" y="0" width="220" height="228" rx="20" fill="#fffaf4" stroke="#eadfd4" stroke-width="3"/>
+    <rect x="22" y="28" width="176" height="24" rx="8" fill="#0d9488"/>
+    <rect x="22" y="76" width="128" height="18" rx="6" fill="#eadfd4"/>
+    <rect x="22" y="112" width="164" height="18" rx="6" fill="#eadfd4"/>
+    <text x="22" y="178" font-size="18" font-weight="700" fill="#171412">Place page</text>
+    <rect x="260" y="0" width="220" height="228" rx="20" fill="#fffaf4" stroke="#eadfd4" stroke-width="3"/>
+    <rect x="282" y="30" width="176" height="120" rx="16" fill="#eaf2ff" stroke="#2563eb" stroke-width="3"/>
+    <text x="300" y="178" font-size="18" font-weight="700" fill="#171412">Blog editor</text>
+    <rect x="520" y="0" width="220" height="228" rx="20" fill="#fffaf4" stroke="#eadfd4" stroke-width="3"/>
+    <rect x="542" y="30" width="176" height="46" rx="14" fill="#fff1e9" stroke="#ea580c" stroke-width="3"/>
+    <rect x="542" y="96" width="176" height="46" rx="14" fill="#e6f5f3" stroke="#0d9488" stroke-width="3"/>
+    <text x="556" y="178" font-size="18" font-weight="700" fill="#171412">Customer reply</text>
+  </g>
+  <rect x="360" y="426" width="240" height="46" rx="23" fill="#171412"/>
+  <text x="405" y="456" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#fff">AI helper panel</text>
+</svg>

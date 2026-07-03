@@ -17,7 +17,7 @@
 }
 *{box-sizing:border-box; margin:0; padding:0;}
 html{scroll-behavior:smooth;}
-body{font-family:var(--body); color:var(--ink); line-height:1.8; background:var(--sand); word-break:keep-all; -webkit-font-smoothing:antialiased;}
+body{font-family:var(--body); color:var(--ink); line-height:1.8; background:var(--sand); word-break:keep-all; overflow-x:hidden; -webkit-font-smoothing:antialiased;}
 img{display:block; max-width:100%;}
 a{color:inherit; text-decoration:none;}
 .wrap{width:min(1180px, calc(100% - 44px)); margin:0 auto;}
@@ -121,6 +121,42 @@ footer a{color:var(--gold);}
   .col-7,.col-5,.col-6,.col-4{grid-column:span 12;}
   .food .split,.routes,.course{grid-template-columns:1fr;}
   .hero{min-height:82vh;}
+}
+@media (max-width:560px){
+  .wrap{width:min(100% - 32px,1180px);}
+  .nav .wrap{height:auto; min-height:66px; padding:8px 0; flex-wrap:wrap; gap:8px 12px;}
+  .logo{font-size:1.12rem; flex:1 1 130px;}
+  .ex-flag{margin-left:0; font-size:.72rem; padding:4px 9px;}
+  .nav nav{order:3; width:100%; margin-left:0; overflow-x:auto; scrollbar-width:none; -webkit-overflow-scrolling:touch; padding-bottom:2px;}
+  .nav nav::-webkit-scrollbar{display:none;}
+  .nav nav a{flex:0 0 auto; font-size:.84rem; padding:6px 8px;}
+  .hero{min-height:calc(100svh - 112px);}
+  .hero .wrap{padding:0 0 46px;}
+  .hero .kick{font-size:.78rem; letter-spacing:.14em; margin-bottom:12px;}
+  .hero h1{font-size:clamp(2.35rem,13vw,3.3rem);}
+  .hero p{font-size:1rem; margin:16px 0 22px;}
+  .hero-cta{gap:10px;}
+  .hero-cta .btn{width:100%; justify-content:center; min-height:52px; padding:12px 18px;}
+  .hero-facts{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; margin-top:24px; padding-top:18px;}
+  .hero-facts .f b{font-size:1.25rem;}
+  .hero-facts .f span{font-size:.78rem; line-height:1.4;}
+  section{padding:56px 0;}
+  .section-head{margin-bottom:28px;}
+  .sec-desc{font-size:1rem;}
+  .grid,.course,.routes{gap:16px;}
+  .place{min-height:260px; border-radius:18px;}
+  .place.tall{min-height:310px;}
+  .place .txt{padding:22px;}
+  .food .ph{border-radius:18px;}
+  .menu li{display:grid; gap:4px;}
+  .menu .n{white-space:normal;}
+  .ccard,.route{padding:22px;}
+  .contact .box{padding:32px 18px; border-radius:20px;}
+  .cta-row .btn{width:100%; justify-content:center;}
+}
+@media (max-width:360px){
+  .hero-facts{grid-template-columns:1fr;}
+  .hero-facts .f{display:flex; align-items:baseline; gap:10px;}
 }
 </style>
 </head>

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
+  <title id="title">Responsible AI reference visual</title>
+  <desc id="desc">A public page passes through fact, rights, privacy, and mobile checks.</desc>
+  <rect width="960" height="540" fill="#fff7ed"/>
+  <rect x="70" y="58" width="820" height="424" rx="30" fill="#fff" stroke="#eadfd4" stroke-width="3"/>
+  <text x="104" y="118" font-family="Arial, sans-serif" font-size="30" font-weight="700" fill="#171412">Before publishing, check trust</text>
+  <g transform="translate(120 182)" font-family="Arial, sans-serif">
+    <rect x="0" y="0" width="310" height="210" rx="20" fill="#fffaf4" stroke="#eadfd4" stroke-width="3"/>
+    <rect x="30" y="32" width="250" height="34" rx="10" fill="#0d9488"/>
+    <rect x="30" y="92" width="210" height="18" rx="6" fill="#eadfd4"/>
+    <rect x="30" y="126" width="235" height="18" rx="6" fill="#eadfd4"/>
+    <rect x="30" y="160" width="170" height="18" rx="6" fill="#eadfd4"/>
+    <path d="M360 106 H430" stroke="#c9b6a2" stroke-width="7" stroke-linecap="round"/>
+    <path d="M430 106 l-24-18 v36 z" fill="#c9b6a2"/>
+    <rect x="468" y="-8" width="250" height="226" rx="22" fill="#f4fbfa" stroke="#0d9488" stroke-width="3"/>
+    <g font-size="19" font-weight="700" fill="#171412">
+      <path d="M500 42 l14 14 l30-34" fill="none" stroke="#16a34a" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="560" y="52">Facts</text>
+      <path d="M500 92 l14 14 l30-34" fill="none" stroke="#16a34a" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="560" y="102">Photo rights</text>
+      <path d="M500 142 l14 14 l30-34" fill="none" stroke="#16a34a" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="560" y="152">Privacy</text>
+      <path d="M500 192 l14 14 l30-34" fill="none" stroke="#16a34a" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="560" y="202">Mobile view</text>
+    </g>
+  </g>
+</svg>

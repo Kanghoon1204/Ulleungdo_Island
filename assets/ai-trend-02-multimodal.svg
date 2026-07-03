@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
+  <title id="title">Multimodal AI reference visual</title>
+  <desc id="desc">Cards for text, image, audio, video, and map feeding into one AI workspace.</desc>
+  <rect width="960" height="540" fill="#fffaf4"/>
+  <rect x="70" y="62" width="820" height="416" rx="28" fill="#ffffff" stroke="#eadfd4" stroke-width="3"/>
+  <text x="104" y="118" font-family="Arial, sans-serif" font-size="30" font-weight="700" fill="#171412">Multimodal AI understands more than text</text>
+  <text x="104" y="154" font-family="Arial, sans-serif" font-size="18" fill="#6b6560">Photos, menus, voice, video clips, and maps can become content material.</text>
+  <g font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#171412">
+    <rect x="112" y="216" width="132" height="92" rx="18" fill="#fff1e9" stroke="#ea580c" stroke-width="3"/>
+    <text x="150" y="270">TEXT</text>
+    <rect x="112" y="338" width="132" height="92" rx="18" fill="#e6f5f3" stroke="#0d9488" stroke-width="3"/>
+    <text x="143" y="392">VOICE</text>
+    <rect x="326" y="216" width="132" height="92" rx="18" fill="#eaf2ff" stroke="#2563eb" stroke-width="3"/>
+    <path d="M352 282 l26-34 l24 22 l20-16 l14 28 z" fill="#2563eb" opacity=".75"/>
+    <circle cx="430" cy="242" r="10" fill="#2563eb" opacity=".75"/>
+    <rect x="326" y="338" width="132" height="92" rx="18" fill="#fef6dc" stroke="#eab308" stroke-width="3"/>
+    <path d="M368 366 l52 28 l-52 28 z" fill="#eab308"/>
+    <rect x="540" y="216" width="132" height="92" rx="18" fill="#f4fbfa" stroke="#0d9488" stroke-width="3"/>
+    <path d="M604 284 c-30-38 8-74 38-38 c30 36-8 74-38 38z" fill="none" stroke="#0d9488" stroke-width="9"/>
+    <circle cx="623" cy="264" r="10" fill="#0d9488"/>
+  </g>
+  <g transform="translate(720 270)">
+    <rect x="-58" y="-58" width="116" height="116" rx="26" fill="#171412"/>
+    <text x="-30" y="8" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#ffffff">AI</text>
+  </g>
+  <g stroke="#c9b6a2" stroke-width="5" stroke-linecap="round">
+    <path d="M244 262 H662"/>
+    <path d="M244 384 C370 384 560 320 662 282"/>
+    <path d="M458 262 H662"/>
+    <path d="M458 384 C552 370 610 330 662 292"/>
+  </g>
+</svg>

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
+  <title id="title">AI coding reference visual</title>
+  <desc id="desc">A prompt turns into an HTML page preview.</desc>
+  <rect width="960" height="540" fill="#eef6ff"/>
+  <rect x="70" y="58" width="820" height="424" rx="30" fill="#fff" stroke="#d7e8ff" stroke-width="3"/>
+  <text x="104" y="118" font-family="Arial, sans-serif" font-size="30" font-weight="700" fill="#171412">Describe a page. AI writes the code.</text>
+  <rect x="112" y="170" width="318" height="230" rx="20" fill="#20180f"/>
+  <text x="138" y="216" font-family="Courier New, monospace" font-size="20" fill="#fdeede">Make a tourism page</text>
+  <text x="138" y="252" font-family="Courier New, monospace" font-size="18" fill="#fdeede">- hero section</text>
+  <text x="138" y="284" font-family="Courier New, monospace" font-size="18" fill="#fdeede">- FAQ</text>
+  <text x="138" y="316" font-family="Courier New, monospace" font-size="18" fill="#fdeede">- map button</text>
+  <text x="138" y="348" font-family="Courier New, monospace" font-size="18" fill="#fdeede">- mobile first</text>
+  <path d="M464 286 H548" stroke="#ea580c" stroke-width="10" stroke-linecap="round"/>
+  <path d="M548 286 l-28-20 v40 z" fill="#ea580c"/>
+  <rect x="586" y="170" width="248" height="230" rx="20" fill="#fffaf4" stroke="#eadfd4" stroke-width="3"/>
+  <rect x="610" y="196" width="200" height="86" rx="14" fill="#0d9488"/>
+  <text x="632" y="246" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#fff">Ulleungdo Page</text>
+  <rect x="610" y="308" width="86" height="62" rx="12" fill="#fff1e9" stroke="#ea580c" stroke-width="3"/>
+  <rect x="724" y="308" width="86" height="62" rx="12" fill="#e6f5f3" stroke="#0d9488" stroke-width="3"/>
+</svg>

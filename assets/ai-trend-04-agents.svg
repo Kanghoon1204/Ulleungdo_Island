@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
+  <title id="title">Agentic AI workflow reference visual</title>
+  <desc id="desc">A multi-step agent workflow from research to publishing.</desc>
+  <rect width="960" height="540" fill="#fff7ed"/>
+  <rect x="64" y="58" width="832" height="424" rx="30" fill="#fff" stroke="#eadfd4" stroke-width="3"/>
+  <text x="100" y="118" font-family="Arial, sans-serif" font-size="30" font-weight="700" fill="#171412">Agentic AI connects multiple tasks</text>
+  <g transform="translate(100 218)" font-family="Arial, sans-serif">
+    <g>
+      <rect x="0" y="0" width="126" height="96" rx="18" fill="#e6f5f3" stroke="#0d9488" stroke-width="3"/>
+      <text x="26" y="42" font-size="18" font-weight="700" fill="#171412">Research</text>
+      <text x="38" y="70" font-size="15" fill="#6b6560">questions</text>
+    </g>
+    <g transform="translate(156 0)">
+      <rect x="0" y="0" width="126" height="96" rx="18" fill="#fff1e9" stroke="#ea580c" stroke-width="3"/>
+      <text x="32" y="42" font-size="18" font-weight="700" fill="#171412">Outline</text>
+      <text x="42" y="70" font-size="15" fill="#6b6560">sections</text>
+    </g>
+    <g transform="translate(312 0)">
+      <rect x="0" y="0" width="126" height="96" rx="18" fill="#fef6dc" stroke="#eab308" stroke-width="3"/>
+      <text x="34" y="42" font-size="18" font-weight="700" fill="#171412">Write</text>
+      <text x="36" y="70" font-size="15" fill="#6b6560">copy</text>
+    </g>
+    <g transform="translate(468 0)">
+      <rect x="0" y="0" width="126" height="96" rx="18" fill="#eaf2ff" stroke="#2563eb" stroke-width="3"/>
+      <text x="22" y="42" font-size="18" font-weight="700" fill="#171412">Translate</text>
+      <text x="42" y="70" font-size="15" fill="#6b6560">global</text>
+    </g>
+    <g transform="translate(624 0)">
+      <rect x="0" y="0" width="126" height="96" rx="18" fill="#f4fbfa" stroke="#0d9488" stroke-width="3"/>
+      <text x="25" y="42" font-size="18" font-weight="700" fill="#171412">Publish</text>
+      <text x="43" y="70" font-size="15" fill="#6b6560">page</text>
+    </g>
+  </g>
+  <g stroke="#c2410c" stroke-width="6" stroke-linecap="round">
+    <path d="M226 266 H254"/><path d="M382 266 H410"/><path d="M538 266 H566"/><path d="M694 266 H722"/>
+  </g>
+  <text x="104" y="388" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#0a6b62">Human role: set the goal, check facts, approve the final page.</text>
+</svg>
