@@ -153,6 +153,19 @@ h1,h2,h3{font-family:var(--font-head); line-height:1.26; font-weight:700; letter
 .memo textarea:focus{border-color:var(--secondary); outline:none;}
 .memo-actions{display:flex; align-items:center; gap:12px; margin-top:12px;}
 .memo-status{font-family:var(--font-head); font-size:.9rem; color:var(--tertiary);}
+/* OX 퀴즈 */
+.quiz{display:grid; gap:16px; margin-top:8px;}
+.quizq{background:#fff; border:1px solid var(--line); border-radius:16px; padding:24px 28px; box-shadow:var(--shadow-sm);}
+.quizq .q{font-family:var(--font-head); font-size:1.28rem; margin-bottom:14px;}
+.quizq .q b{color:var(--primary-dark);}
+.quizq .ox{display:flex; gap:12px;}
+.quizq .ox button{width:64px; height:64px; border-radius:14px; border:2px solid var(--line); background:#fff; font-family:var(--font-head); font-size:1.7rem; cursor:pointer; color:var(--muted); transition:.12s;}
+.quizq .ox button:hover{border-color:var(--primary); color:var(--primary);}
+.quizq .ox button.correct{background:var(--tertiary-soft); border-color:var(--tertiary); color:var(--tertiary);}
+.quizq .ox button.wrong{background:#fbe9e6; border-color:var(--error); color:var(--error);}
+.quizq .qa{display:none; margin-top:14px; padding:14px 18px; background:var(--secondary-soft); border-radius:12px; font-size:1.1rem; line-height:1.6; color:var(--ink-soft);}
+.quizq .qa b{font-family:var(--font-head);}
+.quizq.answered .qa{display:block;}
 
 /* 트렌드/활용 카드 */
 .trend-grid{display:grid; grid-template-columns:1fr; gap:20px;}
@@ -639,7 +652,7 @@ footer .foot-grid{display:flex; justify-content:space-between; flex-wrap:wrap; g
         <tbody>
           <tr><td class="rec">1</td><td>Gemini</td><td>처음 답변을 받는다</td><td>소개문, 제목 후보, 질문 목록</td></tr>
           <tr><td class="rec">2</td><td>ChatGPT</td><td>더 쉽게 다듬는다</td><td>최종 문장, FAQ, 고객 응대문</td></tr>
-          <tr><td class="rec">3</td><td>내 작업장</td><td>좋은 문장만 붙여둔다</td><td>웹페이지에 넣을 재료</td></tr>
+          <tr><td class="rec">3</td><td>내 메모</td><td>좋은 문장만 모아둔다</td><td>웹페이지에 넣을 재료</td></tr>
           <tr><td class="rec">4</td><td>GitHub Pages</td><td>AI가 만든 index.html을 올린다</td><td>공유 가능한 홍보 웹페이지</td></tr>
         </tbody>
       </table>
@@ -679,7 +692,7 @@ footer .foot-grid{display:flex; justify-content:space-between; flex-wrap:wrap; g
           <div class="micro"><b>2</b><span><strong>로그인</strong>을 누르고 구글 계정을 선택합니다.</span></div>
           <div class="micro"><b>3</b><span>아래 입력창에 질문을 붙여넣습니다.</span></div>
           <div class="micro"><b>4</b><span>답변이 길면 <strong>“더 짧게”</strong>라고 다시 말합니다.</span></div>
-          <div class="micro"><b>5</b><span>마음에 드는 문장만 작업장에 저장합니다.</span></div>
+          <div class="micro"><b>5</b><span>마음에 드는 문장만 따로 메모해 둡니다.</span></div>
         </div>
       </div>
       <div class="setup-card">
@@ -766,7 +779,7 @@ footer .foot-grid{display:flex; justify-content:space-between; flex-wrap:wrap; g
       <div class="step"><b>1</b><span><a href="#setup">시작 준비</a>에서 Gemini와 ChatGPT 접속을 마쳤는지 확인합니다.</span></div>
       <div class="step"><b>2</b><span>아래 Gemini 프롬프트를 복사해 붙여넣고 답변을 받습니다.</span></div>
       <div class="step"><b>3</b><span>같은 프롬프트를 ChatGPT에도 넣어 보고, 더 이해하기 쉬운 문장에 표시합니다.</span></div>
-      <div class="step"><b>4</b><span>마음에 드는 문장 1개만 골라 <a href="#workspace">내 작업장</a>의 소개문 칸에 붙입니다.</span></div>
+      <div class="step"><b>4</b><span>마음에 드는 문장 1개만 골라 <b>따로 메모해 둡니다.</b></span></div>
     </div>
     <div class="practice-pair">
       <div class="setup-card primary">
@@ -812,6 +825,7 @@ footer .foot-grid{display:flex; justify-content:space-between; flex-wrap:wrap; g
         <div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>[내 주제 이름]을 처음 보는 관광객에게 보여줄
 한 줄 홍보 문구를 10개 만들어줘.
 짧고 기억하기 쉽게, 과장 없이 써줘.</code></div>
+        <div class="memo" style="margin-top:14px;"><div class="memo-h">📋 결과 붙여넣기 <span>자동 저장</span></div><textarea data-memo="mission1" style="min-height:76px;" placeholder="마음에 드는 결과 문장을 여기에"></textarea><div class="memo-actions"><button class="btn light small" type="button" onclick="copyMemo(this)">복사</button><span class="memo-status"></span></div></div>
       </div>
       <div class="mission-card">
         <span class="mini-step">미션 2 · 외국인 안내</span>
@@ -820,6 +834,7 @@ footer .foot-grid{display:flex; justify-content:space-between; flex-wrap:wrap; g
         <div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>[따개비밥/오징어내장탕/성인봉 트레킹]을
 외국인 관광객이 이해하기 쉬운 영어 3문장으로 설명해줘.
 재료, 맛 또는 준비물을 포함해줘.</code></div>
+        <div class="memo" style="margin-top:14px;"><div class="memo-h">📋 결과 붙여넣기 <span>자동 저장</span></div><textarea data-memo="mission2" style="min-height:76px;" placeholder="마음에 드는 결과 문장을 여기에"></textarea><div class="memo-actions"><button class="btn light small" type="button" onclick="copyMemo(this)">복사</button><span class="memo-status"></span></div></div>
       </div>
       <div class="mission-card">
         <span class="mini-step">미션 3 · 손님 질문</span>
@@ -828,6 +843,7 @@ footer .foot-grid{display:flex; justify-content:space-between; flex-wrap:wrap; g
         <div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>울릉도에서 [식당/숙소/체험/관광지]를 이용하려는 관광객이
 방문 전에 궁금해할 질문 8개를 만들어줘.
 교통, 예약, 비용, 날씨, 준비물을 포함해줘.</code></div>
+        <div class="memo" style="margin-top:14px;"><div class="memo-h">📋 결과 붙여넣기 <span>자동 저장</span></div><textarea data-memo="mission3" style="min-height:76px;" placeholder="마음에 드는 결과 문장을 여기에"></textarea><div class="memo-actions"><button class="btn light small" type="button" onclick="copyMemo(this)">복사</button><span class="memo-status"></span></div></div>
       </div>
       <div class="mission-card">
         <span class="mini-step">미션 4 · 고객 응대</span>
@@ -837,13 +853,14 @@ footer .foot-grid{display:flex; justify-content:space-between; flex-wrap:wrap; g
 3문장 이내로, 너무 딱딱하지 않게 써줘.
 
 [여기에 안내할 내용 붙여넣기]</code></div>
+        <div class="memo" style="margin-top:14px;"><div class="memo-h">📋 결과 붙여넣기 <span>자동 저장</span></div><textarea data-memo="mission4" style="min-height:76px;" placeholder="바꾼 응대 문장을 여기에"></textarea><div class="memo-actions"><button class="btn light small" type="button" onclick="copyMemo(this)">복사</button><span class="memo-status"></span></div></div>
       </div>
     </div>
     <div class="pb-label"><span class="tag">완료 체크</span> 5분 미션 뒤 할 일</div>
     <div class="checklist">
       <label><input type="checkbox" data-check="mission-1"> Gemini 또는 ChatGPT에 미션 1개를 붙여넣었다</label>
       <label><input type="checkbox" data-check="mission-2"> 마음에 드는 결과 문장 1개를 골랐다</label>
-      <label><input type="checkbox" data-check="mission-3"> 그 문장을 작업장에 붙여두거나 메모했다</label>
+      <label><input type="checkbox" data-check="mission-3"> 마음에 드는 문장을 위 미션 메모장에 붙여 두었다</label>
     </div>
 
     <div class="subhead">🔑 좋은 프롬프트의 원리</div>
@@ -1236,6 +1253,36 @@ SNS 콘텐츠 아이디어 10개를 이유와 함께 제안해줘.</code></div>
       <img src="assets/ulleung-scenic.jpg" alt="울릉도 해안 절벽과 에메랄드빛 동해 바다" loading="lazy">
       <figcaption><b>이 모든 매력을 콘텐츠로.</b> 울릉도의 풍경·음식·체험을 글·이미지·웹페이지로 바꾸는 것이 AI 활용의 실전입니다.</figcaption>
     </figure>
+
+    <div class="pb-label"><span class="tag">마무리 퀴즈</span> OX로 오늘 배운 것 확인하기</div>
+    <p class="kicker" style="margin-bottom:14px;">O 또는 X를 눌러 보세요. 정답과 이유가 바로 나옵니다.</p>
+    <div class="quiz">
+      <div class="quizq" data-answer="X">
+        <div class="q">Q1. AI가 알려준 <b>가격·전화번호·배편 시간</b>은 확인 없이 그대로 홍보에 써도 된다.</div>
+        <div class="ox"><button type="button" data-ox="O">O</button><button type="button" data-ox="X">X</button></div>
+        <div class="qa"><b>정답: X</b> · AI는 사실을 지어낼 수 있어요. 숫자·연락처·시간은 <b>사람이 확인</b>한 뒤 써야 합니다.</div>
+      </div>
+      <div class="quizq" data-answer="O">
+        <div class="q">Q2. 같은 질문이라도 <b>Gemini와 ChatGPT의 답</b>이 서로 다를 수 있다.</div>
+        <div class="ox"><button type="button" data-ox="O">O</button><button type="button" data-ox="X">X</button></div>
+        <div class="qa"><b>정답: O</b> · 그래서 두 곳에 넣어 보고 <b>더 쓸 만한 답을 고르는</b> 연습을 했습니다.</div>
+      </div>
+      <div class="quizq" data-answer="O">
+        <div class="q">Q3. AI에게 <b>역할·상황·원하는 형식</b>을 함께 주면 더 쓸 만한 답이 나온다.</div>
+        <div class="ox"><button type="button" data-ox="O">O</button><button type="button" data-ox="X">X</button></div>
+        <div class="qa"><b>정답: O</b> · “관광 홍보 전문가처럼, 외국인에게, 3줄로”처럼 <b>구체적으로 부탁</b>할수록 좋아집니다.</div>
+      </div>
+      <div class="quizq" data-answer="X">
+        <div class="q">Q4. 손님 연락처·주민등록번호 같은 <b>개인정보</b>도 AI에 넣어도 안전하다.</div>
+        <div class="ox"><button type="button" data-ox="O">O</button><button type="button" data-ox="X">X</button></div>
+        <div class="qa"><b>정답: X</b> · 입력한 내용은 회사 서버로 갈 수 있어요. 민감한 개인정보는 <b>넣지 않습니다.</b></div>
+      </div>
+      <div class="quizq" data-answer="X">
+        <div class="q">Q5. AI 답변은 <b>전체를 다 써야</b> 하고, 일부만 골라 쓰면 안 된다.</div>
+        <div class="ox"><button type="button" data-ox="O">O</button><button type="button" data-ox="X">X</button></div>
+        <div class="qa"><b>정답: X</b> · 마음에 드는 <b>문장만 골라</b> 메모에 모으면 됩니다. 전부 쓸 필요 없어요.</div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1927,6 +1974,15 @@ document.querySelectorAll('textarea[data-memo]').forEach(t=>{
     const s=t.closest('.memo').querySelector('.memo-status');
     if(s){s.textContent='저장됨 ✓'; clearTimeout(t._to); t._to=setTimeout(()=>s.textContent='',1200);}
   });
+});
+// OX 퀴즈
+document.querySelectorAll('.quizq').forEach(q=>{
+  const ans=q.dataset.answer;
+  q.querySelectorAll('.ox button').forEach(b=>b.addEventListener('click',()=>{
+    q.querySelectorAll('.ox button').forEach(x=>x.classList.remove('correct','wrong'));
+    b.classList.add(b.dataset.ox===ans?'correct':'wrong');
+    q.classList.add('answered');
+  }));
 });
 const navLinks=document.querySelectorAll('.nav ul a[href^="#"]');
 const secs=Array.from(document.querySelectorAll('section[id], header[id]'));
