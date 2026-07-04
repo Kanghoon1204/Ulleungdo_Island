@@ -381,6 +381,8 @@ body.dialog-open .ws-fab{opacity:0; pointer-events:none; transform:translateY(8p
 .shot img{width:100%; height:auto; background:#0e1117;}
 .shot figcaption{padding:14px 17px; color:var(--muted); font-size:.98rem;}
 .shot figcaption b{color:var(--ink); font-family:var(--font-head); display:block; margin-bottom:2px;}
+.ai-mode-shots .shot img{height:clamp(140px,16vw,200px); object-fit:cover; object-position:top center;}
+.ai-mode-shots .shot.result img{height:clamp(190px,22vw,280px);}
 .ex-drop{display:grid; place-items:center; gap:6px; min-height:160px; border:2px dashed #d7b9a4; border-radius:var(--radius-sm); background:var(--primary-soft); padding:22px; text-align:center; margin-top:12px;}
 .ex-drop .t{font-family:var(--font-head); font-size:1.14rem; color:var(--primary-dark);}
 .ex-drop .n{color:var(--muted); font-size:1rem;}
@@ -519,6 +521,10 @@ footer .foot-grid{display:flex; justify-content:space-between; flex-wrap:wrap; g
   .form-grid{grid-template-columns:1fr;}
   .field.full{grid-column:auto;}
   .shot-grid{grid-template-columns:1fr;}
+  .ai-mode-shots{display:flex; gap:14px; overflow-x:auto; padding-bottom:8px; scroll-snap-type:x mandatory; scrollbar-width:none;}
+  .ai-mode-shots::-webkit-scrollbar{display:none;}
+  .ai-mode-shots .shot{flex:0 0 82%; scroll-snap-align:start;}
+  .ai-mode-shots .shot img,.ai-mode-shots .shot.result img{height:150px;}
   .row-item{grid-template-columns:60px 1fr; gap:15px; padding:20px;}
   .row-item .rico{width:60px; height:60px; font-size:1.7rem;}
   .rm{grid-template-columns:64px 1fr; gap:14px; padding:14px 18px;}
@@ -655,13 +661,28 @@ footer .foot-grid{display:flex; justify-content:space-between; flex-wrap:wrap; g
     <div class="section-head">
       <span class="step-badge"><span class="n">STEP 1</span> 예시</span>
       <h2>AI로 <span class="hl">이런 것들</span>을 만들 수 있습니다</h2>
-      <p class="kicker">AI는 글뿐 아니라 음성·노래·이미지·캐릭터·웹페이지까지 만듭니다. 아래 다섯 가지를 먼저 맛보세요. <b>Suno·포스터·마스코트는 3분이면 직접</b> 만들어 볼 수 있고, <b>웹페이지는 오늘 끝까지</b> 만듭니다.</p>
+      <p class="kicker">AI는 검색, 음성, 노래, 이미지, 캐릭터, 웹페이지까지 만듭니다. 아래 여섯 가지를 먼저 맛보세요. <b>Google AI 모드·Suno·포스터·마스코트는 3분이면 직접</b> 해볼 수 있고, <b>웹페이지는 오늘 끝까지</b> 만듭니다.</p>
     </div>
     <figure class="img-band step-hero">
       <img src="assets/ulleung-nari.jpg" alt="울릉도 나리분지의 들판" loading="lazy">
       <figcaption><b>AI로 만들 수 있는 것들.</b> 먼저 눈으로 확인하고 시작합니다.</figcaption>
     </figure>
-    <!-- 예시 1 · NotebookLM (데모) -->
+    <!-- 예시 1 · Google AI 모드 (미니체험) -->
+    <div class="card" style="margin-bottom:24px;">
+      <div class="pb-head"><span class="tag-badge teal">🖐 미니체험</span><h3>🔎 Google AI 모드 · 검색을 대화로 바꾸기</h3></div>
+      <p>검색창에서 <b>AI 모드</b>를 켜고 질문하면, 링크 목록만 보는 대신 요약·이미지·표 형태의 답변을 바로 받을 수 있습니다. “비교표 만들어줘”처럼 결과 형식을 말하면 더 실습답게 써볼 수 있어요.</p>
+      <div class="shot-grid ai-mode-shots">
+        <figure class="shot"><img src="assets/google-ai-mode-home.png" alt="구글 첫 화면 검색창 오른쪽에 AI 모드 버튼이 보이는 화면" loading="lazy"><figcaption><b>1. AI 모드 찾기</b> Google 검색창 오른쪽의 <b>AI 모드</b> 버튼을 누릅니다.</figcaption></figure>
+        <figure class="shot"><img src="assets/google-ai-mode-query.png" alt="AI 모드 검색창에 다양한 커피 추출 방식 비교표 만들어줘라고 입력한 화면" loading="lazy"><figcaption><b>2. 질문 입력</b> “다양한 커피 추출 방식 비교표 만들어줘”처럼 원하는 형식을 함께 씁니다.</figcaption></figure>
+        <figure class="shot result"><img src="assets/google-ai-mode-result.png" alt="Google AI 모드가 커피 추출 방식을 표로 비교해 준 결과 화면" loading="lazy"><figcaption><b>3. 답변 확인</b> AI가 자료를 모아 표와 요약으로 정리해 줍니다.</figcaption></figure>
+      </div>
+      <details class="script"><summary>바로 실습 · AI 모드로 검색하기</summary><div class="dropbody"><ul class="mini-list"><li><a href="https://www.google.com/" target="_blank" rel="noopener">Google</a>에 접속하고 검색창 오른쪽의 <b>AI 모드</b>를 누릅니다.</li><li>아래 예시 문장을 붙여넣고 검색합니다.</li><li>답이 나오면 <b>“울릉도 관광객 기준으로 바꿔줘”</b>, <b>“표를 더 짧게 줄여줘”</b>처럼 이어서 물어봅니다.</li><li>AI 모드 버튼이 안 보이면 계정·브라우저에 따라 아직 제공되지 않을 수 있습니다. 그때는 Gemini나 ChatGPT에 같은 문장을 넣어 실습합니다.</li></ul><div class="prompt-box"><button class="copy-btn" type="button" onclick="copyPrompt(this)">복사</button><code>울릉도 여행객이 자주 궁금해하는 정보를
+교통, 숙소, 음식, 체험, 주의사항으로 나눠 비교표로 정리해줘.
+확실하지 않은 정보는 "확인 필요"라고 표시해줘.</code></div></div></details>
+      <a class="btn light small" href="https://www.google.com/" target="_blank" rel="noopener" style="margin-top:14px;">🔗 Google 열어서 AI 모드 찾기</a>
+    </div>
+
+    <!-- 예시 2 · NotebookLM (데모) -->
     <div class="card" style="margin-bottom:24px;">
       <div class="pb-head"><span class="tag-badge">데모</span><h3>🎧 NotebookLM · 내 자료를 음성 가이드로</h3></div>
       <p>소개글·FAQ 같은 자료를 넣으면, 두 진행자가 대화하듯 설명하는 오디오가 만들어집니다. 오늘은 예시로 들어 보고, 관심 있으면 아래 순서대로 직접 만들어 볼 수 있어요.</p>
@@ -670,7 +691,7 @@ footer .foot-grid{display:flex; justify-content:space-between; flex-wrap:wrap; g
       <details class="script"><summary>언제 쓰면 좋을까요?</summary><div class="dropbody"><ul class="mini-list"><li>관광 안내 자료를 걸어 다니며 듣는 <b>오디오 가이드</b>로 만들 때</li><li>글 읽기가 번거로운 어르신이나 운전 중 손님에게 들려줄 때</li><li>긴 안내책자·PDF를 <b>짧은 대화 요약</b>으로 듣고 싶을 때</li></ul></div></details>
     </div>
 
-    <!-- 예시 2 · Suno (미니체험) -->
+    <!-- 예시 3 · Suno (미니체험) -->
     <div class="card" style="margin-bottom:24px;">
       <div class="pb-head"><span class="tag-badge teal">🖐 미니체험</span><h3>🎵 Suno · 홍보 노래 만들기</h3></div>
       <p>분위기와 가사만 정하면 짧은 홍보 노래가 나옵니다. 아래 예시를 듣고, 3분이면 직접 만들어 볼 수 있어요.</p>
@@ -682,7 +703,7 @@ footer .foot-grid{display:flex; justify-content:space-between; flex-wrap:wrap; g
       <a class="btn light small" href="https://suno.com/" target="_blank" rel="noopener" style="margin-top:14px;">🔗 Suno 열어서 직접 만들기</a>
     </div>
 
-    <!-- 예시 3 · 포스터 이미지 (미니체험) -->
+    <!-- 예시 4 · 포스터 이미지 (미니체험) -->
     <div class="card" style="margin-bottom:24px;">
       <div class="pb-head"><span class="tag-badge teal">🖐 미니체험</span><h3>🖼️ 포스터 이미지 · 설명이 그림으로</h3></div>
       <p>원하는 장면을 글로 설명하면 홍보 포스터 이미지가 나옵니다. 설명(전) → 이미지(후)를 비교해 보세요.</p>
@@ -698,7 +719,7 @@ footer .foot-grid{display:flex; justify-content:space-between; flex-wrap:wrap; g
 [대표 풍경 또는 음식] 느낌, 따뜻한 색감, 위쪽에 "[제목]" 글자가 들어갈 공간.</code></div></div></details>
     </div>
 
-    <!-- 예시 4 · 캐릭터 마스코트 (미니체험) -->
+    <!-- 예시 5 · 캐릭터 마스코트 (미니체험) -->
     <div class="card" style="margin-bottom:24px;">
       <div class="pb-head"><span class="tag-badge teal">🖐 미니체험</span><h3>🦑 캐릭터 마스코트 · 우리 지역 캐릭터 만들기</h3></div>
       <p>특징을 글로 설명하면 귀여운 마스코트 캐릭터가 나옵니다. 우리 지역·특산물을 캐릭터로 만들어 홍보에 써 보세요.</p>
@@ -713,7 +734,7 @@ footer .foot-grid{display:flex; justify-content:space-between; flex-wrap:wrap; g
 [대표 색] 포인트, 흰색 배경에 캐릭터만 크게.</code></div></div></details>
     </div>
 
-    <!-- 예시 5 · 웹페이지 (오늘 메인) -->
+    <!-- 예시 6 · 웹페이지 (오늘 메인) -->
     <div class="card today" style="margin-bottom:24px;">
       <div class="pb-head"><span class="tag-badge primary">⭐ 오늘 메인</span><h3>💻 울릉도 홍보 웹페이지</h3></div>
       <p>아래 예시가 <b>오늘 여러분이 직접 완성할 결과물</b>입니다. 재료를 만들고, AI에게 코드를 받고, 인터넷에 배포해 QR로 공유합니다.</p>
@@ -797,7 +818,7 @@ footer .foot-grid{display:flex; justify-content:space-between; flex-wrap:wrap; g
         </tbody>
       </table>
     </div>
-    <div class="support-note"><strong>나머지 도구는 오늘의 중심이 아닙니다.</strong> NotebookLM과 Suno는 초반 예시로만 보고, Codex는 “코드를 더 자유롭게 만들고 싶을 때 쓰는 심화 선택지”로만 소개합니다. 처음 실습은 Gemini, ChatGPT, GitHub Pages만 따라오면 됩니다.</div>
+    <div class="support-note"><strong>나머지 도구는 오늘의 중심이 아닙니다.</strong> Google AI 모드·NotebookLM·Suno는 초반 예시로만 보고, Codex는 “코드를 더 자유롭게 만들고 싶을 때 쓰는 심화 선택지”로만 소개합니다. 처음 실습은 Gemini, ChatGPT, GitHub Pages만 따라오면 됩니다.</div>
   </div>
 </section>
 
