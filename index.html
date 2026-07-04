@@ -440,6 +440,9 @@ body.dialog-open .ws-fab{opacity:0; pointer-events:none; transform:translateY(8p
 .map-card{position:relative; border-radius:26px; overflow:hidden; box-shadow:var(--shadow); border:1px solid var(--line); background:#dfeeec; aspect-ratio:4/3.6;}
 .map-card img{width:100%; height:100%; object-fit:cover;}
 .map-card .scrim{position:absolute; inset:0; background:linear-gradient(180deg, rgba(23,20,18,.06), rgba(23,20,18,.4));}
+.map-card .map-qr{position:absolute; top:18px; right:18px; z-index:2; width:132px; padding:10px; background:rgba(255,255,255,.96); border:1px solid rgba(255,255,255,.75); border-radius:16px; box-shadow:0 8px 24px rgba(20,20,19,.18);}
+.map-card .map-qr img{width:100%; height:auto; aspect-ratio:1; object-fit:contain; padding:6px; background:#fff; border:1px solid var(--line); border-radius:10px;}
+.map-card .map-qr span{display:block; margin-top:7px; text-align:center; font-family:var(--font-head); font-size:.86rem; line-height:1.25; color:var(--ink);}
 .map-card .goal{position:absolute; left:20px; right:20px; bottom:20px; background:rgba(255,255,255,.95); border-radius:16px; padding:18px 20px; box-shadow:var(--shadow);}
 .map-card .goal small{font-family:var(--font-head); color:var(--secondary); font-size:.92rem;}
 .map-card .goal b{font-family:var(--font-head); font-size:1.3rem; display:block;}
@@ -530,6 +533,9 @@ footer .foot-grid{display:flex; justify-content:space-between; flex-wrap:wrap; g
   /* 새 컴포넌트 모바일 대응 */
   .ws-fab{right:12px; bottom:10px; width:calc(50% - 18px); min-height:54px; justify-content:center; padding:12px 10px; font-size:.95rem;}
   .prompt-fab{left:12px; right:auto; bottom:10px;}
+  .map-card .map-qr{top:12px; right:12px; width:108px; padding:8px; border-radius:14px;}
+  .map-card .map-qr img{padding:5px; border-radius:9px;}
+  .map-card .map-qr span{font-size:.78rem;}
   .route-split{gap:14px; margin:20px 0 24px;}
   .route-panel{padding:24px 20px;}
   .route-list li{grid-template-columns:1fr; gap:3px; padding:12px;}
@@ -629,6 +635,10 @@ footer .foot-grid{display:flex; justify-content:space-between; flex-wrap:wrap; g
       <div class="map-card">
         <img src="assets/ulleungdo-coastal-path.jpg" alt="울릉도 해안 산책로에서 바라본 에메랄드빛 동해 바다와 해안 절벽">
         <div class="scrim" aria-hidden="true"></div>
+        <div class="map-qr" aria-label="실습 사이트 QR 코드">
+          <img src="assets/site-qr-code.jpg" alt="울릉 생태관광 AI 실습 사이트 QR 코드" loading="eager">
+          <span>휴대폰으로<br>바로 열기</span>
+        </div>
         <span class="map-pin p1" aria-hidden="true"><span></span></span>
         <span class="map-pin p2" aria-hidden="true"><span></span></span>
         <div class="goal"><small>최종 결과물</small><b>울릉도 생태관광 홍보 웹페이지</b></div>
