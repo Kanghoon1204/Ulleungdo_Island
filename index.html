@@ -439,6 +439,11 @@ body.dialog-open .ws-fab{opacity:0; pointer-events:none; transform:translateY(8p
 .hero .desc{font-size:1.28rem; line-height:2; color:var(--ink-soft); max-width:580px; margin-bottom:28px;}
 .hero-facts{display:flex; flex-wrap:wrap; gap:10px; margin-bottom:26px;}
 .hero-cta{display:flex; flex-wrap:wrap; gap:14px;}
+.hero-tool-links{display:flex; flex-wrap:wrap; align-items:center; gap:10px; margin:10px 0 16px;}
+.hero-tool-links .label{font-family:var(--font-head); color:var(--muted); font-size:1rem;}
+.hero-tool-links a{display:inline-flex; align-items:center; gap:8px; min-height:42px; padding:7px 14px; border-radius:999px; background:#fff; border:1px solid var(--line); box-shadow:var(--shadow-sm); font-family:var(--font-head); font-size:1rem; color:var(--ink);}
+.hero-tool-links a:hover{border-color:var(--primary); color:var(--primary-dark); text-decoration:none; transform:translateY(-2px);}
+.hero-tool-links img{width:20px; height:20px; object-fit:contain;}
 .map-card{position:relative; border-radius:26px; overflow:hidden; box-shadow:var(--shadow); border:1px solid var(--line); background:#dfeeec; aspect-ratio:4/3.6;}
 .map-card img{width:100%; height:100%; object-fit:cover;}
 .map-card .scrim{position:absolute; inset:0; background:linear-gradient(180deg, rgba(23,20,18,.06), rgba(23,20,18,.4));}
@@ -530,6 +535,8 @@ footer .foot-grid{display:flex; justify-content:space-between; flex-wrap:wrap; g
   .rm{grid-template-columns:64px 1fr; gap:14px; padding:14px 18px;}
   .rm .rmn{width:64px;}
   .hero-cta .btn,.form-actions .btn{width:100%;}
+  .hero-tool-links .label{width:100%;}
+  .hero-tool-links a{flex:1 1 140px; justify-content:center;}
   .prompt-box code{padding-right:0; padding-top:38px;}
   .prompt-box{padding:24px 22px 22px;}
   .step{grid-template-columns:50px 1fr; padding:20px 22px;}
@@ -630,6 +637,11 @@ footer .foot-grid{display:flex; justify-content:space-between; flex-wrap:wrap; g
         <span class="pin"><span class="dot"></span>대상 · AI가 처음인 사람</span>
         <span class="pin teal"><span class="dot"></span>도구 · Gemini + ChatGPT</span>
         <span class="pin yellow"><span class="dot"></span>결과 · GitHub Pages 공개 페이지</span>
+      </div>
+      <div class="hero-tool-links reveal d5" aria-label="AI 도구 바로가기">
+        <span class="label">도구 먼저 열기</span>
+        <a href="https://gemini.google.com/" target="_blank" rel="noopener"><img src="assets/logos/gemini.svg" alt="">Gemini</a>
+        <a href="https://chatgpt.com/" target="_blank" rel="noopener"><img src="assets/logos/chatgpt.svg" alt="">ChatGPT</a>
       </div>
       <div class="hero-cta reveal d5">
         <a class="btn" href="#goal">결과 예시 보기</a>
@@ -766,6 +778,11 @@ footer .foot-grid{display:flex; justify-content:space-between; flex-wrap:wrap; g
       <span class="eyebrow">이번 실습의 중심 도구</span>
       <h2>오늘 쓰는 도구는 <span class="hl">Gemini · ChatGPT · GitHub</span>입니다</h2>
       <p class="kicker">AI 도구는 많지만, 처음부터 다 배울 필요는 없습니다. 이번 실습에서는 <b>Gemini로 초안을 만들고</b>, <b>ChatGPT로 비교·수정한 뒤</b>, 완성 HTML을 GitHub Pages로 공개합니다.</p>
+    </div>
+    <div class="site-links" aria-label="오늘 쓸 도구 바로가기">
+      <a class="icon-link" href="https://gemini.google.com/" target="_blank" rel="noopener"><img src="assets/logos/gemini.svg" alt=""> Gemini 열기 <span class="go">↗</span></a>
+      <a class="icon-link" href="https://chatgpt.com/" target="_blank" rel="noopener"><img src="assets/logos/chatgpt.svg" alt=""> ChatGPT 열기 <span class="go">↗</span></a>
+      <a class="icon-link" href="https://github.com/?locale=ko-kr" target="_blank" rel="noopener"><img src="assets/logos/github.svg" alt=""> GitHub 열기 <span class="go">↗</span></a>
     </div>
     <figure class="img-band step-hero">
       <img src="assets/ulleung-taeha.jpg" alt="울릉도 태하 해안 전망" loading="lazy">
